@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.DS_Store
+examples/_src/
+docs/superpowers/
+.pytest_cache/

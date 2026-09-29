@@ -1,0 +1,52 @@
+{
+  "schema": "la-platform/1",
+  "note": "Data-platform gate. A method that consumes a modality listed here runs only when the member's data platform is in `allowed_platforms`. Proteomics methods not listed under `skills` are refused by default: most published protein clocks are trained on Olink NPX or SomaScan RFU and expect cohort-standardised values, and raw MS intensities fed to them produce numbers like 'brain age 140.5' without any error (longevity-skills audit, 2026-09-29).",
+  "modalities": {
+    "proteomics": {
+      "default": {
+        "allowed_platforms": [],
+        "reason": "the skill does not document which assay its coefficients came from; refused until someone declares it here"
+      },
+      "skills": {
+        "organ-aging-plasma-proteome": {
+          "allowed_platforms": [
+            "somascan"
+          ],
+          "reason": "skill docs name SomaScan (5 mentions)",
+          "required_value_scale": "cohort_z"
+        },
+        "plasma-proteomic-cellular-aging": {
+          "allowed_platforms": [
+            "somascan"
+          ],
+          "reason": "skill docs name SomaScan aptamer assay",
+          "required_value_scale": "cohort_z"
+        },
+        "proteomic-aging-clock": {
+          "allowed_platforms": [
+            "olink"
+          ],
+          "reason": "skill docs name Olink",
+          "required_value_scale": "npx"
+        },
+        "plasma-proteomics-brain-immune": {
+          "allowed_platforms": [
+            "olink"
+          ],
+          "reason": "skill docs name Olink; raw MS intensity returned 'brain 140.5 years' in the audit",
+          "required_value_scale": "cohort_z"
+        }
+      },
+      "note_value_scale": "A platform match is not enough: the value scale must match what the coefficients expect. Member data is almost never cohort-standardised, so cohort_z methods stay blocked until a reference cohort exists."
+    },
+    "methylation": {
+      "default": {
+        "allowed_tissues": [
+          "whole_blood"
+        ],
+        "reason": "bundled clocks are whole-blood models"
+      }
+    }
+  },
+  "verified_by": "grep of each skill's SKILL.md/skill.json for Olink/SomaScan/aptamer/mass-spec mentions, 2026-09-29"
+}

@@ -1,0 +1,455 @@
+{
+  "schema": "la-organs/1",
+  "note": "Organ checkup table. For each organ: which computed readouts count as a measured/model organ age, which calibrated or published indices give a risk tier or probability, and which diseases the AI estimator is asked about. Lab-name aliases only propose candidate rows; a row is used after the agent confirms it (`la.py labs confirm`). Each analyte has a plausible range in the canonical unit; values outside it (or non-finite) are not computed on.",
+  "organs": {
+    "brain": {
+      "label_zh": "脑",
+      "age_readout_methods": [
+        "plasma-proteomics-brain-immune",
+        "mri-multi-organ-clocks",
+        "imaging-organ-aging-clock"
+      ],
+      "index_readouts": [],
+      "diseases": [
+        "全因痴呆",
+        "缺血性脑卒中"
+      ],
+      "age_readout_tokens": [
+        "brain",
+        "cns",
+        "cortex"
+      ]
+    },
+    "heart_vascular": {
+      "label_zh": "心血管",
+      "age_readout_methods": [
+        "organ-aging-plasma-proteome"
+      ],
+      "index_readouts": [
+        "china-par-ascvd-risk.risk_10y_pct",
+        "china-par-ascvd-risk.risk_category",
+        "native.organ.aip"
+      ],
+      "diseases": [
+        "动脉粥样硬化性心血管病（心梗或脑卒中）",
+        "心力衰竭",
+        "心房颤动"
+      ],
+      "age_readout_tokens": [
+        "heart",
+        "cardiac",
+        "artery",
+        "arterial",
+        "vascular"
+      ]
+    },
+    "liver": {
+      "label_zh": "肝",
+      "age_readout_methods": [
+        "organ-aging-plasma-proteome"
+      ],
+      "index_readouts": [
+        "native.organ.fib4",
+        "native.organ.fib4_tier"
+      ],
+      "diseases": [
+        "进展期肝纤维化或肝硬化",
+        "代谢相关脂肪性肝病"
+      ],
+      "age_readout_tokens": [
+        "liver",
+        "hepatic"
+      ]
+    },
+    "kidney": {
+      "label_zh": "肾",
+      "age_readout_methods": [
+        "organ-aging-plasma-proteome"
+      ],
+      "index_readouts": [
+        "native.organ.egfr",
+        "native.organ.egfr_stage"
+      ],
+      "diseases": [
+        "慢性肾脏病 3 期及以上"
+      ],
+      "age_readout_tokens": [
+        "kidney",
+        "renal"
+      ]
+    },
+    "lung": {
+      "label_zh": "肺",
+      "age_readout_methods": [
+        "organ-aging-plasma-proteome",
+        "lung-parenchyma-aging-clock"
+      ],
+      "index_readouts": [],
+      "diseases": [
+        "慢性阻塞性肺疾病",
+        "肺癌"
+      ],
+      "age_readout_tokens": [
+        "lung",
+        "pulmonary"
+      ]
+    },
+    "metabolic": {
+      "label_zh": "胰腺与代谢",
+      "age_readout_methods": [
+        "organ-aging-plasma-proteome"
+      ],
+      "index_readouts": [
+        "native.organ.tyg"
+      ],
+      "diseases": [
+        "2 型糖尿病"
+      ],
+      "age_readout_tokens": [
+        "pancreas",
+        "adipose",
+        "metabolic"
+      ]
+    },
+    "immune": {
+      "label_zh": "免疫与血液",
+      "age_readout_methods": [
+        "organ-aging-plasma-proteome",
+        "immune-aging-clock-runx1"
+      ],
+      "index_readouts": [],
+      "diseases": [
+        "需住院的严重感染",
+        "血液系统恶性肿瘤"
+      ],
+      "age_readout_tokens": [
+        "immune",
+        "blood",
+        "immun"
+      ]
+    },
+    "gut": {
+      "label_zh": "肠道",
+      "age_readout_methods": [],
+      "index_readouts": [
+        "native.gut.gmhi",
+        "native.gut.shannon"
+      ],
+      "diseases": [
+        "结直肠癌"
+      ],
+      "age_readout_tokens": [
+        "intestine",
+        "gut",
+        "colon"
+      ]
+    },
+    "musculoskeletal": {
+      "label_zh": "骨骼肌与骨",
+      "age_readout_methods": [
+        "organ-aging-plasma-proteome",
+        "human-skeletal-muscle-aging-atlas"
+      ],
+      "index_readouts": [],
+      "diseases": [
+        "骨质疏松性骨折",
+        "肌少症"
+      ],
+      "age_readout_tokens": [
+        "muscle",
+        "bone",
+        "skeletal"
+      ]
+    }
+  },
+  "calculators": {
+    "egfr": {
+      "label_zh": "估算肾小球滤过率 eGFR（CKD-EPI 2021，肌酐）",
+      "unit": "mL/min/1.73m²",
+      "citation": "Inker LA et al. New Creatinine- and Cystatin C-Based Equations to Estimate GFR without Race. NEJM 2021",
+      "doi": "10.1056/NEJMoa2102953",
+      "stage_citation": "KDIGO 2012 CKD guideline, GFR categories G1-G5"
+    },
+    "fib4": {
+      "label_zh": "FIB-4 肝纤维化指数",
+      "unit": "",
+      "citation": "Sterling RK et al. Hepatology 2006 (formula); Shah AG et al. Clin Gastroenterol Hepatol 2009 (NAFLD cut-offs 1.30/2.67); McPherson S et al. Am J Gastroenterol 2017 (age ≥65 lower cut-off 2.0)",
+      "doi": "10.1002/hep.21178; 10.1016/j.cgh.2009.05.033; 10.1038/ajg.2016.453",
+      "note_zh": "界值来自脂肪肝和慢性肝炎人群的排除性筛查研究；只是提示，不是诊断"
+    },
+    "tyg": {
+      "label_zh": "TyG 指数（甘油三酯-血糖，胰岛素抵抗替代指标）",
+      "unit": "",
+      "citation": "Simental-Mendía LE et al. Metab Syndr Relat Disord 2008",
+      "doi": "10.1089/met.2008.0034",
+      "note_zh": "没有全人群通用的切点，只作描述"
+    },
+    "aip": {
+      "label_zh": "血浆致动脉硬化指数 AIP = log10(TG/HDL-C)",
+      "unit": "",
+      "citation": "Dobiásová M, Frohlich J. Clin Biochem 2001",
+      "doi": "10.1016/s0009-9120(01)00263-6",
+      "note_zh": "只作描述，不给风险分层"
+    }
+  },
+  "lab_aliases": {
+    "creatinine": {
+      "names": [
+        "肌酐",
+        "血肌酐",
+        "血清肌酐",
+        "Cr",
+        "CREA",
+        "SCr",
+        "creatinine"
+      ],
+      "units": {
+        "umol/L": 1.0,
+        "μmol/L": 1.0,
+        "µmol/L": 1.0,
+        "mg/dL": 88.4
+      },
+      "plausible": [
+        15,
+        2500
+      ],
+      "loinc": [
+        "14682-9",
+        "2160-0"
+      ],
+      "confirm_zh": "肌酐（血清/血浆，不是尿肌酐）"
+    },
+    "ast": {
+      "names": [
+        "谷草转氨酶",
+        "天门冬氨酸氨基转移酶",
+        "天冬氨酸氨基转移酶",
+        "AST",
+        "GOT",
+        "SGOT"
+      ],
+      "units": {
+        "U/L": 1.0,
+        "IU/L": 1.0
+      },
+      "plausible": [
+        1,
+        10000
+      ],
+      "loinc": [
+        "1920-8"
+      ],
+      "confirm_zh": "谷草转氨酶 AST（血清）"
+    },
+    "alt": {
+      "names": [
+        "谷丙转氨酶",
+        "丙氨酸氨基转移酶",
+        "ALT",
+        "GPT",
+        "SGPT"
+      ],
+      "units": {
+        "U/L": 1.0,
+        "IU/L": 1.0
+      },
+      "plausible": [
+        1,
+        10000
+      ],
+      "loinc": [
+        "1742-6"
+      ],
+      "confirm_zh": "谷丙转氨酶 ALT（血清）"
+    },
+    "platelets": {
+      "names": [
+        "血小板",
+        "血小板计数",
+        "PLT"
+      ],
+      "units": {
+        "10^9/L": 1.0,
+        "×10^9/L": 1.0,
+        "10^3/uL": 1.0,
+        "10^3/μL": 1.0,
+        "K/uL": 1.0
+      },
+      "plausible": [
+        1,
+        2000
+      ],
+      "loinc": [
+        "777-3",
+        "26515-7"
+      ],
+      "confirm_zh": "血小板计数（静脉血）"
+    },
+    "tg": {
+      "names": [
+        "甘油三酯",
+        "三酰甘油",
+        "triglycerides",
+        "triglyceride"
+      ],
+      "units": {
+        "mmol/L": 1.0,
+        "mg/dL": 0.01129
+      },
+      "plausible": [
+        0.05,
+        60
+      ],
+      "loinc": [
+        "2571-8",
+        "14927-8"
+      ],
+      "abbrev": [
+        "TG"
+      ],
+      "confirm_zh": "甘油三酯（血清，空腹）"
+    },
+    "glucose": {
+      "names": [
+        "空腹血糖",
+        "空腹葡萄糖",
+        "空腹血浆葡萄糖",
+        "FPG",
+        "fasting glucose",
+        "fasting plasma glucose",
+        "血糖",
+        "葡萄糖",
+        "GLU",
+        "glucose"
+      ],
+      "units": {
+        "mmol/L": 1.0,
+        "mg/dL": 0.0555556
+      },
+      "plausible": [
+        1,
+        40
+      ],
+      "loinc": [
+        "1558-6",
+        "14771-0"
+      ],
+      "note": "Any glucose-named row is only a candidate; it is used after the agent confirms it is a fasting venous value",
+      "confirm_zh": "空腹血糖（静脉血浆/血清；不是餐后、OGTT、随机或尿糖）"
+    },
+    "hdl": {
+      "names": [
+        "高密度脂蛋白胆固醇",
+        "高密度脂蛋白",
+        "HDL-C",
+        "HDL",
+        "HDLC"
+      ],
+      "units": {
+        "mmol/L": 1.0,
+        "mg/dL": 0.02586
+      },
+      "plausible": [
+        0.1,
+        6
+      ],
+      "loinc": [
+        "2085-9",
+        "14646-4"
+      ],
+      "confirm_zh": "高密度脂蛋白胆固醇（血清）"
+    },
+    "hba1c": {
+      "names": [
+        "糖化血红蛋白",
+        "糖化血红蛋白A1c",
+        "HbA1c",
+        "A1C",
+        "glycated hemoglobin"
+      ],
+      "units": {
+        "%": 1.0,
+        "mmol/mol": [
+          0.09148,
+          2.152
+        ]
+      },
+      "plausible": [
+        3,
+        20
+      ],
+      "loinc": [
+        "4548-4",
+        "17856-6"
+      ],
+      "confirm_zh": "糖化血红蛋白 HbA1c（全血，NGSP %）",
+      "note": "mmol/mol (IFCC) -> % (NGSP): % = 0.09148 * mmol/mol + 2.152"
+    }
+  },
+  "ai_estimate_rules": {
+    "confidence_allowed": [
+      "low",
+      "very_low"
+    ],
+    "min_prob_width_abs": 0.02,
+    "min_prob_width_rel": 0.5,
+    "min_age_width_years": 6,
+    "max_age_offset_years": 25,
+    "horizon_years": [
+      1,
+      30
+    ],
+    "min_pubmed_per_organ": 1
+  },
+  "calibrated_overrides": [
+    {
+      "organ": "kidney",
+      "disease": "慢性肾脏病 3 期及以上",
+      "readout": "native.organ.egfr",
+      "below": 60,
+      "message_zh": "单次 eGFR 已低于 60，达到 3 期的 GFR 阈值；需间隔 3 个月复查并查尿白蛋白确认，不做概率估计"
+    },
+    {
+      "organ": "metabolic",
+      "disease": "2 型糖尿病",
+      "lab": "glucose",
+      "at_least": 7.0,
+      "message_zh": "单次空腹血糖已达糖尿病诊断阈值；需另日复查或加测糖化血红蛋白确认，不做概率估计",
+      "blank_unit": "mmol/L"
+    },
+    {
+      "organ": "metabolic",
+      "disease": "2 型糖尿病",
+      "lab": "hba1c",
+      "at_least": 6.5,
+      "message_zh": "糖化血红蛋白已达糖尿病诊断阈值；需复查确认，不做概率估计",
+      "blank_unit": "%"
+    },
+    {
+      "organ": "liver",
+      "disease": "进展期肝纤维化或肝硬化",
+      "readout": "native.organ.fib4",
+      "above": 2.67,
+      "message_zh": "FIB-4 高于筛查上界值；需弹性成像等进一步评估，不做概率估计"
+    }
+  ],
+  "check_labs": {
+    "kidney": [
+      "creatinine"
+    ],
+    "liver": [
+      "ast",
+      "alt",
+      "platelets"
+    ],
+    "metabolic": [
+      "glucose",
+      "hba1c",
+      "tg"
+    ],
+    "heart_vascular": [
+      "hdl",
+      "tg"
+    ]
+  }
+}

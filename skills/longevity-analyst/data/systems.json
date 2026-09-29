@@ -1,0 +1,127 @@
+{
+  "schema": "la-systems/1",
+  "note": "Lookup table from catalog domains and native methods to body systems used for the integration step. It groups evidence; it does not judge it.",
+  "systems": {
+    "overall_aging": {
+      "label_zh": "整体衰老速度与生物年龄"
+    },
+    "cardiometabolic": {
+      "label_zh": "心血管与代谢"
+    },
+    "inflammation_immune": {
+      "label_zh": "炎症与免疫"
+    },
+    "neuro_cognitive": {
+      "label_zh": "神经与认知"
+    },
+    "frailty_function": {
+      "label_zh": "衰弱与身体功能"
+    },
+    "organ_aging": {
+      "label_zh": "器官衰老（蛋白/代谢）"
+    },
+    "cellular_aging": {
+      "label_zh": "细胞衰老（端粒、线粒体）"
+    },
+    "gut": {
+      "label_zh": "肠道菌群"
+    },
+    "genetics_pgx": {
+      "label_zh": "遗传背景与药物基因组"
+    },
+    "reproductive": {
+      "label_zh": "生殖与内分泌"
+    },
+    "musculoskeletal": {
+      "label_zh": "骨骼肌与骨关节"
+    },
+    "skin": {
+      "label_zh": "皮肤"
+    },
+    "liver_kidney": {
+      "label_zh": "肝肾功能"
+    }
+  },
+  "domain_to_systems": {
+    "临床年龄与可穿戴": [
+      "overall_aging"
+    ],
+    "甲基化": [
+      "overall_aging"
+    ],
+    "心血管": [
+      "cardiometabolic"
+    ],
+    "免疫与炎症": [
+      "inflammation_immune"
+    ],
+    "脑、认知与痴呆": [
+      "neuro_cognitive"
+    ],
+    "衰弱与死亡风险": [
+      "frailty_function"
+    ],
+    "蛋白、代谢与器官年龄": [
+      "organ_aging"
+    ],
+    "端粒": [
+      "cellular_aging"
+    ],
+    "线粒体": [
+      "cellular_aging"
+    ],
+    "营养感应": [
+      "cardiometabolic"
+    ],
+    "骨骼肌": [
+      "musculoskeletal"
+    ],
+    "基质、软骨与纤维化": [
+      "musculoskeletal"
+    ],
+    "卵巢与生殖": [
+      "reproductive"
+    ],
+    "皮肤": [
+      "skin"
+    ],
+    "长寿基因": [
+      "genetics_pgx"
+    ],
+    "昼夜节律": [
+      "overall_aging"
+    ],
+    "工具与证据库": [
+      "overall_aging"
+    ]
+  },
+  "native_to_systems": {
+    "native.apoe": [
+      "neuro_cognitive",
+      "cardiometabolic",
+      "genetics_pgx"
+    ],
+    "native.vcf_summary": [
+      "genetics_pgx"
+    ],
+    "native.gut_diversity": [
+      "gut"
+    ],
+    "native.gmhi": [
+      "gut"
+    ],
+    "native.proteomics_describe": [
+      "organ_aging"
+    ],
+    "pipeline.pharmcat": [
+      "genetics_pgx"
+    ],
+    "pipeline.pgsc_calc": [
+      "genetics_pgx"
+    ],
+    "native.organ_indices": [
+      "liver_kidney",
+      "cardiometabolic"
+    ]
+  }
+}

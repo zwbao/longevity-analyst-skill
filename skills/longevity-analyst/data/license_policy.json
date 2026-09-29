@@ -1,0 +1,114 @@
+{
+  "schema": "la-license/1",
+  "note": "Which components may run in each mode. commercial = paid member deliverables; research = internal R&D. Commercial clearance of the provisional list has NOT been confirmed by counsel: the report says so. Sources: PRD licence table; DIA-NN release page ('binaries are for academic use'); ONT Public License §1.10; NHANES DNAm docs ('proprietary GrimAge'); DunedinPACE repository licence (research use; commercial rights licensed to TruDiagnostic); Clock Foundation / UC licensing of PhenoAge, skin & blood clock and DNAmTL as summarised by biolearn and Horvath 2025 competing-interest statements (secondary, to be confirmed).",
+  "modes": {
+    "commercial": {
+      "epiage_clocks": [
+        "horvath",
+        "hannum",
+        "lin",
+        "vidalbralo",
+        "zhang",
+        "epitoc1",
+        "stoch",
+        "stocz"
+      ],
+      "excluded": [
+        {
+          "component": "GrimAge V1/V2 (grimagev1, grimagev2)",
+          "reason": "coefficients are proprietary (Clock Foundation)"
+        },
+        {
+          "component": "DunedinPACE / DunedinPoAm",
+          "reason": "research-use licence; commercial rights exclusively licensed (TruDiagnostic)"
+        },
+        {
+          "component": "DNAm PhenoAge and derivatives (phenoage, hrsinchphenoage, stocp)",
+          "reason": "reported as UC-patented and licensed via Clock Foundation (secondary source; counsel to confirm)"
+        },
+        {
+          "component": "Horvath skin & blood clock (horvath2), DNAmTL (dnamtl)",
+          "reason": "reported as UC-patented and licensed via Clock Foundation (secondary source; counsel to confirm)"
+        },
+        {
+          "component": "Weidner 3-CpG clock (weidner)",
+          "reason": "commercialised as a proprietary test (Cygenia); counsel to confirm"
+        },
+        {
+          "component": "Ying CausAge / DamAge / AdaptAge",
+          "reason": "licence of the published coefficients not established"
+        },
+        {
+          "component": "pyaging clock selection",
+          "reason": "not auto-run; its clock menu includes GrimAge, PC clocks and others outside this list"
+        },
+        {
+          "component": "DIA-NN public binaries",
+          "reason": "academic use only"
+        },
+        {
+          "component": "ONT modkit / wf-human-variation",
+          "reason": "ONT Public License limits use to research purposes"
+        },
+        {
+          "component": "PC-Clocks",
+          "reason": "repository has no licence file"
+        },
+        {
+          "component": "ANNOVAR",
+          "reason": "free for academic use only (not verified); VEP is used instead"
+        }
+      ],
+      "clearance": "provisional_pending_legal_review",
+      "blocked_lab_markers": [
+        "grimage",
+        "dunedinpace",
+        "dunedinpoam",
+        "dnamphenoage",
+        "dnamtl",
+        "甲基化表型年龄"
+      ]
+    },
+    "research": {
+      "epiage_clocks": [
+        "dnamtl",
+        "dunedinpace",
+        "epitoc1",
+        "grimagev1",
+        "grimagev2",
+        "hannum",
+        "horvath",
+        "horvath2",
+        "hrsinchphenoage",
+        "lin",
+        "phenoage",
+        "stoch",
+        "stocp",
+        "stocz",
+        "vidalbralo",
+        "weidner",
+        "yingadaptage",
+        "yingcausage",
+        "yingdamage",
+        "zhang"
+      ],
+      "excluded": [],
+      "clearance": "internal_research_only",
+      "blocked_lab_markers": []
+    }
+  },
+  "never_run_on_blood": {
+    "pedbe": "trained on child buccal swabs",
+    "cortical": "trained on brain cortex"
+  },
+  "reserved_answer_keys": [
+    "clocks",
+    "sensitivity",
+    "betas",
+    "matrix",
+    "out",
+    "measurements",
+    "labs",
+    "medications"
+  ]
+}

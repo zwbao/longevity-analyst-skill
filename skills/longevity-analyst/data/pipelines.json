@@ -1,0 +1,253 @@
+{
+  "schema": "la-pipelines/1",
+  "note": "Pinned pipeline versions and runtime benchmarks. Every number marked estimate=true is a planning figure, not a measurement on this machine; `la.py pipeline verify` writes the measured CPU hours back to <workspace>/calibration.json.",
+  "pipelines": {
+    "sarek": {
+      "label_zh": "WGS/WES 胚系变异检测（FASTQ/CRAM → VCF）",
+      "engine": "nextflow",
+      "repo": "nf-core/sarek",
+      "revision": "3.10.0",
+      "for_modalities": [
+        "wgs",
+        "wes"
+      ],
+      "inputs": [
+        "reads_fastq",
+        "alignment"
+      ],
+      "params": {
+        "genome": "GATK.GRCh38",
+        "tools": "deepvariant",
+        "igenomes_base": "s3://ngi-igenomes/igenomes/"
+      },
+      "outputs": {
+        "variants": "variant_calling/deepvariant/*/*.deepvariant.g.vcf.gz"
+      },
+      "benchmark": {
+        "cpu_hours_per_input_gb": 3.9,
+        "basis": "Hanssen et al., NAR Genom Bioinform 2024 (Sarek 3.x): ~342 CPU·h for one 36x normal WGS of ~88 GB FASTQ (Strelka2+Manta germline); DeepVariant runtime differs and is not measured here",
+        "estimate": true
+      },
+      "mem_gb_min": 32,
+      "mem_gb_recommended": 64,
+      "cpus_recommended": 16,
+      "work_disk_factor": 4.0,
+      "references": [
+        {
+          "id": "grch38_gatk_bundle",
+          "label": "GATK GRCh38 bundle via iGenomes (fasta, dbSNP, known indels, BWA index)",
+          "size_gb": 35,
+          "estimate": true,
+          "env": "LA_REF_GRCH38"
+        }
+      ],
+      "containers_amd64_only": true,
+      "commercial_ok": true,
+      "output_note": "DeepVariant writes a gVCF with reference blocks, so a site absent from the variant list can be told apart from 'not covered'."
+    },
+    "methylseq": {
+      "label_zh": "WGBS/EM-seq 甲基化比对与提取（FASTQ → CpG 报告）",
+      "engine": "nextflow",
+      "repo": "nf-core/methylseq",
+      "revision": "4.2.0",
+      "for_modalities": [
+        "wgbs",
+        "em_seq"
+      ],
+      "inputs": [
+        "reads_fastq"
+      ],
+      "params": {
+        "genome": "GRCh38"
+      },
+      "outputs": {
+        "cpg_report": "bismark/methylation_calls/methylation_coverage/*.cov.gz"
+      },
+      "benchmark": {
+        "cpu_hours_per_input_gb": 5.0,
+        "basis": "no public per-sample benchmark read; WGBS is in the same class as WGS or heavier",
+        "estimate": true
+      },
+      "mem_gb_min": 32,
+      "mem_gb_recommended": 64,
+      "cpus_recommended": 16,
+      "work_disk_factor": 5.0,
+      "references": [
+        {
+          "id": "bismark_grch38",
+          "label": "Bismark GRCh38 bisulfite index",
+          "size_gb": 50,
+          "estimate": true,
+          "env": "LA_REF_BISMARK"
+        }
+      ],
+      "containers_amd64_only": true,
+      "commercial_ok": true
+    },
+    "taxprofiler": {
+      "label_zh": "肠道宏基因组物种谱（FASTQ → MetaPhlAn 谱）",
+      "engine": "nextflow",
+      "repo": "nf-core/taxprofiler",
+      "revision": "2.0.1",
+      "for_modalities": [
+        "metagenome_shotgun"
+      ],
+      "inputs": [
+        "reads_fastq"
+      ],
+      "params": {
+        "run_metaphlan": true,
+        "perform_shortread_qc": true
+      },
+      "outputs": {
+        "gut_profile": "metaphlan/*/*profile*.txt"
+      },
+      "benchmark": {
+        "cpu_hours_per_input_gb": 1.0,
+        "basis": "MetaPhlAn profiling only (HUMAnN functional profiling is 16-52 CPU·h per sample and is not run here)",
+        "estimate": true
+      },
+      "mem_gb_min": 16,
+      "mem_gb_recommended": 32,
+      "cpus_recommended": 8,
+      "work_disk_factor": 3.0,
+      "references": [
+        {
+          "id": "metaphlan_db",
+          "label": "MetaPhlAn bowtie2 database",
+          "size_gb": 20,
+          "estimate": true,
+          "env": "LA_REF_METAPHLAN_DB"
+        }
+      ],
+      "containers_amd64_only": true,
+      "commercial_ok": true
+    },
+    "pgsc_calc": {
+      "label_zh": "多基因风险评分（VCF → PRS，PGS Catalog 权重）",
+      "engine": "nextflow",
+      "repo": "PGScatalog/pgsc_calc",
+      "revision": "v2.3.0",
+      "for_modalities": [
+        "variants"
+      ],
+      "inputs": [
+        "variants_vcf"
+      ],
+      "params": {
+        "target_build": "GRCh38"
+      },
+      "outputs": {
+        "prs": "*/score/aggregated_scores.txt.gz"
+      },
+      "benchmark": {
+        "cpu_hours_fixed": 2.0,
+        "basis": "planning figure for one sample with ancestry projection",
+        "estimate": true
+      },
+      "mem_gb_min": 16,
+      "mem_gb_recommended": 32,
+      "cpus_recommended": 4,
+      "work_disk_factor": 2.0,
+      "references": [
+        {
+          "id": "pgsc_ref_panel",
+          "label": "pgsc_calc HGDP+1kGP reference panel (ancestry)",
+          "size_gb": 7,
+          "estimate": true,
+          "env": "LA_REF_PGSC_PANEL"
+        }
+      ],
+      "containers_amd64_only": false,
+      "commercial_ok": true,
+      "needs_user_choice": "pgs_id: which PGS Catalog scores to compute (the agent proposes, the user confirms)",
+      "required_choice": {
+        "pgs_id": "comma-separated PGS Catalog ids confirmed by the user (e.g. PGS000018)"
+      },
+      "optional_reference": {
+        "param": "run_ancestry",
+        "env": "LA_REF_PGSC_PANEL",
+        "note": "path to the pgsc_calc reference database; without it scores are not ancestry-adjusted"
+      },
+      "note": "Target VCF must cover the score's variants; variant-only VCFs lose missing sites (pgsc_calc does not assume reference)."
+    },
+    "pharmcat": {
+      "label_zh": "药物基因组学（VCF → PharmCAT 报告）",
+      "engine": "java",
+      "repo": "PharmGKB/PharmCAT",
+      "revision": "v3.4.0",
+      "for_modalities": [
+        "variants"
+      ],
+      "inputs": [
+        "variants_vcf"
+      ],
+      "params": {},
+      "outputs": {
+        "pgx": "*.report.json"
+      },
+      "benchmark": {
+        "cpu_hours_fixed": 0.1,
+        "basis": "minutes per sample",
+        "estimate": true
+      },
+      "mem_gb_min": 4,
+      "mem_gb_recommended": 8,
+      "cpus_recommended": 1,
+      "work_disk_factor": 1.0,
+      "references": [
+        {
+          "id": "pharmcat_jar",
+          "label": "pharmcat-3.4.0-all.jar + preprocessor",
+          "size_gb": 0.1,
+          "env": "LA_PHARMCAT_JAR"
+        }
+      ],
+      "containers_amd64_only": false,
+      "commercial_ok": true,
+      "note": "Needs a VCF covering the PGx positions, prepared with PharmCAT's own VCF preprocessor; a variant-only or partial VCF gives an incomplete report."
+    },
+    "sesame_idat": {
+      "label_zh": "甲基化芯片 IDAT → β 值（SeSAMe）",
+      "engine": "rscript",
+      "repo": "bioconductor/sesame",
+      "revision": "bioconductor-release",
+      "for_modalities": [
+        "methylation_idat"
+      ],
+      "inputs": [
+        "methylation_idat"
+      ],
+      "params": {
+        "prep": "QCDPB"
+      },
+      "outputs": {
+        "methylation": "betas.csv"
+      },
+      "benchmark": {
+        "cpu_hours_fixed": 0.05,
+        "basis": "minutes per array",
+        "estimate": true
+      },
+      "mem_gb_min": 4,
+      "mem_gb_recommended": 8,
+      "cpus_recommended": 1,
+      "work_disk_factor": 1.0,
+      "references": [
+        {
+          "id": "sesame_cache",
+          "label": "SeSAMe annotation cache (sesameDataCache)",
+          "size_gb": 0.1,
+          "env": "LA_SESAME_CACHE"
+        }
+      ],
+      "containers_amd64_only": false,
+      "commercial_ok": true
+    }
+  },
+  "arch_emulation_factor": {
+    "value": 2.0,
+    "basis": "planning figure for amd64 containers under arm64 emulation; not measured on this machine",
+    "estimate": true
+  }
+}

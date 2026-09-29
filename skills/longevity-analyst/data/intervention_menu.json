@@ -1,0 +1,13 @@
+{
+  "schema": "la-menu/1",
+  "note": "Default intervention menu. Replace with the nutritionist team's own menu (same schema). The plan may only use categories listed here and only the executors each category allows. Doses and drugs are never written by the agent.",
+  "categories": [
+    {"id": "diet", "label_zh": "饮食模式", "executors": ["nutritionist"]},
+    {"id": "supplement", "label_zh": "营养补充（不写剂量，剂量由医生或营养师定）", "executors": ["nutritionist", "physician"]},
+    {"id": "exercise", "label_zh": "运动", "executors": ["nutritionist", "member"]},
+    {"id": "sleep", "label_zh": "睡眠与节律", "executors": ["member", "nutritionist"]},
+    {"id": "lifestyle", "label_zh": "生活方式（烟酒、压力）", "executors": ["member", "nutritionist"]},
+    {"id": "test", "label_zh": "进一步检查或复测", "executors": ["physician", "nutritionist"]},
+    {"id": "referral", "label_zh": "转诊（专科、遗传咨询）", "executors": ["physician"]}
+  ]
+}
