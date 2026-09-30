@@ -42,14 +42,15 @@ define a shell function `la() { python3 <dir>/scripts/la.py "$@"; }` inside the 
 library path in the workspace, so later commands find it without any environment variable.
 
 ## Running inside dsh / longpi
-- The longpi plugin starts a run with `run_deep_analysis`: it gives you the data folder, the workspace, the member's
-  age/sex from their profile and the method library (`~/longpi/longevity-skills`). Use exactly those.
+- In longpi the AI (you, in a health chat) decides to run: `run_deep_analysis` with the reason, when the snapshot line
+  深度分析 says new data is waiting, or when the member asks. It gives you the data folder, the workspace, the
+  member's age/sex and the method library (`~/longpi/longevity-skills`). Use exactly those. When the report is done,
+  call longpi's `import_analysis` yourself and read the plan back for the member to adopt.
 - When it says the member's Mirobody is connected, first `$LA mirobody pull <data folder> --mcp-url-file <file it gives>`
   (never paste the URL into a command: it is the member's secret). Labs land as one CSV per checkup date and watch
   days as one CSV; they go through intake like any other file (workflows/01-intake.md, step 0).
-- `$LA report` also writes `deliver/la-export.json` (schema `la-export/1`); when the report is done tell the member it
-  can be imported on the 健康 page (深度分析) or call longpi's `import_analysis`. The plan becomes a longpi plan only
-  after the member hears it read back and confirms.
+- `$LA report` also writes `deliver/la-export.json` (schema `la-export/1`), which `import_analysis` reads. The plan
+  becomes a longpi plan only after the member hears it read back and confirms.
 
 ## Routing Rules
 
