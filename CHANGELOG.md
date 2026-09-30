@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.7.1] - 2026-09-30
+
+Fixes from the bridge review and the Sonnet end-to-end run (below).
+
 ## [0.7.0] - 2026-09-30
 
 ### Added
