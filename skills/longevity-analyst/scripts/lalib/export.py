@@ -70,7 +70,7 @@ def build(st: Dict[str, Any], ws: Path, report_html: Path) -> Dict[str, Any]:
     m = st["member"]
     readouts = []
     for r in ro.values():
-        if r.get("kind") == "implausible":
+        if r.get("kind") in ("implausible", "member_answer"):
             continue                                    # the report leaves these out too
         row = {k: r.get(k) for k in ("id", "label_zh", "value", "unit", "kind", "method", "low", "high", "horizon_years",
                                      "confidence", "coverage_pct") if r.get(k) is not None}

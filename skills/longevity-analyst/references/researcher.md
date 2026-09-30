@@ -33,3 +33,10 @@ digits, no doses, no drug advice. `supported` and `not_supported` need at least 
 
 ## Return to the dispatcher (exactly these fields)
 `{"id": "Q<n>", "file": "…", "verdict": "…", "public_evidence_count": <int>}`
+
+## Citing the member's own numbers
+- A number the member told us (pack years, a parent's age at a heart attack, their age): `{{r:member.answers.<key>}}`
+  or `{{r:member.age}}`, where `<key>` is the answer's key in `la.py member`. Never `{{n:…}}` for these.
+- Lab values have no placeholder: say the direction against the printed reference range (偏高 / 在范围内).
+- `{{r:…}}` takes a readout id (letters, digits, `._-`), never a lab name or a value; anything else stays as raw
+  braces and is refused at registration and at trace.

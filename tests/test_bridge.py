@@ -160,3 +160,28 @@ def test_export_text_is_plain_and_keeps_no_amounts():
     long = "每天快走三十分钟以上并逐步增加到每周五次，同时减少久坐时间，每坐一小时起身活动五分钟，晚饭后散步二十分钟，周末安排一次较长距离的户外徒步活动"
     title = export._title(long)
     assert len(title) <= 60 and long.startswith(title) and title[-1] not in "，、"
+
+
+def test_trace_rejects_stray_braces_and_member_answers_are_citable(tmp_path):
+    from lalib import report
+    assert any("有效占位符" in b for b in report.trace_text("空腹血糖为{{r:空腹血糖(GLU)}}，偏高"))
+    assert any("有效占位符" in b for b in report.trace_text("见 {r:x}} 与 {{n:x}"))
+    assert report.trace_text("吸烟 {{r:member.answers.pack_years}} 包年") == []
+    ws = tmp_path / "ws"
+    (ws / "work").mkdir(parents=True)
+    C.write_json(ws / "state.json", {"member": {"age": 58, "answers": {"pack_years": 20, "smoker": "no", "father_mi_age": "62"}}})
+    C.write_json(ws / "work" / "readouts.json", {"readouts": []})
+    ro = report._readouts(ws)
+    assert report.substitute("吸烟 {{r:member.answers.pack_years}} 包年，父亲 {{r:member.answers.father_mi_age}} 岁心梗，本人 {{r:member.age}}", ro) \
+        == "吸烟 20 包年，父亲 62 岁心梗，本人 58 岁"
+    assert "member.answers.smoker" not in ro                     # only numbers the member gave
+
+
+def test_voided_insights_are_kept_aside_not_deleted(tmp_path):
+    ws = C.Workspace(tmp_path / "ws")
+    (ws.root / "work" / "insights" / "board").mkdir(parents=True)
+    (ws.root / "work" / "insights" / "board" / "Q1.json").write_text('{"id": "Q1"}')
+    st = C.new_state({"id": "m", "age": 50, "sex": "male"}, tmp_path)
+    ws.save(st)                                                    # no "insights" in state: the stage was voided
+    assert not (ws.root / "work" / "insights").exists()
+    assert (ws.root / "work" / "insights.previous" / "board" / "Q1.json").read_text() == '{"id": "Q1"}'

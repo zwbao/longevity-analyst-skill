@@ -57,6 +57,11 @@ risk factor would plausibly help him, and a board of questions investigated one 
    member or the company's preferences." Register each: `$LA board finding <ws> --id Q<n>`; rejections name what to
    fix. A question that cannot be studied with the data at hand: `$LA board skip <ws> --id Q<n> --reason "<why>"`.
 7. The stage is done when position ran, genomics ran or was skipped, and every question has a finding or a skip.
+   If an upstream change voids this stage (for example an organ estimate registered again), `work/insights` is moved
+   to `work/insights.previous`. Run genomics / position / wearable / projections again (they are quick), then copy
+   `board/questions.json` and the researchers' `board/Q<n>.json` back and register them again: they are checked again
+   against the new data. Never rewrite a researcher's finding yourself; a finding that no longer passes goes back to
+   a researcher.
    The plan (workflow 05) may then target insight readouts and cite `{"type": "proj", "ref": "<projection ref>"}` or
    `{"type": "board", "ref": "Q<n>"}`.
 

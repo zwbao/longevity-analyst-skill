@@ -268,8 +268,14 @@ class Workspace:
         if irp.exists() and not (st.get("insights") or {}).get("readouts_sha256"):
             irp.unlink()                                # derived from insight runs voided upstream
         if "insights" not in st and (self.root / "work" / "insights").exists():
+            # Voided upstream: nothing here is registered any more, so none of it reaches the report. The folder is
+            # kept aside (researcher findings cost real work) as insights.previous; the agent may bring files back
+            # and register them again, where every check runs again.
             import shutil
-            shutil.rmtree(self.root / "work" / "insights")
+            prev = self.root / "work" / "insights.previous"
+            if prev.exists():
+                shutil.rmtree(prev)
+            (self.root / "work" / "insights").rename(prev)
         if "organs" not in st and (self.root / "work" / "organs").exists():
             import shutil                               # upstream changed: bundles and estimates describe old data
             shutil.rmtree(self.root / "work" / "organs")

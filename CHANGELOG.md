@@ -27,6 +27,15 @@
   readouts left out; board rows carry limitations and public evidence; APOE readouts grouped as genetic.
 - `la.py export` refuses a delivery whose inputs changed after the report (same checks as `validate`).
 
+### Fixed (Claude Sonnet end-to-end run on the 李明华 fixture)
+- An organ estimator wrote `{{r:空腹血糖(GLU)}}` (a lab name, which has no placeholder); with no digit inside, trace let
+  it through and 18 raw placeholders reached the report. Any `{{` / `}}` left after the valid placeholders is now a
+  trace and registration violation, and rendering refuses a report that still contains one.
+- The member's own numbers are citable: `{{r:member.age}}`, `{{r:member.answers.<key>}}` (numeric answers), bound to
+  what `la.py member` recorded; 包年 is not a dose.
+- An upstream change that voids the insights stage moves work/insights to work/insights.previous instead of deleting
+  it, so researcher findings are registered again (and checked again) rather than rewritten from memory.
+
 ## [0.6.0] - 2026-09-30
 
 ### Added

@@ -58,3 +58,10 @@ any readout; say that a genetic percentile is a tendency and that NHANES is a US
 Quantities written in Chinese numerals with a unit are numbers too: 两周后, 四周, 一小时内, 三个月, 百分之…, 一倍 are
 refused by the trace unless wrapped as `{{n:两周后}}`. Ordinary words (一些, 一起, 一次性, 一年四季, 十分重要, 进一步,
 一成不变, 一片空白) pass.
+
+## Citing the member's own numbers
+- A number the member told us (pack years, a parent's age at a heart attack, their age): `{{r:member.answers.<key>}}`
+  or `{{r:member.age}}`, where `<key>` is the answer's key in `la.py member`. Never `{{n:…}}` for these.
+- Lab values have no placeholder: say the direction against the printed reference range (偏高 / 在范围内).
+- `{{r:…}}` takes a readout id (letters, digits, `._-`), never a lab name or a value; anything else stays as raw
+  braces and is refused at registration and at trace.

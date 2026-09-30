@@ -74,7 +74,8 @@ def register(st: Dict[str, Any], ws_root: Path, system: str) -> Dict[str, Any]:
         raise LAError(f"{path} not written", EXIT_INPUT)
     text = path.read_text(encoding="utf-8")
     missing = [h for h in REQUIRED_SECTIONS if h not in text]
-    ids = {r["id"] for r in readouts(ws_root)}
+    from .report import member_readouts
+    ids = {r["id"] for r in readouts(ws_root)} | set(member_readouts(ws_root))
     bad = check_placeholders(text, ids)
     cited = sorted({m.group(1) for m in PLACEHOLDER.finditer(text)})
     problems = []

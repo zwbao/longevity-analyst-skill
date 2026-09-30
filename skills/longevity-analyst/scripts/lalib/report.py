@@ -47,7 +47,7 @@ CN_WORDS = {"十分", "一一", "万一", "千万", "三三两两"}   # whole ru
 CN_SINGLE_UNIT = re.compile(rf"[{CN_NUM}]\s*(?:周岁|岁|%|公斤|千克|克|毫克|mmHg|年|个月|月|周|天|小时|分钟|次|步|公里|千米|粒|片|成|倍|分之|分|期|点[{CN_NUM}])|[GＧ]\s*[{CN_NUM}]")
 CN_OK_PHRASES = ("一点十分", "一成不变", "一片空白", "十二指肠", "三七粉", "三七", "四分位", "五分位", "十分位", "百岁", "七八分饱",
                  "七分饱", "八分饱", "千千万万", "一日三餐", "三餐", "这一期间", "一期间", "逐一", "唯一", "统一", "单一", "同一", "万一",
-                 "五十肩", "早一天", "晚一天", "多一天", "一一", "万万", "三天两头", "百分比", "百分位", "百分点", "百分数", "千克", "千米", "千卡", "千焦")   # ordinary words; blanked before the numeral and dose checks
+                 "五十肩", "早一天", "晚一天", "多一天", "一一", "万万", "三天两头", "百分比", "百分位", "百分点", "百分数", "千克", "千米", "千卡", "千焦", "包年")   # ordinary words; blanked before the numeral and dose checks
 _EN = r"(?:one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred)"
 EN_NUM = re.compile(rf"\b{_EN}(?:[\s-]+{_EN})*\s*(?:岁|周岁|years?\b|%|percent\b|倍|mmHg)", re.I)
 
@@ -67,9 +67,27 @@ URL = re.compile(r"(?:https?|ftp|hxxps?)\s*\\?:\s*/\s*/|www\.|(?<![:\w])//[\w.-]
                  r"\b[a-z0-9-]+(?:\.[a-z0-9-]+)*\.(?:com|cn|net|org|io|gov|edu|info|co|me|app|xyz|top|ly)\b(?:/|\b)", re.I)
 
 
+def member_readouts(ws: Path) -> Dict[str, Dict[str, Any]]:
+    """What the member told us, citable as {{r:member.age}} / {{r:member.answers.<key>}} (numbers they gave: pack
+    years, a parent's age at a heart attack). The value is their answer as recorded with `la.py member`."""
+    sp = ws / "state.json"
+    if not sp.exists():
+        return {}
+    m = load_json(sp).get("member") or {}
+    out: Dict[str, Dict[str, Any]] = {}
+    if isinstance(m.get("age"), (int, float)):
+        out["member.age"] = {"id": "member.age", "label_zh": "年龄", "value": m["age"], "unit": "a", "kind": "member_answer"}
+    for k, v in (m.get("answers") or {}).items():
+        if isinstance(v, (int, float)) and not isinstance(v, bool) or (isinstance(v, str) and re.fullmatch(r"-?\d+(?:\.\d+)?", v.strip())):
+            out[f"member.answers.{k}"] = {"id": f"member.answers.{k}", "label_zh": str(k), "value": float(v) if isinstance(v, str) else v,
+                                          "unit": "", "kind": "member_answer"}
+    return out
+
+
 def _readouts(ws: Path) -> Dict[str, Dict[str, Any]]:
     """Method readouts plus registered organ AI estimates (their own kind, never mixed into readouts.json)."""
     ro = {r["id"]: r for r in load_json(ws / "work" / "readouts.json")["readouts"]}
+    ro.update(member_readouts(ws))
     op = ws / "work" / "organs" / "organ_readouts.json"
     if op.exists():
         ro.update({r["id"]: r for r in load_json(op)["readouts"]})
@@ -154,6 +172,10 @@ def trace_text(text: str, allowed_values: List[str] = None) -> List[str]:
         bad.append(f"…{m.group(0)}…  ← 数量（写成 {{{{n:…}}}}）")
     for m in URL.finditer(t):
         bad.append("…链接…  ← 文中不放链接；文献用 {{pmid:N}}")
+    for m in re.finditer(r"\{\{|\}\}", t):                   # a placeholder the renderer will not recognise stays as raw text
+        s = max(0, m.start() - 12)
+        bad.append(f"…{t[s:m.end() + 12].strip()}…  ← 不是有效占位符（读数 id 只含字母数字._-，如 {{{{r:native.organ.egfr}}}}；"
+                   "化验值没有占位符，写高低方向；会员说过的数字用 {{r:member.answers.<键>}}）")
     for lit in literals(text):
         if URL.search(lit):
             bad.append(f"…{{{{n:{lit[:30]}}}}}…  ← 字面量里不能放链接")
@@ -488,7 +510,7 @@ def render(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
         L += ["## 本期读数总表", "", "类型说明：「为你计算」= 用你的数据按论文公式算出；「数据描述」= 质控或计数，不是健康判断。", ""]
         by_sys: Dict[str, List[Dict[str, Any]]] = {}
         for r in ro.values():
-            if r.get("kind") in ("llm_estimate", "genetic_score", "genetic_finding", "population_position"):
+            if r.get("kind") in ("llm_estimate", "genetic_score", "genetic_finding", "population_position", "member_answer"):
                 continue                              # shown in their own sections (organ table, genes vs labs, position)
             by_sys.setdefault((r.get("systems") or ["overall_aging"])[0], []).append(r)
         for s, rs in sorted(by_sys.items(), key=lambda kv: list(sysdef).index(kv[0]) if kv[0] in sysdef else 99):
@@ -560,6 +582,9 @@ def render(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
         L += ["因商用授权未确认而未使用：" + "；".join(_cell(e["component"]) for e in lic), ""]
     L += ["## 边界", "", BOUNDARY, ""]
     md = "\n".join(L)
+    if "{{" in md or "}}" in md:                      # a placeholder that was not substituted never reaches the member
+        i = md.find("{{") if "{{" in md else md.find("}}")
+        raise LAError(f"cannot render: a placeholder was not substituted: …{md[max(0, i - 30):i + 50]}…", EXIT_BLOCKED)
     out = ws / "deliver"
     out.mkdir(parents=True, exist_ok=True)
     for old in out.iterdir():                 # only files this render writes are delivered

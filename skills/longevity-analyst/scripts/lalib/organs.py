@@ -346,7 +346,8 @@ def _register(st: Dict[str, Any], ws: Path, organ: str, pmid_check=None) -> Dict
         raise LAError(f"{path} is not JSON ({e})", EXIT_INPUT)
     if not isinstance(est, dict):
         raise LAError(f"{path} must be a JSON object", EXIT_INPUT)
-    readout_ids = {r["id"] for r in load_json(ws / "work" / "readouts.json")["readouts"]}
+    from .report import member_readouts
+    readout_ids = {r["id"] for r in load_json(ws / "work" / "readouts.json")["readouts"]} | set(member_readouts(ws))
     lab_names = {l["marker"] for l in st["labs"]}
     unusable = set(load_json(bpath).get("unusable_basis") or [])
     age = st["member"].get("age")
