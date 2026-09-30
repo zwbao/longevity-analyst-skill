@@ -236,6 +236,27 @@ GRCH38_ACC = {"1": "NC_000001.11", "2": "NC_000002.12", "3": "NC_000003.12", "4"
               "21": "NC_000021.9", "22": "NC_000022.11", "X": "NC_000023.11", "Y": "NC_000024.10"}
 
 
+_NCBI_LAST = [0.0]
+
+
+def _ncbi(url: str, data: Optional[bytes] = None, need: str = "result") -> Dict[str, Any]:
+    """NCBI E-utilities at ≤3 requests/s; an error payload (rate limit, backend) is retried, then raised as LAError."""
+    last = None
+    for i in range(4):
+        wait = 0.4 - (time.time() - _NCBI_LAST[0])
+        if wait > 0:
+            time.sleep(wait)
+        _NCBI_LAST[0] = time.time()
+        body = _http(url, data=data, headers={"Content-Type": "application/x-www-form-urlencoded"} if data else None, tries=3)
+        if isinstance(body, dict) and need in body:
+            return body
+        last = str(body)[:400] if not isinstance(body, dict) else str(body.get("error") or body)[:400]
+        if "cannot be transformed" in last:              # deterministic: the batch is too large, retrying won't help
+            break
+        time.sleep(2 * (i + 1))
+    raise LAError(f"NCBI E-utilities returned no {need}: {last}", EXIT_EXTERNAL)
+
+
 def clinvar_gene(ws: Path, gene: str) -> List[Dict[str, Any]]:
     """ClinVar germline records in a gene whose classification mentions pathogenic (incl. conflicting ones), with their
     canonical SPDI (GRCh38) and GRCh38/GRCh37 locations. Structural variants without an SPDI are left out."""
@@ -246,13 +267,26 @@ def clinvar_gene(ws: Path, gene: str) -> List[Dict[str, Any]]:
         return hit["records"]
     term = f"{gene}[gene] AND (clinsig_pathogenic[prop] OR clinsig_likely_pathogenic[prop] OR clinsig_has_conflicts[prop])"
     url = EUTILS + "esearch.fcgi?" + urllib.parse.urlencode({"db": "clinvar", "term": term, "retmode": "json", "retmax": 10000})
-    ids = _http(url)["esearchresult"].get("idlist", [])
+    ids = _ncbi(url, need="esearchresult")["esearchresult"].get("idlist", [])
     recs: List[Dict[str, Any]] = []
+    oversized: List[str] = []
+
+    def summaries(batch: List[str]) -> List[Dict[str, Any]]:
+        body = urllib.parse.urlencode({"db": "clinvar", "id": ",".join(batch), "retmode": "json"}).encode()
+        try:
+            res = _ncbi(EUTILS + "esummary.fcgi", data=body)["result"]
+        except LAError as e:
+            if "max size" not in str(e) and "cannot be transformed" not in str(e):
+                raise
+            if len(batch) == 1:                          # one huge record (a multi-gene structural variant)
+                oversized.append(batch[0])
+                return []
+            h = len(batch) // 2
+            return summaries(batch[:h]) + summaries(batch[h:])
+        return [res[u] for u in res.get("uids", [])]
+
     for i in range(0, len(ids), 300):
-        body = urllib.parse.urlencode({"db": "clinvar", "id": ",".join(ids[i:i + 300]), "retmode": "json"}).encode()
-        res = _http(EUTILS + "esummary.fcgi", data=body, headers={"Content-Type": "application/x-www-form-urlencoded"})["result"]
-        for u in res.get("uids", []):
-            x = res[u]
+        for x in summaries(ids[i:i + 300]):
             vs = x.get("variation_set") or []
             if len(vs) != 1 or not vs[0].get("canonical_spdi"):
                 continue                                 # haplotypes / structural variants: not matchable to one VCF allele
@@ -268,7 +302,7 @@ def clinvar_gene(ws: Path, gene: str) -> List[Dict[str, Any]]:
                          "deleted": dele, "inserted": ins, "loc": locs, "classification": gc.get("description") or "",
                          "review_status": gc.get("review_status") or "",
                          "conditions": sorted({t.get("trait_name") for t in (gc.get("trait_set") or []) if t.get("trait_name")})[:5]})
-    _cache(ws, "clinvar", key, EUTILS + "esearch.fcgi (" + term + ")", recs)
+    _cache(ws, "clinvar", key, EUTILS + "esearch.fcgi (" + term + ")", recs, extra={"oversized_skipped": oversized})
     return recs
 
 

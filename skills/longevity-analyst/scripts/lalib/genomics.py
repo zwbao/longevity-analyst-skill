@@ -572,8 +572,8 @@ def _scan(ws: Path, vcf: Vcf, it: Dict[str, Any], modes: Dict[str, str], asm: st
             cov = vcf.region_coverage(reg["chrom"], reg["start"], reg["end"])
             carried = vcf.carried(reg["chrom"], reg["start"], reg["end"])
             idx = ClinvarIndex(pubdata.clinvar_gene(ws, gene), asm)
-        except LAError as e:
-            unscanned[gene] = str(e)[:120]
+        except (LAError, KeyError, ValueError, TypeError) as e:     # a source failure never becomes "nothing found"
+            unscanned[gene] = f"{type(e).__name__}: {str(e)[:120]}"
             continue
         if cov < MIN_REGION_COVERAGE:
             unscanned[gene] = (f"the VCF speaks for {cov:.0%} of the gene region (variant-only VCF: absent sites are unknown; "
@@ -586,7 +586,7 @@ def _scan(ws: Path, vcf: Vcf, it: Dict[str, Any], modes: Dict[str, str], asm: st
             elif idx.near_indel(c["chrom"], c["pos"]):
                 try:
                     sp = pubdata.canonical_spdi(ws, asm, c["chrom"], c["pos"], c["ref"], c["alt"])
-                except LAError:
+                except (LAError, KeyError, ValueError, TypeError):
                     unresolved += 1
                     continue
                 if not sp["spdi"] or (sp.get("warning") and "reference" in sp["warning"].lower()):

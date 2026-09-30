@@ -474,3 +474,22 @@ def test_insight_files_locked_and_reasons_traced(tmp_path, monkeypatch):
     assert report.insight_file_problems(ws, st)
     reasons = dict(report._authored(ws, st))
     assert "99.9%" in reasons["absent-as-ref reason"] and report.trace_text(reasons["absent-as-ref reason"])
+
+
+def test_clinvar_oversized_batches_are_split(tmp_path, monkeypatch):
+    ws, _ = _ws(tmp_path)
+    monkeypatch.setattr(pubdata, "_shared_get", lambda k: None)
+    monkeypatch.setattr(pubdata, "_shared_put", lambda k, d: None)
+    import urllib.parse as up
+
+    def fake(url, data=None, need="result"):
+        if need == "esearchresult":
+            return {"esearchresult": {"idlist": ["1", "2", "3", "4"]}}
+        ids = up.parse_qs(data.decode())["id"][0].split(",")
+        if "3" in ids:                                   # record 3 alone is too big to transform
+            raise C.LAError("NCBI E-utilities returned no result: Input XML size is 26306057 bytes, and cannot be transformed", 3)
+        return {"result": {"uids": ids, **{i: {"accession": f"VCV{i}", "title": "t", "germline_classification": {"description": "Pathogenic"},
+                                              "variation_set": [{"canonical_spdi": f"NC_000019.10:{i}:G:A", "variation_loc": []}]} for i in ids}}}
+    monkeypatch.setattr(pubdata, "_ncbi", fake)
+    recs = pubdata.clinvar_gene(ws, "LDLR")
+    assert sorted(r["ref"] for r in recs) == ["clinvar:VCV1", "clinvar:VCV2", "clinvar:VCV4"]
