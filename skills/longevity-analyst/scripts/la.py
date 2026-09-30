@@ -570,6 +570,24 @@ def cmd_report(a):
     C.emit(res)
 
 
+def cmd_mirobody(a):
+    from lalib import mirobody
+    res = mirobody.pull(mirobody.url_from(a.mcp_url_file), Path(a.folder).expanduser(), days=a.days)
+    C.emit(res)
+
+
+def cmd_export(a):
+    ws, st = _open(a, lock=False)
+    C.require(st, "report")
+    p = ws.root / "deliver" / "la-export.json"
+    want = ((st.get("report") or {}).get("deliver_sha256") or {}).get("la-export.json")
+    if not p.exists() or C.sha256_file(p, limit=None) != want:
+        raise C.LAError("deliver/la-export.json is missing or changed since `la.py report`; run la.py report again", C.EXIT_BLOCKED)
+    d = C.load_json(p)
+    C.emit({"path": str(p), "schema": d["schema"], "report": d["report"]["html"], "readouts": len(d["readouts"]),
+            "organs": len(d["organs"]), "board": len(d["board"]), "plan_items": len(d["plan"]["items"]), "retests": len(d["retests"])})
+
+
 NEXT = {
     "intake": "resolve pending judgments (la.py assign / la.py labs add), then confirm lab rows (la.py labs candidates / labs confirm), see workflows/01-intake.md",
     "preflight": "la.py preflight <ws>; show the result to the user (workflows/02-preflight-pipelines.md)",
@@ -776,6 +794,17 @@ def build_parser():
     s.add_argument("--id")
     s.add_argument("--reason")
     s.set_defaults(fn=cmd_board)
+
+    s = sub.add_parser("mirobody", help="before init: pull the member's confirmed labs and daily wearable values from Mirobody into the data folder")
+    s.add_argument("action", choices=["pull"])
+    s.add_argument("folder", help="the member's data folder (the one you will pass to init)")
+    s.add_argument("--mcp-url-file", help="file holding the member's personal MCP URL (or set LONGPI_MCP_URL)")
+    s.add_argument("--days", type=int, default=120)
+    s.set_defaults(fn=cmd_mirobody)
+
+    s = sub.add_parser("export", help="the la-export/1 file a host app (longpi) imports; written by `report`")
+    s.add_argument("workspace")
+    s.set_defaults(fn=cmd_export)
 
     s = sub.add_parser("intervene")
     s.add_argument("action", choices=["register"])

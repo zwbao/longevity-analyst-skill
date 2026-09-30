@@ -134,6 +134,14 @@ def test_full_chain_case_a(tmp_path, capsys, monkeypatch):
     assert "## 你在同龄人群中的位置" in md and "## 问题看板" in md and "证据不足" in md
     assert "## 器官体检表" in md and "AI 估计" in md and "8%（AI 估计，区间 4%–16%，10 年）" in md
     tw = json.loads((ws / "deliver" / "twin.json").read_text())
+    ex = json.loads((ws / "deliver" / "la-export.json").read_text())
+    assert ex["schema"] == "la-export/1" and ex["member"]["age"]
+    assert all("{{" not in (x.get("title") or "") + (x.get("detail") or "") for x in ex["plan"]["items"])
+    assert all(x["category"] in ("diet", "exercise", "sleep", "supplement", "behavior", "other") for x in ex["plan"]["items"])
+    assert ex["readouts"] and ex["report"]["html"].endswith("report.html")
+    capsys.readouterr()
+    ok("export", str(ws))
+    assert f'"plan_items": {len(ex["plan"]["items"])}' in capsys.readouterr().out
     assert [e["id"] for e in tw["organ_estimates"]] == ["organ.kidney.risk.1"]
     # tampering after delivery is detected
     (ws / "deliver" / "report.md").write_text(md + "x")

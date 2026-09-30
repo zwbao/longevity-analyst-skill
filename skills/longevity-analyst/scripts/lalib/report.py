@@ -571,6 +571,9 @@ def render(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
     if tw.exists():
         (out / "twin.json").write_text(tw.read_text(encoding="utf-8"), encoding="utf-8")
         written.append("twin.json")
+    from .export import build as build_export              # what a host app (longpi) imports: same data as the report
+    write_json(out / "la-export.json", build_export(st, ws, out / "report.html"))
+    written.append("la-export.json")
     st["report"] = {"md": str(out / "report.md"), "html": str(out / "report.html"), "at": now_iso(),
                     "hashes": st["review"]["reviewer"]["hashes"],
                     "deliver_sha256": {n: sha256_file(out / n, limit=None) for n in written}}

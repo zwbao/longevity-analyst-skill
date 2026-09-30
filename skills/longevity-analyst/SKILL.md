@@ -16,7 +16,7 @@ license: MIT
 category: health-omics
 metadata:
   author: CancerDAO / zwbao
-  version: "0.6.0"
+  version: "0.7.0"
   tags: longevity aging multiomics digital-twin epigenetic-clock nf-core bioinformatics
 ---
 
@@ -40,6 +40,16 @@ pip install pandas numpy markdown                      # epiage clocks and the H
 between your tool calls, and zsh does not split a multi-word variable, so write the full command every time (or
 define a shell function `la() { python3 <dir>/scripts/la.py "$@"; }` inside the same call). `init --longevity-skills <clone>` stores the
 library path in the workspace, so later commands find it without any environment variable.
+
+## Running inside dsh / longpi
+- The longpi plugin starts a run with `run_deep_analysis`: it gives you the data folder, the workspace, the member's
+  age/sex from their profile and the method library (`~/longpi/longevity-skills`). Use exactly those.
+- When it says the member's Mirobody is connected, first `$LA mirobody pull <data folder> --mcp-url-file <file it gives>`
+  (never paste the URL into a command: it is the member's secret). The labs and watch days land as CSV files in the
+  folder and go through intake like any other file.
+- `$LA report` also writes `deliver/la-export.json` (schema `la-export/1`); when the report is done tell the member it
+  can be imported on the 健康 page (深度分析) or call longpi's `import_analysis`. The plan becomes a longpi plan only
+  after the member hears it read back and confirms.
 
 ## Routing Rules
 

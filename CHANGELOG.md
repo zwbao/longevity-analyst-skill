@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.7.0] - 2026-09-30
+
+### Added
+- `la.py mirobody pull <folder> --mcp-url-file <file>`: reads the member's labs (raw view) and daily wearable values
+  (day view, one indicator and 30 days per call so Mirobody's render limit never cuts a table) through their personal
+  Mirobody MCP (read only) into `mirobody_labs.csv` / `mirobody_wearable_daily.csv`; the URL is read from a file or
+  `LONGPI_MCP_URL` and never echoed. Only the Mirobody 1.5.3 query parameters (keywords/indicators/start/end/view) are sent.
+- `deliver/la-export.json` (schema `la-export/1`), written by `la.py report` from the same bound files as the report:
+  readouts (grouped method / insight / organ AI estimate), organ table, question board, the plan in longpi-plan/1 item
+  shape (category mapped, text already substituted, start = today, markers = targets + retest), retests with due dates.
+  `la.py export <ws>` verifies it against the delivered hash and prints its counts.
+- SKILL.md: running inside dsh/longpi.
+
 ## [0.6.0] - 2026-09-30
 
 ### Added

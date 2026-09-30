@@ -8,6 +8,8 @@ A new data folder arrives. Output: a workspace whose `observe` shows no pending 
 - Optional: sample date, lab delivery notes, questionnaire answers.
 
 ## Workflow
+0. Data in Mirobody (dsh/longpi): `$LA mirobody pull <raw_dir> --mcp-url-file <file>` first. It writes
+   `mirobody_labs.csv` and `mirobody_wearable_daily.csv` into `<raw_dir>`; they carry no printed reference ranges.
 1. `$LA init <raw_dir> <ws> --member-id <id> --age <n> --sex <m|f> --longevity-skills <clone> [--sample-date YYYY-MM-DD] [--mode research]`.
    `--mode commercial` is the default and is right for paid member work.
 2. `$LA intake <ws>`. It sniffs every file and lists `pending_judgments`.

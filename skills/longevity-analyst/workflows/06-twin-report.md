@@ -29,7 +29,8 @@ deliverables. It is also used later to compare a new visit with an old snapshot.
    trace, send the changed files to the reviewer again, record again. `report` refuses otherwise.
    `block` means fix, re-run trace and send the new trace to the reviewer; the same trace can never be recorded as
    `pass` after a `block`.
-5. `$LA report <ws>` → `deliver/report.html`, `deliver/report.md`, `deliver/twin.json`.
+5. `$LA report <ws>` → `deliver/report.html`, `deliver/report.md`, `deliver/twin.json` and `deliver/la-export.json`
+   (what longpi imports; `$LA export <ws>` checks it and prints its counts).
 6. `$LA validate <ws>` must print `ok: true`.
 
 ## Comparing with a later visit
