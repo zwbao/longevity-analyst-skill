@@ -13,6 +13,20 @@
   `la.py export <ws>` verifies it against the delivered hash and prints its counts.
 - SKILL.md: running inside dsh/longpi.
 
+### Fixed (independent review of the bridge: 8 P1)
+- Mirobody tables in their real shapes: a one-row result is all constants with no header (it was dropped), values
+  are not escaped (extra cells join the last column), "… cut at" is never a row, constants split on `, key=`.
+- A cut result (Mirobody's row cap / render limit) is asked again in halves down to one indicator; still cut stops the
+  pull; nothing is written until every read succeeded; files of an earlier pull are replaced, the member's own kept.
+- Labs are written one file per checkup date, so another year's values never pass as this checkup's.
+- Daily series need readings on at least half of their span (a lab repeated 20 times is still a lab); watch columns
+  carry their unit; the SSE response is matched by request id; a non-JSON answer is a clean error.
+- la-export: carries the organ table's diagnostic-threshold notes; text is plain (PMID n, no markdown links);
+  amounts with a unit become "（具体量见报告）" (the host keeps no amounts and would cut the number out); titles cut at a
+  clause boundary with the full action in the detail; markers are the member's own lab names only; implausible
+  readouts left out; board rows carry limitations and public evidence; APOE readouts grouped as genetic.
+- `la.py export` refuses a delivery whose inputs changed after the report (same checks as `validate`).
+
 ## [0.6.0] - 2026-09-30
 
 ### Added

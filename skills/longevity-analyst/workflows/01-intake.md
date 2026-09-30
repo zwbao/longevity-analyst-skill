@@ -8,8 +8,11 @@ A new data folder arrives. Output: a workspace whose `observe` shows no pending 
 - Optional: sample date, lab delivery notes, questionnaire answers.
 
 ## Workflow
-0. Data in Mirobody (dsh/longpi): `$LA mirobody pull <raw_dir> --mcp-url-file <file>` first. It writes
-   `mirobody_labs.csv` and `mirobody_wearable_daily.csv` into `<raw_dir>`; they carry no printed reference ranges.
+0. Data in Mirobody (dsh/longpi): `$LA mirobody pull <raw_dir> --mcp-url-file <file>` first. It writes one
+   `mirobody_labs_<date>.csv` per checkup date and `mirobody_wearable_daily.csv` into `<raw_dir>`. Confirm lab rows
+   only from the checkup this report is about (usually the latest date, or the one matching the omics sample date);
+   answer `no` for rows of earlier dates, which are history. These rows carry no printed reference range. The watch
+   file is not a lab table: mark it `no_lab_values` at intake and map its columns later with `$LA insights wearable`.
 1. `$LA init <raw_dir> <ws> --member-id <id> --age <n> --sex <m|f> --longevity-skills <clone> [--sample-date YYYY-MM-DD] [--mode research]`.
    `--mode commercial` is the default and is right for paid member work.
 2. `$LA intake <ws>`. It sniffs every file and lists `pending_judgments`.

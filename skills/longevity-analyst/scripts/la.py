@@ -579,6 +579,15 @@ def cmd_mirobody(a):
 def cmd_export(a):
     ws, st = _open(a, lock=False)
     C.require(st, "report")
+    stale = [f"report: {x}" for x in report.check_bound(st, ws.root)]
+    if (st.get("report") or {}).get("hashes") != report._hashes(ws.root, st):
+        stale.append("report inputs changed after the report was rendered")
+    for name, sha in ((st.get("report") or {}).get("deliver_sha256") or {}).items():
+        dp = ws.p("deliver", name)
+        if not dp.exists() or C.sha256_file(dp, limit=None) != sha:
+            stale.append(f"deliver/{name} was changed after rendering")
+    if stale:
+        raise C.LAError("the delivery is not current, do not import it: " + "; ".join(stale[:5]), C.EXIT_BLOCKED)
     p = ws.root / "deliver" / "la-export.json"
     want = ((st.get("report") or {}).get("deliver_sha256") or {}).get("la-export.json")
     if not p.exists() or C.sha256_file(p, limit=None) != want:

@@ -139,9 +139,18 @@ def test_full_chain_case_a(tmp_path, capsys, monkeypatch):
     assert all("{{" not in (x.get("title") or "") + (x.get("detail") or "") for x in ex["plan"]["items"])
     assert all(x["category"] in ("diet", "exercise", "sleep", "supplement", "behavior", "other") for x in ex["plan"]["items"])
     assert ex["readouts"] and ex["report"]["html"].endswith("report.html")
+    assert all("overrides" in o for o in ex["organs"]) and all("](" not in x["title"] + x["detail"] for x in ex["plan"]["items"])
+    assert all(len(x["title"]) <= 60 for x in ex["plan"]["items"])
+    confirmed = {r["marker"] for r in __import__("lalib.labnames", fromlist=["usable_rows"]).usable_rows(json.loads((ws / "state.json").read_text()))}
+    assert all(m in confirmed for x in ex["plan"]["items"] for m in x["markers"])      # retests tracked by the member's lab names
     capsys.readouterr()
     ok("export", str(ws))
     assert f'"plan_items": {len(ex["plan"]["items"])}' in capsys.readouterr().out
+    plan_p = ws / "work" / "intervene" / "plan.json"
+    saved = plan_p.read_text()
+    plan_p.write_text(saved.replace('"I1"', '"I1" ', 1))                   # an input changed after the report
+    assert la.main(["export", str(ws)]) == C.EXIT_BLOCKED
+    plan_p.write_text(saved)
     assert [e["id"] for e in tw["organ_estimates"]] == ["organ.kidney.risk.1"]
     # tampering after delivery is detected
     (ws / "deliver" / "report.md").write_text(md + "x")
