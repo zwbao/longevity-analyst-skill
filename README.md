@@ -47,12 +47,14 @@ Then give your agent a data folder: *"我 67 岁，女，检测数据在 ~/data/
   No Chinese population table is bundled.
 - An MR projection assumes the published population causal estimate (exposure GWAS in SD units) applies to the member.
   MR reflects lifelong exposure, so the projected benefit of lowering a value in adulthood is an upper bound.
-- The monogenic scan covers the genes listed per analyte in `data/trait_map.json`, only variants myvariant.info can key
-  by genomic HGVS (duplication-style insertions and symbolic alleles are counted as "not annotated"), and ClinVar
-  records with review criteria. Phase is not known, so two het P/LP variants in a recessive gene are reported as
-  "possible compound heterozygous", not as a cause. It is a screen, not a clinical genetic test.
-- Board citations: records must be retrieved in the workspace; PMIDs are checked live at registration, other public
-  record types (gwas:, mr:, clinvar:) are trusted from the workspace cache.
+- The monogenic scan covers the genes listed per analyte in `data/trait_map.json` (Ensembl span ± 2 kb), small variants
+  with a canonical SPDI in ClinVar (structural variants and haplotype records are out of scope), and is complete for a
+  gene only when the VCF covers its region. Phase is not known, so two het P/LP variants in a recessive gene are
+  "possible compound heterozygous". First retrieval of ClinVar for all genes takes minutes; it is cached 30 days.
+  It is a screen, not a clinical genetic test.
+- Board citations: records must be retrieved in the workspace by the harness (cache files are checked against a hash
+  ledger in state.json); PMIDs are also checked live. An agent that edits state.json by hand can defeat any of these
+  bindings; the harness assumes changes go through `la.py`.
 
 - AI estimates were benchmarked against real outcomes on public cohorts (NHANES 2005–2008 with 2019 mortality
   linkage; the Framingham teaching dataset): Claude, one person per call, matched a cross-validated logistic

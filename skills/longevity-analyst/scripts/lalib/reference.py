@@ -17,10 +17,12 @@ def _pct_of(v: float, pcts: List[float], vals: List[float]) -> Dict[str, Any]:
     if len(ties) > 1:                  # many people sit at the same value (usually a detection limit): report the span
         lo, hi = pcts[ties[0]], pcts[ties[-1]]
         return {"pct": round((lo + hi) / 2, 1), "pct_low": lo, "pct_high": hi, "bound": "tie"}
-    if v <= vals[0]:
+    if v < vals[0]:
         return {"pct": pcts[0], "bound": "below"}
-    if v >= vals[-1]:
+    if v > vals[-1]:
         return {"pct": pcts[-1], "bound": "above"}
+    if v == vals[0]:
+        return {"pct": pcts[0], "bound": None}
     for i in range(1, len(vals)):
         if v <= vals[i]:
             lo, hi = vals[i - 1], vals[i]

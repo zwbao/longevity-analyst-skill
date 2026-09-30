@@ -164,14 +164,6 @@ def test_ref_dosage_joined_and_split(tmp_path):
     assert v.ref_dosage("1", 999, "A") == {"dosage": None, "status": "not_called"}
 
 
-@pytest.mark.parametrize("pos,ref,alt,want", [
-    (100, "A", "G", "chr1:g.100A>G"), (100, "AT", "A", "chr1:g.101del"), (100, "ATTC", "A", "chr1:g.101_103del"),
-    (100, "A", "AGG", "chr1:g.100_101insGG"), (100, "AT", "GC", "chr1:g.100_101delinsGC"), (100, "CAT", "CG", "chr1:g.101_102delinsG"),
-    (100, "A", "<DEL>", None)])
-def test_hgvs_ids_for_indels(pos, ref, alt, want):
-    assert genomics.hgvs_id("1", pos, ref, alt) == want
-
-
 def test_carried_only_alleles_present_and_quality(tmp_path):
     v = _vcf(tmp_path, ["chr1\t100\t.\tA\tG,T\t50\tPASS\t.\tGT:AD:GQ:DP\t0/2:10,0,12:40:30",
                         "chr1\t200\t.\tC\tT\t50\tPASS\t.\tGT:AD:GQ:DP\t0/1:28,2:40:30",
@@ -205,13 +197,15 @@ def test_absent_as_ref_is_explicit(tmp_path):
     assert v.alt_dosage("1", 5, "A", "G") == {"dosage": 0, "status": "assumed_ref"}
 
 
-def test_plp_requires_unanimous_reviewed():
-    ok = {"clinvar_significance": ["Pathogenic", "Likely pathogenic"], "review_status": ["criteria provided, multiple submitters, no conflicts"]}
-    assert genomics.plp_unanimous(ok)
-    assert not genomics.plp_unanimous(dict(ok, clinvar_significance=["Pathogenic", "Uncertain significance"]))
-    assert not genomics.plp_unanimous(dict(ok, review_status=["no assertion criteria provided"]))
-    assert not genomics.plp_unanimous(dict(ok, review_status=["criteria provided, conflicting classifications"]))
-    assert genomics.plp_unanimous(dict(ok, review_status=["reviewed by expert panel"]))
+def test_clinvar_tier():
+    ok = {"classification": "Pathogenic/Likely pathogenic", "review_status": "criteria provided, multiple submitters, no conflicts"}
+    assert genomics.clinvar_tier(ok) == "plp"
+    assert genomics.clinvar_tier(dict(ok, review_status="no assertion criteria provided")) == "plp_not_unanimous"
+    assert genomics.clinvar_tier(dict(ok, classification="Conflicting classifications of pathogenicity",
+                                      review_status="criteria provided, conflicting classifications")) == "plp_not_unanimous"
+    assert genomics.clinvar_tier(dict(ok, classification="Pathogenic; risk factor")) == "plp_not_unanimous"
+    assert genomics.clinvar_tier(dict(ok, review_status="reviewed by expert panel")) == "plp"
+    assert genomics.clinvar_tier(dict(ok, classification="Benign")) is None
 
 
 def _explain_setup(tmp_path, monkeypatch, vcf_lines, gene_ok=True, clinvar_ok=True, clinvar=None):
@@ -236,19 +230,25 @@ def _explain_setup(tmp_path, monkeypatch, vcf_lines, gene_ok=True, clinvar_ok=Tr
         return {"chrom": "19", "start": 100, "end": 900} if g == "LDLR" else {"chrom": "2", "start": 100, "end": 900}
     monkeypatch.setattr(pubdata, "gene_region", region)
 
-    def hg(ws, ids, assembly):
+    def cv(ws, gene):
         if not clinvar_ok:
-            raise C.LAError("myvariant down", 3)
-        return {h: dict(clinvar or {}, hgvs=h, ref=f"clinvar:{h}", conditions=[], af_eas=None) for h in ids}
-    monkeypatch.setattr(pubdata, "myvariant_hgvs", hg)
+            raise C.LAError("eutils down", 3)
+        if gene != "LDLR" or not clinvar:
+            return []
+        return [dict({"ref": "clinvar:VCV1", "gene": gene, "title": "LDLR c.1G>A", "spdi": "NC_000019.10:199:G:A", "deleted": "G",
+                      "inserted": "A", "loc": {"GRCh38": {"chr": "19", "start": 200, "stop": 200}}, "conditions": []}, **clinvar),
+                dict({"ref": "clinvar:VCV2", "gene": gene, "title": "LDLR c.9dup", "spdi": "NC_000019.10:300:G:GG", "deleted": "G",
+                      "inserted": "GG", "loc": {"GRCh38": {"chr": "19", "start": 301, "stop": 301}}, "conditions": []}, **clinvar)]
+    monkeypatch.setattr(pubdata, "clinvar_gene", cv)
+    monkeypatch.setattr(pubdata, "canonical_spdi", lambda ws, asm, c, p, r, a: {"spdi": "NC_000019.10:300:G:GG" if (p, r, a) == (299, "C", "CG") else None, "warning": None})
     return ws, st
 
 
 def test_explain_failure_is_not_scanned_not_zero(tmp_path, monkeypatch):
     line = ["chr19\t200\t.\tG\tA\t50\tPASS\t.\tGT:AD:GQ:DP\t0/1:15,15:40:30"]
     ws, st = _explain_setup(tmp_path, monkeypatch, line, clinvar_ok=False)
-    res = genomics.explain(st, ws)
-    assert res["analytes"]["ldl"]["not_scanned"] == ["LDLR"]           # ClinVar down: not scanned, never "0 found"
+    res = genomics.explain(st, ws, absent_as_ref="交付说明：WGS 30x 联合分型，列出全部非参考位点")
+    assert "LDLR" in res["analytes"]["ldl"]["not_scanned"]            # ClinVar down: not scanned, never "0 found"
     assert not any(r["id"] == "gen.ldl.clinvar_plp" for r in res["readouts"])
     ws, st = _explain_setup(tmp_path / "b", monkeypatch, line, gene_ok=False)
     res = genomics.explain(st, ws)
@@ -270,8 +270,8 @@ def test_explain_recessive_het_is_carrier(tmp_path, monkeypatch):
     ldlr_mode = tm["gene_modes"]["LDLR"]
     assert ldlr_mode == "AD"
     ws, st = _explain_setup(tmp_path, monkeypatch, ["chr19\t200\t.\tG\tA\t50\tPASS\t.\tGT:AD:GQ:DP\t0/1:15,15:40:30"],
-                            clinvar={"clinvar_significance": ["Pathogenic"], "review_status": ["criteria provided, single submitter"]})
-    res = genomics.explain(st, ws)
+                            clinvar={"classification": "Pathogenic", "review_status": "criteria provided, single submitter"})
+    res = genomics.explain(st, ws, absent_as_ref="交付说明：WGS 30x 联合分型，列出全部非参考位点")
     gp = C.load_json(ws / "work" / "insights" / "genotype_phenotype.json")["analytes"]["ldl"]["monogenic_scan"]
     assert gp["pathogenic_or_likely"][0]["carrier_only"] is False and gp["pathogenic_or_likely"][0]["zygosity"] == "het"
     assert next(r for r in res["readouts"] if r["id"] == "gen.ldl.clinvar_plp")["value"] == 1
@@ -283,10 +283,11 @@ def test_explain_recessive_het_is_carrier(tmp_path, monkeypatch):
             d["gene_modes"]["LDLR"] = "AR"                              # the same het in a recessive gene is a carrier
         return d
     monkeypatch.setattr(genomics, "data", as_recessive)
-    genomics.explain(st, ws)
+    AR = "交付说明：WGS 30x 联合分型，列出全部非参考位点"
+    genomics.explain(st, ws, absent_as_ref=AR)
     gp = C.load_json(ws / "work" / "insights" / "genotype_phenotype.json")["analytes"]["ldl"]["monogenic_scan"]
     assert gp["pathogenic_or_likely"][0]["carrier_only"] is True
-    assert next(r for r in genomics.explain(st, ws)["readouts"] if r["id"] == "gen.ldl.clinvar_plp")["value"] == 0
+    assert next(r for r in genomics.explain(st, ws, absent_as_ref=AR)["readouts"] if r["id"] == "gen.ldl.clinvar_plp")["value"] == 0
 
 
 def test_board_edit_after_registration_is_caught(tmp_path):
@@ -319,7 +320,7 @@ def test_projection_baseline_and_exposure_guards(tmp_path):
                                                              {"id": "x.score", "value": 0.4, "unit": ""}]})
     pubdata._cache(ws, "mr", "k", "u", [{"ref": "mr:a->b:IVW", "b": 0.4, "se": 0.04, "exposure": "LDL cholesterol", "outcome": "CHD"},
                                         {"ref": "mr:c->b:IVW", "b": 0.4, "se": 0.04, "exposure": "Apolipoprotein B", "outcome": "CHD"}])
-    with pytest.raises(C.LAError, match="percent"):
+    with pytest.raises(C.LAError, match="absolute risk"):
         causal.project(st, ws, "mr:a->b:IVW", "ldl", 2.6, "x.score")
     with pytest.raises(C.LAError, match="exposure-match"):
         causal.project(st, ws, "mr:c->b:IVW", "ldl", 2.6, "china-par-ascvd-risk.risk_10y_pct")
@@ -332,3 +333,144 @@ def test_projection_baseline_and_exposure_guards(tmp_path):
 def test_percentile_ties_report_span():
     r = reference._pct_of(0.2, [1, 5, 10, 25, 50], [0.2, 0.2, 0.2, 0.5, 1.0])
     assert r["bound"] == "tie" and r["pct_low"] == 1 and r["pct_high"] == 10
+
+
+def test_dup_matched_by_spdi_and_variant_only_vcf_not_scanned(tmp_path, monkeypatch):
+    lines = ["chr19\t299\t.\tC\tCG\t50\tPASS\t.\tGT:AD:GQ:DP\t0/1:15,15:40:30"]
+    ws, st = _explain_setup(tmp_path, monkeypatch, lines, clinvar={"classification": "Pathogenic", "review_status": "criteria provided, single submitter"})
+    res = genomics.explain(st, ws)                                  # variant-only VCF, no judgment recorded
+    ms = C.load_json(ws / "work" / "insights" / "genotype_phenotype.json")["analytes"]["ldl"]["monogenic_scan"]
+    assert [x["clinvar_ref"] for x in ms["pathogenic_or_likely"]] == ["clinvar:VCV2"]   # the dup is found (P0-1)
+    assert "LDLR" in ms["not_scanned"]                               # but the gene is not called fully scanned (P0-2)
+    assert not any(r["id"] == "gen.ldl.clinvar_plp" for r in res["readouts"])
+
+
+def test_gvcf_covered_region_counts_as_scanned(tmp_path, monkeypatch):
+    lines = ["chr19\t1\t.\tN\t<NON_REF>\t.\tPASS\tEND=5000\tGT:GQ:DP\t0/0:40:30"] + \
+            [f"chr2\t1\t.\tN\t<NON_REF>\t.\tPASS\tEND=5000\tGT:GQ:DP\t0/0:40:30"]
+    ws, st = _explain_setup(tmp_path, monkeypatch, lines, clinvar={"classification": "Pathogenic", "review_status": "criteria provided, single submitter"})
+    res = genomics.explain(st, ws)
+    assert res["analytes"]["ldl"]["not_scanned"] == []
+    assert next(r for r in res["readouts"] if r["id"] == "gen.ldl.clinvar_plp")["value"] == 0
+
+
+def test_absent_as_ref_never_overrides_a_record(tmp_path):
+    p = tmp_path / "m.vcf"
+    p.write_text("#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\tS1\n"
+                 "chr1\t100\t.\tC\tT\t50\tPASS\t.\tGT:GQ:DP\t0/1:40:30\n"
+                 "chr1\t200\t.\tA\tT\t50\tLowQual\t.\tGT:GQ:DP\t0/1:40:30\n"
+                 "chr1\t290\t.\tATTTT\tA\t50\tPASS\t.\tGT:GQ:DP\t1/1:40:30\n")
+    v = genomics.Vcf(p, RULES, absent_is_ref=True)
+    v.prefetch({("1", 100), ("1", 200), ("1", 292), ("1", 500)}, [])
+    assert v.alt_dosage("1", 100, "A", "G")["status"] == "ref_mismatch"          # REF differs: not "assumed reference"
+    assert v.alt_dosage("1", 200, "A", "G")["dosage"] is None                    # another allele's call failed here
+    assert v.ref_dosage("1", 292, "T")["status"] == "within_carried_deletion"
+    assert v.alt_dosage("1", 500, "A", "G") == {"dosage": 0, "status": "assumed_ref"}
+
+
+def test_hemizygous_and_half_calls(tmp_path):
+    v = _vcf(tmp_path, ["chr1\t100\t.\tA\tG\t50\tPASS\t.\tGT:GQ:DP\t1:40:30",
+                        "chr1\t200\t.\tA\tG\t50\tPASS\t.\tGT:GQ:DP\t./1:40:30"])
+    c = {x["pos"]: x for x in v.carried("1", 1, 1000)}
+    assert c[100]["zygosity"] == "hemi" and c[100]["quality_ok"]
+    assert c[200]["quality_ok"] is False and c[200]["quality"] == "half_call"
+
+
+def test_gvcf_blocks_kept_only_where_wanted(tmp_path):
+    lines = [f"chr1\t{i * 100 + 1}\t.\tN\t<NON_REF>\t.\tPASS\tEND={i * 100 + 100}\tGT:GQ:DP\t0/0:40:30" for i in range(2000)]
+    p = tmp_path / "g.vcf"
+    p.write_text("#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\tS1\n" + "\n".join(lines) + "\n")
+    v = genomics.Vcf(p, RULES)
+    v.prefetch({("1", 150)}, [("1", 1000, 1300)])
+    assert len(v._blocks["1"]) == 5                                   # 1 block for the position + 4 for the region
+    assert v.alt_dosage("1", 150, "N", "G")["status"] == "ref_block"
+    assert v.region_coverage("1", 1001, 1300) == 1.0 and v.region_coverage("1", 1001, 1600) < 0.9
+
+
+def test_palindromic_near_half_is_skipped():
+    h = {"pos": 1, "ref_allele": "A", "alt_allele": "T", "af_eas": 0.45, "chrom": "1", "ref": "x"}
+    assert genomics.pick_hit([h], "T") == (None, "palindromic_ambiguous")
+    assert genomics.pick_hit([dict(h, af_eas=0.1)], "T")[1] == "effect_is_alt"
+
+
+def test_forged_cache_file_is_ignored(tmp_path):
+    ws, _ = _ws(tmp_path)
+    C.write_json(ws / "work" / "evidence" / "pub_mr_forged.json", {"records": [{"ref": "mr:fake->x:IVW", "b": 5, "se": 0.1}]})
+    assert "mr:fake->x:IVW" not in pubdata.known_refs(ws)
+    pubdata._cache(ws, "mr", "real", "u", [{"ref": "mr:real->x:IVW", "b": 0.4, "se": 0.1}])
+    assert "mr:real->x:IVW" in pubdata.known_refs(ws)
+    p = next(x for x in (ws / "work" / "evidence").glob("pub_mr_*.json") if "forged" not in x.name)
+    d = C.load_json(p)
+    d["records"][0]["b"] = 9
+    C.write_json(p, d)
+    assert "mr:real->x:IVW" not in pubdata.known_refs(ws)            # edited after the harness wrote it
+
+
+def test_projection_target_and_organ_baseline(tmp_path):
+    ws, st = _ws(tmp_path)
+    C.write_json(ws / "work" / "readouts.json", {"readouts": [{"id": "china-par-ascvd-risk.risk_10y_pct", "value": 6.0, "unit": "%"},
+                                                             {"id": "lab.hba1c_pct", "value": 5.8, "unit": "%"}]})
+    (ws / "work" / "organs").mkdir(parents=True)
+    C.write_json(ws / "work" / "organs" / "organ_readouts.json", {"readouts": [{"id": "organ.heart.risk.1", "value": 0.08, "unit": "概率"}]})
+    pubdata._cache(ws, "mr", "k2", "u", [{"ref": "mr:a->b:IVW", "b": 0.4, "se": 0.04, "exposure": "LDL cholesterol", "outcome": "CHD"}])
+    for bad in (float("nan"), float("inf"), -50.0, 99.0):
+        with pytest.raises(C.LAError, match="target"):
+            causal.project(st, ws, "mr:a->b:IVW", "ldl", bad, "china-par-ascvd-risk.risk_10y_pct")
+    with pytest.raises(C.LAError, match="absolute risk"):
+        causal.project(st, ws, "mr:a->b:IVW", "ldl", 2.6, "lab.hba1c_pct")
+    rec = causal.project(st, ws, "mr:a->b:IVW", "ldl", 2.6, "organ.heart.risk.1")
+    assert rec["baseline_risk"] == 0.08 and rec["risk_after"] < 0.08
+
+
+def test_percentile_edge_is_not_below():
+    assert reference._pct_of(1.0, [1, 50, 99], [1.0, 5.0, 9.0]) == {"pct": 1, "bound": None}
+
+
+def test_board_rejects_non_string_items(tmp_path):
+    ws, st = _ws(tmp_path)
+    C.write_json(ws / "q.json", {"questions": [{"id": f"Q{i}", "title_zh": "问题", "hypothesis_zh": "假设", "basis": [{"x": 1}], "why_zh": "因为"} for i in (1, 2, 3)]})
+    with pytest.raises(C.LAError, match="id strings"):
+        board.register_questions(st, ws, ws / "q.json")
+
+
+def test_xlr_male_hemizygous_is_not_carrier_female_het_is(tmp_path, monkeypatch):
+    AR = "交付说明：WGS 30x 联合分型，列出全部非参考位点"
+    real = genomics.data
+
+    def xlr(name):
+        d = real(name)
+        if name == "trait_map.json":
+            d["gene_modes"]["LDLR"] = "XLR"
+        return d
+    for sex, gt, carrier in (("male", "1", False), ("female", "0/1", True)):
+        ws, st = _explain_setup(tmp_path / sex, monkeypatch, [f"chr19\t200\t.\tG\tA\t50\tPASS\t.\tGT:AD:GQ:DP\t{gt}:15,15:40:30"],
+                                clinvar={"classification": "Pathogenic", "review_status": "criteria provided, single submitter"})
+        st["member"]["sex"] = sex
+        monkeypatch.setattr(genomics, "data", xlr)
+        genomics.explain(st, ws, absent_as_ref=AR)
+        x = C.load_json(ws / "work" / "insights" / "genotype_phenotype.json")["analytes"]["ldl"]["monogenic_scan"]["pathogenic_or_likely"][0]
+        assert x["carrier_only"] is carrier, sex
+
+
+def test_not_unanimous_pathogenic_is_listed_not_dropped(tmp_path, monkeypatch):
+    ws, st = _explain_setup(tmp_path, monkeypatch, ["chr19\t200\t.\tG\tA\t50\tPASS\t.\tGT:AD:GQ:DP\t0/1:15,15:40:30"],
+                            clinvar={"classification": "Conflicting classifications of pathogenicity", "review_status": "criteria provided, conflicting classifications"})
+    genomics.explain(st, ws, absent_as_ref="交付说明：WGS 30x 联合分型，列出全部非参考位点")
+    ms = C.load_json(ws / "work" / "insights" / "genotype_phenotype.json")["analytes"]["ldl"]["monogenic_scan"]
+    assert not ms["pathogenic_or_likely"] and ms["plp_not_unanimous"][0]["clinvar_ref"] == "clinvar:VCV1"
+
+
+def test_insight_files_locked_and_reasons_traced(tmp_path, monkeypatch):
+    from lalib import report
+    ws, st = _explain_setup(tmp_path, monkeypatch, [], clinvar=None)
+    genomics.explain(st, ws, absent_as_ref="交付说明写明 99.9% 位点均已检出")
+    gp = ws / "work" / "insights" / "genotype_phenotype.json"
+    assert report.insight_file_problems(ws, st) == ["genotype_phenotype.json was not written by `la.py insights`; run that step again"]
+    st.setdefault("insights", {})["files"] = {"genotype_phenotype.json": C.sha256_file(gp, limit=None)}
+    assert report.insight_file_problems(ws, st) == []
+    d = C.load_json(gp)
+    d["analytes"]["ldl"]["monogenic_scan"]["pathogenic_or_likely"] = [{"x": 1}]
+    C.write_json(gp, d)
+    assert report.insight_file_problems(ws, st)
+    reasons = dict(report._authored(ws, st))
+    assert "99.9%" in reasons["absent-as-ref reason"] and report.trace_text(reasons["absent-as-ref reason"])

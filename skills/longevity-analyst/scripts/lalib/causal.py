@@ -9,12 +9,16 @@ estimate transfers to this member is an assumption the report states.
 from __future__ import annotations
 
 import math
+import re
 from pathlib import Path
 from typing import Any, Dict, Optional
 
 from . import pubdata
 from .common import EXIT_INPUT, LAError, data, load_json, now_iso, skillkit, write_json
 from .reference import _band
+
+RISK_PCT = re.compile(r"\.(?:[a-z0-9_]*_)?(?:risk|mortality|incidence)_[a-z0-9_]*pct$")
+ORGAN_RISK = re.compile(r"^organ\.[a-z_]+\.risk\.\d+$")
 
 
 def _member_value(st: Dict[str, Any], analyte: str) -> Dict[str, Any]:
@@ -40,15 +44,21 @@ def project(st: Dict[str, Any], ws: Path, mr_ref: str, analyte: str, target: flo
     cur = _member_value(st, analyte)                       # also rejects an analyte with no population reference
     kit = skillkit()
     accepted = {kit.fold_name(t) for t in (data("trait_map.json").get("mr_exposure_traits") or {}).get(analyte, [])}
+    if not isinstance(target, (int, float)) or not math.isfinite(target) or target <= 0:
+        raise LAError(f"--target must be a finite positive value in {cur['unit']}", EXIT_INPUT)
     if kit.fold_name(str(mr.get("exposure", ""))) not in accepted:
-        if not exposure_match or len(exposure_match.strip()) < 8:
+        if not exposure_match or len(re.sub(r"[\s\W_]", "", exposure_match)) < 6:
             raise LAError(f"MR exposure {mr.get('exposure')!r} is not a recognised name for {analyte}; if it measures the same quantity, "
                           "pass --exposure-match \"<reason>\"", EXIT_INPUT)
     m = st["member"]
     band = _band(int(m.get("age") or 0))
     stratum = data("ref_population.json")["labs_nhanes"]["analytes"][analyte]["strata"].get(f"{m.get('sex')}:{band}") if band else None
-    if not stratum or not stratum.get("sd"):
+    if not stratum or not stratum.get("sd") or stratum["sd"] <= 0:
         raise LAError(f"no population SD for {analyte} in {m.get('sex')} {band}", EXIT_INPUT)
+    lo, hi = stratum["pct"][0], stratum["pct"][-1]
+    if not lo <= target <= hi:
+        raise LAError(f"--target {target} is outside the population's 1st-99th percentile ({lo}-{hi} {cur['unit']}); "
+                      "an MR estimate is linear only within the observed range", EXIT_INPUT)
     ro = {r["id"]: r for r in load_json(ws / "work" / "readouts.json")["readouts"]}
     op = ws / "work" / "organs" / "organ_readouts.json"
     if op.exists():
@@ -56,9 +66,16 @@ def project(st: Dict[str, Any], ws: Path, mr_ref: str, analyte: str, target: flo
     if baseline_readout not in ro:
         raise LAError(f"baseline {baseline_readout!r} is not a readout (e.g. china-par-ascvd-risk.risk_10y_pct or organ.<o>.risk.<n>)", EXIT_INPUT)
     b = ro[baseline_readout]
-    if b.get("unit") != "%" or not isinstance(b.get("value"), (int, float)) or not 0 < float(b["value"]) < 100:
-        raise LAError(f"baseline {baseline_readout!r} must be a risk in percent (unit '%', 0-100); it is {b.get('value')!r} {b.get('unit')!r}", EXIT_INPUT)
-    p0 = float(b["value"]) / 100.0
+    val = b.get("value")
+    if not isinstance(val, (int, float)) or not math.isfinite(float(val)):
+        raise LAError(f"baseline {baseline_readout!r} has no numeric value", EXIT_INPUT)
+    if RISK_PCT.search(baseline_readout) and b.get("unit") == "%" and 0 < float(val) < 100:
+        p0 = float(val) / 100.0                         # a method's absolute risk in percent
+    elif ORGAN_RISK.match(baseline_readout) and b.get("unit") == "概率" and 0 < float(val) < 1:
+        p0 = float(val)                                  # an organ-table disease probability
+    else:
+        raise LAError(f"baseline {baseline_readout!r} must be an absolute risk: a method readout named *risk*_pct / "
+                      "*mortality*_pct in %, or organ.<organ>.risk.<n> (probability)", EXIT_INPUT)
     d_sd = (target - cur["value"]) / stratum["sd"]
 
     def after(beta: float) -> float:

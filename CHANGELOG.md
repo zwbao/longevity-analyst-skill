@@ -31,6 +31,28 @@
   (column LBDHDD), raising n in each stratum.
 - Network: a host that failed is not retried per item in the same run; Ensembl gene regions are cached.
 
+### Fixed (second re-attack: 2 P0, 7 P1, 9 P2)
+- ClinVar matching no longer uses HGVS spellings (pathogenic LDLR dups/delins were missed and shown as "未发现"): ClinVar
+  records per gene come from NCBI E-utilities (aggregate classification + review status + canonical SPDI + GRCh38/37
+  location); SNVs match by position and alleles, indels near a ClinVar indel record by NCBI canonical SPDI (Variation
+  Services), which makes dup / ins / delins / unaligned calls of one change equal; a reference mismatch is flagged.
+- A gene counts as scanned only when the VCF covers ≥90% of its region (gVCF blocks/calls) or the absent-as-reference
+  judgment is recorded; otherwise it is "not fully scanned" and no count readout is written.
+- ClinVar records that mention pathogenic without a unanimous reviewed classification are listed ("needs genetic
+  counselling") instead of dropped; "已扫描，未发现" appears only when nothing is listed, unscanned or unresolved.
+- Hemizygous calls (haploid GT) and member sex: an XLR variant in a male is never "carrier only"; half calls (./1) fail
+  quality.
+- Under --absent-as-ref, a position with any record (REF mismatch, another allele's failed call, a carried upstream
+  deletion) is never "assumed reference".
+- genotype_phenotype.json, positions.json and projections.json are bound to the bytes `la.py insights` wrote; trace
+  refuses an edited or hand-made copy. Public evidence caches count only when their hash is in the state ledger.
+- gVCF streaming keeps only blocks overlapping wanted positions/regions and looks them up by bisect (memory bounded).
+- MR projection: finite target inside the population P1–P99; baseline only an absolute-risk readout (method *risk*_pct
+  / *mortality*_pct in %, or organ.<o>.risk.<n> probability); the exposure-match reason needs content and is printed.
+- --absent-as-ref and --exposure-match reasons go through the number trace; board items must be strings; a value
+  exactly at P1/P99 is no longer labelled below/above; A/T and C/G SNPs with frequency 40–60% are skipped.
+- HTTP: 5 tries, 90 s timeout (a hung host no longer stalls ~23 min).
+
 ## [0.5.0] - 2026-09-29
 
 ### Added

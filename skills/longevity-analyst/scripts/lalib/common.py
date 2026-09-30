@@ -273,6 +273,10 @@ class Workspace:
         if "organs" not in st and (self.root / "work" / "organs").exists():
             import shutil                               # upstream changed: bundles and estimates describe old data
             shutil.rmtree(self.root / "work" / "organs")
+        from . import pubdata                            # evidence caches written by the harness in this command
+        mine = {k: v for k, v in pubdata.WRITTEN.items() if k.startswith(str(self.root))}
+        if mine:
+            st.setdefault("evidence_ledger", {}).update(mine)
         write_json(self.state_path, st)
 
     def log(self, st: Dict[str, Any], event: str, **kw: Any) -> None:

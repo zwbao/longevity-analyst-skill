@@ -470,6 +470,10 @@ def cmd_insights(a):
         if not (a.mr_ref and a.analyte and a.target is not None and a.baseline):
             raise C.LAError("project needs --mr-ref --analyte --target --baseline", C.EXIT_USAGE)
         res = causal.project(st, ws.root, a.mr_ref, a.analyte, a.target, a.baseline, exposure_match=a.exposure_match)
+    written = {"genomics": "genotype_phenotype.json", "position": "positions.json", "project": "projections.json"}.get(a.action)
+    if written:                                      # bound to its bytes: trace refuses an edited copy
+        fp = ws.root / "work" / "insights" / written
+        st.setdefault("insights", {}).setdefault("files", {})[written] = C.sha256_file(fp, limit=None)
     C.invalidate_after(st, "insights", f"insights {a.action}")
     _insights_stage(st)
     ws.log(st, f"insights_{a.action}")

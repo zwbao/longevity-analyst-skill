@@ -229,6 +229,13 @@ def _authored(ws: Path, st: Dict[str, Any] = None) -> List[Tuple[str, str]]:
         for fp in sorted(registered_findings(ws, st).values()):
             f = load_json(fp)
             out.append((str(fp), "\n".join(str(f.get(k, "")) for k in ("summary_zh", "next_step_zh", "limitations_zh"))))
+    gp = ws / "work" / "insights" / "genotype_phenotype.json"
+    if gp.exists() and load_json(gp).get("absent_as_ref"):
+        out.append(("absent-as-ref reason", str(load_json(gp)["absent_as_ref"])))       # printed in the report
+    pj = ws / "work" / "insights" / "projections.json"
+    if pj.exists():
+        out.append(("exposure-match reasons", "\n".join(str(x.get("exposure_match") or "") for x in load_json(pj)["projections"])))
+    if bq.exists():
         skipped = (((st or {}).get("insights") or {}).get("board") or {}).get("skipped") or {}
         if skipped:                                  # skip reasons are printed in the report too
             out.append(("board skip reasons", "\n".join(str(v.get("reason", "")) for v in skipped.values())))
@@ -263,6 +270,19 @@ def _hashes(ws: Path, st: Dict[str, Any] = None) -> Dict[str, str]:
     return h
 
 
+def insight_file_problems(ws: Path, st: Dict[str, Any]) -> List[str]:
+    """The insight tables are rendered from files `la.py insights` wrote; an edited or hand-made copy is refused."""
+    out = []
+    files = (st.get("insights") or {}).get("files") or {}
+    for name in ("genotype_phenotype.json", "positions.json", "projections.json"):
+        fp = ws / "work" / "insights" / name
+        if name in files and (not fp.exists() or sha256_file(fp, limit=None) != files[name]):
+            out.append(f"{name} does not match what `la.py insights` wrote; run that step again")
+        elif name not in files and fp.exists():
+            out.append(f"{name} was not written by `la.py insights`; run that step again")
+    return out
+
+
 def trace(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
     allowed = [str(st["member"].get("age", ""))] if st["member"].get("age") else []
     rp = ws / "work" / "readouts.json"
@@ -278,6 +298,9 @@ def trace(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
     if ip.exists() and (not iw or sha256_file(ip, limit=None) != iw):
         raise LAError("insight_readouts.json does not match what `la.py insights` wrote; run it again", EXIT_BLOCKED)
     from .board import integrity
+    bad_files = insight_file_problems(ws, st)
+    if bad_files:
+        raise LAError("; ".join(bad_files), EXIT_BLOCKED)
     bad_board = integrity(ws, st)
     if bad_board:
         raise LAError("; ".join(bad_board), EXIT_BLOCKED)
@@ -618,19 +641,25 @@ def insight_sections(ws: Path, ro: Dict[str, Dict[str, Any]]) -> List[str]:
                     ("未计算（公共数据未取到）" if a.get("not_retrieved") else "未计算（在东亚人群有变异的位点太少或覆盖不足）")
                 ms = a["monogenic_scan"]
                 parts = []
+                zmap = {"het": "杂合", "hom": "纯合", "hemi": "半合"}
                 for x in ms["pathogenic_or_likely"]:
-                    zyg = {"het": "杂合", "hom": "纯合"}.get(x["zygosity"], x["zygosity"])
-                    tag = "，隐性遗传，单个杂合仅为携带者" if x.get("carrier_only") else "，隐性遗传，同一基因两个杂合变异，需验证是否在两条染色体上" \
-                        if x.get("possible_compound_het") else ""
-                    parts.append(f"{_cell(x['gene'])} {_cell(x['hgvs'])}（{_cell('/'.join(x['significance']))}，{zyg}{tag}）")
+                    tag = ("，隐性遗传，单个杂合仅为携带者" if x.get("carrier_only") else
+                           "，隐性遗传，同一基因两个杂合变异，需验证是否在两条染色体上" if x.get("possible_compound_het") else "")
+                    parts.append(f"{_cell(x['gene'])} {_cell(x['title'] or x['variant'])}（{_cell(x['classification'])}，"
+                                 f"{zmap.get(x['zygosity'], _cell(x['zygosity']))}{tag}）")
+                for x in ms.get("plp_not_unanimous", []):
+                    parts.append(f"{_cell(x['gene'])} {_cell(x['title'] or x['variant'])}：ClinVar 分类不一致或缺少审查标准"
+                                 f"（{_cell(x['classification'])}），需遗传咨询判断")
                 if ms.get("not_scanned"):
-                    parts.append("未扫描：" + "、".join(_cell(g) for g in sorted(ms["not_scanned"])))
+                    parts.append("未完整扫描：" + "、".join(_cell(g) for g in sorted(ms["not_scanned"])))
                 if ms.get("low_quality_not_counted"):
-                    parts.append(f"另有 {len(ms['low_quality_not_counted'])} 个致病记录变异测序质量不足，未计入，建议验证")
-                if ms.get("variants_not_annotated"):
-                    parts.append(f"{ms['variants_not_annotated']} 个插入/缺失变异未能注释")
-                if not ms["pathogenic_or_likely"] and not ms.get("not_scanned") and ms["genes"]:
-                    parts.insert(0, "未发现")
+                    parts.append(f"另有 {len(ms['low_quality_not_counted'])} 个 ClinVar 致病相关变异测序质量不足，未计入，建议验证")
+                if ms.get("indels_unresolved"):
+                    parts.append(f"{ms['indels_unresolved']} 个插入/缺失变异未能与 ClinVar 比对")
+                clean = not (ms["pathogenic_or_likely"] or ms.get("plp_not_unanimous") or ms.get("not_scanned")
+                             or ms.get("low_quality_not_counted") or ms.get("indels_unresolved"))
+                if clean and ms["genes"]:
+                    parts.insert(0, "已扫描，未发现")
                 plp_s = "；".join(parts) or "—"
                 L.append(f"| {_cell(a['label_zh'])} | {_cell(_fmt(lab['value']))} {_cell(lab['unit'])} | {flag} | {pct} | "
                          f"{a['loci_called']}/{a.get('loci_informative', a['loci_tested'])} | {plp_s} |")
@@ -675,6 +704,9 @@ def insight_sections(ws: Path, ro: Dict[str, Dict[str, Any]]) -> List[str]:
             L.append(f"| {_cell(x['exposure'])} → {_cell(x['outcome'])} | {_cell(_fmt(x['member_value']))} → {_cell(_fmt(x['target']))} {_cell(x['unit'])} | "
                      f"{_pct(x['baseline_risk'])} | {_pct(x['risk_after'])}（{_pct(x['risk_after_ci'][0])}–{_pct(x['risk_after_ci'][1])}） |")
         L.append("")
+        for x in load_json(prj)["projections"]:
+            if x.get("exposure_match"):
+                L.append(f"- 「{_cell(x['exposure'])}」作为{_cell(x['analyte'])}的替代暴露，依据：{_cell(x['exposure_match'])}")
         cav = []
         for x in load_json(prj)["projections"]:
             cav += [c for c in x.get("caveats_zh", []) if c not in cav]

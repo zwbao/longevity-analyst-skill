@@ -21,7 +21,12 @@ risk factor would plausibly help him, and a board of questions investigated one 
      sites only, decide whether an absent site can be read as reference for this delivery (the lab's note says every
      non-reference call is listed, whole-genome depth, joint calling). If yes, re-run with
      `--absent-as-ref "<what says so>"`; the report states that judgment. If you cannot tell, leave the score out.
-   - `monogenic_scan.not_scanned` lists genes that were not checked (a source failed): say "not checked", never "none found".
+   - `monogenic_scan.not_scanned` lists genes not fully checked: a source failed, or the VCF does not cover the gene
+     region (a variant-only VCF without the absent-as-reference judgment). Carried variants in those genes were still
+     matched, so a finding there is real, but "none found" may not be said for them.
+   - `plp_not_unanimous` are ClinVar records that mention pathogenic without a unanimous, reviewed classification
+     (conflicting, "risk factor", no criteria): mention them as "needs genetic counselling", never as a diagnosis,
+     never as nothing.
    - `carrier_only: true` is a heterozygous finding in a recessive gene: the member is a carrier; it does not explain
      their lab value. `possible_compound_het` needs phasing before anyone calls it a cause.
    - `low_quality_not_counted` hits need orthogonal confirmation (Sanger) before they are mentioned as findings.
@@ -35,7 +40,8 @@ risk factor would plausibly help him, and a board of questions investigated one 
    `$LA insights mr <ws> --exposure "LDL cholesterol" --outcome "Coronary heart disease"`, choose one record (prefer IVW
    or weighted median, high `moescore`), then project it onto the member:
    `$LA insights project <ws> --mr-ref "<ref>" --analyte ldl --target <value in the table's unit> --baseline china-par-ascvd-risk.risk_10y_pct`.
-   The baseline must be a risk readout in percent (China-PAR, or an organ AI estimate for that disease) whose outcome
+   The target must lie inside the population's 1st–99th percentile. The baseline must be an absolute risk: a method
+   readout named `*risk*_pct` / `*mortality*_pct` (percent) or an organ-table `organ.<organ>.risk.<n>`, whose outcome
    is as close as possible to the MR outcome; CHD in the MR study against a 10-year ASCVD baseline is a mismatch the
    report states. The exposure must be the same quantity as `--analyte`; a name outside the known list needs
    `--exposure-match "<why it is the same quantity>"`. MR estimates reflect lifelong differences, so the projected

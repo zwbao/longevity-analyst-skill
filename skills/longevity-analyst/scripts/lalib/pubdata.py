@@ -18,7 +18,7 @@ import urllib.request
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional
 
-from .common import EXIT_EXTERNAL, LAError, load_json, now_iso, write_json
+from .common import EXIT_EXTERNAL, LAError, load_json, now_iso, sha256_file, write_json
 
 try:
     import certifi
@@ -52,10 +52,11 @@ def _shared_put(key: str, doc: Dict[str, Any]) -> None:
     write_json(SHARED / (hashlib.sha1(key.encode()).hexdigest() + ".json"), doc)
 
 
+WRITTEN: Dict[str, str] = {}    # cache files written by this process -> sha256 (merged into state.evidence_ledger on save)
 _DOWN: Dict[str, str] = {}      # host -> first error in this run (circuit breaker: a down source is not retried per item)
 
 
-def _http(url: str, data: Optional[bytes] = None, headers: Optional[Dict[str, str]] = None, tries: int = 8) -> Any:
+def _http(url: str, data: Optional[bytes] = None, headers: Optional[Dict[str, str]] = None, tries: int = 5) -> Any:
     host = urllib.parse.urlparse(url).netloc
     if host in _DOWN:
         raise LAError(f"{host} was unreachable earlier in this run: {_DOWN[host]}", EXIT_EXTERNAL)
@@ -63,7 +64,7 @@ def _http(url: str, data: Optional[bytes] = None, headers: Optional[Dict[str, st
     for i in range(tries):
         try:
             req = urllib.request.Request(url, data=data, headers={**UA, **(headers or {})})
-            with urllib.request.urlopen(req, timeout=150, context=_CTX) as r:
+            with urllib.request.urlopen(req, timeout=90, context=_CTX) as r:
                 return json.loads(r.read().decode("utf-8"))
         except Exception as e:  # noqa: BLE001
             last = e
@@ -81,15 +82,33 @@ def _cache(ws: Path, source: str, key: str, url: str, records: List[Dict[str, An
     p = ws / "work" / "evidence" / f"pub_{source}_{k}.json"
     doc = {"source": source, "query": key, "url": url, "retrieved_at": retrieved_at or now_iso(), "records": records, **(extra or {})}
     write_json(p, doc)
-    if source in ("gwas", "myvariant", "ensembl", "mr") and not retrieved_at:
+    WRITTEN[str(p)] = sha256_file(p, limit=None)
+    if source in ("gwas", "myvariant", "ensembl", "mr", "clinvar", "spdi") and not retrieved_at:
         _shared_put(f"{source}|{key}", doc)
     return p
 
 
+def ledger(ws: Path) -> Dict[str, str]:
+    """Cache files the harness wrote: the ledger saved in state plus files written in this process."""
+    sp = ws / "state.json"
+    led: Dict[str, str] = {}
+    if sp.exists():
+        try:
+            led.update(load_json(sp).get("evidence_ledger") or {})
+        except Exception:  # noqa: BLE001
+            pass
+    led.update({k: v for k, v in WRITTEN.items() if k.startswith(str(ws))})
+    return led
+
+
 def known_refs(ws: Path) -> Dict[str, Dict[str, Any]]:
-    """Every citable public record retrieved in this workspace: ref -> record."""
+    """Every citable public record retrieved in this workspace: ref -> record. A cache file counts only when its bytes
+    match what the harness wrote (a hand-written or edited file is ignored)."""
     out: Dict[str, Dict[str, Any]] = {}
+    led = ledger(ws)
     for p in (ws / "work" / "evidence").glob("pub_*.json"):
+        if led.get(str(p)) != sha256_file(p, limit=None):
+            continue
         try:
             for r in load_json(p).get("records", []):
                 if r.get("ref"):
@@ -207,34 +226,79 @@ def myvariant_rsids(ws: Path, rsids: Iterable[str], assembly: str = "hg38") -> D
     return out
 
 
-def myvariant_hgvs(ws: Path, hgvs_ids: Iterable[str], assembly: str = "hg38") -> Dict[str, Dict[str, Any]]:
-    """Annotate the member's own variants (chrN:g.POSREF>ALT) with ClinVar and gnomAD EAS AF."""
-    ids = sorted(set(hgvs_ids))
-    out: Dict[str, Dict[str, Any]] = {}
-    recs = []
-    fields = "clinvar.rcv.clinical_significance,clinvar.rcv.review_status,clinvar.rcv.accession,clinvar.rcv.conditions.name,clinvar.gene.symbol,gnomad_genome.af.af_eas,dbsnp.rsid"
-    for i in range(0, len(ids), 500):
-        chunk = ids[i:i + 500]
-        body = urllib.parse.urlencode({"ids": ",".join(chunk), "fields": fields, "assembly": assembly}).encode()
-        res = _http("https://myvariant.info/v1/variant", data=body, headers={"Content-Type": "application/x-www-form-urlencoded"})
-        for h in res:
-            if h.get("notfound"):
+# ------------------------------------------------------------------ ClinVar (NCBI) + canonical SPDI
+EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/"
+VARIATION = "https://api.ncbi.nlm.nih.gov/variation/v0/"
+GRCH38_ACC = {"1": "NC_000001.11", "2": "NC_000002.12", "3": "NC_000003.12", "4": "NC_000004.12", "5": "NC_000005.10",
+              "6": "NC_000006.12", "7": "NC_000007.14", "8": "NC_000008.11", "9": "NC_000009.12", "10": "NC_000010.11",
+              "11": "NC_000011.10", "12": "NC_000012.12", "13": "NC_000013.11", "14": "NC_000014.9", "15": "NC_000015.10",
+              "16": "NC_000016.10", "17": "NC_000017.11", "18": "NC_000018.10", "19": "NC_000019.10", "20": "NC_000020.11",
+              "21": "NC_000021.9", "22": "NC_000022.11", "X": "NC_000023.11", "Y": "NC_000024.10"}
+
+
+def clinvar_gene(ws: Path, gene: str) -> List[Dict[str, Any]]:
+    """ClinVar germline records in a gene whose classification mentions pathogenic (incl. conflicting ones), with their
+    canonical SPDI (GRCh38) and GRCh38/GRCh37 locations. Structural variants without an SPDI are left out."""
+    key = f"clinvar:gene:{gene}"
+    hit = _shared_get(f"clinvar|{key}")
+    if hit:
+        _cache(ws, "clinvar", key, hit["url"], hit["records"], retrieved_at=hit["retrieved_at"])
+        return hit["records"]
+    term = f"{gene}[gene] AND (clinsig_pathogenic[prop] OR clinsig_likely_pathogenic[prop] OR clinsig_has_conflicts[prop])"
+    url = EUTILS + "esearch.fcgi?" + urllib.parse.urlencode({"db": "clinvar", "term": term, "retmode": "json", "retmax": 10000})
+    ids = _http(url)["esearchresult"].get("idlist", [])
+    recs: List[Dict[str, Any]] = []
+    for i in range(0, len(ids), 300):
+        body = urllib.parse.urlencode({"db": "clinvar", "id": ",".join(ids[i:i + 300]), "retmode": "json"}).encode()
+        res = _http(EUTILS + "esummary.fcgi", data=body, headers={"Content-Type": "application/x-www-form-urlencoded"})["result"]
+        for u in res.get("uids", []):
+            x = res[u]
+            vs = x.get("variation_set") or []
+            if len(vs) != 1 or not vs[0].get("canonical_spdi"):
+                continue                                 # haplotypes / structural variants: not matchable to one VCF allele
+            spdi = vs[0]["canonical_spdi"]
+            try:
+                acc, pos, dele, ins = spdi.split(":")
+            except ValueError:
                 continue
-            cv = h.get("clinvar") or {}
-            rcv = cv.get("rcv") or []
-            rcv = rcv if isinstance(rcv, list) else [rcv]
-            rec = {"ref": f"clinvar:{h.get('_id')}" if rcv else f"myvariant:{h.get('_id')}", "hgvs": h.get("query") or h.get("_id"),
-                   "gene": (cv.get("gene") or {}).get("symbol"), "rsid": (h.get("dbsnp") or {}).get("rsid"),
-                   "clinvar_significance": sorted({str(x.get("clinical_significance")) for x in rcv if x.get("clinical_significance")}),
-                   "review_status": sorted({str(x.get("review_status")) for x in rcv if x.get("review_status")}),
-                   "clinvar_rcv": [x.get("accession") for x in rcv if x.get("accession")][:5],
-                   "conditions": sorted({str(((x.get("conditions") or {}) if isinstance(x.get("conditions"), dict) else {}).get("name", ""))
-                                         for x in rcv} - {""})[:5],
-                   "af_eas": ((h.get("gnomad_genome") or {}).get("af") or {}).get("af_eas")}
-            out[rec["hgvs"]] = rec
-            recs.append(rec)
-    _cache(ws, "clinvar", f"hgvs:{assembly}:{hashlib.sha1(','.join(ids).encode()).hexdigest()}", "https://myvariant.info/v1/variant", recs)
-    return out
+            gc = x.get("germline_classification") or {}
+            locs = {l.get("assembly_name"): {"chr": str(l.get("chr")), "start": int(l["start"]), "stop": int(l["stop"])}
+                    for l in vs[0].get("variation_loc", []) if l.get("start") and str(l.get("start")).isdigit()}
+            recs.append({"ref": f"clinvar:{x.get('accession')}", "gene": gene, "title": x.get("title"), "spdi": spdi,
+                         "deleted": dele, "inserted": ins, "loc": locs, "classification": gc.get("description") or "",
+                         "review_status": gc.get("review_status") or "",
+                         "conditions": sorted({t.get("trait_name") for t in (gc.get("trait_set") or []) if t.get("trait_name")})[:5]})
+    _cache(ws, "clinvar", key, EUTILS + "esearch.fcgi (" + term + ")", recs)
+    return recs
+
+
+def canonical_spdi(ws: Path, assembly: str, chrom: str, pos: int, ref: str, alt: str) -> Dict[str, Any]:
+    """The member's VCF allele as NCBI canonical SPDI on GRCh38 (repeat-aware, so dup/ins/delins/unaligned calls of the
+    same change compare equal). A reference-base mismatch is returned as a warning (wrong assembly or corrupt call)."""
+    key = f"spdi:{assembly}:{chrom}:{pos}:{ref}:{alt}"
+    hit = _shared_get(f"spdi|{key}")
+    if hit:
+        _cache(ws, "spdi", key, hit["url"], hit["records"], retrieved_at=hit["retrieved_at"])
+        return hit["records"][0]
+    gcf = "GCF_000001405.40" if assembly == "hg38" else "GCF_000001405.25"
+    url = VARIATION + f"vcf/chr{chrom}/{pos}/{ref}/{alt}/contextuals?assembly={gcf}"
+    ctx = (_http(url, tries=3).get("data") or {}).get("spdis") or []
+    rec = {"query": key, "spdi": None, "warning": None}
+    if ctx:
+        c = ctx[0]
+        cs = f"{c['seq_id']}:{c['position']}:{c['deleted_sequence']}:{c['inserted_sequence']}"
+        if assembly != "hg38":
+            eq = (_http(VARIATION + f"spdi/{urllib.parse.quote(cs)}/all_equivalent_contextual", tries=3).get("data") or {}).get("spdis") or []
+            g38 = [e for e in eq if e.get("seq_id") in GRCH38_ACC.values()]
+            cs = f"{g38[0]['seq_id']}:{g38[0]['position']}:{g38[0]['deleted_sequence']}:{g38[0]['inserted_sequence']}" if g38 else None
+        if cs:
+            d = _http(VARIATION + f"spdi/{urllib.parse.quote(cs)}/canonical_representative", tries=3).get("data") or {}
+            if d.get("warnings"):
+                rec["warning"] = "; ".join(w.get("message", "") for w in d["warnings"])[:200]
+            if d.get("seq_id"):
+                rec["spdi"] = f"{d['seq_id']}:{d['position']}:{d['deleted_sequence']}:{d['inserted_sequence']}"
+    _cache(ws, "spdi", key, url, [dict(rec, ref=f"spdi:{key}")])
+    return rec
 
 
 # ------------------------------------------------------------------ Ensembl

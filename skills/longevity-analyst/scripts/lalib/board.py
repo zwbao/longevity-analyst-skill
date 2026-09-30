@@ -30,7 +30,8 @@ def member_ids(st: Dict[str, Any], ws: Path) -> Set[str]:
         for key, a in load_json(gp)["analytes"].items():
             ids.add(f"gen:{key}")
             ids |= {f"gt:{l['rsid']}" for l in a["loci"] if l.get("member_risk_alleles") is not None}
-            ids |= {f"gt:{v['hgvs']}" for v in a["monogenic_scan"]["pathogenic_or_likely"]}
+            ms = a["monogenic_scan"]
+            ids |= {f"gt:{v['variant']}" for k in ("pathogenic_or_likely", "plp_not_unanimous") for v in ms.get(k, [])}
     ids |= {f"file:{f['id']}" for f in st["files"] if not f.get("excluded")}
     return ids
 
@@ -66,6 +67,8 @@ def register_questions(st: Dict[str, Any], ws: Path, path: Path) -> Dict[str, An
         basis = q.get("basis")
         if not isinstance(basis, list) or not basis:
             problems.append(f"{w}: basis lists this member's data the question starts from")
+        elif not all(isinstance(b, str) for b in basis):
+            problems.append(f"{w}: basis items are id strings")
         else:
             bad = [b for b in basis if b not in known]
             if bad:
@@ -106,16 +109,18 @@ def register_finding(st: Dict[str, Any], ws: Path, qid: str) -> Dict[str, Any]:
     me = f.get("member_evidence")
     if not isinstance(me, list) or not me:
         problems.append("member_evidence lists the member's data the verdict rests on")
+    elif not all(isinstance(x, str) for x in me):
+        problems.append("member_evidence items are id strings")
     else:
         bad = [x for x in me if x not in known]
         if bad:
             problems.append(f"member_evidence {bad} is not this member's data")
     pe = f.get("public_evidence")
     pubs = public_refs(ws)
-    if not isinstance(pe, list):
+    if not isinstance(pe, list) or not all(isinstance(x, str) for x in pe):
         problems.append("public_evidence must be a list of retrieved refs (gwas:, clinvar:, mr:, proj:, myvariant:, pmid:)")
     else:
-        bad = [x for x in pe if x not in pubs]
+        bad = [x for x in pe if x not in pubs] if isinstance(pe, list) and all(isinstance(x, str) for x in pe) else []
         if bad:
             problems.append(f"public_evidence {bad[:5]} were not retrieved in this workspace")
         if f.get("verdict") in ("supported", "not_supported") and not pe:
