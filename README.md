@@ -35,9 +35,17 @@ Then give your agent a data folder: *"我 67 岁，女，检测数据在 ~/data/
 | Gut MetaPhlAn profile | richness, Shannon, Gini-Simpson; GMHI on MetaPhlAn2 profiles (matches the published GMHI.R output to within 0.001) | GMHI on MetaPhlAn3/4 (species renamed); HUMAnN |
 | Proteomics matrix | QC description only | every protein clock unless platform **and** value scale match its training assay |
 | Organ checkup table (9 organs) | Measured organ ages when an organ clock ran; published indices from labs: eGFR (CKD-EPI 2021, race-free) with KDIGO G category, FIB-4 with age-adjusted tiers, TyG, AIP; China-PAR for the heart. **AI estimates** (organ-age range and disease-probability ranges) by an estimator subagent anchored on PubMed papers retrieved in the run, shown in their own "AI 估计" column | Calibrated organ-disease probabilities: no validated model exists for most organs. Most organ ages are AI estimates, because measured organ clocks need Olink/SomaScan proteomics |
+| Insights (v0.6) | Genes vs labs: for each confirmed lab, the member's genotype at the genome-wide significant loci retrieved live from GWAS Catalog, a risk-allele count placed in the gnomAD East Asian distribution, and a ClinVar scan of the member's own variants in monogenic genes. Population position: lab percentiles in the NHANES 2005–2010 same-sex, same-age-band population; GMHI against 4,347 public metagenomes (healthy, East Asian healthy, non-healthy); the several ages side by side. Wearable 30/90-day summaries. MR projections: published EpiGraphDB estimates applied to the member's own value, target and baseline risk. The question board: 5–10 member-specific questions, one researcher subagent each, verdict bound to retrieved records | Chinese population percentiles (CHARLS/CKB need registration); genome-wide polygenic scores (need a full WGS/gVCF, not a subset VCF); a researcher's verdict is judgment on retrieved evidence, not a validated model |
 | FASTQ / CRAM / IDAT | sarek (DeepVariant gVCF), taxprofiler, methylseq, SeSAMe (pinned revisions), after preflight and the user's quoted consent | nothing runs without consent; stub runs are developer checks and never results |
 
-## Known limitations (v0.5)
+## Known limitations (v0.6)
+
+- Genes vs labs uses an unweighted count of trait-raising alleles at clumped genome-wide significant loci (GWAS
+  Catalog effect sizes are in mixed units, so they are not summed). It is a tendency with its locus coverage, not a
+  polygenic score from a validated PGS, and needs the loci to be present in the VCF (a gVCF or full VCF).
+- Lab percentiles come from the US NHANES population; glucose and triglycerides also have fasting-subsample tables.
+  No Chinese population table is bundled.
+- An MR projection assumes the published population causal estimate (exposure GWAS in SD units) applies to the member.
 
 - AI estimates were benchmarked against real outcomes on public cohorts (NHANES 2005–2008 with 2019 mortality
   linkage; the Framingham teaching dataset): Claude, one person per call, matched a cross-validated logistic

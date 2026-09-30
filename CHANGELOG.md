@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.6.0] - 2026-09-30
+
+### Added
+
+- Insights stage: genes vs labs, population position, MR projections, question board
+- insights genomics: live GWAS Catalog lead loci x member genotype (gVCF-aware), East Asian risk-allele percentile, ClinVar scan of monogenic genes via myvariant/Ensembl
+- insights position: NHANES 2005-2010 weighted lab percentiles (27 analytes incl. fasting LDL/TG/glucose), GMHI vs 4347 metagenomes incl. East Asian healthy, multi-age comparison
+- insights mr/project: EpiGraphDB MR estimates projected onto member value, target and baseline risk
+- question board: 3-10 member-specific questions, researcher subagent per question, verdict bound to retrieved records (references/researcher.md)
+- insights wearable: 30/90-day means and trends from a mapped daily export
+
 ## [0.5.0] - 2026-09-29
 
 ### Added

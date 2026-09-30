@@ -83,6 +83,33 @@ def test_full_chain_case_a(tmp_path, capsys, monkeypatch):
     for organ in C.data("organs.json")["organs"]:
         if organ != "kidney":
             ok("organ", "skip", str(ws), "--organ", organ, "--reason", "fixture: no relevant signal")
+    # insights: genomics needs live GWAS/ClinVar (tested in test_insights_live.py); position is offline
+    assert la.main(["intervene", "register", str(ws), "--plan", "x"]) != 0          # insights stage not done yet
+    ok("insights", "skip-genomics", str(ws), "--reason", "offline test run")
+    ok("insights", "position", str(ws))
+    pos = json.loads((ws / "work" / "insights" / "positions.json").read_text())
+    assert any(x["analyte"] == "creatinine" for x in pos["labs"]) and len(pos["ages"]) >= 3
+    bdir = ws / "work" / "insights" / "board"
+    bdir.mkdir(parents=True, exist_ok=True)
+    qs = {"questions": [{"id": f"Q{i}", "title_zh": t, "hypothesis_zh": "待检验的假设。", "basis": [b], "why_zh": "来自本人数据。"}
+                        for i, (t, b) in enumerate([("表观年龄与血液年龄为何不一致", "epiage.dnam_hannum"),
+                                                    ("血脂偏高是否有遗传因素", "高密度脂蛋白胆固醇(HDL-C)"),
+                                                    ("肠道菌群是否偏离健康人群", "native.gut.gmhi")], 1)]}
+    (bdir / "q.json").write_text(json.dumps(qs, ensure_ascii=False), encoding="utf-8")
+    bad = dict(qs, questions=qs["questions"][:2])
+    (bdir / "q2.json").write_text(json.dumps(bad, ensure_ascii=False), encoding="utf-8")
+    assert la.main(["board", "questions", str(ws), "--file", str(bdir / "q2.json")]) == C.EXIT_INPUT   # 3-10 questions
+    ok("board", "questions", str(ws), "--file", str(bdir / "q.json"))
+    for i in (1, 2):
+        (bdir / f"Q{i}.json").write_text(json.dumps({"id": f"Q{i}", "verdict": "insufficient", "confidence": "low",
+            "member_evidence": [qs["questions"][i - 1]["basis"][0]], "public_evidence": [],
+            "summary_zh": "现有数据不足以判断。", "next_step_zh": "复测后再评估。", "limitations_zh": "只有一次测量。"}, ensure_ascii=False), encoding="utf-8")
+        ok("board", "finding", str(ws), "--id", f"Q{i}")
+    (bdir / "Q3.json").write_text(json.dumps({"id": "Q3", "verdict": "supported", "confidence": "high", "member_evidence": ["native.gut.gmhi"],
+        "public_evidence": ["gwas:made-up"], "summary_zh": "你的指数低于健康人群 3 个百分位。", "next_step_zh": "x", "limitations_zh": "x"}, ensure_ascii=False), encoding="utf-8")
+    assert la.main(["board", "finding", str(ws), "--id", "Q3"]) == C.EXIT_INPUT     # confidence, unretrieved ref, bare digit
+    ok("board", "skip", str(ws), "--id", "Q3", "--reason", "offline test")
+    assert json.loads((ws / "state.json").read_text())["stages"]["insights"] == "done"
     plan = {"items": [{"id": "I1", "category": "diet", "action_zh": "在营养师指导下尝试适度热量限制",
                        "targets": ["epiage.dnam_hannum"], "evidence": [{"type": "effects", "ref": "calerie-cr-dunedinpace"}],
                        "evidence_grade": "human_rct", "executor": "nutritionist", "retest": {"what": "甲基化时钟", "after_weeks": 52}}]}
@@ -104,6 +131,7 @@ def test_full_chain_case_a(tmp_path, capsys, monkeypatch):
     ok("validate", str(ws))
     md = (ws / "deliver" / "report.md").read_text()
     assert "表型年龄" in md and "12 周后" in md and "{{" not in md
+    assert "## 你在同龄人群中的位置" in md and "## 问题看板" in md and "证据不足" in md
     assert "## 器官体检表" in md and "AI 估计" in md and "8%（AI 估计，区间 4%–16%，10 年）" in md
     tw = json.loads((ws / "deliver" / "twin.json").read_text())
     assert [e["id"] for e in tw["organ_estimates"]] == ["organ.kidney.risk.1"]

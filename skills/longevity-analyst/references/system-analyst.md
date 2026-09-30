@@ -52,6 +52,9 @@ compared with a guideline cut-off, if the cut-off is written as `{{n:…}}` and 
 evidence; otherwise say there is no reference range. When the member declined APOE, no sentence may tie dementia to
 genes or heredity, not even as general knowledge.
 
+Insight readouts (`gen.<analyte>.grs_pct`, `ref.<analyte>.pct_nhanes`, `ref.gmhi.*`, `wear.*`) may be cited like
+any readout; say that a genetic percentile is a tendency and that NHANES is a US reference.
+
 Quantities written in Chinese numerals with a unit are numbers too: 两周后, 四周, 一小时内, 三个月, 百分之…, 一倍 are
 refused by the trace unless wrapped as `{{n:两周后}}`. Ordinary words (一些, 一起, 一次性, 一年四季, 十分重要, 进一步,
 一成不变, 一片空白) pass.

@@ -35,6 +35,11 @@ preferences. Read, do not edit.
    direction the member's readouts support, not contradicting a calibrated result for the same organ, with a range
    that honestly reflects uncertainty; nowhere in summary, analyses or plan is an AI estimate presented as measured.
 12. Guideline evidence: the link shows its host; a host that is not a guideline body or health authority is P1.
+13. Insights (genes vs labs, position, projections, board): a genetic percentile is presented as a tendency with its
+   coverage, never as a diagnosis; a ClinVar P/LP finding says it needs clinical confirmation and genetic counselling;
+   NHANES percentiles are labelled as a US reference; an MR projection states its assumption; each board verdict
+   follows from its cited member data and retrieved records (a `supported` verdict resting only on a weak common-
+   variant score is P1). Read `work/insights/*.json` and the board files.
 
 Also read `work/organs/organ_readouts.json`, `work/organs/estimates/*.json` and `work/evidence/pubmed_*.json` (with
 abstracts): check 11 needs them.

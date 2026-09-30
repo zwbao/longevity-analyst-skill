@@ -90,6 +90,17 @@ def name_for_kit(name: str) -> str:
     return f"{parts[0]}({' '.join(parts[1:])})" if len(parts) > 1 else name
 
 
+def name_keys(marker: str) -> Set[str]:
+    """Every folded form a lab name can match on: whole, the name_for_kit rewrite, and each space-separated part."""
+    kit = skillkit()
+    raw = str(marker or "")
+    names = {raw, name_for_kit(raw)} | set(raw.replace("\u3000", " ").replace("\xa0", " ").split())
+    out: Set[str] = set()
+    for n in names:
+        out |= set(kit.name_variants(n))
+    return out
+
+
 def analytes(r: Dict[str, Any]) -> Set[str]:
     """Analyte codes a row could be: every variant the method matcher or the organ calculators could use."""
     kit = skillkit()

@@ -26,6 +26,7 @@ STAGES = [
     "methods",
     "integrate",
     "organs",
+    "insights",
     "intervene",
     "twin",
     "review",
@@ -138,6 +139,8 @@ def invalidate_after(st: Dict[str, Any], stage: str, why: str) -> List[str]:
         st.pop("integrate", None)
     if "organs" in DOWNSTREAM[stage]:
         st.pop("organs", None)
+    if "insights" in DOWNSTREAM[stage]:
+        st.pop("insights", None)
     if "intervene" in DOWNSTREAM[stage]:
         st.pop("intervene", None)
     if "twin" in DOWNSTREAM[stage]:
@@ -261,6 +264,12 @@ class Workspace:
         orp = self.root / "work" / "organs" / "organ_readouts.json"
         if orp.exists() and not (st.get("organs") or {}).get("organ_readouts_sha256"):
             orp.unlink()                                # derived from registrations that were voided upstream
+        irp = self.root / "work" / "insights" / "insight_readouts.json"
+        if irp.exists() and not (st.get("insights") or {}).get("readouts_sha256"):
+            irp.unlink()                                # derived from insight runs voided upstream
+        if "insights" not in st and (self.root / "work" / "insights").exists():
+            import shutil
+            shutil.rmtree(self.root / "work" / "insights")
         if "organs" not in st and (self.root / "work" / "organs").exists():
             import shutil                               # upstream changed: bundles and estimates describe old data
             shutil.rmtree(self.root / "work" / "organs")

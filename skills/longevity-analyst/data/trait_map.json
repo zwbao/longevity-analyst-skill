@@ -1,0 +1,343 @@
+{
+ "schema": "la-traits/1",
+ "note": "Lab analytes the genotype-phenotype explainer can study. Each: lab names (lookup, confirmed rows only), the GWAS Catalog trait id verified against the live catalog on 2026-09-30 (association count in brackets), genes whose rare variants can cause the trait on their own (monogenic; ClinVar is scanned for them), and common-variant genes named for the reader. Nothing here is a judgment about the member.",
+ "analytes": {
+  "lpa": {
+   "label_zh": "脂蛋白(a)",
+   "names": [
+    "脂蛋白(a)",
+    "脂蛋白a",
+    "Lp(a)",
+    "LPA",
+    "lipoprotein(a)"
+   ],
+   "loinc": [
+    "10835-7",
+    "43583-4"
+   ],
+   "efo": "EFO_0006925",
+   "efo_label": "lipoprotein A measurement (676)",
+   "monogenic_genes": [
+    "LPA"
+   ],
+   "common_genes": [
+    "LPA"
+   ]
+  },
+  "ldl": {
+   "label_zh": "低密度脂蛋白胆固醇",
+   "names": [
+    "低密度脂蛋白胆固醇",
+    "低密度脂蛋白",
+    "LDL-C",
+    "LDL"
+   ],
+   "loinc": [
+    "13457-7",
+    "2089-1"
+   ],
+   "efo": "EFO_0004611",
+   "efo_label": "low density lipoprotein cholesterol measurement (18417)",
+   "monogenic_genes": [
+    "LDLR",
+    "APOB",
+    "PCSK9",
+    "LDLRAP1"
+   ],
+   "common_genes": [
+    "APOE",
+    "CELSR2",
+    "HMGCR"
+   ],
+   "monogenic_source": "ClinGen familial hypercholesterolemia gene curation"
+  },
+  "hdl": {
+   "label_zh": "高密度脂蛋白胆固醇",
+   "names": [
+    "高密度脂蛋白胆固醇",
+    "高密度脂蛋白",
+    "HDL-C",
+    "HDL"
+   ],
+   "loinc": [
+    "2085-9",
+    "14646-4"
+   ],
+   "efo": "EFO_0004612",
+   "efo_label": "high density lipoprotein cholesterol measurement (25386)",
+   "monogenic_genes": [
+    "ABCA1",
+    "APOA1",
+    "LCAT"
+   ],
+   "common_genes": [
+    "CETP",
+    "LIPC",
+    "LPL"
+   ]
+  },
+  "tg": {
+   "label_zh": "甘油三酯",
+   "names": [
+    "甘油三酯",
+    "三酰甘油",
+    "TG"
+   ],
+   "loinc": [
+    "2571-8",
+    "14927-8"
+   ],
+   "efo": "EFO_0004530",
+   "efo_label": "triglyceride measurement (25936)",
+   "monogenic_genes": [
+    "LPL",
+    "APOC2",
+    "APOA5",
+    "GPIHBP1",
+    "LMF1"
+   ],
+   "common_genes": [
+    "APOA5",
+    "GCKR",
+    "LPL"
+   ],
+   "monogenic_source": "familial chylomicronemia syndrome genes"
+  },
+  "tc": {
+   "label_zh": "总胆固醇",
+   "names": [
+    "总胆固醇",
+    "TC",
+    "CHOL"
+   ],
+   "loinc": [
+    "2093-3",
+    "14647-2"
+   ],
+   "efo": "EFO_0004574",
+   "efo_label": "total cholesterol measurement (10086)",
+   "monogenic_genes": [],
+   "common_genes": [
+    "APOE",
+    "LDLR",
+    "HMGCR"
+   ]
+  },
+  "urate": {
+   "label_zh": "尿酸",
+   "names": [
+    "尿酸",
+    "血尿酸",
+    "UA"
+   ],
+   "loinc": [
+    "3084-1",
+    "14933-6"
+   ],
+   "efo": "EFO_0004761",
+   "efo_label": "uric acid measurement (1014)",
+   "monogenic_genes": [
+    "HPRT1",
+    "SLC22A12",
+    "SLC2A9"
+   ],
+   "common_genes": [
+    "SLC2A9",
+    "ABCG2",
+    "SLC22A12"
+   ]
+  },
+  "hcy": {
+   "label_zh": "同型半胱氨酸",
+   "names": [
+    "同型半胱氨酸",
+    "HCY",
+    "Hcy"
+   ],
+   "loinc": [
+    "13965-9"
+   ],
+   "efo": "EFO_0004578",
+   "efo_label": "homocysteine measurement (52)",
+   "monogenic_genes": [
+    "CBS",
+    "MTHFR",
+    "MTR",
+    "MTRR"
+   ],
+   "common_genes": [
+    "MTHFR",
+    "CBS"
+   ]
+  },
+  "vitd": {
+   "label_zh": "25-羟基维生素D",
+   "names": [
+    "25-羟基维生素D",
+    "25羟基维生素D",
+    "维生素D",
+    "25-OH-D",
+    "25(OH)D"
+   ],
+   "loinc": [
+    "1989-3",
+    "62292-8"
+   ],
+   "efo": "OBA_1000968",
+   "efo_label": "vitamin D level (1124)",
+   "monogenic_genes": [
+    "CYP2R1",
+    "CYP27B1",
+    "VDR"
+   ],
+   "common_genes": [
+    "GC",
+    "CYP2R1",
+    "DHCR7",
+    "CYP24A1"
+   ]
+  },
+  "glucose": {
+   "label_zh": "空腹血糖",
+   "names": [
+    "空腹血糖",
+    "空腹葡萄糖",
+    "FPG",
+    "GLU",
+    "血糖"
+   ],
+   "loinc": [
+    "1558-6",
+    "14771-0"
+   ],
+   "efo": "OBA_VT0000188",
+   "efo_label": "blood glucose amount (1276)",
+   "monogenic_genes": [
+    "GCK",
+    "HNF1A",
+    "HNF4A",
+    "HNF1B"
+   ],
+   "common_genes": [
+    "G6PC2",
+    "GCK",
+    "MTNR1B",
+    "TCF7L2"
+   ],
+   "monogenic_source": "MODY genes (ClinGen)"
+  },
+  "hba1c": {
+   "label_zh": "糖化血红蛋白",
+   "names": [
+    "糖化血红蛋白",
+    "HbA1c",
+    "糖化血红蛋白A1c"
+   ],
+   "loinc": [
+    "4548-4",
+    "17856-6"
+   ],
+   "efo": "EFO_0004541",
+   "efo_label": "HbA1c measurement (4165)",
+   "monogenic_genes": [
+    "GCK",
+    "HNF1A",
+    "HNF4A"
+   ],
+   "common_genes": [
+    "G6PC2",
+    "GCK",
+    "HK1"
+   ]
+  },
+  "alt": {
+   "label_zh": "谷丙转氨酶",
+   "names": [
+    "谷丙转氨酶",
+    "丙氨酸氨基转移酶",
+    "ALT",
+    "GPT"
+   ],
+   "loinc": [
+    "1742-6"
+   ],
+   "efo": "OBA_2050062",
+   "efo_label": "serum alanine aminotransferase amount (3813)",
+   "monogenic_genes": [],
+   "common_genes": [
+    "PNPLA3",
+    "TM6SF2",
+    "HSD17B13"
+   ]
+  },
+  "ggt": {
+   "label_zh": "γ-谷氨酰转移酶",
+   "names": [
+    "γ-谷氨酰转移酶",
+    "谷氨酰转移酶",
+    "GGT",
+    "γ-GT"
+   ],
+   "loinc": [
+    "2324-2"
+   ],
+   "efo": "EFO_0004532",
+   "efo_label": "serum gamma-glutamyl transferase measurement (3687)",
+   "monogenic_genes": [],
+   "common_genes": [
+    "GGT1",
+    "HNF1A"
+   ]
+  },
+  "crp": {
+   "label_zh": "C反应蛋白",
+   "names": [
+    "超敏C反应蛋白",
+    "C反应蛋白",
+    "hs-CRP",
+    "CRP"
+   ],
+   "loinc": [
+    "30522-7",
+    "1988-5"
+   ],
+   "efo": "EFO_0004458",
+   "efo_label": "c-reactive protein measurement (3370)",
+   "monogenic_genes": [],
+   "common_genes": [
+    "CRP",
+    "HNF1A",
+    "APOE"
+   ]
+  },
+  "creatinine": {
+   "label_zh": "肌酐",
+   "names": [
+    "肌酐",
+    "血肌酐",
+    "Cr",
+    "CREA"
+   ],
+   "loinc": [
+    "2160-0",
+    "14682-9"
+   ],
+   "efo": "OBA_2050096",
+   "efo_label": "serum creatinine amount (7476)",
+   "monogenic_genes": [],
+   "common_genes": [
+    "UMOD",
+    "SLC34A1",
+    "GATM"
+   ]
+  }
+ },
+ "score_rules": {
+  "gwas_pmax": 5e-08,
+  "max_loci": 40,
+  "clump_kb": 500,
+  "min_coverage": 0.7,
+  "min_gq": 20,
+  "min_dp": 10
+ }
+}

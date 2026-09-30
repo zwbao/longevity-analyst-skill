@@ -27,6 +27,9 @@ def build(st: Dict[str, Any], ws_root: Path) -> Dict[str, Any]:
     t = st["member"].get("sample_date") or now_iso()[:10]
     ro_path = ws_root / "work" / "readouts.json"
     readouts = load_json(ro_path)["readouts"] if ro_path.exists() else []
+    ip = ws_root / "work" / "insights" / "insight_readouts.json"
+    if ip.exists():
+        readouts = readouts + [r for r in load_json(ip)["readouts"] if r.get("kind") in ("genetic_score", "population_position", "descriptive")]
     plan_path = ws_root / "work" / "intervene" / "plan.json"
     plan = load_json(plan_path) if plan_path.exists() else {"items": []}
     op = ws_root / "work" / "organs" / "organ_readouts.json"

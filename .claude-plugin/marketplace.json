@@ -4,13 +4,13 @@
     "name": "CancerDAO"
   },
   "description": "Longevity multi-omics analyst: report, digital-twin snapshot and intervention plan from one person's test data, with local nf-core pipelines after preflight.",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "plugins": [
     {
       "name": "longevity-analyst",
       "source": "./",
       "description": "Longevity multi-omics analyst: report, digital-twin snapshot and intervention plan from one person's test data, with local nf-core pipelines after preflight.",
-      "version": "0.5.0",
+      "version": "0.6.0",
       "license": "MIT",
       "skills": [
         "./skills/longevity-analyst"

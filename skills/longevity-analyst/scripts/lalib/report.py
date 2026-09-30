@@ -27,6 +27,8 @@ from .integrate import MODES, PLACEHOLDER
 
 KIND_ZH = {"computed": "为你计算", "computed_low_coverage": "为你计算（CpG 覆盖不足，仅供参考）", "implausible": "数值超出合理范围，不采用", "computed_quality_unverified": "为你计算（原始数据缺少质量字段，未核对）",
            "llm_estimate": "AI 估计（非测量、非校准模型）",
+           "genetic_score": "遗传倾向（全基因组显著位点风险等位基因计数）", "genetic_finding": "ClinVar 注释",
+           "population_position": "人群位置（参照人群见说明）",
            "computed_coverage_unknown": "为你计算（覆盖率未知）", "descriptive": "数据描述", "lookup": "论文名单查表"}
 SEX_ZH = {"male": "男", "female": "女"}
 BOUNDARY = ("本报告由模型和已发表方法根据你交来的数据计算，是研究性估计，不是诊断，也不是治疗或用药建议。"
@@ -71,6 +73,9 @@ def _readouts(ws: Path) -> Dict[str, Dict[str, Any]]:
     op = ws / "work" / "organs" / "organ_readouts.json"
     if op.exists():
         ro.update({r["id"]: r for r in load_json(op)["readouts"]})
+    ip = ws / "work" / "insights" / "insight_readouts.json"
+    if ip.exists():
+        ro.update({r["id"]: r for r in load_json(ip)["readouts"]})
     return ro
 
 
@@ -217,6 +222,13 @@ def _authored(ws: Path, st: Dict[str, Any] = None) -> List[Tuple[str, str]]:
     op = ws / "work" / "organs" / "organ_readouts.json"
     if op.exists():
         out.append((str(op), "\n".join(x.get("rationale_zh", "") for x in load_json(op)["readouts"])))   # disease names come from organs.json
+    bq = ws / "work" / "insights" / "board" / "questions.json"
+    if bq.exists():
+        out.append((str(bq), "\n".join(q.get(k, "") for q in load_json(bq)["questions"] for k in ("title_zh", "hypothesis_zh", "why_zh"))))
+        from .board import registered_findings
+        for fp in sorted(registered_findings(ws, st).values()):
+            f = load_json(fp)
+            out.append((str(fp), "\n".join(str(f.get(k, "")) for k in ("summary_zh", "next_step_zh", "limitations_zh"))))
     pl = ws / "work" / "intervene" / "plan.json"
     if pl.exists():
         plan = load_json(pl)
@@ -233,6 +245,11 @@ def bound_files(ws: Path, st: Dict[str, Any] = None) -> List[Path]:
     files = [ws / "work" / "readouts.json", ws / "work" / "report" / "summary.md", ws / "work" / "intervene" / "plan.json",
              ws / "work" / "twin" / "twin.json", ws / "work" / "organs" / "organ_readouts.json"]
     files += sorted((ws / "work" / "organs" / "estimates").glob("*.json"))
+    files += [ws / "work" / "insights" / n for n in ("insight_readouts.json", "genotype_phenotype.json", "positions.json", "projections.json")]
+    bq = ws / "work" / "insights" / "board" / "questions.json"
+    if bq.exists():
+        from .board import registered_findings
+        files += [bq] + sorted(registered_findings(ws, st).values())
     files += registered_analyses(ws, st)
     return [f for f in files if f.exists()]
 
@@ -253,6 +270,10 @@ def trace(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
     ow = (st.get("organs") or {}).get("organ_readouts_sha256")
     if op.exists() and (not ow or sha256_file(op, limit=None) != ow):
         raise LAError("organ_readouts.json does not match what `organ register` wrote; register the estimates again", EXIT_BLOCKED)
+    ip = ws / "work" / "insights" / "insight_readouts.json"
+    iw = (st.get("insights") or {}).get("readouts_sha256")
+    if ip.exists() and (not iw or sha256_file(ip, limit=None) != iw):
+        raise LAError("insight_readouts.json does not match what `la.py insights` wrote; run it again", EXIT_BLOCKED)
     ro = _readouts(ws)
     findings = {}
     missing_ids = {}
@@ -437,8 +458,8 @@ def render(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
         L += ["## 本期读数总表", "", "类型说明：「为你计算」= 用你的数据按论文公式算出；「数据描述」= 质控或计数，不是健康判断。", ""]
         by_sys: Dict[str, List[Dict[str, Any]]] = {}
         for r in ro.values():
-            if r.get("kind") == "llm_estimate":
-                continue                              # AI estimates appear only in the organ table, with their ranges
+            if r.get("kind") in ("llm_estimate", "genetic_score", "genetic_finding", "population_position"):
+                continue                              # shown in their own sections (organ table, genes vs labs, position)
             by_sys.setdefault((r.get("systems") or ["overall_aging"])[0], []).append(r)
         for s, rs in sorted(by_sys.items(), key=lambda kv: list(sysdef).index(kv[0]) if kv[0] in sysdef else 99):
             L += [f"### {sysdef.get(s, {}).get('label_zh', s)}", "", "| 读数 | 值 | 单位 | 类型 | 方法 |", "|---|---|---|---|---|"]
@@ -449,6 +470,7 @@ def render(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
                 L.append(f"| {_cell(r['label_zh'])} | {_cell(_fmt(r['value']))} | {_cell(unit)} | {KIND_ZH.get(r.get('kind'), r.get('kind'))}{cov}{unc} | {_cell(r.get('method'))} |")
             L.append("")
     L += organ_section(ws, ro)
+    L += insight_sections(ws, ro)
     regd = registered_analyses(ws, st)
     if regd:
         L += ["## 分系统解读", ""]
@@ -568,6 +590,86 @@ def organ_section(ws: Path, ro: Dict[str, Dict[str, Any]]) -> List[str]:
             L.append(f"- {_cell(x['disease'])}：{_cell(substitute(x['rationale_zh'], ro))}"
                      + (f"（文献：{'；'.join(_ev_link(e) for e in pm)}）" if pm else ""))
         L.append("")
+    return L
+
+
+def insight_sections(ws: Path, ro: Dict[str, Dict[str, Any]]) -> List[str]:
+    from . import board as B
+    L: List[str] = []
+    gp = ws / "work" / "insights" / "genotype_phenotype.json"
+    if gp.exists():
+        g = load_json(gp)["analytes"]
+        if g:
+            L += ["## 基因与化验对照", "",
+                  "> 遗传倾向 = 你携带的、已发表全基因组关联研究（GWAS Catalog，p<5×10⁻⁸）中使该指标升高的等位基因个数，"
+                  "按 gnomAD 东亚人群频率换算成百分位；它说明「这项指标有多少可能受基因影响」，不是诊断。位点覆盖不足时不计算。", "",
+                  "| 指标 | 你的结果 | 与参考区间 | 遗传倾向（东亚百分位） | 位点覆盖 | 单基因致病/可能致病变异（ClinVar） |", "|---|---|---|---|---|---|"]
+            for k, a in g.items():
+                lab = a["member_lab"]
+                flag = {"high": "偏高", "low": "偏低", "in_range": "在范围内", "no_range": "报告未印参考区间"}[lab["flag"]]
+                pct = f"第 {_fmt(a['pct_eas'])} 百分位" if a.get("pct_eas") is not None else "未计算（覆盖不足）"
+                plp = a["monogenic_scan"]["pathogenic_or_likely"]
+                plp_s = "；".join(f"{_cell(x['gene'])} {_cell(x['hgvs'])}（{_cell('/'.join(x['significance']))}）" for x in plp) \
+                    or ("未发现" if a["monogenic_scan"]["genes"] else "—")
+                L.append(f"| {_cell(a['label_zh'])} | {_cell(_fmt(lab['value']))} {_cell(lab['unit'])} | {flag} | {pct} | "
+                         f"{a['loci_called']}/{a['loci_tested']} | {plp_s} |")
+            L.append("")
+    pp = ws / "work" / "insights" / "positions.json"
+    if pp.exists():
+        pos = load_json(pp)
+        if pos["labs"] or pos["gmhi"] or pos["ages"]:
+            L += ["## 你在同龄人群中的位置", "",
+                  "> 化验参照：美国 NHANES 2005–2010 同性别、同年龄段人群（加权百分位）；中国人群分布尚未接入，美国人群的分布可能与中国人不同，只作方向参考。", ""]
+            if pos["labs"]:
+                L += ["| 指标 | 你的结果 | 参照人群 | 百分位 | 该人群中位数 |", "|---|---|---|---|---|"]
+                for x in pos["labs"]:
+                    pct = ("低于第 1 百分位" if x["bound"] == "below" else "高于第 99 百分位" if x["bound"] == "above" else f"第 {_fmt(x['pct'])} 百分位")
+                    L.append(f"| {_cell(x['label_zh'])} | {_cell(_fmt(x['value']))} {_cell(x['unit'])} | {_cell(x['stratum'])}（{x['n']} 人） | {pct} | {_cell(_fmt(x['median']))} |")
+                L.append("")
+            if pos["gmhi"]:
+                gm = pos["gmhi"]
+                parts = [f"全部健康人群（{gm['n_healthy']} 人）第 {_fmt(gm['healthy']['pct'])} 百分位",
+                         f"疾病人群（{gm['n_nonhealthy']} 人）第 {_fmt(gm['nonhealthy']['pct'])} 百分位"]
+                if gm.get("healthy_east_asia"):
+                    parts.insert(1, f"东亚健康人群（{gm['n_healthy_east_asia']} 人）第 {_fmt(gm['healthy_east_asia']['pct'])} 百分位")
+                L += [f"**肠道菌群健康指数 GMHI {_fmt(gm['value'])}**：" + "；".join(parts) + "。东亚健康人群的 GMHI 整体偏低，与你对照时以东亚健康人群为主。", ""]
+            if len(pos["ages"]) > 1:
+                L += ["**几种「年龄」并列**", "", "| 来源 | 数值 | 与实际年龄之差 |", "|---|---|---|"]
+                for x in pos["ages"]:
+                    rng = f"（{_fmt(x['low'])}–{_fmt(x['high'])}，AI 估计）" if x.get("low") is not None else ""
+                    diff = "—" if x.get("minus_age") is None else f"{x['minus_age']:+.1f} 岁"
+                    L.append(f"| {_cell(x['label_zh'])} | {_cell(_fmt(x['value']))} 岁{rng} | {diff} |")
+                L.append("")
+    prj = ws / "work" / "insights" / "projections.json"
+    if prj.exists():
+        L += ["## 干预的因果推算（孟德尔随机化）", "",
+              "> 用公开的孟德尔随机化研究估计（EpiGraphDB）推算「把某项指标降到目标值，你的风险大约会变成多少」。它假定人群中的因果效应也适用于你，只是方向和量级的参考。", "",
+              "| 暴露 → 结局 | 你的现值 → 目标 | 基线风险 | 推算后风险（95% 区间） |", "|---|---|---|---|"]
+        for x in load_json(prj)["projections"]:
+            L.append(f"| {_cell(x['exposure'])} → {_cell(x['outcome'])} | {_cell(_fmt(x['member_value']))} → {_cell(_fmt(x['target']))} {_cell(x['unit'])} | "
+                     f"{_pct(x['baseline_risk'])} | {_pct(x['risk_after'])}（{_pct(x['risk_after_ci'][0])}–{_pct(x['risk_after_ci'][1])}） |")
+        L.append("")
+    rows = B.rows(ws)
+    if rows:
+        L += ["## 问题看板：为你提出的问题与研究结论", "",
+              "> 每个问题由一个独立的 AI 研究员基于你的数据和本次实时检索的公共数据库、文献作出判断。结论只说明「现有证据是否支持」，不是诊断。", "",
+              "| 编号 | 问题 | 结论 | 把握 | 下一步 |", "|---|---|---|---|---|"]
+        for r in rows:
+            q, f = r["q"], r["f"]
+            verdict = B.VERDICTS.get((f or {}).get("verdict"), "未研究（" + _cell(r["skipped"]) + "）" if r.get("skipped") else "未完成")
+            conf = {"low": "低", "moderate": "中"}.get((f or {}).get("confidence"), "—")
+            nxt = _cell(substitute(f.get("next_step_zh", ""), ro)) if f else "—"
+            L.append(f"| {q['id']} | {_cell(substitute(q['title_zh'], ro))} | {verdict} | {conf} | {nxt} |")
+        L.append("")
+        for r in rows:
+            q, f = r["q"], r["f"]
+            if not f:
+                continue
+            ev = "；".join(_ev_link({"type": "pubmed", "ref": x[5:]}) if x.startswith("pmid:") else _cell(x) for x in f.get("public_evidence", [])[:8])
+            L += [f"**{q['id']} {_cell(substitute(q['title_zh'], ro))}**", "",
+                  f"- 假设：{_cell(substitute(q['hypothesis_zh'], ro))}",
+                  f"- 结论：{B.VERDICTS[f['verdict']]}。{_cell(substitute(f['summary_zh'], ro))}",
+                  f"- 局限：{_cell(substitute(f['limitations_zh'], ro))}"] + ([f"- 依据：{ev}"] if ev else []) + [""]
     return L
 
 

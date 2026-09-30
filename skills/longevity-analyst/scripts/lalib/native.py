@@ -273,10 +273,9 @@ def gut_diversity(path: Path) -> Dict[str, Any]:
     ]}
 
 
-def gmhi(path: Path) -> Dict[str, Any]:
-    """GMHI exactly as GMHI.R (Gupta et al. 2020)."""
+def gmhi_profile(sp: Dict[str, float]) -> Tuple[float, int, int]:
+    """(GMHI, MH detected, MN detected) for one species -> relative abundance profile, exactly as GMHI.R."""
     ref = data("gmhi.json")
-    sp = read_metaphlan(path)
     keep = {k: v for k, v in sp.items() if "unclassified" not in k and "virus" not in k.lower()}
     total = sum(keep.values())
     if total <= 0:
@@ -288,8 +287,14 @@ def gmhi(path: Path) -> Dict[str, Any]:
     alpha = lambda xs: -sum(math.log(x) * x for x in xs if x > 0)
     psi_mh = (len(mh) / ref["mh_prime"]) * alpha(mh)
     psi_mn = (len(mn) / ref["mn_prime"]) * alpha(mn)
-    val = math.log10((psi_mh + ref["pseudocount"]) / (psi_mn + ref["pseudocount"]))
-    matched = sum(1 for s in ref["mh_species"] + ref["mn_species"] if s in sp)
+    return math.log10((psi_mh + ref["pseudocount"]) / (psi_mn + ref["pseudocount"])), len(mh), len(mn)
+
+
+def gmhi(path: Path) -> Dict[str, Any]:
+    """GMHI exactly as GMHI.R (Gupta et al. 2020)."""
+    ref = data("gmhi.json")
+    val, n_mh, n_mn = gmhi_profile(read_metaphlan(path))
+    mh, mn = [None] * n_mh, [None] * n_mn
     return {"status": "ok", "notes": [
         f"GMHI 名单 50 个物种里本样本检出 {len(mh)}/7 个健康富集种、{len(mn)}/43 个健康稀缺种",
         "GMHI 的 50 个物种名来自 MetaPhlAn2；本方法只在 MetaPhlAn2 谱上运行（其它版本在计划阶段被拦下）",

@@ -1,6 +1,6 @@
 # longevity-analyst
 
-![Version](https://img.shields.io/badge/version-0.5.0-CC785C)
+![Version](https://img.shields.io/badge/version-0.6.0-CC785C)
 
 Agent skill that turns one person's longevity test data into a multi-omics report, a digital-twin snapshot and an
 evidence-cited intervention plan. It runs local nf-core pipelines only after a preflight check and the user's consent.

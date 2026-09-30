@@ -208,9 +208,12 @@ def check_plan(st: Dict[str, Any], ws_root: Path, plan_path: Path) -> Dict[str, 
     menu = data("intervention_menu.json")
     cats = {c["id"]: c for c in menu["categories"]}
     ro_ids = {r["id"] for r in load_json(ws_root / "work" / "readouts.json")["readouts"]}
-    op = ws_root / "work" / "organs" / "organ_readouts.json"
-    if op.exists():
-        ro_ids |= {r["id"] for r in load_json(op)["readouts"]}
+    for extra in (ws_root / "work" / "organs" / "organ_readouts.json", ws_root / "work" / "insights" / "insight_readouts.json"):
+        if extra.exists():
+            ro_ids |= {r["id"] for r in load_json(extra)["readouts"]}
+    from . import board as _board, pubdata as _pub
+    proj_refs = {r for r in _pub.known_refs(ws_root) if r.startswith("proj:")}
+    board_ids = set(((st.get("insights") or {}).get("board") or {}).get("findings") or {})
     lab_names = {l["marker"] for l in st["labs"]}
     home = longevity_skills_home()
     eff_ids = {json.loads(l)["id"] for l in open(home / "data" / "effects.jsonl", encoding="utf-8")}
@@ -268,7 +271,8 @@ def check_plan(st: Dict[str, Any], ws_root: Path, plan_path: Path) -> Dict[str, 
         for e in ev:
             typ, ref = e.get("type"), str(e.get("ref", ""))
             ok = (typ == "effects" and ref in eff_ids) or (typ == "claims" and ref in claim_ids) or \
-                 (typ == "pubmed" and ref in pmids and ref in live) or (typ == "guideline" and ref in urls)
+                 (typ == "pubmed" and ref in pmids and ref in live) or (typ == "guideline" and ref in urls) or \
+                 (typ == "proj" and ref in proj_refs) or (typ == "board" and ref in board_ids)
             if not ok:
                 problems.append(f"{iid}: evidence {typ}:{ref} was not retrieved and verified in this run (effects/claims id, a PMID from `la.py evidence pubmed` that PubMed confirms, or a URL fetched with `la.py evidence fetch`)")
         rt = it.get("retest") or {}

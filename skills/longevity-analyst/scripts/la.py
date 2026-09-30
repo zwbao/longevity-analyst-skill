@@ -9,6 +9,7 @@ Stage order is enforced, and changing an earlier stage voids the later ones.
 from __future__ import annotations
 
 import argparse
+import json
 import os
 import re
 import sys
@@ -17,6 +18,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
+from lalib import board, causal, genomics, reference, wearable
 from lalib import common as C  # noqa: E402
 from lalib import evidence, integrate, intake, methods, organs, pipelines, preflight, report, twin  # noqa: E402
 
@@ -408,9 +410,99 @@ def cmd_organ(a):
     C.emit(res)
 
 
+
+def _insight_readouts(st, ws, group, rows):
+    """Replace one group's rows (genomics / position / wearable) in work/insights/insight_readouts.json."""
+    p = ws.root / "work" / "insights" / "insight_readouts.json"
+    old = C.load_json(p)["readouts"] if p.exists() else []
+    keep = [r for r in old if r.get("group") != group]
+    new = [{**r, "group": group} for r in rows]
+    C.write_json(p, {"generated_at": C.now_iso(), "readouts": keep + new})
+    ins = st.setdefault("insights", {})
+    ins["readouts_sha256"] = C.sha256_file(p, limit=None)
+    ins.setdefault("done", {})[group] = C.now_iso()
+
+
+def _insights_stage(st):
+    ins = st.get("insights") or {}
+    d = ins.get("done") or {}
+    genomics_ok = "genomics" in d or "genomics_skipped" in ins
+    if "position" in d and genomics_ok and board.complete(st):
+        st["stages"]["insights"] = "done"
+    elif st["stages"].get("insights") == "done":
+        st["stages"]["insights"] = "todo"
+        C.invalidate_after(st, "insights", "insights incomplete")
+
+
+def cmd_insights(a):
+    ws, st = _open(a)
+    C.require(st, "organs")
+    if a.action == "genomics":
+        res = genomics.explain(st, ws.root)
+        _insight_readouts(st, ws, "genomics", res.pop("readouts"))
+    elif a.action == "skip-genomics":
+        if not (a.reason or "").strip():
+            raise C.LAError("skip-genomics needs --reason (e.g. no VCF, member declined genetic results)", C.EXIT_USAGE)
+        st.setdefault("insights", {})["genomics_skipped"] = {"reason": a.reason, "at": C.now_iso()}
+        res = {"skipped": "genomics"}
+    elif a.action == "position":
+        res = reference.position(st, ws.root)
+        _insight_readouts(st, ws, "position", res.pop("readouts"))
+    elif a.action == "wearable":
+        if not a.file or not a.map:
+            raise C.LAError("wearable needs --file and --map '{\"date\": \"日期\", \"steps\": \"步数\", ...}'", C.EXIT_USAGE)
+        try:
+            mapping = json.loads(a.map)
+        except ValueError as e:
+            raise C.LAError(f"--map is not JSON ({e})", C.EXIT_USAGE)
+        res = wearable.summarize(st, ws.root, a.file, mapping)
+        _insight_readouts(st, ws, "wearable", res.pop("readouts"))
+    elif a.action == "mr":
+        if not a.exposure or not a.outcome:
+            raise C.LAError("mr needs --exposure and --outcome trait names (e.g. 'LDL cholesterol', 'Coronary heart disease')", C.EXIT_USAGE)
+        from lalib import pubdata
+        res = {"records": pubdata.mr(ws.root, a.exposure, a.outcome)}
+    else:  # project
+        if not (a.mr_ref and a.analyte and a.target is not None and a.baseline):
+            raise C.LAError("project needs --mr-ref --analyte --target --baseline", C.EXIT_USAGE)
+        res = causal.project(st, ws.root, a.mr_ref, a.analyte, a.target, a.baseline)
+    C.invalidate_after(st, "insights", f"insights {a.action}")
+    _insights_stage(st)
+    ws.log(st, f"insights_{a.action}")
+    ws.save(st)
+    C.emit(res)
+
+
+def cmd_board(a):
+    ws, st = _open(a)
+    C.require(st, "organs")
+    if a.action == "questions":
+        if not a.file:
+            raise C.LAError("board questions needs --file <questions.json>", C.EXIT_USAGE)
+        res = board.register_questions(st, ws.root, Path(a.file))
+    elif a.action == "finding":
+        if not a.id:
+            raise C.LAError("board finding needs --id Q<n>", C.EXIT_USAGE)
+        try:
+            res = board.register_finding(st, ws.root, a.id)
+        except C.LAError:
+            C.invalidate_after(st, "insights", f"finding {a.id} rejected")
+            _insights_stage(st)
+            ws.save(st)
+            raise
+    else:
+        if not a.id or not (a.reason or "").strip():
+            raise C.LAError("board skip needs --id and --reason", C.EXIT_USAGE)
+        res = board.skip(st, a.id, a.reason)
+    C.invalidate_after(st, "insights", f"board {a.action}")
+    _insights_stage(st)
+    ws.log(st, f"board_{a.action}", id=a.id)
+    ws.save(st)
+    C.emit(res)
+
 def cmd_intervene(a):
     ws, st = _open(a)
-    C.require(st, "integrate", "organs")
+    C.require(st, "integrate", "organs", "insights")
     try:
         res = evidence.check_plan(st, ws.root, Path(a.plan))
     except C.LAError:
@@ -462,7 +554,7 @@ def cmd_review(a):
 
 def cmd_report(a):
     ws, st = _open(a)
-    C.require(st, "intake", "preflight", "pipelines", "methods", "integrate", "organs", "intervene", "twin", "review")
+    C.require(st, "intake", "preflight", "pipelines", "methods", "integrate", "organs", "insights", "intervene", "twin", "review")
     res = report.render(st, ws.root)
     st["stages"]["report"] = "done"
     ws.log(st, "report")
@@ -477,6 +569,7 @@ NEXT = {
     "methods": "la.py methods plan / run (workflows/03-methods.md)",
     "integrate": "bundle, dispatch one analyst per system, register (workflows/04-integrate.md)",
     "organs": "organ bundle, one estimator per organ, organ register (workflows/04b-organs.md)",
+    "insights": "insights genomics / position / wearable, then the question board with one researcher per question (workflows/04c-insights.md)",
     "intervene": "evidence lookups, write plan.json, register (workflows/05-intervene.md)",
     "twin": "la.py twin build (workflows/06-twin-report.md)",
     "review": "summary.md, trace, independent reviewer, record (workflows/06-twin-report.md)",
@@ -651,6 +744,28 @@ def build_parser():
     s.add_argument("--organ")
     s.add_argument("--reason")
     s.set_defaults(fn=cmd_organ)
+
+    s = sub.add_parser("insights", help="genotype-phenotype, population position, wearables, MR projections")
+    s.add_argument("action", choices=["genomics", "skip-genomics", "position", "wearable", "mr", "project"])
+    s.add_argument("workspace")
+    s.add_argument("--reason")
+    s.add_argument("--file")
+    s.add_argument("--map", help="wearable: JSON mapping date/steps/rhr/hrv/sleep_h/deep_h/mvpa_min/spo2_min -> column names")
+    s.add_argument("--exposure")
+    s.add_argument("--outcome")
+    s.add_argument("--mr-ref")
+    s.add_argument("--analyte")
+    s.add_argument("--target", type=float)
+    s.add_argument("--baseline")
+    s.set_defaults(fn=cmd_insights)
+
+    s = sub.add_parser("board", help="question board: register questions, researcher findings, skips")
+    s.add_argument("action", choices=["questions", "finding", "skip"])
+    s.add_argument("workspace")
+    s.add_argument("--file")
+    s.add_argument("--id")
+    s.add_argument("--reason")
+    s.set_defaults(fn=cmd_board)
 
     s = sub.add_parser("intervene")
     s.add_argument("action", choices=["register"])

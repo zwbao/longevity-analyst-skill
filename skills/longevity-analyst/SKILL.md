@@ -16,7 +16,7 @@ license: MIT
 category: health-omics
 metadata:
   author: CancerDAO / zwbao
-  version: "0.5.0"
+  version: "0.6.0"
   tags: longevity aging multiomics digital-twin epigenetic-clock nf-core bioinformatics
 ---
 
@@ -43,7 +43,7 @@ library path in the workspace, so later commands find it without any environment
 
 ## Routing Rules
 
-1. New data folder → start at workflow 01 and walk 01 → 02 → 03 → 04 → 04b → 05 → 06 in order. Never skip
+1. New data folder → start at workflow 01 and walk 01 → 02 → 03 → 04 → 04b → 04c → 05 → 06 in order. Never skip
    a stage: `$LA observe <ws>` names the next one.
 2. Re-analysis after a retest → run 01–06 on the new folder in a new workspace,
    then `$LA twin compare --prev <old twin.json> --cur <new twin.json>`.
@@ -61,6 +61,7 @@ library path in the workspace, so later commands find it without any environment
 | Run the published methods and native modules through the platform and licence gates | [`workflows/03-methods.md`](workflows/03-methods.md) |
 | One analyst subagent per body system, cross-modality synthesis | [`workflows/04-integrate.md`](workflows/04-integrate.md) |
 | Organ checkup table: organ ages, organ indices, AI estimates of organ age and disease probability | [`workflows/04b-organs.md`](workflows/04b-organs.md) |
+| Insights: genes vs labs, population position, MR projections, the question board (one researcher per question) | [`workflows/04c-insights.md`](workflows/04c-insights.md) |
 | Evidence retrieval and the intervention plan | [`workflows/05-intervene.md`](workflows/05-intervene.md) |
 | Twin snapshot, number trace, independent review, render | [`workflows/06-twin-report.md`](workflows/06-twin-report.md) |
 
@@ -69,7 +70,9 @@ library path in the workspace, so later commands find it without any environment
 - **Sources of record:** the member's files; `work/readouts.json` (every number
   a method computed, with its source file); the longevity-skills library
   (`catalog.json`, `data/effects.jsonl`, `claims.jsonl`,
-  `biological_variation.json`); live PubMed via `$LA evidence pubmed`.
+  `biological_variation.json`); live PubMed via `$LA evidence pubmed`; live GWAS Catalog, ClinVar/gnomAD
+  (myvariant.info), Ensembl and EpiGraphDB MR via `$LA insights`; population references in
+  `data/ref_population.json` (NHANES 2005–2010, GMHI 4347 metagenomes).
 - **Fallback:** a missing input is named and reported as not computed. A
   pipeline that cannot run is listed with its preflight reason. PubMed down
   means "evidence not retrieved", not remembered citations.
@@ -98,11 +101,12 @@ library path in the workspace, so later commands find it without any environment
 
 ## Subagents
 
-Workflow 04 dispatches one analyst per body system, workflow 04b one estimator per organ, and workflow 06 one
-independent reviewer. Each has a
+Workflow 04 dispatches one analyst per body system, workflow 04b one estimator per organ, workflow 04c one
+researcher per board question, and workflow 06 one independent reviewer. Each has a
 fixed scope and returns exactly the fields named in its contract: [`references/system-analyst.md`](references/system-analyst.md)
 returns `{system, file, readouts_cited, pubmed_cited, open_questions}`, [`references/organ-estimator.md`](references/organ-estimator.md)
-returns `{organ, file, pmids_cited, diseases, age_estimated}`, and [`references/reviewer.md`](references/reviewer.md)
+returns `{organ, file, pmids_cited, diseases, age_estimated}`, [`references/researcher.md`](references/researcher.md)
+returns `{id, file, verdict, public_evidence_count}`, and [`references/reviewer.md`](references/reviewer.md)
 returns `{verdict, findings[]}`. Free prose instead of those fields counts as a failed dispatch; send it back.
 
 ## Output Requirements
