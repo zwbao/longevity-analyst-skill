@@ -438,7 +438,11 @@ def cmd_insights(a):
     ws, st = _open(a)
     C.require(st, "organs")
     if a.action == "genomics":
-        res = genomics.explain(st, ws.root)
+        res = genomics.explain(st, ws.root, absent_as_ref=a.absent_as_ref)
+        if a.absent_as_ref:                          # a recorded judgment, shown in the report next to the scores
+            st.setdefault("insights", {})["absent_as_ref"] = {"reason": a.absent_as_ref, "at": C.now_iso()}
+        else:
+            (st.get("insights") or {}).pop("absent_as_ref", None)
         _insight_readouts(st, ws, "genomics", res.pop("readouts"))
     elif a.action == "skip-genomics":
         if not (a.reason or "").strip():
@@ -465,7 +469,7 @@ def cmd_insights(a):
     else:  # project
         if not (a.mr_ref and a.analyte and a.target is not None and a.baseline):
             raise C.LAError("project needs --mr-ref --analyte --target --baseline", C.EXIT_USAGE)
-        res = causal.project(st, ws.root, a.mr_ref, a.analyte, a.target, a.baseline)
+        res = causal.project(st, ws.root, a.mr_ref, a.analyte, a.target, a.baseline, exposure_match=a.exposure_match)
     C.invalidate_after(st, "insights", f"insights {a.action}")
     _insights_stage(st)
     ws.log(st, f"insights_{a.action}")
@@ -757,6 +761,8 @@ def build_parser():
     s.add_argument("--analyte")
     s.add_argument("--target", type=float)
     s.add_argument("--baseline")
+    s.add_argument("--exposure-match", help="project: why an MR exposure with another name measures the same quantity as --analyte")
+    s.add_argument("--absent-as-ref", help="genomics: judgment that sites absent from a variant-only VCF are reference, with the reason")
     s.set_defaults(fn=cmd_insights)
 
     s = sub.add_parser("board", help="question board: register questions, researcher findings, skips")

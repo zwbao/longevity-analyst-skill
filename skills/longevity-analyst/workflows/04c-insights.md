@@ -16,6 +16,15 @@ risk factor would plausibly help him, and a board of questions investigated one 
    significant GWAS loci, reads the member's genotype there, places a risk-allele count in the East Asian distribution,
    and scans the member's own variants in the monogenic genes against ClinVar. Output: `work/insights/genotype_phenotype.json`.
    No VCF or genetic results declined: `$LA insights skip-genomics <ws> --reason "<why>"`.
+   Read the result before using it:
+   - `score_not_computed` says why no percentile exists. If most loci are `not_called` because the VCF lists variant
+     sites only, decide whether an absent site can be read as reference for this delivery (the lab's note says every
+     non-reference call is listed, whole-genome depth, joint calling). If yes, re-run with
+     `--absent-as-ref "<what says so>"`; the report states that judgment. If you cannot tell, leave the score out.
+   - `monogenic_scan.not_scanned` lists genes that were not checked (a source failed): say "not checked", never "none found".
+   - `carrier_only: true` is a heterozygous finding in a recessive gene: the member is a carrier; it does not explain
+     their lab value. `possible_compound_het` needs phasing before anyone calls it a cause.
+   - `low_quality_not_counted` hits need orthogonal confirmation (Sanger) before they are mentioned as findings.
 2. Position: `$LA insights position <ws>` → `work/insights/positions.json` (lab percentiles in the NHANES same-sex,
    same-age-band population; GMHI against healthy, East Asian healthy and non-healthy metagenomes; the several ages
    side by side).
@@ -26,7 +35,11 @@ risk factor would plausibly help him, and a board of questions investigated one 
    `$LA insights mr <ws> --exposure "LDL cholesterol" --outcome "Coronary heart disease"`, choose one record (prefer IVW
    or weighted median, high `moescore`), then project it onto the member:
    `$LA insights project <ws> --mr-ref "<ref>" --analyte ldl --target <value in the table's unit> --baseline china-par-ascvd-risk.risk_10y_pct`.
-   The baseline must be a registered risk readout (China-PAR, or an organ AI estimate for that disease).
+   The baseline must be a risk readout in percent (China-PAR, or an organ AI estimate for that disease) whose outcome
+   is as close as possible to the MR outcome; CHD in the MR study against a 10-year ASCVD baseline is a mismatch the
+   report states. The exposure must be the same quantity as `--analyte`; a name outside the known list needs
+   `--exposure-match "<why it is the same quantity>"`. MR estimates reflect lifelong differences, so the projected
+   benefit of lowering the value in adulthood is an upper bound.
 5. Question board. Read `genotype_phenotype.json`, `positions.json`, projections, readouts, labs, the questionnaire and
    the wearable summary. Write 5–10 questions specific to this member, the kind a physician-scientist would ask after
    seeing everything at once (for example: an abnormal lab with a matching gene finding; ages that disagree; a symptom

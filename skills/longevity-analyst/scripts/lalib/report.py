@@ -229,6 +229,9 @@ def _authored(ws: Path, st: Dict[str, Any] = None) -> List[Tuple[str, str]]:
         for fp in sorted(registered_findings(ws, st).values()):
             f = load_json(fp)
             out.append((str(fp), "\n".join(str(f.get(k, "")) for k in ("summary_zh", "next_step_zh", "limitations_zh"))))
+        skipped = (((st or {}).get("insights") or {}).get("board") or {}).get("skipped") or {}
+        if skipped:                                  # skip reasons are printed in the report too
+            out.append(("board skip reasons", "\n".join(str(v.get("reason", "")) for v in skipped.values())))
     pl = ws / "work" / "intervene" / "plan.json"
     if pl.exists():
         plan = load_json(pl)
@@ -274,6 +277,10 @@ def trace(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
     iw = (st.get("insights") or {}).get("readouts_sha256")
     if ip.exists() and (not iw or sha256_file(ip, limit=None) != iw):
         raise LAError("insight_readouts.json does not match what `la.py insights` wrote; run it again", EXIT_BLOCKED)
+    from .board import integrity
+    bad_board = integrity(ws, st)
+    if bad_board:
+        raise LAError("; ".join(bad_board), EXIT_BLOCKED)
     ro = _readouts(ws)
     findings = {}
     missing_ids = {}
@@ -607,12 +614,29 @@ def insight_sections(ws: Path, ro: Dict[str, Dict[str, Any]]) -> List[str]:
             for k, a in g.items():
                 lab = a["member_lab"]
                 flag = {"high": "偏高", "low": "偏低", "in_range": "在范围内", "no_range": "报告未印参考区间"}[lab["flag"]]
-                pct = f"第 {_fmt(a['pct_eas'])} 百分位" if a.get("pct_eas") is not None else "未计算（覆盖不足）"
-                plp = a["monogenic_scan"]["pathogenic_or_likely"]
-                plp_s = "；".join(f"{_cell(x['gene'])} {_cell(x['hgvs'])}（{_cell('/'.join(x['significance']))}）" for x in plp) \
-                    or ("未发现" if a["monogenic_scan"]["genes"] else "—")
+                pct = f"第 {_fmt(a['pct_eas'])} 百分位" if a.get("pct_eas") is not None else \
+                    ("未计算（公共数据未取到）" if a.get("not_retrieved") else "未计算（在东亚人群有变异的位点太少或覆盖不足）")
+                ms = a["monogenic_scan"]
+                parts = []
+                for x in ms["pathogenic_or_likely"]:
+                    zyg = {"het": "杂合", "hom": "纯合"}.get(x["zygosity"], x["zygosity"])
+                    tag = "，隐性遗传，单个杂合仅为携带者" if x.get("carrier_only") else "，隐性遗传，同一基因两个杂合变异，需验证是否在两条染色体上" \
+                        if x.get("possible_compound_het") else ""
+                    parts.append(f"{_cell(x['gene'])} {_cell(x['hgvs'])}（{_cell('/'.join(x['significance']))}，{zyg}{tag}）")
+                if ms.get("not_scanned"):
+                    parts.append("未扫描：" + "、".join(_cell(g) for g in sorted(ms["not_scanned"])))
+                if ms.get("low_quality_not_counted"):
+                    parts.append(f"另有 {len(ms['low_quality_not_counted'])} 个致病记录变异测序质量不足，未计入，建议验证")
+                if ms.get("variants_not_annotated"):
+                    parts.append(f"{ms['variants_not_annotated']} 个插入/缺失变异未能注释")
+                if not ms["pathogenic_or_likely"] and not ms.get("not_scanned") and ms["genes"]:
+                    parts.insert(0, "未发现")
+                plp_s = "；".join(parts) or "—"
                 L.append(f"| {_cell(a['label_zh'])} | {_cell(_fmt(lab['value']))} {_cell(lab['unit'])} | {flag} | {pct} | "
-                         f"{a['loci_called']}/{a['loci_tested']} | {plp_s} |")
+                         f"{a['loci_called']}/{a.get('loci_informative', a['loci_tested'])} | {plp_s} |")
+            meta = load_json(gp)
+            if meta.get("absent_as_ref"):
+                L += ["", f"> 本次 VCF 只列出变异位点；分析时把没列出的位点按「与参考序列相同」处理，依据：{_cell(meta['absent_as_ref'])}。"]
             L.append("")
     pp = ws / "work" / "insights" / "positions.json"
     if pp.exists():
@@ -623,7 +647,9 @@ def insight_sections(ws: Path, ro: Dict[str, Dict[str, Any]]) -> List[str]:
             if pos["labs"]:
                 L += ["| 指标 | 你的结果 | 参照人群 | 百分位 | 该人群中位数 |", "|---|---|---|---|---|"]
                 for x in pos["labs"]:
-                    pct = ("低于第 1 百分位" if x["bound"] == "below" else "高于第 99 百分位" if x["bound"] == "above" else f"第 {_fmt(x['pct'])} 百分位")
+                    pct = ("低于第 1 百分位" if x["bound"] == "below" else "高于第 99 百分位" if x["bound"] == "above" else
+                           f"第 {_fmt(x['pct_low'])}–{_fmt(x['pct_high'])} 百分位（该人群很多人与你同值，多为检测下限）" if x["bound"] == "tie"
+                           else f"第 {_fmt(x['pct'])} 百分位")
                     L.append(f"| {_cell(x['label_zh'])} | {_cell(_fmt(x['value']))} {_cell(x['unit'])} | {_cell(x['stratum'])}（{x['n']} 人） | {pct} | {_cell(_fmt(x['median']))} |")
                 L.append("")
             if pos["gmhi"]:
@@ -649,6 +675,10 @@ def insight_sections(ws: Path, ro: Dict[str, Dict[str, Any]]) -> List[str]:
             L.append(f"| {_cell(x['exposure'])} → {_cell(x['outcome'])} | {_cell(_fmt(x['member_value']))} → {_cell(_fmt(x['target']))} {_cell(x['unit'])} | "
                      f"{_pct(x['baseline_risk'])} | {_pct(x['risk_after'])}（{_pct(x['risk_after_ci'][0])}–{_pct(x['risk_after_ci'][1])}） |")
         L.append("")
+        cav = []
+        for x in load_json(prj)["projections"]:
+            cav += [c for c in x.get("caveats_zh", []) if c not in cav]
+        L += [f"- {_cell(c)}" for c in cav] + ([""] if cav else [])
     rows = B.rows(ws)
     if rows:
         L += ["## 问题看板：为你提出的问题与研究结论", "",

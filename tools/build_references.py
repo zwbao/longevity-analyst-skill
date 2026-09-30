@@ -30,7 +30,7 @@ LABS = [
     ("creatinine", "肌酐", "BIOPRO", {"*": "LBXSCR"}, 88.4, "umol/L", ["肌酐", "Cr", "CREA"]),
     ("urate", "尿酸", "BIOPRO", {"*": "LBXSUA"}, 59.48, "umol/L", ["尿酸", "UA"]),
     ("tc", "总胆固醇", "TCHOL", {"*": "LBXTC"}, 1 / 38.67, "mmol/L", ["总胆固醇", "TC"]),
-    ("hdl", "高密度脂蛋白胆固醇", "HDL", {"D": "LBXHDD", "*": "LBDHDD"}, 1 / 38.67, "mmol/L", ["高密度脂蛋白胆固醇", "HDL-C"]),
+    ("hdl", "高密度脂蛋白胆固醇", "HDL", {"*": "LBDHDD"}, 1 / 38.67, "mmol/L", ["高密度脂蛋白胆固醇", "HDL-C"]),
     ("tg_nonfasting", "甘油三酯（非空腹，全体受检）", "BIOPRO", {"*": "LBXSTR"}, 1 / 88.57, "mmol/L", []),
     ("crp", "C反应蛋白", "CRP", {"*": "LBXCRP"}, 10.0, "mg/L", ["超敏C反应蛋白", "C反应蛋白", "hs-CRP", "CRP"]),
     ("vitd", "25-羟基维生素D", "VID", {"D": "LBDVIDMS", "*": "LBXVIDMS"}, 1 / 2.496, "ng/mL", ["25-羟基维生素D", "25-OH-D", "维生素D"]),

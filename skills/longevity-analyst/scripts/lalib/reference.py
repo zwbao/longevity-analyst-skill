@@ -13,6 +13,10 @@ from .common import data, load_json, now_iso, skillkit, write_json
 
 
 def _pct_of(v: float, pcts: List[float], vals: List[float]) -> Dict[str, Any]:
+    ties = [i for i, x in enumerate(vals) if x == v]
+    if len(ties) > 1:                  # many people sit at the same value (usually a detection limit): report the span
+        lo, hi = pcts[ties[0]], pcts[ties[-1]]
+        return {"pct": round((lo + hi) / 2, 1), "pct_low": lo, "pct_high": hi, "bound": "tie"}
     if v <= vals[0]:
         return {"pct": pcts[0], "bound": "below"}
     if v >= vals[-1]:

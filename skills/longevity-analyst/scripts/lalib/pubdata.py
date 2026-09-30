@@ -12,6 +12,7 @@ import math
 import re
 import ssl
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from pathlib import Path
@@ -51,7 +52,13 @@ def _shared_put(key: str, doc: Dict[str, Any]) -> None:
     write_json(SHARED / (hashlib.sha1(key.encode()).hexdigest() + ".json"), doc)
 
 
+_DOWN: Dict[str, str] = {}      # host -> first error in this run (circuit breaker: a down source is not retried per item)
+
+
 def _http(url: str, data: Optional[bytes] = None, headers: Optional[Dict[str, str]] = None, tries: int = 8) -> Any:
+    host = urllib.parse.urlparse(url).netloc
+    if host in _DOWN:
+        raise LAError(f"{host} was unreachable earlier in this run: {_DOWN[host]}", EXIT_EXTERNAL)
     last = None
     for i in range(tries):
         try:
@@ -60,7 +67,11 @@ def _http(url: str, data: Optional[bytes] = None, headers: Optional[Dict[str, st
                 return json.loads(r.read().decode("utf-8"))
         except Exception as e:  # noqa: BLE001
             last = e
+            if isinstance(e, urllib.error.HTTPError) and e.code in (400, 404):
+                break                               # a definite answer, not an outage
             time.sleep(min(3 * (i + 1), 20))
+    if not (isinstance(last, urllib.error.HTTPError) and last.code in (400, 404)):
+        _DOWN[host] = str(last)[:120]
     raise LAError(f"could not retrieve {url.split('?')[0]}: {last}", EXIT_EXTERNAL)
 
 
@@ -201,7 +212,7 @@ def myvariant_hgvs(ws: Path, hgvs_ids: Iterable[str], assembly: str = "hg38") ->
     ids = sorted(set(hgvs_ids))
     out: Dict[str, Dict[str, Any]] = {}
     recs = []
-    fields = "clinvar.rcv.clinical_significance,clinvar.rcv.accession,clinvar.rcv.conditions.name,clinvar.gene.symbol,gnomad_genome.af.af_eas,dbsnp.rsid"
+    fields = "clinvar.rcv.clinical_significance,clinvar.rcv.review_status,clinvar.rcv.accession,clinvar.rcv.conditions.name,clinvar.gene.symbol,gnomad_genome.af.af_eas,dbsnp.rsid"
     for i in range(0, len(ids), 500):
         chunk = ids[i:i + 500]
         body = urllib.parse.urlencode({"ids": ",".join(chunk), "fields": fields, "assembly": assembly}).encode()
@@ -215,6 +226,7 @@ def myvariant_hgvs(ws: Path, hgvs_ids: Iterable[str], assembly: str = "hg38") ->
             rec = {"ref": f"clinvar:{h.get('_id')}" if rcv else f"myvariant:{h.get('_id')}", "hgvs": h.get("query") or h.get("_id"),
                    "gene": (cv.get("gene") or {}).get("symbol"), "rsid": (h.get("dbsnp") or {}).get("rsid"),
                    "clinvar_significance": sorted({str(x.get("clinical_significance")) for x in rcv if x.get("clinical_significance")}),
+                   "review_status": sorted({str(x.get("review_status")) for x in rcv if x.get("review_status")}),
                    "clinvar_rcv": [x.get("accession") for x in rcv if x.get("accession")][:5],
                    "conditions": sorted({str(((x.get("conditions") or {}) if isinstance(x.get("conditions"), dict) else {}).get("name", ""))
                                          for x in rcv} - {""})[:5],
@@ -229,8 +241,12 @@ def myvariant_hgvs(ws: Path, hgvs_ids: Iterable[str], assembly: str = "hg38") ->
 def gene_region(ws: Path, symbol: str, assembly: str = "GRCh38") -> Optional[Dict[str, Any]]:
     host = "https://rest.ensembl.org" if assembly == "GRCh38" else "https://grch37.rest.ensembl.org"
     url = f"{host}/lookup/symbol/homo_sapiens/{urllib.parse.quote(symbol)}?content-type=application/json"
+    hit = _shared_get(f"ensembl|gene:{assembly}:{symbol}")
+    if hit:
+        _cache(ws, "ensembl", f"gene:{assembly}:{symbol}", url, hit["records"], retrieved_at=hit["retrieved_at"])
+        return hit["records"][0]
     try:
-        d = _http(url)
+        d = _http(url, tries=3)
     except LAError:
         return None
     rec = {"ref": f"ensembl:{d.get('id')}", "symbol": symbol, "chrom": str(d.get("seq_region_name")), "start": d.get("start"),

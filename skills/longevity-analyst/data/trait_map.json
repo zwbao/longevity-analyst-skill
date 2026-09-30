@@ -338,6 +338,115 @@
   "clump_kb": 500,
   "min_coverage": 0.7,
   "min_gq": 20,
-  "min_dp": 10
+  "min_dp": 10,
+  "min_informative_maf": 0.01,
+  "min_informative_loci": 8,
+  "min_alt_reads": 3
+ },
+ "gene_modes": {
+  "_note": "inheritance of the monogenic trait (OMIM/ClinGen): AD dominant, AR recessive, XLR X-linked recessive. A heterozygous carrier of an AR/XLR gene is reported as a carrier, not as the cause.",
+  "LDLR": "AD",
+  "APOB": "AD",
+  "PCSK9": "AD",
+  "LDLRAP1": "AR",
+  "LPA": "AD",
+  "ABCA1": "AR",
+  "APOA1": "AD",
+  "LCAT": "AR",
+  "LPL": "AR",
+  "APOC2": "AR",
+  "APOA5": "AR",
+  "GPIHBP1": "AR",
+  "LMF1": "AR",
+  "HPRT1": "XLR",
+  "SLC22A12": "AR",
+  "SLC2A9": "AR",
+  "CBS": "AR",
+  "MTHFR": "AR",
+  "MTR": "AR",
+  "MTRR": "AR",
+  "CYP2R1": "AR",
+  "CYP27B1": "AR",
+  "VDR": "AR",
+  "GCK": "AD",
+  "HNF1A": "AD",
+  "HNF4A": "AD",
+  "HNF1B": "AD"
+ },
+ "mr_exposure_traits": {
+  "_note": "EpiGraphDB exposure trait names accepted as the same quantity as the member's analyte; any other exposure needs --exposure-match \"<reason>\"",
+  "ldl": [
+   "LDL cholesterol",
+   "Low density lipoprotein cholesterol",
+   "LDL cholesterol levels",
+   "Low density lipoprotein cholesterol levels"
+  ],
+  "hdl": [
+   "HDL cholesterol",
+   "High density lipoprotein cholesterol",
+   "HDL cholesterol levels"
+  ],
+  "tc": [
+   "Total cholesterol",
+   "Cholesterol, total",
+   "Total cholesterol levels"
+  ],
+  "tg": [
+   "Triglycerides",
+   "Triglyceride levels"
+  ],
+  "urate": [
+   "Urate",
+   "Serum urate",
+   "Uric acid",
+   "Serum uric acid levels"
+  ],
+  "hba1c": [
+   "HbA1c",
+   "Glycated haemoglobin",
+   "Glycated hemoglobin",
+   "HbA1C levels"
+  ],
+  "glucose": [
+   "Fasting glucose",
+   "Fasting blood glucose",
+   "Fasting glucose levels"
+  ],
+  "crp": [
+   "C-reactive protein",
+   "C-reactive protein levels",
+   "CRP"
+  ],
+  "bmi": [
+   "Body mass index",
+   "BMI"
+  ],
+  "sbp": [
+   "Systolic blood pressure"
+  ],
+  "waist": [
+   "Waist circumference"
+  ],
+  "vitd": [
+   "25 hydroxyvitamin D level",
+   "Vitamin D levels",
+   "25-hydroxyvitamin D levels"
+  ],
+  "alt": [
+   "Alanine aminotransferase",
+   "Alanine aminotransferase levels"
+  ],
+  "ggt": [
+   "Gamma glutamyltransferase",
+   "Gamma glutamyl transferase levels"
+  ],
+  "creatinine": [
+   "Serum creatinine",
+   "Creatinine levels"
+  ],
+  "insulin": [
+   "Fasting insulin",
+   "Fasting insulin levels"
+  ]
  }
 }

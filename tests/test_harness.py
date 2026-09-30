@@ -276,14 +276,16 @@ def _prot_state(tmp, platform, scale):
 def test_ms_proteomics_blocked_from_affinity_clocks(tmp_path):
     by = {i["method"]: i for i in methods.plan(_prot_state(tmp_path, "ms_dia", "log2_intensity"), tmp_path)["items"]}
     assert by["plasma-proteomics-brain-immune"]["status"] == "blocked_platform"
-    assert by["proteomic-aging-clock"]["status"] == "blocked_platform"
+    # newer libraries take ProtAge as a reported value, so the clock may not be planned on a matrix at all
+    assert by.get("proteomic-aging-clock", {"status": "blocked_platform"})["status"] == "blocked_platform"
 
 
 @needs_lib
 def test_olink_raw_npx_still_blocked_where_cohort_z_is_required(tmp_path):
     by = {i["method"]: i for i in methods.plan(_prot_state(tmp_path, "olink", "npx"), tmp_path)["items"]}
     assert by["plasma-proteomics-brain-immune"]["status"] == "blocked_platform"      # needs cohort z-scores
-    assert by["proteomic-aging-clock"]["status"] != "blocked_platform"               # declared for NPX
+    if "proteomic-aging-clock" in by:                                                  # declared for NPX when planned on a matrix
+        assert by["proteomic-aging-clock"]["status"] != "blocked_platform"
     assert by["plasma-proteomic-cellular-aging"]["status"] == "blocked_platform"     # SomaScan-only
 
 

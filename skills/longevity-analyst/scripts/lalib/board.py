@@ -23,7 +23,8 @@ def member_ids(st: Dict[str, Any], ws: Path) -> Set[str]:
     for p in (ws / "work" / "readouts.json", ws / "work" / "organs" / "organ_readouts.json", ws / "work" / "insights" / "insight_readouts.json"):
         if p.exists():
             ids |= {r["id"] for r in load_json(p)["readouts"]}
-    ids |= {l["marker"] for l in st["labs"]}
+    from .labnames import usable_rows
+    ids |= {l["marker"] for l in usable_rows(st)}                 # a refused or unconfirmed row is not the member's data
     gp = ws / "work" / "insights" / "genotype_phenotype.json"
     if gp.exists():
         for key, a in load_json(gp)["analytes"].items():
@@ -119,6 +120,13 @@ def register_finding(st: Dict[str, Any], ws: Path, qid: str) -> Dict[str, Any]:
             problems.append(f"public_evidence {bad[:5]} were not retrieved in this workspace")
         if f.get("verdict") in ("supported", "not_supported") and not pe:
             problems.append("a supported / not_supported verdict needs at least one retrieved public record")
+        pm = sorted({x[5:] for x in pe if isinstance(x, str) and x.startswith("pmid:") and x in pubs})
+        if pm and not problems:                      # a cache file can be edited; PMIDs are checked live at registration
+            from .evidence import verify_pmids
+            live = verify_pmids(pm)
+            gone = [p for p in pm if p not in live]
+            if gone:
+                problems.append(f"PMIDs {gone[:5]} do not resolve on PubMed or are retracted")
     for k in ("summary_zh", "next_step_zh", "limitations_zh"):
         if not isinstance(f.get(k), str) or not f[k].strip():
             problems.append(f"{k} is empty")
@@ -148,6 +156,20 @@ def complete(st: Dict[str, Any]) -> bool:
     b = (st.get("insights") or {}).get("board") or {}
     qs = set(b.get("questions") or [])
     return bool(qs) and qs <= set(b.get("findings") or {}) | set(b.get("skipped") or {})
+
+
+def integrity(ws: Path, st: Dict[str, Any]) -> List[str]:
+    """Questions and findings are bound to the bytes the harness accepted; an edit after registration voids them."""
+    b = (st.get("insights") or {}).get("board") or {}
+    out = []
+    qp = ws / "work" / "insights" / "board" / "questions.json"
+    if b.get("questions_sha256") and (not qp.exists() or sha256_file(qp, limit=None) != b["questions_sha256"]):
+        out.append("board/questions.json changed after `board questions`; register the questions again")
+    for q, v in (b.get("findings") or {}).items():
+        p = Path(v["path"])
+        if not p.exists() or sha256_file(p, limit=None) != v["sha256"]:
+            out.append(f"board/{q}.json changed after `board finding --id {q}`; register it again")
+    return out
 
 
 def registered_findings(ws: Path, st: Dict[str, Any] = None) -> Dict[str, Path]:
