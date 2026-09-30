@@ -144,6 +144,39 @@ class Vcf:
             return {"dosage": 0, "status": "assumed_ref"}
         return {"dosage": None, "status": "not_called"}
 
+    def ref_dosage(self, chrom: str, pos: int, ref: str) -> Dict[str, Any]:
+        """Copies of the reference base: 2 minus every alt allele called at the position, over all rows (joined or
+        split multi-allelic records give the same count)."""
+        chrom = _norm_chrom(chrom)
+        if self._tabix:
+            rows = self._tabix_rows(chrom, pos, pos)
+            blocks = [(int(f[1]), int(END.search(f[7]).group(1)), f[8].split(":"), f[9].split(":"), f[6]) for f in rows if _is_block(f)]
+            rows = [f for f in rows if not _is_block(f)]
+        else:
+            self._need_load()
+            rows, blocks = self._rows.get((chrom, pos), []), self._blocks.get(chrom, [])
+        rows = [f for f in rows if int(f[1]) == pos and f[3].upper() == ref.upper()]
+        if rows:
+            alt_copies, status = 0, "called"
+            for f in rows:
+                fmt, val = f[8].split(":"), f[9].split(":")
+                ok, why = self.quality(fmt, val, f[6])
+                gt = re.split(r"[/|]", dict(zip(fmt, val)).get("GT", "./."))
+                if not ok:
+                    return {"dosage": None, "status": why}
+                if "." in gt or len(gt) != 2:
+                    return {"dosage": None, "status": "no_call"}
+                alt_copies += sum(1 for g in gt if g != "0")
+                status = why if why != "called" else status
+            return {"dosage": max(0, 2 - alt_copies), "status": status}
+        for s_, e, fmt, val, filt in blocks:
+            if s_ <= pos <= e:
+                ok, why = self.quality(fmt, val, filt)
+                return {"dosage": 2 if ok else None, "status": "ref_block" if ok else why}
+        if self.absent_is_ref:
+            return {"dosage": 2, "status": "assumed_ref"}
+        return {"dosage": None, "status": "not_called"}
+
     def carried(self, chrom: str, start: int, end: int) -> List[Dict[str, Any]]:
         """Alt alleles the member carries in a region, each with zygosity and a quality verdict."""
         chrom = _norm_chrom(chrom)
@@ -260,17 +293,25 @@ def _assembly(st: Dict[str, Any]) -> str:
 
 
 def pick_hit(hits: List[Dict[str, Any]], effect: str) -> Tuple[Optional[Dict[str, Any]], str]:
-    """The myvariant record that makes the effect allele unambiguous. At a multi-allelic site an effect allele that
-    is the reference base cannot be paired with one alt, so the locus is skipped."""
+    """The allele the GWAS effect refers to, with its East Asian frequency.
+    - effect allele is one alt: that alt (its frequency);
+    - effect allele is the reference base: the reference, whose frequency is 1 minus every alt's (a multi-allelic site
+      is fine: the member's reference copies are 2 minus all alt copies)."""
     snv = [h for h in hits if h.get("pos") and len(h["ref_allele"]) == 1 and len(h["alt_allele"]) == 1]
-    as_alt = [h for h in snv if h["alt_allele"] == effect]
-    if len(as_alt) == 1:
-        return as_alt[0], "effect_is_alt"
-    if len(snv) == 1 and snv[0]["ref_allele"] == effect:
-        return snv[0], "effect_is_ref"
     if not snv:
         return None, "no_snv_record"
-    return None, "ambiguous_multiallelic" if any(h["ref_allele"] == effect for h in snv) else "effect_allele_not_in_record"
+    if len({(h["chrom"], h["pos"], h["ref_allele"]) for h in snv}) > 1:
+        return None, "rsid_maps_to_several_positions"
+    as_alt = [h for h in snv if h["alt_allele"] == effect]
+    if len(as_alt) == 1:
+        return (dict(as_alt[0], p_effect=as_alt[0]["af_eas"]) if as_alt[0]["af_eas"] is not None else None), \
+            ("effect_is_alt" if as_alt[0]["af_eas"] is not None else "no_eas_frequency")
+    if snv[0]["ref_allele"] == effect:
+        if all(h["af_eas"] is None for h in snv):
+            return None, "no_eas_frequency"
+        p_ref = 1 - sum(h["af_eas"] or 0.0 for h in snv)      # an alt with no gnomAD EAS record is taken as absent there
+        return dict(snv[0], alt_allele=None, p_effect=max(0.0, p_ref)), "effect_is_ref"
+    return None, "effect_allele_not_in_record"
 
 
 def plp_unanimous(rec: Dict[str, Any]) -> bool:
@@ -311,14 +352,11 @@ def explain(st: Dict[str, Any], ws: Path, absent_as_ref: Optional[str] = None) -
             cand = []
             for rs, r in best.items():
                 h, how = pick_hit(mv.get(rs, []), r["effect_allele"])
-                if h and h["af_eas"] is None:
-                    h, how = None, "no_eas_frequency"
                 if not h:
                     it["skipped"][how] = it["skipped"].get(how, 0) + 1
                     continue
-                p_eff = h["af_eas"] if how == "effect_is_alt" else 1 - h["af_eas"]
                 cand.append({**r, "chrom": _norm_chrom(h["chrom"]), "pos": h["pos"], "ref": h["ref_allele"], "alt": h["alt_allele"],
-                             "p_eff_eas": p_eff, "variant_ref": h["ref"]})
+                             "p_eff_eas": h["p_effect"], "variant_ref": h["ref"]})
             it["loci"] = _clump(cand, rules["clump_kb"])[:rules["max_loci"]]
         except LAError as e:
             it["error"] = str(e)[:200]
@@ -345,13 +383,14 @@ def explain(st: Dict[str, Any], ws: Path, absent_as_ref: Optional[str] = None) -
             detail = []
             for l in it["loci"]:
                 raising = l["direction"] > 0
-                risk_allele = l["effect_allele"] if raising else (l["alt"] if l["effect_allele"] == l["ref"] else l["ref"])
+                # effect-allele dosage: an alt's own copies, or the reference base's copies (2 minus every alt)
+                gt = vcf.alt_dosage(l["chrom"], l["pos"], l["ref"], l["alt"]) if l["alt"] else vcf.ref_dosage(l["chrom"], l["pos"], l["ref"])
                 p_risk = l["p_eff_eas"] if raising else 1 - l["p_eff_eas"]
+                risk_allele = l["effect_allele"] if raising else f"non-{l['effect_allele']}"
                 useful = rules["min_informative_maf"] <= p_risk <= 1 - rules["min_informative_maf"]
-                gt = vcf.alt_dosage(l["chrom"], l["pos"], l["ref"], l["alt"])
                 dos = None
                 if gt["dosage"] is not None:
-                    dos = gt["dosage"] if risk_allele == l["alt"] else 2 - gt["dosage"]
+                    dos = gt["dosage"] if raising else 2 - gt["dosage"]
                 if useful:
                     informative += 1
                     if dos is not None:

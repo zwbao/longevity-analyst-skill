@@ -143,11 +143,25 @@ def test_split_multiallelic_rows_are_all_read(tmp_path):
 
 
 def test_pick_hit_multiallelic():
-    h = lambda r, a: {"pos": 1, "ref_allele": r, "alt_allele": a, "af_eas": 0.2, "chrom": "1", "ref": "x"}
-    assert genomics.pick_hit([h("A", "G"), h("A", "T")], "T")[1] == "effect_is_alt"
-    assert genomics.pick_hit([h("A", "G"), h("A", "T")], "A") == (None, "ambiguous_multiallelic")
-    assert genomics.pick_hit([h("A", "G")], "A")[1] == "effect_is_ref"
+    h = lambda r, a, f=0.2: {"pos": 1, "ref_allele": r, "alt_allele": a, "af_eas": f, "chrom": "1", "ref": "x"}
+    hit, how = genomics.pick_hit([h("A", "G"), h("A", "T", 0.05)], "T")
+    assert how == "effect_is_alt" and hit["p_effect"] == 0.05
+    hit, how = genomics.pick_hit([h("A", "G"), h("A", "T", 0.05)], "A")          # REF effect: 1 - every alt
+    assert how == "effect_is_ref" and abs(hit["p_effect"] - 0.75) < 1e-9 and hit["alt_allele"] is None
     assert genomics.pick_hit([h("A", "G")], "C") == (None, "effect_allele_not_in_record")
+    assert genomics.pick_hit([h("A", "G", None)], "G") == (None, "no_eas_frequency")
+    assert genomics.pick_hit([h("A", "G"), dict(h("C", "T"), pos=9)], "G") == (None, "rsid_maps_to_several_positions")
+
+
+def test_ref_dosage_joined_and_split(tmp_path):
+    v = _vcf(tmp_path, ["chr1\t100\t.\tA\tG,T\t50\tPASS\t.\tGT:GQ:DP\t1/2:40:30",
+                        "chr1\t200\t.\tA\tG\t50\tPASS\t.\tGT:GQ:DP\t0/1:40:30",
+                        "chr1\t200\t.\tA\tT\t50\tPASS\t.\tGT:GQ:DP\t0/0:40:30",
+                        "chr1\t300\t.\tA\tG\t50\tPASS\t.\tGT:GQ:DP\t0/1:5:30"])
+    assert v.ref_dosage("1", 100, "A")["dosage"] == 0
+    assert v.ref_dosage("1", 200, "A")["dosage"] == 1
+    assert v.ref_dosage("1", 300, "A")["dosage"] is None
+    assert v.ref_dosage("1", 999, "A") == {"dosage": None, "status": "not_called"}
 
 
 @pytest.mark.parametrize("pos,ref,alt,want", [
