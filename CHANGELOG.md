@@ -11,6 +11,26 @@
 - question board: 3-10 member-specific questions, researcher subagent per question, verdict bound to retrieved records (references/researcher.md)
 - insights wearable: 30/90-day means and trends from a mapped daily export
 
+### Fixed (v0.6 adversarial review: 8 P0, 13 P1)
+- Genotype reads: every VCF row at a position is read (split multi-allelic records); the effect allele is matched
+  exactly; a reference-base effect allele at a multi-allelic site is scored as 2 minus every alt copy; no tabix binary
+  falls back to one streaming pass that keeps only the wanted positions and gene regions.
+- Genetic percentile uses only loci that vary in East Asians (risk-allele frequency 1-99%, at least 8); a
+  variant-only VCF gives no score unless the agent records `--absent-as-ref "<reason>"`, which the report prints.
+- Monogenic scan: only alleles the member carries (0/2 annotates allele 2 only), indels annotated through genomic
+  HGVS, calls must pass FILTER/GQ/DP and ≥3 alt reads (failures listed separately), ClinVar must be unanimously P/LP
+  with review criteria (a "no assertion criteria" record no longer counts), zygosity + inheritance mode per gene;
+  a het in a recessive gene is a carrier finding and is not counted; a source failure marks the gene "not scanned"
+  and suppresses the count readout instead of writing 0.
+- Board: questions and findings are bound to their registered hashes (trace blocks an edit afterwards); skip reasons
+  are traced; cited PMIDs are verified live at registration; basis ids come only from confirmed lab rows.
+- MR projection: baseline must be a percent risk; exposure must be a known name for the analyte or carry
+  `--exposure-match "<reason>"`; lifetime-exposure and outcome-mismatch caveats printed; projection ref includes the
+  baseline; an analyte without a reference gives a clear error.
+- Population position: values tied at a detection limit report the percentile span; HDL now includes NHANES 2005-06
+  (column LBDHDD), raising n in each stratum.
+- Network: a host that failed is not retried per item in the same run; Ensembl gene regions are cached.
+
 ## [0.5.0] - 2026-09-29
 
 ### Added
