@@ -16,7 +16,7 @@ run starts only after the user agrees.
 ## Install
 
 ```bash
-npx skills add <owner>/longevity-analyst-skill
+npx skills add zwbao/longevity-analyst-skill
 git clone https://github.com/zwbao/longevity-skills
 export LONGEVITY_SKILLS_HOME=$PWD/longevity-skills
 pip install pandas numpy markdown

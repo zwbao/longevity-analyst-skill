@@ -11,7 +11,7 @@ state, gates and number binding.
 ## Install
 
 ```bash
-npx skills add <owner>/longevity-analyst-skill        # Claude Code / Codex / Cursor / OpenCode
+npx skills add zwbao/longevity-analyst-skill        # Claude Code / Codex / Cursor / OpenCode
 git clone https://github.com/zwbao/longevity-skills && export LONGEVITY_SKILLS_HOME=$PWD/longevity-skills
 pip install pandas numpy markdown
 ```
