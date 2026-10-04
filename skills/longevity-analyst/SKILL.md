@@ -11,7 +11,9 @@ description: >
   an earlier snapshot. Triggers on 抗衰分析, 长寿检测, 生物学年龄, 甲基化年龄,
   数字孪生, 多组学报告, 干预方案, 复测对比, longevity report, biological age,
   epigenetic clock, digital twin. Do NOT use for cancer treatment decisions,
-  diagnosing disease, or reading a single lab value.
+  diagnosing disease, or reading a single lab value. When the longevity-coach
+  skill is installed it is the entry point for personal conversations and calls
+  this skill for the analysis; inside LongPi, start only after run_deep_analysis.
 license: MIT
 category: health-omics
 metadata:
@@ -44,8 +46,10 @@ library path in the workspace, so later commands find it without any environment
 ## Running inside dsh / longpi
 - In longpi the AI (you, in a health chat) decides to run: `run_deep_analysis` with the reason, when the snapshot line
   深度分析 says new data is waiting, or when the member asks. It gives you the data folder, the workspace, the
-  member's age/sex and the method library (`~/longpi/longevity-skills`). Use exactly those. When the report is done,
-  call longpi's `import_analysis` yourself and read the plan back for the member to adopt.
+  member id, the member's age/sex and the method library (`~/longpi/longevity-skills`). Use exactly those; the member
+  id stays the same across runs so longpi can compare a retest with `twin compare`. When the report is done, call
+  longpi's `import_analysis` yourself and read the plan back for the member to adopt. Items whose executor is the
+  physician, and supplements, tests and referrals, go into longpi's doctor brief, not the member's plan.
 - When it says the member's Mirobody is connected, first `$LA mirobody pull <data folder> --mcp-url-file <file it gives>`
   (never paste the URL into a command: it is the member's secret). Labs land as one CSV per checkup date and watch
   days as one CSV; they go through intake like any other file (workflows/01-intake.md, step 0).
