@@ -1,0 +1,125 @@
+{
+  "schema": "rcv-cases/1",
+  "about": "Shared reference-change-value cases for three separate implementations: longevity-analyst (lalib/twin.py, twin compare), longevity-coach (scripts/noise.py) and LongPi (src/reference.ts rcvBand, src/honesty/comparability.ts compareGate). Each implementation keeps its own code and verdict words; `expect` gives the verdict each one must reach, or not_applicable where that path does not take the input. Numbers come from longevity-skills data/biological_variation.json (z 1.96, CVA defaults to 0.5 x CVI when the table has none).",
+  "formula": "RCV = sqrt(2) x z x sqrt(CVA^2 + CVI^2); log-normal markers: exp(+/- z x sqrt(2) x sqrt(ln(CVI^2+1) + ln(CVA^2+1))) - 1; means of k1 and k2 separate-day results: replace sqrt(2) by sqrt(1/k1 + 1/k2)",
+  "z": 1.96,
+  "cases": [
+    {
+      "id": "same_day",
+      "marker": "低密度脂蛋白胆固醇",
+      "key": "ldl",
+      "unit": "mmol/L",
+      "before": [4.2],
+      "after": [3.1],
+      "prev_date": "2026-03-01",
+      "cur_date": "2026-03-01",
+      "expect": {
+        "twin": "not_judged",
+        "noise": "too_close",
+        "longpi": "too_early"
+      }
+    },
+    {
+      "id": "too_close",
+      "marker": "低密度脂蛋白胆固醇",
+      "key": "ldl",
+      "unit": "mmol/L",
+      "before": [4.2],
+      "after": [3.0],
+      "prev_date": "2026-03-01",
+      "cur_date": "2026-03-11",
+      "expect": {
+        "twin": "not_judged",
+        "noise": "too_close",
+        "longpi": "too_early"
+      }
+    },
+    {
+      "id": "ldl_within_noise",
+      "about": "LDL has a large CVI: a 26.2 % fall stays just inside the +/-26.2 % band",
+      "marker": "低密度脂蛋白胆固醇",
+      "key": "ldl",
+      "unit": "mmol/L",
+      "before": [4.2],
+      "after": [3.1],
+      "prev_date": "2026-03-01",
+      "cur_date": "2026-06-01",
+      "band_pct": [-26.2, 26.2],
+      "change_pct": -26.2,
+      "expect": {
+        "twin": "within_noise",
+        "noise": "within_noise",
+        "longpi": "within_noise"
+      }
+    },
+    {
+      "id": "ldl_beyond_noise",
+      "marker": "低密度脂蛋白胆固醇",
+      "key": "ldl",
+      "unit": "mmol/L",
+      "before": [4.2],
+      "after": [3.0],
+      "prev_date": "2026-03-01",
+      "cur_date": "2026-06-01",
+      "band_pct": [-26.2, 26.2],
+      "change_pct": -28.6,
+      "expect": {
+        "twin": "decrease_beyond_noise",
+        "noise": "down_beyond_noise",
+        "longpi": "down_beyond_noise"
+      }
+    },
+    {
+      "id": "crp_log_normal_beyond_noise",
+      "about": "CRP is right-skewed: the band is asymmetric",
+      "marker": "超敏C反应蛋白",
+      "key": "crp",
+      "unit": "mg/L",
+      "before": [3.0],
+      "after": [1.0],
+      "prev_date": "2026-03-01",
+      "cur_date": "2026-04-01",
+      "band_pct": [-59.1, 144.8],
+      "change_pct": -66.7,
+      "expect": {
+        "twin": "decrease_beyond_noise",
+        "noise": "down_beyond_noise",
+        "longpi": "down_beyond_noise"
+      }
+    },
+    {
+      "id": "sbp_repeated_k3",
+      "about": "Means of three separate-day readings on each side narrow the band from +/-11.6 % to +/-6.7 %; the same first readings alone stay within noise",
+      "marker": "收缩压",
+      "key": "sbp",
+      "unit": "mmHg",
+      "before": [138, 141, 135],
+      "after": [128, 127, 126],
+      "prev_date": "2026-03-01",
+      "cur_date": "2026-04-01",
+      "band_pct": [-6.7, 6.7],
+      "band_single_pct": [-11.6, 11.6],
+      "change_pct": -8.0,
+      "expect": {
+        "twin": "not_applicable",
+        "noise": "down_beyond_noise",
+        "noise_single": "within_noise",
+        "longpi": "not_applicable"
+      }
+    },
+    {
+      "id": "unknown_marker",
+      "marker": "握力",
+      "unit": "kg",
+      "before": [38],
+      "after": [44],
+      "prev_date": "2026-03-01",
+      "cur_date": "2026-06-01",
+      "expect": {
+        "twin": "not_judged",
+        "noise": "no_noise_model",
+        "longpi": "no_noise_model"
+      }
+    }
+  ]
+}

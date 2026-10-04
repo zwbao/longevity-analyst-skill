@@ -126,6 +126,10 @@ examples/case-A, case-B    two demo members built from public data (see examples
 LONGEVITY_SKILLS_HOME=... python -m pytest tests -q
 ```
 
+`tests/fixtures/rcv_cases.json` holds reference-change-value cases shared with longevity-coach (`scripts/noise.py`)
+and LongPi (`src/reference.ts`). Each project keeps its own implementation and runs the same file: with the three
+repositories checked out side by side they find it on their own; otherwise point `LONGEVITY_RCV_CASES` at it.
+
 ## Licence
 
 MIT for this repository. The GMHI species lists come from jaeyunsung/GMHI_2020, and their citation is kept in
