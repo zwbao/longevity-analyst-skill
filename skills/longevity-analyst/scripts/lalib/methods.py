@@ -25,6 +25,8 @@ from .common import (EXIT_BLOCKED, EXIT_INPUT, LAError, data, load_json, longevi
 
 CPG_KEY = re.compile(r"^cg\d{8}$")
 AUTO_TIERS = {"A", "tool"}
+# Tier-B skills that run only through the VCF -> 23andMe adapter (lalib/pgx.py, `la.py insights pgx`), never via plan/run.
+GENOTYPE_ADAPTER_SKILLS = {"cpic-pharmacogenomics", "nutrigenetic-variant-panel"}
 COVERAGE_ROW = re.compile(r"`([a-z0-9_]+)`[）)]?\s*\|[^|]*\|[^|]*\|\s*([\d.]+)%（缺\s*(\d+)/(\d+)）")
 
 
@@ -172,7 +174,7 @@ def plan(st: Dict[str, Any], ws_root: Path) -> Dict[str, Any]:
 
     for s in cat["skills"]:
         name = s["name"]
-        if not s.get("has_script") or s["tier"] not in AUTO_TIERS:
+        if not s.get("has_script") or s["tier"] not in AUTO_TIERS or name in GENOTYPE_ADAPTER_SKILLS:
             continue
         intents_data = {d for i in cat["intents"] if i["id"] in s.get("intents", []) for d in i["data"]}
         inputs = s.get("inputs") or []
@@ -392,7 +394,7 @@ def _run_skill(home: Path, it: Dict[str, Any], member: Dict[str, Any], out: Path
         cmd += [entry.get("measurements_flag", "--measurements"), str(mpath)]
     flags_done = set()
     for flag, v in (run.get("args") or {}).items():
-        cmd += [flag, v]
+        cmd += [flag] if v is True else [flag, v]          # True: a switch without a value
         flags_done.add(flag)
     if entry.get("age_flag") and member.get("age") and entry["age_flag"] not in flags_done:
         cmd += [entry["age_flag"], str(member["age"])]

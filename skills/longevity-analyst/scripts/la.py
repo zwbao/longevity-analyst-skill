@@ -18,7 +18,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from lalib import board, causal, genomics, reference, wearable
+from lalib import board, causal, genomics, pgx, reference, surveillance, wearable
 from lalib import common as C  # noqa: E402
 from lalib import evidence, integrate, intake, methods, organs, pipelines, preflight, report, twin  # noqa: E402
 
@@ -444,6 +444,19 @@ def cmd_insights(a):
         else:
             (st.get("insights") or {}).pop("absent_as_ref", None)
         _insight_readouts(st, ws, "genomics", res.pop("readouts"))
+        conc, rows = genomics.write_concordance(ws.root)
+        _insight_readouts(st, ws, "concordance", rows)
+        res["concordance"] = {x["analyte"]: x["class"] for x in conc["items"]}
+    elif a.action == "pgx":
+        doc = pgx.run(st, ws.root, absent_as_ref=a.absent_as_ref)
+        _insight_readouts(st, ws, "pgx", pgx.readouts(doc))
+        if (ws.root / "work" / "insights" / "genotype_phenotype.json").exists():
+            _, rows = genomics.write_concordance(ws.root)      # MTHFR feeds the homocysteine item
+            _insight_readouts(st, ws, "concordance", rows)
+        res = {"status": doc["status"], "reason_zh": doc.get("reason_zh"), "cpic_text": doc.get("cpic_text"),
+               "genes": {r["gene"]: r["phenotype"] for r in doc["results"]},
+               "drugs": sorted({d["drug"] for r in doc["results"] for d in r["drugs"]}),
+               "nutrigenetic": {x["key"]: x["copies"] for x in doc["nutrigenetic"]}}
     elif a.action == "skip-genomics":
         if not (a.reason or "").strip():
             raise C.LAError("skip-genomics needs --reason (e.g. no VCF, member declined genetic results)", C.EXIT_USAGE)
@@ -474,6 +487,10 @@ def cmd_insights(a):
     if written:                                      # bound to its bytes: trace refuses an edited copy
         fp = ws.root / "work" / "insights" / written
         st.setdefault("insights", {}).setdefault("files", {})[written] = C.sha256_file(fp, limit=None)
+    for extra in ({"genomics": ["concordance.json", "fingerprint.json"], "pgx": ["concordance.json", "../pgx/pgx.json"]}.get(a.action) or []):
+        fp = ws.root / "work" / "insights" / extra
+        if fp.exists():
+            st.setdefault("insights", {}).setdefault("files", {})[extra.split("/")[-1]] = C.sha256_file(fp, limit=None)
     C.invalidate_after(st, "insights", f"insights {a.action}")
     _insights_stage(st)
     ws.log(st, f"insights_{a.action}")
@@ -523,6 +540,23 @@ def cmd_intervene(a):
     ws.log(st, "intervene_register", items=res["items"])
     ws.save(st)
     C.emit(res)
+
+
+def cmd_surveillance(a):
+    ws, st = _open(a)
+    C.require(st, "intervene")
+    doc = surveillance.plan(st, ws.root, [Path(p) for p in (a.history or [])])
+    pp = ws.root / "work" / "intervene" / "plan.json"
+    st["surveillance"] = {"path": str(ws.root / "work" / "surveillance" / "plan.json"), "at": C.now_iso(),
+                          "sha256": C.sha256_file(ws.root / "work" / "surveillance" / "plan.json", limit=None),
+                          "intervene_plan_sha256": C.sha256_file(pp, limit=None) if pp.exists() else None,
+                          "rule_ids": sorted({r for x in doc["items"] for r in x["rule_ids"]})}
+    C.invalidate_after(st, "intervene", "surveillance plan")
+    ws.log(st, "surveillance_plan", items=len(doc["items"]))
+    ws.save(st)
+    C.emit({"path": st["surveillance"]["path"], "items": [{k: x[k] for k in ("id", "marker", "interval_weeks", "once", "done", "reasons")}
+                                                          for x in doc["items"]],
+            "retests": len(surveillance.retests(doc))})
 
 
 def cmd_twin(a):
@@ -604,9 +638,9 @@ NEXT = {
     "methods": "la.py methods plan / run (workflows/03-methods.md)",
     "integrate": "bundle, dispatch one analyst per system, register (workflows/04-integrate.md)",
     "organs": "organ bundle, one estimator per organ, organ register (workflows/04b-organs.md)",
-    "insights": "insights genomics / position / wearable, then the question board with one researcher per question (workflows/04c-insights.md)",
+    "insights": "insights genomics / pgx / position / wearable, then the question board with one researcher per question (workflows/04c-insights.md)",
     "intervene": "evidence lookups, write plan.json, register (workflows/05-intervene.md)",
-    "twin": "la.py twin build (workflows/06-twin-report.md)",
+    "twin": "la.py surveillance plan, then la.py twin build (workflows/04c-insights.md, 06-twin-report.md)",
     "review": "summary.md, trace, independent reviewer, record (workflows/06-twin-report.md)",
     "report": "la.py report (workflows/06-twin-report.md)",
 }
@@ -680,6 +714,21 @@ def cmd_validate(a):
         p = Path(f["path"])
         if not f.get("excluded") and f.get("sha256") not in (None, "unreadable") and p.exists() and C.sha256_file(p) != f["sha256"]:
             problems.append(f"{f['id']} content changed since intake")
+    problems += [f"surveillance rules: {p}" for p in surveillance.check_rules(surveillance.rules())]
+    sv = st.get("surveillance")
+    if sv:
+        sp = Path(sv["path"])
+        if not sp.exists() or C.sha256_file(sp, limit=None) != sv["sha256"]:
+            problems.append("work/surveillance/plan.json changed after `la.py surveillance plan`; run it again")
+        else:
+            used = sorted({r for x in C.load_json(sp)["items"] for r in x["rule_ids"]})
+            rs = [r for r in surveillance.rules() if r["id"] in used]
+            problems += [f"surveillance rule {r}: its source was not fetched in this workspace (`la.py evidence fetch`)"
+                         for r in surveillance.unfetched(ws.root, rs)]
+            problems += [f"surveillance rule {r} no longer exists in data/surveillance_rules.json" for r in used if r not in {x['id'] for x in rs}]
+        pp = ws.p("work", "intervene", "plan.json")
+        if (C.sha256_file(pp, limit=None) if pp.exists() else None) != sv.get("intervene_plan_sha256"):
+            problems.append("the intervention plan changed after `la.py surveillance plan`; run it again")
     C.emit({"ok": not problems, "problems": problems})
     return C.EXIT_OK if not problems else C.EXIT_INPUT
 
@@ -781,7 +830,7 @@ def build_parser():
     s.set_defaults(fn=cmd_organ)
 
     s = sub.add_parser("insights", help="genotype-phenotype, population position, wearables, MR projections")
-    s.add_argument("action", choices=["genomics", "skip-genomics", "position", "wearable", "mr", "project"])
+    s.add_argument("action", choices=["genomics", "skip-genomics", "pgx", "position", "wearable", "mr", "project"])
     s.add_argument("workspace")
     s.add_argument("--reason")
     s.add_argument("--file")
@@ -793,7 +842,7 @@ def build_parser():
     s.add_argument("--target", type=float)
     s.add_argument("--baseline")
     s.add_argument("--exposure-match", help="project: why an MR exposure with another name measures the same quantity as --analyte")
-    s.add_argument("--absent-as-ref", help="genomics: judgment that sites absent from a variant-only VCF are reference, with the reason")
+    s.add_argument("--absent-as-ref", help="genomics/pgx: judgment that sites absent from a variant-only VCF are reference, with the reason (pgx reuses the one genomics recorded)")
     s.set_defaults(fn=cmd_insights)
 
     s = sub.add_parser("board", help="question board: register questions, researcher findings, skips")
@@ -820,6 +869,12 @@ def build_parser():
     s.add_argument("workspace")
     s.add_argument("--plan", required=True)
     s.set_defaults(fn=cmd_intervene)
+
+    s = sub.add_parser("surveillance", help="guideline surveillance rules merged with the plan's retests (after intervene register)")
+    s.add_argument("action", choices=["plan"])
+    s.add_argument("workspace")
+    s.add_argument("--history", nargs="*", help="earlier twin.json snapshots: a once-only marker measured there counts as done")
+    s.set_defaults(fn=cmd_surveillance)
 
     s = sub.add_parser("twin")
     s.add_argument("action", choices=["build", "compare"])

@@ -1,0 +1,27 @@
+{
+ "schema": "la-surveillance/1",
+ "note": "Surveillance rules (PLAN WS-E, appendix A.6). A rule exists only where a guideline or consensus statement says so; its source was fetched and the quote copied verbatim. `when` (all must hold): age_min, lab_measured (trait_map analyte key), readout {id, value}, concordance_class {analyte, class}, clinvar_gene. `action.interval`: weeks or \"once\". Before `la.py surveillance plan` applies a rule, its source.url must have been fetched in the workspace with `la.py evidence fetch`; `la.py validate` checks the same. APOE e4: no guideline found that changes a screening interval by genotype, so no rule; it stays a question for the physician.",
+ "rules": [
+  {
+   "id": "S-lpa-once",
+   "when": {"age_min": 18},
+   "action": {"analyte": "lpa", "markers": ["脂蛋白(a)"], "interval": "once"},
+   "executor": "physician",
+   "reason": "guideline",
+   "source": {
+    "title": "Lipoprotein(a) in atherosclerotic cardiovascular disease and aortic stenosis: a European Atherosclerosis Society consensus statement",
+    "journal": "European Heart Journal 2022",
+    "doi": "10.1093/eurheartj/ehac361",
+    "pmcid": "PMC9639807",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9639807/",
+    "license": "CC BY-NC 4.0",
+    "retrieved_on": "2026-10-24",
+    "locator": "section 'Lipoprotein(a) testing', subsection 'Who should get an Lp(a) test?'",
+    "quote": "Lp(a) should be measured at least once in adults, preferably in the first lipid profile, to identify those with high cardiovascular risk.",
+    "quote_note_locator": "box 'Consensus key points: Influence of genetics and ethnicity on Lp(a)'",
+    "quote_note": "Lp(a) concentration is predominantly determined by genetics (>90%), more than any other lipoprotein."
+   },
+   "note_zh": "脂蛋白(a)主要由遗传决定，成人测一次即可。"
+  }
+ ]
+}

@@ -22,7 +22,8 @@
    ],
    "common_genes": [
     "LPA"
-   ]
+   ],
+   "adverse_direction": "high"
   },
   "ldl": {
    "label_zh": "低密度脂蛋白胆固醇",
@@ -49,7 +50,8 @@
     "CELSR2",
     "HMGCR"
    ],
-   "monogenic_source": "ClinGen familial hypercholesterolemia gene curation"
+   "monogenic_source": "ClinGen familial hypercholesterolemia gene curation",
+   "adverse_direction": "high"
   },
   "hdl": {
    "label_zh": "高密度脂蛋白胆固醇",
@@ -74,7 +76,8 @@
     "CETP",
     "LIPC",
     "LPL"
-   ]
+   ],
+   "adverse_direction": "low"
   },
   "tg": {
    "label_zh": "甘油三酯",
@@ -101,7 +104,8 @@
     "GCKR",
     "LPL"
    ],
-   "monogenic_source": "familial chylomicronemia syndrome genes"
+   "monogenic_source": "familial chylomicronemia syndrome genes",
+   "adverse_direction": "high"
   },
   "tc": {
    "label_zh": "总胆固醇",
@@ -121,7 +125,8 @@
     "APOE",
     "LDLR",
     "HMGCR"
-   ]
+   ],
+   "adverse_direction": "high"
   },
   "urate": {
    "label_zh": "尿酸",
@@ -145,7 +150,8 @@
     "SLC2A9",
     "ABCG2",
     "SLC22A12"
-   ]
+   ],
+   "adverse_direction": "high"
   },
   "hcy": {
    "label_zh": "同型半胱氨酸",
@@ -168,7 +174,8 @@
    "common_genes": [
     "MTHFR",
     "CBS"
-   ]
+   ],
+   "adverse_direction": "high"
   },
   "vitd": {
    "label_zh": "25-羟基维生素D",
@@ -195,7 +202,8 @@
     "CYP2R1",
     "DHCR7",
     "CYP24A1"
-   ]
+   ],
+   "adverse_direction": "low"
   },
   "glucose": {
    "label_zh": "空腹血糖",
@@ -224,7 +232,8 @@
     "MTNR1B",
     "TCF7L2"
    ],
-   "monogenic_source": "MODY genes (ClinGen)"
+   "monogenic_source": "MODY genes (ClinGen)",
+   "adverse_direction": "high"
   },
   "hba1c": {
    "label_zh": "糖化血红蛋白",
@@ -248,7 +257,8 @@
     "G6PC2",
     "GCK",
     "HK1"
-   ]
+   ],
+   "adverse_direction": "high"
   },
   "alt": {
    "label_zh": "谷丙转氨酶",
@@ -268,7 +278,8 @@
     "PNPLA3",
     "TM6SF2",
     "HSD17B13"
-   ]
+   ],
+   "adverse_direction": "high"
   },
   "ggt": {
    "label_zh": "γ-谷氨酰转移酶",
@@ -287,7 +298,8 @@
    "common_genes": [
     "GGT1",
     "HNF1A"
-   ]
+   ],
+   "adverse_direction": "high"
   },
   "crp": {
    "label_zh": "C反应蛋白",
@@ -308,7 +320,8 @@
     "CRP",
     "HNF1A",
     "APOE"
-   ]
+   ],
+   "adverse_direction": "high"
   },
   "creatinine": {
    "label_zh": "肌酐",
@@ -329,7 +342,8 @@
     "UMOD",
     "SLC34A1",
     "GATM"
-   ]
+   ],
+   "adverse_direction": "high"
   }
  },
  "score_rules": {
@@ -341,7 +355,10 @@
   "min_dp": 10,
   "min_informative_maf": 0.01,
   "min_informative_loci": 8,
-  "min_alt_reads": 3
+  "min_alt_reads": 3,
+  "band_high_pct": 80,
+  "band_low_pct": 20,
+  "band_edge_pct": 5
  },
  "gene_modes": {
   "_note": "inheritance of the monogenic trait (OMIM/ClinGen): AD dominant, AR recessive, XLR X-linked recessive. A heterozygous carrier of an AR/XLR gene is reported as a carrier, not as the cause.",
@@ -448,5 +465,6 @@
    "Fasting insulin",
    "Fasting insulin levels"
   ]
- }
+ },
+ "adverse_direction_note": "adverse_direction: the side of the reference range that is unfavourable (high/low/both). Genetic band (PLAN WS-D.1): for 'high' a percentile >= band_high_pct is elevated and <= band_low_pct reduced; for 'low' the reverse. Rule for 'both' (PLAN §9 open question 2, conservative): the lab picks the side - a high value is read as 'high', a low value as 'low'; with the value in range either tail (>= band_high_pct or <= band_low_pct) counts as elevated and nothing is 'reduced', so a tendency is never explained away. No analyte uses 'both' yet. A percentile within band_edge_pct of a cut-off is flagged near_band_edge."
 }
