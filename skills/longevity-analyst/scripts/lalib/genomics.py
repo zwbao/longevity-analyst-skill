@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import bisect
 import gzip
+import hashlib
 import math
 import re
 import shutil
@@ -25,7 +26,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
 
 from . import pubdata
-from .common import EXIT_INPUT, LAError, data, now_iso, skillkit, write_json
+from .common import EXIT_INPUT, LAError, data, load_json, now_iso, skillkit, write_json
 
 CHR = re.compile(r"^(?:chr)?([0-9]{1,2}|X|Y|M|MT)$", re.I)
 END = re.compile(r"(?:^|;)END=(\d+)")
@@ -33,6 +34,7 @@ PLP_OK = {"pathogenic", "likely pathogenic", "pathogenic/likely pathogenic"}
 GENE_PAD = 2000            # promoter / UTR margin around the Ensembl gene span
 INDEL_WINDOW = 100         # an indel farther than this from every ClinVar indel record cannot be one of them
 MIN_REGION_COVERAGE = 0.9
+FP_OK = {"called", "quality_unverified", "ref_block"}     # calls a fingerprint may use (never an assumed reference)
 
 
 def _norm_chrom(c: str) -> str:
@@ -448,6 +450,8 @@ def explain(st: Dict[str, Any], ws: Path, absent_as_ref: Optional[str] = None) -
         raise LAError("--absent-as-ref needs the reason (what says this VCF lists every non-reference site)", EXIT_INPUT)
     from .methods import pick
     variants = pick(st, "variants")
+    if not variants and reused_germline(ws, "genotype_phenotype.json"):
+        return explain_reused(st, ws)
     if not variants:
         raise LAError("no usable VCF for this member (intake, identity, primary)", EXIT_INPUT)
     tm = data("trait_map.json")
@@ -486,11 +490,19 @@ def explain(st: Dict[str, Any], ws: Path, absent_as_ref: Optional[str] = None) -
             else:
                 it["unscanned"][gene] = "gene region not retrieved (Ensembl)"
         plan[key] = it
-    vcf.prefetch({(l["chrom"], l["pos"]) for it in plan.values() for l in it["loci"]},
+    pg_sites: List[Dict[str, Any]] = []
+    if asm == "hg38":                                    # CPIC / panel positions are GRCh38 only (fingerprint)
+        from . import pgx
+        try:
+            pg_sites = pgx.sites()
+        except (LAError, OSError, KeyError, ValueError):
+            pg_sites = []                                # library not reachable: the GWAS sites alone
+    vcf.prefetch({(l["chrom"], l["pos"]) for it in plan.values() for l in it["loci"]} | {(s["chrom"], s["pos"]) for s in pg_sites},
                  [(r["chrom"], r["start"], r["end"]) for it in plan.values() for r in it["regions"].values()])
     # 2. compute
     results: Dict[str, Any] = {}
     readouts: List[Dict[str, Any]] = []
+    fp_calls: Dict[str, str] = {}
     for key, it in plan.items():
         a, lab = it["a"], it["lab"]
         res: Dict[str, Any] = {"analyte": key, "label_zh": a["label_zh"], "member_lab": lab, "efo": a["efo"], "skipped_loci": it["skipped"]}
@@ -517,6 +529,8 @@ def explain(st: Dict[str, Any], ws: Path, absent_as_ref: Optional[str] = None) -
                         score += dos
                         mean += 2 * p_risk
                         var += 2 * p_risk * (1 - p_risk)
+                if l["alt"] and gt["dosage"] is not None and gt["status"] in FP_OK:
+                    fp_calls[l["rsid"]] = "".join(sorted(l["ref"] * (2 - gt["dosage"]) + l["alt"] * gt["dosage"]))
                 detail.append({"rsid": l["rsid"], "genes": l["mapped_genes"], "risk_allele": risk_allele, "risk_allele_freq_eas": round(p_risk, 4),
                                "informative_in_eas": useful, "member_risk_alleles": dos, "call_status": gt["status"], "p_value": l["p_value"],
                                "effect_text": l["beta_text"], "gwas_ref": l["ref"], "pubmed_id": l["pubmed_id"]})
@@ -550,6 +564,12 @@ def explain(st: Dict[str, Any], ws: Path, absent_as_ref: Optional[str] = None) -
            "lookup": "tabix" if vcf._tabix else "stream", "analytes": results}
     p = ws / "work" / "insights" / "genotype_phenotype.json"
     write_json(p, out)
+    if pg_sites:
+        from . import pgx
+        for rs, call in pgx.read_sites(vcf, pg_sites).items():
+            if call.get("genotype") and call["status"] in FP_OK:
+                fp_calls[rs] = call["genotype"]
+    write_fingerprint(ws, fp_calls)
     return {"path": str(p), "absent_as_ref": absent_as_ref,
             "analytes": {k: {"flag": v["member_lab"]["flag"], "coverage": v.get("coverage"), "pct_eas": v.get("pct_eas"),
                              "not_computed": v.get("score_not_computed") or v.get("not_retrieved"),
@@ -624,3 +644,164 @@ def _scan(ws: Path, vcf: Vcf, it: Dict[str, Any], modes: Dict[str, str], asm: st
             "plp_not_unanimous": other, "low_quality_not_counted": lowq, "indels_unresolved": unresolved,
             "rule": "ClinVar aggregate classification P/LP with review criteria; SNVs by position+alleles, indels by canonical SPDI; "
                     "calls: FILTER, GQ/DP, alt reads; gene counted as scanned only when the VCF covers its region"}
+
+
+# ------------------------------------------------------------------ fingerprint (WS-D.3)
+def write_fingerprint(ws: Path, calls: Dict[str, str]) -> Dict[str, Any]:
+    """Quality-passing germline calls (rsid -> sorted plus-strand bases) and their hash. Stays in the workspace and the
+    twin; never exported to a host."""
+    lines = sorted(f"{rs}:{gt}" for rs, gt in calls.items())
+    fp = {"schema": "la-fingerprint/1", "sites": len(lines), "sha256": hashlib.sha256("\n".join(lines).encode()).hexdigest(),
+          "calls": dict(sorted(calls.items()))}
+    write_json(ws / "work" / "insights" / "fingerprint.json", fp)
+    return fp
+
+
+# ------------------------------------------------------------------ concordance (WS-D.1)
+LEAD_ZH = "基因分值只能解释这一项差异的一部分。"
+OVERRIDE_ZH = "需要临床确认和遗传咨询"
+CLASS_ZH = {
+    "concordant_adverse": "这一项有较明显的先天倾向，而且已经表现出来",
+    "acquired_adverse": "先天倾向不突出，这一项主要受后天因素影响，生活方式调整的空间较大",
+    "latent": "有先天倾向，但目前还没有表现出来",
+    "concordant_typical": "先天倾向不突出，目前也在范围内",
+}
+
+
+def genetic_band(pct: Optional[float], direction: str, flag: str, rules: Dict[str, Any]) -> str:
+    """elevated / typical / reduced / not_computed, measured toward the unfavourable side (trait_map adverse_direction_note).
+    'both': a high or low lab value picks the side; in range, either tail is elevated and nothing is reduced."""
+    if pct is None or direction not in ("high", "low", "both"):
+        return "not_computed"
+    hi, lo = rules.get("band_high_pct", 80), rules.get("band_low_pct", 20)
+    if direction == "both":
+        if flag in ("high", "low"):
+            direction = flag
+        else:
+            return "elevated" if (pct >= hi or pct <= lo) else "typical"
+    if direction == "high":
+        return "elevated" if pct >= hi else "reduced" if pct <= lo else "typical"
+    return "elevated" if pct <= lo else "reduced" if pct >= hi else "typical"
+
+
+def lab_state(flag: str, direction: str) -> str:
+    """adverse: outside the printed range on the unfavourable side; in_range; anything else is not_classified."""
+    if flag == "in_range":
+        return "in_range"
+    if flag in ("high", "low") and (direction == flag or direction == "both"):
+        return "adverse"
+    return "not_classified"
+
+
+def concordance_class(band: str, state: str) -> str:
+    if band == "not_computed":
+        return "not_computed"
+    if state == "not_classified":
+        return "not_classified"
+    if band == "elevated":
+        return "concordant_adverse" if state == "adverse" else "latent"
+    return "acquired_adverse" if state == "adverse" else "concordant_typical"
+
+
+def _trait_map_version() -> str:
+    from .common import DATA_DIR
+    return "la-traits/1@" + hashlib.sha256((DATA_DIR / "trait_map.json").read_bytes()).hexdigest()[:12]
+
+
+def concordance(gp: Dict[str, Any], pgx_doc: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
+    """la-concordance/1 from genotype_phenotype.json (and the nutrigenetic MTHFR call for homocysteine, when run)."""
+    tm = data("trait_map.json")
+    rules = tm["score_rules"]
+    hi, lo, edge = rules.get("band_high_pct", 80), rules.get("band_low_pct", 20), rules.get("band_edge_pct", 5)
+    mthfr = next((n for n in ((pgx_doc or {}).get("nutrigenetic") or []) if n.get("key") == "mthfr" and n.get("copies") is not None), None)
+    items = []
+    for key, res in (gp.get("analytes") or {}).items():
+        spec = tm["analytes"].get(key) or {}
+        direction = spec.get("adverse_direction")
+        if direction not in ("high", "low", "both"):
+            continue                                   # no adverse direction: this analyte is not classified (contract)
+        flag = res["member_lab"]["flag"]
+        pct = res.get("pct_eas")
+        band = genetic_band(pct, direction, flag, rules)
+        basis = [f"work/insights/genotype_phenotype.json#{key}"]
+        it: Dict[str, Any] = {"analyte": key, "label_zh": spec.get("label_zh", key), "adverse_direction": direction, "genetic_pct": pct,
+                              "genetic_band": band}
+        if key == "hcy" and mthfr:
+            # Frosst 1995 (cited by the nutrigenetic panel): homozygous 677T carriers have elevated homocysteine. Two copies
+            # make the tendency elevated whatever the common-variant score says; one copy changes nothing.
+            it["mthfr_rs1801133_copies"] = mthfr["copies"]
+            it["acmg_note_zh"] = mthfr.get("caveat_zh")
+            basis.append("work/pgx/pgx.json#nutrigenetic.mthfr")
+            if mthfr["copies"] == 2 and band != "elevated":
+                band = it["genetic_band"] = "elevated"
+                it["band_basis"] = "mthfr_677tt"
+        state = lab_state(flag, direction)
+        cls = concordance_class(band, state)
+        plp = [x for x in res.get("monogenic_scan", {}).get("pathogenic_or_likely", []) if not x.get("carrier_only")]
+        near = pct is not None and band != "not_computed" and (abs(pct - hi) <= edge or abs(pct - lo) <= edge)
+        it.update(lab_flag=flag, lab_state=state, near_band_edge=bool(near), clinvar_override=bool(plp))
+        if plp:
+            it.update({"class": "clinvar_override", "class_without_override": cls, "wording_zh": OVERRIDE_ZH})
+        else:
+            it.update({"class": cls, "wording_zh": (LEAD_ZH + CLASS_ZH[cls] + "。") if cls in CLASS_ZH else None})
+        if band == "not_computed":
+            it["not_computed_reason"] = res.get("score_not_computed") or res.get("not_retrieved")
+        it["basis"] = basis
+        items.append(it)
+    return {"schema": "la-concordance/1", "rules": {"band_high_pct": hi, "band_low_pct": lo, "band_edge_pct": edge},
+            "retrieved_on": str(gp.get("generated_at", ""))[:10], "trait_map_version": _trait_map_version(), "items": items}
+
+
+def write_concordance(ws: Path) -> Tuple[Dict[str, Any], List[Dict[str, Any]]]:
+    """Write work/insights/concordance.json; return it with its readouts (kind genetic_concordance)."""
+    gp = load_json(ws / "work" / "insights" / "genotype_phenotype.json")
+    pp = ws / "work" / "pgx" / "pgx.json"
+    doc = concordance(gp, load_json(pp) if pp.exists() else None)
+    write_json(ws / "work" / "insights" / "concordance.json", doc)
+    rows = [{"id": f"gen.{x['analyte']}.concordance", "label_zh": f"{x['label_zh']}：基因与化验一致性", "value": x["class"], "unit": "",
+             "kind": "genetic_concordance", "method": "native.concordance", "analyte": x["analyte"], "wording_zh": x["wording_zh"],
+             "near_band_edge": x["near_band_edge"], "systems": []}
+            for x in doc["items"] if x["class"] in CLASS_ZH or x["class"] == "clinvar_override"]
+    return doc, rows
+
+
+# ------------------------------------------------------------------ germline reuse (WS-I.1, core writes the manifest)
+def reused_germline(ws: Path, name: str) -> Optional[Path]:
+    """A file core copied into work/reuse/germline/ (manifest work/reuse/germline.json), only while its hash matches."""
+    mp = ws / "work" / "reuse" / "germline.json"
+    if not mp.exists():
+        return None
+    from .common import sha256_file
+    m = load_json(mp)
+    p = ws / "work" / "reuse" / "germline" / name
+    sha = (m.get("files") or {}).get(name)
+    return p if m.get("reused") and sha and p.exists() and sha256_file(p, limit=None) == sha else None
+
+
+def explain_reused(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
+    """No VCF this visit: the genotype side (percentiles, ClinVar scan) comes from the reused earlier result; the lab
+    side is this visit's labs. An analyte with no earlier genetic result stays out (nothing is recomputed from memory)."""
+    src = reused_germline(ws, "genotype_phenotype.json")
+    old = load_json(src)
+    labs = member_labs(st)
+    results, readouts = {}, []
+    for key, res in (old.get("analytes") or {}).items():
+        if key not in labs:
+            continue
+        res = dict(res, member_lab=labs[key])
+        results[key] = res
+        a = data("trait_map.json")["analytes"].get(key, {})
+        if res.get("pct_eas") is not None:
+            readouts.append({"id": f"gen.{key}.grs_pct", "label_zh": f"{a.get('label_zh', key)}遗传倾向（东亚人群百分位）", "value": res["pct_eas"],
+                             "unit": "%", "kind": "genetic_score", "method": "native.genotype_phenotype", "analyte": key,
+                             "coverage_pct": round(100 * (res.get("coverage") or 0), 1), "loci": res.get("loci_called"),
+                             "reused_from": str(src), "systems": []})
+    out = dict(old, analytes=results, reused_from=load_json(ws / "work" / "reuse" / "germline.json").get("from"), relabelled_at=now_iso())
+    p = ws / "work" / "insights" / "genotype_phenotype.json"
+    write_json(p, out)
+    fp = reused_germline(ws, "fingerprint.json")
+    if fp:
+        write_json(ws / "work" / "insights" / "fingerprint.json", load_json(fp))
+    return {"path": str(p), "reused_from": out["reused_from"],
+            "analytes": {k: {"flag": v["member_lab"]["flag"], "pct_eas": v.get("pct_eas")} for k, v in results.items()},
+            "readouts": readouts}
