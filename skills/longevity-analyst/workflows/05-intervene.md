@@ -21,6 +21,12 @@ The system analyses are registered.
 4. `$LA intervene register <ws> --plan work/intervene/plan.json`. It rejects unknown categories, disallowed executors,
    doses in the text, targets that are not this member's data, and evidence not retrieved in this run.
 
+5. Read the `retests` and `warnings` that `register` prints. Each retest has `judgeable`: whether its `what` (or,
+   failing that, its targets) has a within-person noise model (biological variation table, or readout noise table
+   for clocks). `judgeable: false` is allowed; the report then prints "这一项复测时只能并排看两次结果，不能判断是不是真的变化。"
+   Prefer a retest target that can be judged when one fits. A retest sooner than the marker's `min_retest_days` is
+   warned about: lengthen it unless there is a reason.
+
 ## Output Format
 1. The registered plan: item id, category, action, target, executor, evidence grade, retest.
 2. Findings deliberately left without an intervention, and why (weak evidence, needs a physician).

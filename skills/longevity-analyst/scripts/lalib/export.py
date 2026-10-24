@@ -136,10 +136,11 @@ def build(st: Dict[str, Any], ws: Path, report_html: Path) -> Dict[str, Any]:
             plan_items.append({"id": f"la-{i['id'].lower()}", "category": CATEGORY.get(i["category"], "other"),
                                "title": title, "detail": detail[:DETAIL_MAX], "markers": markers[:12],
                                "executor": i.get("executor"), "kind": i["category"], "evidence_grade": i.get("evidence_grade"),
-                               "source_item": i["id"]})
+                               "source_item": i["id"], "targets": list(i.get("targets") or [])})
             if rt.get("after_weeks"):
                 chk = judge.get(i["id"]) or {}
-                retests.append({"item": i["id"], "what": what, "after_weeks": int(rt["after_weeks"]),
+                retests.append({"item": i["id"], "id": i["id"], "what": what,
+                                "marker": labs.get(kit.fold_name(what)) or what, "after_weeks": int(rt["after_weeks"]),
                                 "due": (rendered + timedelta(weeks=int(rt["after_weeks"]))).isoformat(), "from": rendered.isoformat(),
                                 "reason": "intervention", "judgeable": bool(chk.get("judgeable")),
                                 "due_at": _due_at(base, int(rt["after_weeks"]))})
@@ -195,7 +196,7 @@ def _surveillance_retests(ws: Path, base: date, have: set) -> List[Dict[str, Any
             continue
         N = N or S.noise()
         chk = retest_check(N, str(it.get("marker") or ""), [], wk)
-        out.append({"item": it.get("id"), "what": it.get("marker"), "after_weeks": wk,
+        out.append({"item": it.get("id"), "id": it.get("id"), "what": it.get("marker"), "marker": it.get("marker"), "after_weeks": wk,
                     "due": (base + timedelta(weeks=wk)).isoformat(), "from": base.isoformat(),
                     "reason": it.get("reason") or "guideline", "judgeable": chk["judgeable"], "due_at": _due_at(base, wk),
                     "executor": it.get("executor")})
@@ -208,6 +209,10 @@ def _v2(ws: Path, ro: Dict[str, Dict[str, Any]]) -> Dict[str, Any]:
     ser = load_json(sp) if sp.exists() else {}
     conc = _items(ws / "work" / "insights" / "concordance.json")
     conc = [{k: v for k, v in c.items() if k != "basis"} for c in conc]
+    last = {t.get("analyte"): t for t in ser.get("transitions") or [] if t.get("member_change")}
+    for c in conc:                                     # the latest change of class for this analyte, if any
+        t = last.get(c.get("analyte"))
+        c["transition"] = {"from": t.get("from"), "to": t.get("to"), "observed_at": t.get("to_t"), "kind": t.get("kind")} if t else None
     return {"trends": trend_items(ser) if ser else [],
             "concordance": conc, "concordance_note_zh": CONCORDANCE_NOTE_ZH if conc else None,
             "concordance_transitions": [{k: t.get(k) for k in ("analyte", "marker", "from", "to", "from_t", "to_t", "kind", "ask_doctor",

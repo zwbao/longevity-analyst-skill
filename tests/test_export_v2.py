@@ -242,6 +242,10 @@ def test_chain_export_v2_series_exposures_and_privacy(tmp_path, capsys, monkeypa
     rts = {r["item"]: r for r in ex["retests"]}
     assert rts["I1"]["judgeable"] is False and rts["I1"]["reason"] == "intervention"
     assert rts["I1"]["due_at"] == "2027-09-09T00:00:00+08:00"                     # sample date + 52 weeks, China time
+    assert rts["I2"]["id"] == "I2" and rts["I2"]["marker"] == "收缩压" and rts["SV1"]["marker"] == "空腹血糖"
+    assert ex["concordance"][0]["transition"] == {"from": "latent", "to": "concordant_adverse", "observed_at": "2026-09-10",
+                                                  "kind": "tendency_expressed"}
+    assert {x["source_item"]: x["targets"] for x in ex["plan"]["items"]} == {"I1": ["epiage.dnam_hannum"], "I2": ["收缩压"]}
     assert rts["SV1"]["reason"] == "genetic" and rts["SV1"]["judgeable"] is True and "SV2" not in rts
     capsys.readouterr()
     ok("export", str(ws))
