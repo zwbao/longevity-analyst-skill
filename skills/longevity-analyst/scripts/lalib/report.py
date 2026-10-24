@@ -593,7 +593,7 @@ def render(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
     if skipped:
         spec = data("organs.json")["organs"]
         names = "、".join(_cell((spec.get(o) or {}).get("label_zh", o)) for o in skipped)
-        L.append(f"| 器官 AI 估计：{names} | 本期没有做 AI 估计（器官体检表里这几个器官只有公式指数或测量值） |")
+        L.append(f"| 器官 AI 估计：{names} | 本期没有做器官 AI 估计 |")
     for f in st["files"]:
         if f.get("status") in FILE_STATUS_ZH:
             L.append(f"| 文件 {_cell(f['name'])} | {FILE_STATUS_ZH[f['status']]} |")
