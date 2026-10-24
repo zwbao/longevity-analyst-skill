@@ -22,9 +22,9 @@ def _cell(x: Any) -> str:
 
 def _load(ws: Path, st: Dict[str, Any], rel: str, sha: Optional[str]) -> Optional[Dict[str, Any]]:
     p = ws / rel
-    if not p.exists():
+    if not p.exists() or sha is None:                   # not registered (or voided upstream): nothing is rendered
         return None
-    if sha is None or sha256_file(p, limit=None) != sha:
+    if sha256_file(p, limit=None) != sha:
         raise LAError(f"{rel} was not written by la.py or changed afterwards; run that step again", EXIT_BLOCKED)
     return load_json(p)
 
@@ -131,6 +131,9 @@ def sections(ws_root: Path, ctx: Optional[Dict[str, Any]] = None) -> List[Tuple[
             out.append(("基因与化验的一致性", "\n".join(L)))
     sv = st.get("surveillance")
     plan = _load(ws, st, "work/surveillance/plan.json", (sv or {}).get("sha256"))
+    pp = ws / "work" / "intervene" / "plan.json"
+    if plan and (sha256_file(pp, limit=None) if pp.exists() else None) != (sv or {}).get("intervene_plan_sha256", "-"):
+        raise LAError("the intervention plan changed after `la.py surveillance plan`; run it again", EXIT_BLOCKED)
     if plan:
         if not consent:                                 # a rule triggered by a genetic result stays out without consent
             plan = dict(plan, items=[x for x in plan["items"] if not (x["reason"] == "genetic" and x["rule_ids"])])

@@ -157,3 +157,23 @@ def test_report_section_labels_every_cpic_line(tmp_path):
     assert any("simvastatin" in l and "你正在用" in l for l in lines)
     st_no = dict(st, member={**st["member"], "answers": {"genetic_disclosure": "no"}})
     assert report_genomics.sections(ws, {"st": st_no}) == []
+
+
+@needs_lib
+def test_cli_insights_pgx_registers_readouts(tmp_path, capsys):
+    import la
+    root = tmp_path / "ws"
+    ws = C.Workspace(root)
+    st = C.new_state({"id": "t", "age": 50, "sex": "female", "answers": {"genetic_disclosure": "yes", "medications": "辛伐他汀"}}, tmp_path)
+    for s in C.STAGES[:C.STAGES.index("organs") + 1]:
+        st["stages"][s] = "done"
+    st["processed"]["variants"] = [{"path": str(VCF), "provenance": {"assembly": "GRCh38"}}]
+    ws.save(st)
+    capsys.readouterr()
+    assert la.main(["insights", "pgx", str(root)]) == 0
+    out = json.loads(capsys.readouterr().out)
+    assert out["status"] == "ran" and out["genes"] == {"SLCO1B1": "Decreased Function"} and "simvastatin" in out["drugs"]
+    st = C.load_json(root / "state.json")
+    assert st["insights"]["files"]["pgx.json"] == C.sha256_file(root / "work" / "pgx" / "pgx.json", limit=None)
+    ro = {r["id"]: r for r in C.load_json(root / "work" / "insights" / "insight_readouts.json")["readouts"]}
+    assert ro["pgx.slco1b1.phenotype"]["kind"] == "pgx" and ro["pgx.slco1b1.phenotype"]["group"] == "pgx"

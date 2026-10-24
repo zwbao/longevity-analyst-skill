@@ -107,8 +107,38 @@ def test_report_section_quotes_the_guideline(tmp_path, monkeypatch):
     from lalib import report_genomics
     ws, st = _ws(tmp_path, monkeypatch, retests=[("空腹血糖", 12)])
     surveillance.plan(st, ws)
-    st["surveillance"] = {"sha256": C.sha256_file(ws / "work" / "surveillance" / "plan.json", limit=None)}
+    st["surveillance"] = {"sha256": C.sha256_file(ws / "work" / "surveillance" / "plan.json", limit=None),
+                          "intervene_plan_sha256": C.sha256_file(ws / "work" / "intervene" / "plan.json", limit=None)}
     secs = dict(report_genomics.sections(ws, {"st": st}))
     md = secs["监测计划"]
     assert "测一次就够，不需要复测" in md and "12 周后" in md
     assert "Lp(a) should be measured at least once in adults" in md and "10.1093/eurheartj/ehac361" in md and LPA_URL in md
+
+
+def test_cli_plan_validate_and_stale_plan(tmp_path, monkeypatch):
+    import la
+    root = tmp_path / "ws"
+    ws = C.Workspace(root)
+    st = C.new_state({"id": "t", "age": 49, "sex": "male", "answers": {}}, tmp_path)
+    for s in C.STAGES[:C.STAGES.index("intervene") + 1]:
+        st["stages"][s] = "done"
+    C.write_json(root / "work" / "intervene" / "plan.json", {"items": [{"id": "I1", "category": "diet", "executor": "member",
+                                                                       "retest": {"what": "空腹血糖", "after_weeks": 12}}]})
+    C.write_json(root / "work" / "readouts.json", {"readouts": []})
+    ws.save(st)
+    monkeypatch.setattr(genomics, "member_labs", lambda st: {"lpa": {"flag": "in_range"}})
+    assert la.main(["surveillance", "plan", str(root)]) == C.EXIT_INPUT            # source not fetched yet
+    C.write_json(root / "work" / "evidence" / f"url_{hashlib.sha1(LPA_URL.encode()).hexdigest()[:10]}.json", {"url": LPA_URL})
+    assert la.main(["surveillance", "plan", str(root)]) == 0
+    st = C.load_json(root / "state.json")
+    assert st["surveillance"]["rule_ids"] == ["S-lpa-once"] and st["stages"]["twin"] == "todo"
+    assert la.main(["validate", str(root)]) == 0
+    for f in (root / "work" / "evidence").glob("url_*.json"):
+        f.unlink()
+    assert la.main(["validate", str(root)]) == C.EXIT_INPUT                          # rule source no longer recorded
+    C.write_json(root / "work" / "evidence" / f"url_{hashlib.sha1(LPA_URL.encode()).hexdigest()[:10]}.json", {"url": LPA_URL})
+    C.write_json(root / "work" / "intervene" / "plan.json", {"items": []})
+    assert la.main(["validate", str(root)]) == C.EXIT_INPUT                          # plan changed after surveillance
+    from lalib import report_genomics
+    with pytest.raises(C.LAError, match="surveillance plan"):
+        report_genomics.sections(root, {"st": C.load_json(root / "state.json")})

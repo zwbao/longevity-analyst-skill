@@ -160,3 +160,4 @@ def test_report_section_uses_fixed_wordings_and_refuses_edits(tmp_path):
     (ws / "work" / "insights" / "concordance.json").write_text("{}")
     with pytest.raises(C.LAError, match="not written by la.py"):
         report_genomics.sections(ws, {"st": st})
+    assert report_genomics.sections(ws, {"st": dict(st, insights={})}) == []          # unregistered: not rendered
