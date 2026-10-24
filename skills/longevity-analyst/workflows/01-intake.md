@@ -9,9 +9,10 @@ A new data folder arrives. Output: a workspace whose `observe` shows no pending 
 
 ## Workflow
 0. Data in Mirobody (dsh/longpi): `$LA mirobody pull <raw_dir> --mcp-url-file <file>` first. It writes one
-   `mirobody_labs_<date>.csv` per checkup date and `mirobody_wearable_daily.csv` into `<raw_dir>`. Confirm lab rows
-   only from the checkup this report is about (usually the latest date, or the one matching the omics sample date);
-   answer `no` for rows of earlier dates, which are history. These rows carry no printed reference range. The watch
+   `mirobody_labs_<date>.csv` per checkup date and `mirobody_wearable_daily.csv` into `<raw_dir>`. Every row keeps
+   its own `date` as `collected_at`. Rows of earlier checkups are history: confirm them like any row (`yes` when the
+   row is what it says); only rows of this visit (the sample date) reach methods and estimators, and the history
+   reaches the twin, where `twin series` uses it for trends. These rows carry no printed reference range. The watch
    file is not a lab table: mark it `no_lab_values` at intake and map its columns later with `$LA insights wearable`.
 1. `$LA init <raw_dir> <ws> --member-id <id> --age <n> --sex <m|f> --longevity-skills <clone> [--sample-date YYYY-MM-DD] [--mode research]`.
    `--mode commercial` is the default and is right for paid member work.
@@ -54,14 +55,21 @@ A new data folder arrives. Output: a workspace whose `observe` shows no pending 
    The report prints a warning unless the answer is `consistent`. Decide identity before methods run; a later
    revision (`assign --what identity` again) is allowed, keeps the earlier verdict on record, and voids every later
    stage so nothing computed from an excluded file survives.
+4b. `collected_at` (sampling date of each lab row). Priority: the row's own date column (`date`, `采样日期`, `检验日期`
+   …) → the date you record for the whole file → the workspace `sample_date`. Transcribed CSVs may carry a `date`
+   column. A file whose date is unclear (a date cell that is not a date, some rows dated and others not, or an
+   undated file next to dated ones in a workspace without a sample date) comes back as a `collected_at` judgment:
+   read the date from the report header or file metadata, or ask the user, and record it with the words you read:
+   `$LA labs date <ws> --file F003 --date 2024-09-03 --source "报告单抬头：采样日期 2024-09-03" --reason "..."`.
+   Never pick a date to make the question go away. `labs candidates` shows each row's `collected_at`.
 5. A lab value read wrongly (e.g. `6.8↑` where the arrow is the out-of-range flag) is corrected with
    `$LA labs fix <ws> --marker "葡萄糖" --value 6.8 --reason "..."`, or dropped with `$LA labs drop`. The old
    value is kept in the row's history.
 6. Confirm the lab rows. `$LA labs candidates <ws>` lists every numeric row with its value, unit, reference range and
    the analyte the harness would match it to (empty: no method uses it; answer it anyway) (for example "空腹血糖（静脉血浆/血清；不是餐后、OGTT、随机或尿糖）").
-   For each row decide from the row itself, its reference range and the source document: `yes` only if it is from
-   this visit (the sample date; an earlier year's table is `no`, it belongs to that year's workspace) and is that
-   analyte in serum/plasma (fasting may be inferred from the document's fasting reference range; say so in `why`). Physical measurements
+   For each row decide from the row itself, its reference range and the source document: `yes` only if it is that
+   analyte in serum/plasma (a row from an earlier visit is answered the same way; its `collected_at` keeps it out of
+   this visit's methods) (fasting may be inferred from the document's fasting reference range; say so in `why`). Physical measurements
 (blood pressure, waist) are `yes` when they were measured at this visit (venous blood for blood counts) and fasting where the candidate says so; `no` for urine,
    post-meal, OGTT, random or capillary values, a different analyte with a similar abbreviation (甲状腺球蛋白(TG)),
    or anything you cannot tell. Write `{"answers": [{"row_key": "…", "answer": "yes|no", "why": "…"}]}` and run

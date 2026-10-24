@@ -41,7 +41,13 @@ preferences. Read, do not edit.
    follows from its cited member data and retrieved records (a `supported` verdict resting only on a weak common-
    variant score is P1). Read `work/insights/*.json` and the board files.
 
-Also read `work/organs/organ_readouts.json`, `work/organs/estimates/*.json` and `work/evidence/pubmed_*.json` (with
+14. Trends and changes (`work/twin/series.json`, the report section「复测对比与趋势」): a trend or change is never
+   called a diagnosis, a disease or "恶化/变差", and the prose never claims a change the series did not judge beyond
+   noise (a `within_noise` or `not_judged` marker described as better or worse is P1). A trend called a diagnosis is P1.
+15. Concurrent interventions: anything the member did in the same period is "同期", never the cause. "因为……所以下降",
+   "由于", "证明了", "说明……有效" about a concurrent intervention is P1, in summary, analyses and plan alike.
+
+Also read `work/twin/series.json` (checks 14–15) and `work/organs/organ_readouts.json`, `work/organs/estimates/*.json` and `work/evidence/pubmed_*.json` (with
 abstracts): check 11 needs them.
 
 ## Return exactly this JSON (the dispatcher saves each round to a new work/review/reviewer-N.json)

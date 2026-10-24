@@ -60,8 +60,10 @@ library path in the workspace, so later commands find it without any environment
 
 1. New data folder → start at workflow 01 and walk 01 → 02 → 03 → 04 → 04b → 04c → 05 → 06 in order. Never skip
    a stage: `$LA observe <ws>` names the next one.
-2. Re-analysis after a retest → run 01–06 on the new folder in a new workspace,
-   then `$LA twin compare --prev <old twin.json> --cur <new twin.json>`.
+2. Re-analysis after a retest → run 01–06 on the new folder in a new workspace (`init --reuse-germline-from <old ws>`
+   when the germline data are the same; pass the host's exposures with `twin build --exposures`), then
+   `$LA twin series --snapshots <every earlier work/twin/twin.json> --ws <new ws>` before review (workflow 06).
+   `twin compare` is only the two-snapshot case.
 3. The user only asks "can my machine run this?" → workflow 02.
 4. Before every step run `$LA observe <ws>` and act on its `next` line.
    It is the durable state; your memory of earlier turns is not.
