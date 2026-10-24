@@ -120,6 +120,186 @@
         "noise": "no_noise_model",
         "longpi": "no_noise_model"
       }
+    },
+    {
+      "id": "alt_decrease_beyond_noise",
+      "about": "丙氨酸氨基转移酶: CVI 9.3%, CVA = 0.5 x CVI, symmetric band; synthetic values",
+      "marker": "丙氨酸氨基转移酶",
+      "key": "alt",
+      "unit": "U/L",
+      "before": [48],
+      "after": [30],
+      "prev_date": "2026-03-01",
+      "cur_date": "2026-06-01",
+      "band_pct": [-28.8, 28.8],
+      "change_pct": -37.5,
+      "expect": {
+        "twin": "decrease_beyond_noise",
+        "noise": "down_beyond_noise",
+        "longpi": "down_beyond_noise"
+      }
+    },
+    {
+      "id": "ast_within_noise",
+      "about": "天门冬氨酸氨基转移酶: CVI 9.5%, CVA = 0.5 x CVI, symmetric band; synthetic values",
+      "marker": "天门冬氨酸氨基转移酶",
+      "key": "ast",
+      "unit": "U/L",
+      "before": [26],
+      "after": [24],
+      "prev_date": "2026-03-01",
+      "cur_date": "2026-06-01",
+      "band_pct": [-29.4, 29.4],
+      "change_pct": -7.7,
+      "expect": {
+        "twin": "within_noise",
+        "noise": "within_noise",
+        "longpi": "within_noise"
+      }
+    },
+    {
+      "id": "ggt_decrease_beyond_noise",
+      "about": "γ-谷氨酰转移酶: CVI 8.9%, CVA = 0.5 x CVI, symmetric band; synthetic values",
+      "marker": "γ-谷氨酰转移酶",
+      "key": "ggt",
+      "unit": "U/L",
+      "before": [60],
+      "after": [38],
+      "prev_date": "2026-03-01",
+      "cur_date": "2026-06-01",
+      "band_pct": [-27.6, 27.6],
+      "change_pct": -36.7,
+      "expect": {
+        "twin": "decrease_beyond_noise",
+        "noise": "down_beyond_noise",
+        "longpi": "down_beyond_noise"
+      }
+    },
+    {
+      "id": "urate_within_noise",
+      "about": "尿酸: CVI 8.32%, CVA = 0.5 x CVI, symmetric band; synthetic values",
+      "marker": "尿酸",
+      "key": "urate",
+      "unit": "umol/L",
+      "before": [480],
+      "after": [420],
+      "prev_date": "2026-03-01",
+      "cur_date": "2026-06-01",
+      "band_pct": [-25.8, 25.8],
+      "change_pct": -12.5,
+      "expect": {
+        "twin": "within_noise",
+        "noise": "within_noise",
+        "longpi": "within_noise"
+      }
+    },
+    {
+      "id": "apob_within_noise",
+      "about": "载脂蛋白B: CVI 6.7%, CVA = 0.5 x CVI, symmetric band; synthetic values",
+      "marker": "载脂蛋白B",
+      "key": "apob",
+      "unit": "g/L",
+      "before": [1.2],
+      "after": [1.05],
+      "prev_date": "2026-03-01",
+      "cur_date": "2026-06-01",
+      "band_pct": [-20.8, 20.8],
+      "change_pct": -12.5,
+      "expect": {
+        "twin": "within_noise",
+        "noise": "within_noise",
+        "longpi": "within_noise"
+      }
+    },
+    {
+      "id": "hcy_decrease_beyond_noise",
+      "about": "同型半胱氨酸: CVI 8.8%, CVA = 0.5 x CVI, symmetric band; synthetic values",
+      "marker": "同型半胱氨酸",
+      "key": "hcy",
+      "unit": "umol/L",
+      "before": [15.0],
+      "after": [10.0],
+      "prev_date": "2026-03-01",
+      "cur_date": "2026-06-01",
+      "band_pct": [-27.3, 27.3],
+      "change_pct": -33.3,
+      "expect": {
+        "twin": "decrease_beyond_noise",
+        "noise": "down_beyond_noise",
+        "longpi": "down_beyond_noise"
+      }
+    },
+    {
+      "id": "insulin_within_noise",
+      "about": "空腹胰岛素: CVI 25.3%, CVA = 0.5 x CVI, log-normal band; synthetic values",
+      "marker": "空腹胰岛素",
+      "key": "insulin",
+      "unit": "mU/L",
+      "before": [12.0],
+      "after": [8.0],
+      "prev_date": "2026-03-01",
+      "cur_date": "2026-06-01",
+      "band_pct": [-53.9, 116.8],
+      "change_pct": -33.3,
+      "expect": {
+        "twin": "within_noise",
+        "noise": "within_noise",
+        "longpi": "within_noise"
+      }
+    },
+    {
+      "id": "tsh_increase_beyond_noise",
+      "about": "促甲状腺激素: CVI 18.9%, CVA = 0.5 x CVI, log-normal band; synthetic values",
+      "marker": "促甲状腺激素",
+      "key": "tsh",
+      "unit": "mIU/L",
+      "before": [2.0],
+      "after": [4.0],
+      "prev_date": "2026-03-01",
+      "cur_date": "2026-06-01",
+      "band_pct": [-44.1, 78.8],
+      "change_pct": 100.0,
+      "expect": {
+        "twin": "increase_beyond_noise",
+        "noise": "up_beyond_noise",
+        "longpi": "up_beyond_noise"
+      }
+    },
+    {
+      "id": "resting_hr_within_noise",
+      "about": "静息心率: CVI 6.0%, CVA = 0, symmetric band; synthetic values",
+      "marker": "静息心率",
+      "key": "resting_hr",
+      "unit": "bpm",
+      "before": [60],
+      "after": [52],
+      "prev_date": "2026-03-01",
+      "cur_date": "2026-06-01",
+      "band_pct": [-16.6, 16.6],
+      "change_pct": -13.3,
+      "expect": {
+        "twin": "within_noise",
+        "noise": "within_noise",
+        "longpi": "within_noise"
+      }
+    },
+    {
+      "id": "body_fat_pct_decrease_beyond_noise",
+      "about": "体脂率: CVI 5.19%, CVA = 0, symmetric band; synthetic values",
+      "marker": "体脂率",
+      "key": "body_fat_pct",
+      "unit": "%",
+      "before": [25.0],
+      "after": [21.0],
+      "prev_date": "2026-03-01",
+      "cur_date": "2026-06-01",
+      "band_pct": [-14.4, 14.4],
+      "change_pct": -16.0,
+      "expect": {
+        "twin": "decrease_beyond_noise",
+        "noise": "down_beyond_noise",
+        "longpi": "down_beyond_noise"
+      }
     }
   ]
 }
