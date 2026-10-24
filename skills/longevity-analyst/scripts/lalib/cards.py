@@ -147,8 +147,9 @@ def build(ws: Path, export_path: Path) -> List[Dict[str, Any]]:
         nums = [_num(f"{ref}.interval_weeks", s["interval_weeks"], "周", lab["label_zh"] if lab else "方案")] \
             if isinstance(s.get("interval_weeks"), (int, float)) else []
         card(f"surv-{s.get('id') or s.get('marker')}", "surveillance",
-             f"{'测一次就够' if s.get('once') else '定期查'}：{s.get('marker')}",
-             s.get("note_zh") or ("查一次就够。" if s.get("once") else "按计划定期复查。"), nums, lab, once=s.get("once"), done=s.get("done"))
+             (f"成人至少测一次：{s.get('marker')}" + ("（已测过）" if s.get("done") else "")) if s.get("once")
+             else f"{'干预复测' if s.get('reason') == 'intervention' else '定期查'}：{s.get('marker')}",
+             s.get("note_zh") or ("成人至少测一次。" if s.get("once") else "按方案复测。" if s.get("reason") == "intervention" else "按计划定期复查。"), nums, lab, once=s.get("once"), done=s.get("done"))
     return cards
 
 

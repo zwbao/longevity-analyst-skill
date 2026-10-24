@@ -89,7 +89,7 @@ def test_adherence_from_exposures_scales_prior(tmp_path):
            "items": [{"plan_item": "I1", "label_zh": "减盐", "category": "diet", "targets": ["收缩压"], "status": "adopted",
                       "adopted_at": start, "cumulative": 21}]}
     (tmp_path / "exp.json").write_text(json.dumps(exp, ensure_ascii=False))
-    predict.run(st, ws, repeats=14, exposures_file=tmp_path / "exp.json")
+    predict.run(st, ws, repeats=14, planned_per_week=7, exposures_file=tmp_path / "exp.json")
     p = json.loads((ws / "work" / "predict" / "predictions.json").read_text())["items"][0]
     assert p["design"]["adherence"] == pytest.approx(0.5, abs=0.01)
     assert p["p_detect_favorable"] == pytest.approx(0.236, abs=0.01)
@@ -117,3 +117,8 @@ def test_ai_fallback_is_interval_only(tmp_path, monkeypatch):
     assert p["label"]["basis_kind"] == "ai_estimate" and p["label"]["confidence"] == {"level": "low"}
     assert "expected_change_pct" not in p and labels.check(st, ws) == []
     assert "AI 判断" in labels.render_item("p", p) and "40%–80%" in labels.render_item("p", p)
+
+
+def test_adherence_needs_a_planned_frequency():
+    assert predict.adherence({"status": "adopted", "adopted_at": "2026-07-20", "cumulative": 21}, None, "2026-08-31") == \
+        (1.0, "方案没有写每周计划做几次，依从比例按 1 计")

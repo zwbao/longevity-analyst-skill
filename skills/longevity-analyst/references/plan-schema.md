@@ -18,7 +18,8 @@
       ],
       "evidence_grade": "human_rct | human_cohort | animal_or_cell | guideline | not_applicable (test/referral only)",
       "executor": "nutritionist | physician | member",
-      "retest": {"what": "<marker or readout>", "after_weeks": 12}
+      "retest": {"what": "<marker or readout>", "after_weeks": 12},
+      "per_week": 3
     }
   ]
 }
@@ -26,6 +27,8 @@
 
 `retest.what` is printed in the report and traced like prose: write a name with digits as `{{n:糖化血红蛋白(HbA1c)}}`
 and never a file id there (a `file:F00x` id belongs in `targets` of a test/referral item only).
+`per_week` (optional, 1-21) is how many times a week the plan asks for; predictions compare the member's check-ins
+with it (adherence). Without it, and without `predict response --planned-per-week`, adherence is not scaled.
 No fields beyond those shown; `retest` has only `what` and `after_weeks`; each evidence entry is exactly `{type, ref}`.
 Guideline URLs are plain page addresses (no query string or fragment) fetched with `la.py evidence fetch`.
 Every reviewer finding needs `"severity": "P0" | "P1" | "P2"`.

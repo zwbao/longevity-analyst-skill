@@ -239,11 +239,14 @@ def check_plan(st: Dict[str, Any], ws_root: Path, plan_path: Path) -> Dict[str, 
     from . import labels as _L
     labelled = _L.registry(ws_root)
     lab_bad = [b for b in _L.problems(st, ws_root) if not b.startswith("predictions.json")]
-    item_keys = {"id", "category", "action_zh", "rationale_zh", "targets", "evidence", "evidence_grade", "executor", "retest"}
+    item_keys = {"id", "category", "action_zh", "rationale_zh", "targets", "evidence", "evidence_grade", "executor", "retest", "per_week"}
     for it in items:
         if not isinstance(it, dict):
             raise LAError("every plan item must be an object", EXIT_INPUT)
         iid = it.get("id", "?")
+        pw = it.get("per_week")
+        if pw is not None and not (isinstance(pw, int) and not isinstance(pw, bool) and 1 <= pw <= 21):
+            problems.append(f"{iid}: per_week is a whole number of times a week (1-21)")
         if set(it) - item_keys:
             problems.append(f"{iid}: unknown fields {sorted(set(it) - item_keys)} (see references/plan-schema.md)")
         if it.get("retest") is not None and (not isinstance(it["retest"], dict) or set(it["retest"]) - {"what", "after_weeks"}):

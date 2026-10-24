@@ -175,12 +175,14 @@ def _exposures(ws: Path) -> List[Dict[str, Any]]:
     return []
 
 
-def adherence(exp: Optional[Dict[str, Any]], planned_per_week: float, today: str) -> Tuple[float, str]:
-    """Check-ins / planned (cap 1), with the assumption in plain Chinese."""
+def adherence(exp: Optional[Dict[str, Any]], planned_per_week: Optional[float], today: str) -> Tuple[float, str]:
+    """Check-ins / planned (cap 1), with the assumption in plain Chinese. No planned frequency: not scaled."""
     if not exp or exp.get("status") in (None, "proposed") or not exp.get("adopted_at"):
         return 1.0, "尚未开始执行，依从比例按 1 计"
     if exp.get("cumulative") is None:
         return 1.0, "宿主只记录是否采纳、不记录打卡次数，依从比例按 1 计"
+    if not planned_per_week:
+        return 1.0, "方案没有写每周计划做几次，依从比例按 1 计"
     try:
         weeks = max((_dt.date.fromisoformat(today[:10]) - _dt.date.fromisoformat(exp["adopted_at"])).days / 7, 1 / 7)
     except ValueError:
@@ -251,7 +253,7 @@ def predict_item(item: Dict[str, Any], row: Dict[str, Any], marker: Dict[str, An
          "model": {k_: round(v, 4) for k_, v in res.items() if isinstance(v, float)}}
 
 
-def run(st: Dict[str, Any], ws: Path, *, repeats: Optional[int] = None, planned_per_week: float = 7.0,
+def run(st: Dict[str, Any], ws: Path, *, repeats: Optional[int] = None, planned_per_week: Optional[float] = None,
         ai_file: Optional[Path] = None, exposures_file: Optional[Path] = None) -> Dict[str, Any]:
     """Predict every plan item that has an effects row and a judgeable target; list the rest for the AI estimator."""
     effects, bv = _library()
@@ -291,7 +293,8 @@ def run(st: Dict[str, Any], ws: Path, *, repeats: Optional[int] = None, planned_
             # blood pressure); a blood test is one draw before and one after, whatever --repeats says
             k = (repeats or int(m["average_days"])) if m.get("average_days") else 1
             pers = personal_experiments(ws, bv, m, it, row)
-            pi, det = predict_item(it, row, m, base, k, z, exps.get(it["id"]), pers, planned_per_week, today, f"P{len(items) + 1}")
+            pi, det = predict_item(it, row, m, base, k, z, exps.get(it["id"]), pers, it.get("per_week") or planned_per_week,
+                                   today, f"P{len(items) + 1}")
             items.append(pi)
             details[pi["id"]] = det
             done = True

@@ -572,7 +572,7 @@ def cmd_intervene(a):
 
 def _predict_opts(st):
     o = (st.get("predict") or {}).get("opts") or {}
-    return {"repeats": o.get("repeats"), "planned_per_week": o.get("planned_per_week") or 7.0}
+    return {"repeats": o.get("repeats"), "planned_per_week": o.get("planned_per_week")}
 
 
 def _labelled_changed(st):
@@ -1037,7 +1037,7 @@ def build_parser():
     s.add_argument("workspace")
     s.add_argument("--repeats", type=int, help="home measurements on each side of the next experiment, for markers measured at home such as blood pressure "
                         "(default: the marker's averaging days); blood tests are always one draw on each side")
-    s.add_argument("--planned-per-week", type=float, help="planned check-ins per week for the adherence ratio (default 7)")
+    s.add_argument("--planned-per-week", type=float, help="planned check-ins per week for the adherence ratio when a plan item has no per_week (default: none, adherence not scaled)")
     s.add_argument("--exposures", help="la-exposures/1 file from the host, when twin.json carries none")
     s.add_argument("--ai", help="the response-estimator's answers for the items listed in work/predict/ai_requests.json")
     s.set_defaults(fn=cmd_predict)
