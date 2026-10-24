@@ -61,6 +61,16 @@ clinical items. Three lanes (core, genomics, clinical) plus integration.
 - Diagnostic items say when they rest on one measurement and whether the other guideline set agrees.
 - The plan table states the evidence grade, the trial population and DOI, and marks items already under way;
   skipped organ AI estimates are disclosed.
+- A section 问医生的单子 collects everything the report sends to the doctor (tendencies showing now, out-of-range labs,
+  unfavourable drifts, blood pressure, diagnostic conclusions).
+- With an uncontrolled personal before/after in a prediction, the member sees the trials-only figures; the personal
+  figures appear only as a stated assumption and no "true effect" probability is printed from them; probabilities
+  are never printed as certain (0.001-0.999).
+- Blood tests are predicted for one draw before and one after (`--repeats` is for home measurements).
+- Diagnosis cards keep their caveats; the diagnosis section names the guidelines actually checked; a China resident's
+  report uses the default cn set.
+- CPIC: a row that depends on two genes is shown once and names both; the genotype source is 基因检测.
+- Lp(a): 成人至少测一次, with where and when it was measured.
 
 ### Before / after (PLAN §2 baseline, 2026-10-24 → this release)
 | | before | after |
