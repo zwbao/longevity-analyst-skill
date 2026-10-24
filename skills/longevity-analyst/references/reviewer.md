@@ -20,11 +20,17 @@ preferences. Read, do not edit.
 6. Read every `{{n:…}}` amount in the literals list: a food or drink amount (牛奶 300 毫升, 坚果 10 克) is fine; an amount
    of a supplement, vitamin, mineral, probiotic or other product (维生素C 1 克, 肌酸 5 克, 益生菌 1 袋, 镁 1 克) is a dose
    and a P1, whatever the unit. The script catches drug units and obvious phrasings only.
-   Every intervention is on the menu, names no drug (brand or generic) and no dose, has evidence retrieved in this
-   run, and its strength of evidence (human RCT / cohort / animal) is stated truthfully. Drug names are only checked
-   here, not by the script.
+   Every intervention is on the menu, has evidence retrieved in this run, and its strength of evidence (human RCT /
+   cohort / animal) is stated truthfully. Only a `medication` item may name a drug, and only through its `{{rx:}}`
+   item; a drug or dose named anywhere else is P1. Drug names are only checked here, not by the script.
 7. Things that did not run (pipelines, methods, unsupported files) are disclosed, with the reason.
-8. No diagnosis; referrals go to a physician; the boundary statement is intact.
+8. Diagnoses, medication suggestions and predictions appear only as registered labelled items (`{{dx:}}`, `{{rx:}}`,
+   `{{p:}}` in prose; the 诊断性结论 / 用药建议 / 个人反应预测 sections). A diagnosis, drug suggestion, dose or
+   probability stated without its label and source is P0. An AI judgement presented as a measurement, a guideline
+   conclusion or CPIC (in prose, a summary or a plan item) is P0. A guideline item whose quote does not support its
+   conclusion, or a conclusion worded more strongly than the fixed wording, is P1. Referrals still go to a physician;
+   emergencies say 拨打 120 first; the boundary statement is intact. Read `work/predict/predictions.json`,
+   `work/clinical/diagnoses.json` and `work/clinical/medications.json`.
 9. Readouts marked `computed_low_coverage`, `implausible` or "来源未确认" are not used as personal findings; `blocked_*` and `manual` methods are listed as
    not computed.
 10. Pipelines ran only with a quoted user consent (`state.json` → `pipelines[].confirmed_by_user`); stub runs are not

@@ -79,7 +79,8 @@ Then give your agent a data folder: *"我 67 岁，女，检测数据在 ~/data/
   an organ age far below chronological age beside eGFR G4) are judged by the reviewer from `organ_checks_for_reviewer`.
 - Drug and supplement doses are refused by unit (mg, IU, 粒, 片 …) everywhere, and by any amount written within a few
   characters of a known drug or supplement name. A drug name the list does not know, written with a food unit (0.1 g),
-  is left to the reviewer; the skill's own rule is never to name a drug or a dose. Telling a supplement amount from a
+  is left to the reviewer; the skill's own rule is that a drug or dose appears only inside a registered, labelled
+  medication suggestion (`{{rx:<id>}}`, from a guideline rule, CPIC text or an AI judgement labelled as such). Telling a supplement amount from a
   food amount is a judgment: the script catches drug units and obvious phrasings (补充/服用 + a nutrient, 维生素C 1 g), and
   the reviewer is instructed to treat every other supplement amount in `{{n:…}}` as a P1 (in the last re-attack the script
   alone caught 11 of 20 supplement-dose phrasings and let 18 of 20 food lines through).
@@ -91,7 +92,12 @@ Then give your agent a data folder: *"我 67 岁，女，检测数据在 ~/data/
 - The commercial clock list is provisional and has not been reviewed by counsel. The report says so.
 - PharmCAT and pgsc_calc outputs are registered after a verified run but not yet summarised into readouts; PharmCAT's
   VCF preprocessor is not called by the harness.
-- Drug names in the plan are checked by the independent reviewer, not by the script; the script's dose check is
+- Diagnostic conclusions, medication suggestions and personal response predictions are output only as registered items
+  with a `la-label/1` label (category + sources): guideline criteria quoted verbatim from fetched full text
+  (`data/diagnostic_criteria.json`, `data/medication_rules.json`), CPIC text verbatim, the appendix-B.7 statistical model,
+  or an AI judgement shown in its own column with confidence low/very_low. They are research output for the care team,
+  not a prescription; on the LongPi site they reach the member only after team review. Emergencies: call 120 first.
+- Drug names outside medication items are checked by the independent reviewer, not by the script; the script's dose check is
   best-effort (numbers, Chinese numerals and common dose words) and the reviewer is the backstop.
 - Whether a `{{n:…}}` literal is really a member value is judged by the reviewer, not the script. Member values spelled
   out in English words or Roman numerals ("sixty-seven") are also left to the reviewer; the script catches digits,

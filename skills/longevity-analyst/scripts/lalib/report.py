@@ -31,8 +31,9 @@ KIND_ZH = {"computed": "为你计算", "computed_low_coverage": "为你计算（
            "population_position": "人群位置（参照人群见说明）",
            "computed_coverage_unknown": "为你计算（覆盖率未知）", "descriptive": "数据描述", "lookup": "论文名单查表"}
 SEX_ZH = {"male": "男", "female": "女"}
-BOUNDARY = ("本报告由模型和已发表方法根据你交来的数据计算，是研究性估计，不是诊断，也不是治疗或用药建议。"
-            "生物年龄类读数有测量误差，单次结果不足以下结论；是否干预、如何用药由你的医生决定。")
+BOUNDARY = ("本报告由模型和已发表方法根据你交来的数据计算，是研究性估计。诊断性结论、用药建议和个人反应预测都标明了类别和来源，"
+            "其中「AI 判断」不是测量，也不是指南结论；它们供你和医生参考，不是处方。"
+            "生物年龄类读数有测量误差，单次结果不足以下结论；是否干预、如何用药由你的医生决定。出现急症时先拨打 120。")
 
 # Authored prose may carry digits ONLY inside placeholders:
 #   {{r:<readout id>[|label|value|unit|own words]}}  a member readout (bound to readouts.json)

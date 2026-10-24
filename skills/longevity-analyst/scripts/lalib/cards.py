@@ -135,12 +135,12 @@ def build(ws: Path, export_path: Path) -> List[Dict[str, Any]]:
              nums, None, due=r.get("due_at") or r.get("due"), judgeable=r.get("judgeable"), plan_item=r.get("item"))
 
     for ref, s in _section(export, ws, "surveillance"):
-        src = s.get("source") or {}
-        sources = [{"type": "guideline", "ref": src.get("title") or src.get("doi") or src.get("url"),
-                    **({"url": f"https://doi.org/{src['doi']}" if src.get("doi") else src["url"]} if src.get("doi") or src.get("url") else {}),
-                    **({"quote": src["quote"]} if src.get("quote") else {})}] \
-            if (src.get("doi") or src.get("url") or src.get("title")) else [{"type": "rule", "ref": ",".join(s.get("rule_ids") or []) or str(s.get("id"))}]
-        lab = L.make_label("guideline_recommendation", sources, guideline_zh=src.get("title")) if src.get("title") \
+        ss = s.get("source") or {}
+        sources = [{"type": "guideline", "ref": ss.get("title") or ss.get("doi") or ss.get("url"),
+                    **({"url": f"https://doi.org/{ss['doi']}" if ss.get("doi") else ss["url"]} if ss.get("doi") or ss.get("url") else {}),
+                    **({"quote": ss["quote"]} if ss.get("quote") else {})}] \
+            if (ss.get("doi") or ss.get("url") or ss.get("title")) else [{"type": "rule", "ref": ",".join(s.get("rule_ids") or []) or str(s.get("id"))}]
+        lab = L.make_label("guideline_recommendation", sources, guideline_zh=ss.get("title")) if ss.get("title") \
             else L.make_label("measurement", sources)
         nums = [_num(f"{ref}.interval_weeks", s["interval_weeks"], "周", lab["label_zh"])] if isinstance(s.get("interval_weeks"), (int, float)) else []
         card(f"surv-{s.get('id') or s.get('marker')}", "surveillance", f"定期查：{s.get('marker')}",
