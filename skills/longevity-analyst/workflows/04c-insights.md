@@ -103,7 +103,10 @@ risk factor would plausibly help him, and a board of questions investigated one 
 - A genetic percentile is a tendency, not a diagnosis; say that a common-variant score explains part of a trait at
   most. A ClinVar P/LP finding is reported as "needs clinical confirmation and genetic counselling", never as a
   diagnosis, and only when the member agreed to genetic results.
-- NHANES is a US population: for a Chinese member it gives direction, not a Chinese percentile. Say so.
+- NHANES is a US population: for a Chinese member it gives direction, not a Chinese percentile. Say so. For a member
+  living in China (`la.py member <ws> residence=CN --source "<quote>"`) position uses the Chinese table `labs_cn`
+  where it has the analyte and stratum (now TC, LDL-C, HDL-C for ages 40+, from a Shandong community cohort, mean ± SD
+  read as normal); every other lab falls back to NHANES and is labelled so. PhenoAge: say 「这个模型是用美国人群数据拟合的。」
 - An MR projection assumes the population causal effect applies to the member; it is not a prediction for him.
 - Researchers cite only records retrieved in this workspace; their verdicts are `supported`, `not_supported` or
   `insufficient`, with confidence `low` or `moderate`.

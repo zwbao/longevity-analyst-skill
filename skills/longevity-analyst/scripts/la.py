@@ -103,7 +103,7 @@ def cmd_member_set(a):
                 raise C.LAError("genetic_disclosure must be yes or no", C.EXIT_USAGE)
             st["member"].setdefault("answers", {})[k] = v
     C.validate_member(st["member"])
-    known = {"genetic_disclosure", "medications"} | {i["key"] for sk in C.load_json(C.longevity_skills_home() / "catalog.json")["skills"]
+    known = {"genetic_disclosure", "medications", "residence"} | {i["key"] for sk in C.load_json(C.longevity_skills_home() / "catalog.json")["skills"]
                                       for i in (sk.get("inputs") or []) if i.get("from") in ("argument", "profile")}
     unknown = [kv.split("=", 1)[0] for kv in a.pairs if kv.split("=", 1)[0] not in known | {"age", "sex", "sample_date"}]
     C.invalidate_after(st, "pipelines", f"member facts changed: {a.pairs}")      # answers feed methods, not intake
