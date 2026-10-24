@@ -466,7 +466,7 @@ def transitions(snaps: List[Dict[str, Any]], kept: List[int], by_key: Dict[str, 
 def _transition(base, fr, to, analyte, by_key, N, exposures) -> Dict[str, Any]:
     m = match(N, analyte)
     s = by_key.get(m["key"]) if m else None
-    tr = {**base, "from": fr, "to": to, "member_change": True}
+    tr = {**base, "marker": (s or {}).get("marker") or analyte, "from": fr, "to": to, "member_change": True}
     if (fr, to) == ("latent", "concordant_adverse"):
         return {**tr, "kind": "tendency_expressed", "ask_doctor": True, "wording_zh": TRANSITION_ZH["expressed"]}
     if (fr, to) in (("concordant_adverse", "latent"), ("acquired_adverse", "concordant_typical")):

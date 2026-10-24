@@ -225,6 +225,8 @@ def registered_analyses(ws: Path, st: Dict[str, Any] = None) -> List[Path]:
     return [Path(v["path"]) for k, v in sorted(reg.items()) if Path(v["path"]).exists()]
 
 
+HANDOVER = ("insights/concordance.json", "insights/fingerprint.json", "surveillance/plan.json", "pgx/pgx.json",
+            "predict/predictions.json", "clinical/diagnoses.json", "clinical/medications.json")
 VOLATILE = ("events", "updated_at", "review", "report", "review_history", "stages", "review_blocks", "timing")
 
 
@@ -277,6 +279,7 @@ def bound_files(ws: Path, st: Dict[str, Any] = None) -> List[Path]:
     files = [ws / "work" / "readouts.json", ws / "work" / "report" / "summary.md", ws / "work" / "intervene" / "plan.json",
              ws / "work" / "twin" / "twin.json", ws / "work" / "organs" / "organ_readouts.json",
              ws / "work" / "twin" / "exposures.json", ws / "work" / "twin" / "series.json"]
+    files += [ws / "work" / x for x in HANDOVER]                    # read by the export and the section modules
     files += sorted((ws / "work" / "organs" / "estimates").glob("*.json"))
     files += [ws / "work" / "insights" / n for n in ("insight_readouts.json", "genotype_phenotype.json", "positions.json", "projections.json")]
     bq = ws / "work" / "insights" / "board" / "questions.json"

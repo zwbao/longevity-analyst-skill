@@ -15,7 +15,7 @@ from .common import load_json
 
 UP, DOWN = "上升", "下降"
 TREND_ZH = "出现了超出你个人正常波动的缓慢{dir}，下一次复测可以确认。"
-CHANGE_ZH = "{to} 和 {frm} 相比的{dir}超出了你个人正常波动。"
+CHANGE_ZH = "最近一次（{to}）和第一次（{frm}）相比的{dir}超出了你个人正常波动。"
 PAIR_RETURNED_ZH = "中间有一次变化超出了你个人正常波动，之后又回到了波动范围内。"
 PAIR_ZH = "中间有一次变化超出了你个人正常波动。"
 WITHIN_ZH = "几次结果的差别都在你个人正常波动之内，还看不出真实变化。"
@@ -140,7 +140,7 @@ def sections(ws_root: Path, ctx: Dict[str, Any]) -> List[Tuple[str, str]]:
         cz = concurrent_zh(m.get("concurrent_exposures") or [])
         if cz:
             extra.append(esc(cz))
-        extra += [c["zh"] + "。" for c in m.get("caveats") or [] if c.get("code") in ("returned_within_noise", "seasonal", "snapshot_excluded_identity")]
+        extra += [c["zh"] + "。" for c in m.get("caveats") or [] if c.get("code") in ("returned_within_noise", "seasonal")]
         L.append(line + ("".join(extra) if extra else ""))
     rj = [r for r in ser.get("readouts") or [] if (r.get("baseline_vs_latest") or {}).get("verdict") != "not_judged"]
     for r in rj:
@@ -158,7 +158,7 @@ def sections(ws_root: Path, ctx: Dict[str, Any]) -> List[Tuple[str, str]]:
         for t in tr:
             if t.get("wording_zh"):
                 cz = concurrent_zh(t.get("concurrent_exposures") or [])
-                L.append(f"- **{esc(t['analyte'])}**：{t['wording_zh']}{esc(cz) if cz else ''}")
+                L.append(f"- **{esc(t.get('marker') or t['analyte'])}**：{t['wording_zh']}{esc(cz) if cz else ''}")
     if len(L) <= 2:
         return []
     return [(SECTION_TITLE, "\n".join(L).strip())]

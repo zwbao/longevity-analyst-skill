@@ -210,7 +210,7 @@ def _v2(ws: Path, ro: Dict[str, Dict[str, Any]]) -> Dict[str, Any]:
     conc = [{k: v for k, v in c.items() if k != "basis"} for c in conc]
     return {"trends": trend_items(ser) if ser else [],
             "concordance": conc, "concordance_note_zh": CONCORDANCE_NOTE_ZH if conc else None,
-            "concordance_transitions": [{k: t.get(k) for k in ("analyte", "from", "to", "from_t", "to_t", "kind", "ask_doctor",
+            "concordance_transitions": [{k: t.get(k) for k in ("analyte", "marker", "from", "to", "from_t", "to_t", "kind", "ask_doctor",
                                                                 "real_change", "wording_zh") if k in t}
                                         for t in ser.get("transitions") or []],
             "identity_alerts": [{"t": x.get("t"), "basis": x.get("basis"), "wording_zh": x.get("wording_zh")}
