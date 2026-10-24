@@ -532,7 +532,7 @@ def render(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
         by_sys: Dict[str, List[Dict[str, Any]]] = {}
         for r in ro.values():
             if r.get("kind") in ("llm_estimate", "genetic_score", "genetic_finding", "genetic_concordance", "pgx",
-                                 "population_position", "member_answer"):
+                                 "population_position", "member_answer") or r.get("method") == "nutrigenetic-variant-panel":
                 continue                              # shown in their own sections (organ table, genes vs labs, pgx, position)
             by_sys.setdefault((r.get("systems") or ["overall_aging"])[0], []).append(r)
         for s, rs in sorted(by_sys.items(), key=lambda kv: list(sysdef).index(kv[0]) if kv[0] in sysdef else 99):
@@ -755,6 +755,9 @@ def insight_sections(ws: Path, ro: Dict[str, Dict[str, Any]]) -> List[str]:
                 if clean and ms["genes"]:
                     parts.insert(0, "已扫描，未发现")
                 plp_s = "；".join(parts) or "—"
+                called = [x for x in a.get("loci") or [] if x.get("member_risk_alleles") is not None]
+                if called and all(x.get("call_status") == "quality_unverified" for x in called) and a.get("pct_eas") is not None:
+                    pct += "（原始数据缺少质量字段，未核对）"
                 L.append(f"| {_cell(a['label_zh'])} | {_cell(_fmt(lab['value']))} {_cell(lab['unit'])} | {flag} | {pct} | "
                          f"{a['loci_called']}/{a.get('loci_informative', a['loci_tested'])} | {plp_s} |")
             meta = load_json(gp)

@@ -82,7 +82,7 @@ def surveillance_section(doc: Dict[str, Any]) -> List[str]:
     return L
 
 
-def pgx_section(doc: Dict[str, Any]) -> List[str]:
+def pgx_section(doc: Dict[str, Any], hcy_measured: bool = False) -> List[str]:
     if doc.get("status") != "ran":
         return [_cell(doc.get("reason_zh") or "用药基因没有分析。")]
     L = ["> 下面是按 CPIC（临床药物基因组学实施联盟）指南对照的结果。用药、换药、调剂量都要由开药的医生或药师决定，"
@@ -121,7 +121,10 @@ def pgx_section(doc: Dict[str, Any]) -> List[str]:
     if ng:
         L += ["**饮食相关的基因位点**（只描述，不是诊断，也不是营养处方）", ""]
         for x in ng:
-            extra = "".join(f" {_cell(t)}" for t in (x.get("action_zh"), x.get("caveat_zh")) if t)
+            act = x.get("action_zh")
+            if x.get("key") == "mthfr" and hcy_measured and act:     # the panel's generic advice, when the member has the value
+                act = "你已经测过血同型半胱氨酸，结果见「基因与化验的一致性」和化验对比。"
+            extra = "".join(f" {_cell(t)}" for t in (act, x.get("caveat_zh")) if t)
             L.append(f"- {_cell(x['gene'])}：{_cell(x.get('reading_zh'))}{extra}（依据：{_cell(x.get('cite'))}，doi:{_cell(x.get('doi'))}）")
         L.append("")
     return L
@@ -152,5 +155,8 @@ def sections(ws_root: Path, ctx: Optional[Dict[str, Any]] = None) -> List[Tuple[
             out.append(("监测计划", "\n".join(L)))
     pg = _load(ws, st, "work/pgx/pgx.json", files.get("pgx.json"))
     if pg and (consent or pg.get("status") != "ran"):
-        out.append(("用药基因", "\n".join(pgx_section(pg)).rstrip()))
+        cp = ws / "work" / "insights" / "concordance.json"
+        hcy = any(i.get("analyte") == "hcy" and i.get("lab_flag") in ("in_range", "high", "low")
+                  for i in ((load_json(cp).get("items") or []) if cp.exists() else []))
+        out.append(("用药基因", "\n".join(pgx_section(pg, hcy_measured=hcy)).rstrip()))
     return out
