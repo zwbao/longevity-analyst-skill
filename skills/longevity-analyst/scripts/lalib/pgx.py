@@ -167,12 +167,13 @@ def _drug_blocks(report_md: str) -> Dict[str, List[List[str]]]:
     return out
 
 
-def _gene_rows(report_md: str) -> Dict[str, str]:
+def _gene_rows(report_md: str) -> Dict[str, tuple]:
+    """gene -> (inferred diplotype, phenotype in the skill's Chinese wording) from its gene table."""
     out = {}
     for line in report_md.splitlines():
         cells = [c.strip() for c in line.strip().strip("|").split("|")]
         if len(cells) == 4 and re.match(r"^[A-Z0-9-]+（", cells[0]):
-            out[cells[0].split("（")[0]] = cells[2]
+            out[cells[0].split("（")[0]] = (cells[2], cells[3])
     return out
 
 
@@ -258,7 +259,8 @@ def run(st: Dict[str, Any], ws: Path, absent_as_ref: Optional[str] = None) -> Di
                           "cpic_source": {"api": cp["source"].get("api"), "release": cp["source"].get("cpic_data_release"),
                                           "accessed": cp["source"].get("accessed"), "license": cp["source"].get("license"),
                                           "row_ids": [r.get("id") for r in rows if r.get("id") is not None]}})
-        doc["results"].append({"gene": gene, "diplotype_or_genotype": gene_rows.get(gene), "phenotype": ph, "drugs": drugs})
+        dip, ph_zh = gene_rows.get(gene, (None, None))
+        doc["results"].append({"gene": gene, "diplotype_or_genotype": dip, "phenotype": ph, "phenotype_zh": ph_zh, "drugs": drugs})
     if c["exit"] != 0:
         doc["cpic_error"] = (c["report_md"] or "")[:500]
     n = ran["nutrigenetic-variant-panel"]

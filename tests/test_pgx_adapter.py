@@ -143,3 +143,17 @@ def test_cpic_text_rows_are_read_from_the_result(tmp_path):
     assert pgx._cpic_text_rows({"outputs": {"cpic_recommendations": rows}}) == rows
     assert pgx._cpic_text_rows({"cpic_text": rows}) == rows
     assert pgx._cpic_text_rows({"outputs": {}}) == []
+
+
+@needs_lib
+def test_report_section_labels_every_cpic_line(tmp_path):
+    from lalib import report_genomics
+    st, ws = _st(tmp_path, meds="辛伐他汀")
+    pgx.run(st, ws)
+    st["insights"] = {"files": {"pgx.json": C.sha256_file(ws / "work" / "pgx" / "pgx.json", limit=None)}}
+    md = dict(report_genomics.sections(ws, {"st": st}))["用药基因"]
+    lines = [l for l in md.splitlines() if l.startswith("- 【CPIC】")]
+    assert lines and all("指南：https://" in l for l in lines)
+    assert any("simvastatin" in l and "你正在用" in l for l in lines)
+    st_no = dict(st, member={**st["member"], "answers": {"genetic_disclosure": "no"}})
+    assert report_genomics.sections(ws, {"st": st_no}) == []
