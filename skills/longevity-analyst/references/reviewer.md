@@ -46,24 +46,24 @@ preferences. Read, do not edit.
    NHANES percentiles are labelled as a US reference; an MR projection states its assumption; each board verdict
    follows from its cited member data and retrieved records (a `supported` verdict resting only on a weak common-
    variant score is P1). Read `work/insights/*.json` and the board files.
-21. Genes vs labs concordance (`work/insights/concordance.json`, report section 基因与化验的一致性): a concordance class
+14. Genes vs labs concordance (`work/insights/concordance.json`, report section 基因与化验的一致性): a concordance class
    presented as a diagnosis (diagnostic conclusions come only from registered WS-L.3 items), or wording such as
    「注定」「一定会」「必然」 about the member, is P0. The four class wordings and the lead sentence 「基因分值只能解释这一项差异的一部分。」
    are fixed; a reworded or missing one is P1. An item with `clinvar_override` shows only 「需要临床确认和遗传咨询」.
-22. Pharmacogenomics (`work/pgx/pgx.json`, section 用药基因): every recommendation line carries the 【CPIC】 label and the
+15. Pharmacogenomics (`work/pgx/pgx.json`, section 用药基因): every recommendation line carries the 【CPIC】 label and the
    guideline link; CPIC text rewritten, shortened into a different instruction, or shown without its source is P1. Any
    advice to stop, start or change a medicine that does not come from a CPIC line or a registered WS-L.4 item is P0.
-23. Surveillance plan (`work/surveillance/plan.json`, section 监测计划): every guideline item cites the source quote that
+16. Surveillance plan (`work/surveillance/plan.json`, section 监测计划): every guideline item cites the source quote that
    `data/surveillance_rules.json` holds; an interval or "measure once" claim with no rule or retest behind it is P1.
 
-14. Trends and changes (`work/twin/series.json`, the report section「复测对比与趋势」): a trend or change is never
+17. Trends and changes (`work/twin/series.json`, the report section「复测对比与趋势」): a trend or change is never
    called a diagnosis, a disease or "恶化/变差", and the prose never claims a change the series did not judge beyond
    noise (a `within_noise` or `not_judged` marker described as better or worse is P1). A trend called a diagnosis is P1.
-15. Concurrent interventions: anything the member did in the same period is "同期", never the cause. "因为……所以下降",
+18. Concurrent interventions: anything the member did in the same period is "同期", never the cause. "因为……所以下降",
    "由于", "证明了", "说明……有效" about a concurrent intervention is P1, in summary, analyses and plan alike.
 
-Also read `work/twin/series.json` (checks 14–15) and `work/organs/organ_readouts.json`, `work/organs/estimates/*.json` and `work/evidence/pubmed_*.json` (with
-abstracts): check 11 needs them. Checks 21-23 need `work/insights/concordance.json`, `work/pgx/pgx.json` and
+Also read `work/twin/series.json` (checks 17–18) and `work/organs/organ_readouts.json`, `work/organs/estimates/*.json` and `work/evidence/pubmed_*.json` (with
+abstracts): check 11 needs them. Checks 14–16 need `work/insights/concordance.json`, `work/pgx/pgx.json` and
 `work/surveillance/plan.json` when they exist.
 
 ## Return exactly this JSON (the dispatcher saves each round to a new work/review/reviewer-N.json)

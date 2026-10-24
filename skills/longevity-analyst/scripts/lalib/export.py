@@ -19,7 +19,7 @@ from __future__ import annotations
 import re
 from datetime import date, timedelta
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 
 from .common import EXIT_INPUT, LAError, load_json, now_iso, sha256_file
 
@@ -29,9 +29,15 @@ TZ = "+08:00"                       # due dates are wall-clock dates for the mem
 V2_FIELDS = ("trends", "concordance", "concordance_note_zh", "concordance_transitions", "surveillance", "predictions",
              "diagnoses", "medications", "identity_alerts")
 CONCORDANCE_NOTE_ZH = "基因分值只能解释这一项差异的一部分。"
+# WS-L label rule: every diagnostic conclusion, medication suggestion and prediction carries its category and source;
+# AI judgements are marked as such. (The /1 sentence "不是诊断" contradicted the labelled dx items.)
+BOUNDARY_ZH = ("本结果用于健康管理参考。每条诊断性结论、用药建议和个人反应预测都标明了类别和来源；「AI 判断」和「AI 估计」不是测量，"
+               "也不是指南结论。是否诊断、如何用药由你的医生决定；基因发现需临床确认和遗传咨询。出现急症时先拨打 120。")
+ROUTINE_CPIC = ("prescribe desired starting dose", "initiate therapy with recommended starting dose", "use as usual",
+                "no reason to adjust", "use label-recommended")
 # analyst plan category -> longpi-plan/1 category
 CATEGORY = {"diet": "diet", "exercise": "exercise", "sleep": "sleep", "supplement": "supplement", "lifestyle": "behavior",
-            "test": "other", "referral": "other"}
+            "test": "other", "referral": "other", "medication": "medication"}
 GROUP = {"genetic_score": "genetic", "genetic_finding": "genetic", "population_position": "insight", "wearable": "insight",
          "llm_estimate": "organ_ai_estimate"}
 GENETIC_METHODS = {"native.apoe"}
@@ -155,7 +161,7 @@ def build(st: Dict[str, Any], ws: Path, report_html: Path) -> Dict[str, Any]:
             "plan": {"title": "深度分析干预方案", "source": "analysis",
                      "note": "来自 longevity-analyst 深度分析；营养师审核后生效。方案只记做什么，具体用量见报告。", "items": plan_items},
             "retests": retests,
-            "boundary_zh": "本结果用于健康管理参考，不是诊断；基因发现需临床确认和遗传咨询；AI 估计不是测量值。"}
+            "boundary_zh": BOUNDARY_ZH}
     doc.update(_v2(ws, ro))
     bad = privacy_problems(doc)
     if bad:
@@ -222,8 +228,27 @@ def _v2(ws: Path, ro: Dict[str, Dict[str, Any]]) -> Dict[str, Any]:
                                 for x in ser.get("identity_alerts") or []],
             "surveillance": [{k: v for k, v in it.items()} for it in _items(ws / "work" / "surveillance" / "plan.json")],
             "predictions": _items(ws / "work" / "predict" / "predictions.json"),
-            "diagnoses": _items(ws / "work" / "clinical" / "diagnoses.json"),
-            "medications": _items(ws / "work" / "clinical" / "medications.json")}
+            "diagnoses": [_dx_aliases(x) for x in _items(ws / "work" / "clinical" / "diagnoses.json")],
+            "medications": [_rx_aliases(x) for x in _items(ws / "work" / "clinical" / "medications.json")]}
+
+
+def _source_zh(x: Dict[str, Any]) -> Optional[str]:
+    from .labels import render_label, render_sources
+    lab = x.get("label")
+    return f"{render_label(lab)[1:-1]}；{render_sources(lab)}" if isinstance(lab, dict) and lab.get("basis_kind") else None
+
+
+def _dx_aliases(x: Dict[str, Any]) -> Dict[str, Any]:
+    """Names the proactive engine and the website read: rule (rule id), hit (a listed item is a met criterion), source_zh."""
+    return {**x, "rule": x.get("rule_id"), "hit": True, "source_zh": _source_zh(x)}
+
+
+def _rx_aliases(x: Dict[str, Any]) -> Dict[str, Any]:
+    """drug / drug_zh / routine (CPIC says use as usual: nothing to change) for the proactive engine and the website."""
+    text = str(x.get("text_zh") or "").casefold().strip()
+    routine = x.get("kind") == "cpic" and x.get("action") == "monitor" and text.startswith(ROUTINE_CPIC)
+    return {**x, "drug": x.get("drug") or x.get("drug_or_class_zh"), "drug_zh": x.get("drug_or_class_zh"), "routine": routine,
+            "source_zh": _source_zh(x)}
 
 
 def as_v1(doc: Dict[str, Any]) -> Dict[str, Any]:

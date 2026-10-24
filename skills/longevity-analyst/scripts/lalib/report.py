@@ -531,14 +531,16 @@ def render(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
         L += ["## 本期读数总表", "", "类型说明：「为你计算」= 用你的数据按论文公式算出；「数据描述」= 质控或计数，不是健康判断。", ""]
         by_sys: Dict[str, List[Dict[str, Any]]] = {}
         for r in ro.values():
-            if r.get("kind") in ("llm_estimate", "genetic_score", "genetic_finding", "population_position", "member_answer"):
-                continue                              # shown in their own sections (organ table, genes vs labs, position)
+            if r.get("kind") in ("llm_estimate", "genetic_score", "genetic_finding", "genetic_concordance", "pgx",
+                                 "population_position", "member_answer"):
+                continue                              # shown in their own sections (organ table, genes vs labs, pgx, position)
             by_sys.setdefault((r.get("systems") or ["overall_aging"])[0], []).append(r)
         for s, rs in sorted(by_sys.items(), key=lambda kv: list(sysdef).index(kv[0]) if kv[0] in sysdef else 99):
             L += [f"### {sysdef.get(s, {}).get('label_zh', s)}", "", "| 读数 | 值 | 单位 | 类型 | 方法 |", "|---|---|---|---|---|"]
             for r in rs:
                 cov = f"（CpG 覆盖 {r['coverage_pct']:.0f}%）" if r.get("coverage_pct") is not None else ""
-                unc = "（数据来源未确认属于本人）" if r.get("provenance_uncertain") else ""
+                unc = ("（数据来源未确认属于本人）" if r.get("provenance_uncertain") else "") + \
+                    ("（沿用之前一次检测的胚系结果）" if r.get("reused_from") else "")
                 unit = {"a": "岁"}.get(r.get("unit", ""), r.get("unit", ""))
                 L.append(f"| {_cell(r['label_zh'])} | {_cell(_fmt(r['value']))} | {_cell(unit)} | {KIND_ZH.get(r.get('kind'), r.get('kind'))}{cov}{unc} | {_cell(r.get('method'))} |")
             L.append("")
@@ -749,15 +751,23 @@ def insight_sections(ws: Path, ro: Dict[str, Dict[str, Any]]) -> List[str]:
     if pp.exists():
         pos = load_json(pp)
         if pos["labs"] or pos["gmhi"] or pos["ages"]:
-            L += ["## 你在同龄人群中的位置", "",
-                  "> 化验参照：美国 NHANES 2005–2010 同性别、同年龄段人群（加权百分位）；中国人群分布尚未接入，美国人群的分布可能与中国人不同，只作方向参考。", ""]
+            refs = {x.get("reference") for x in pos["labs"]}
+            cn_label = next((x.get("reference_label_zh") for x in pos["labs"] if x.get("reference") == "cn"), None)
+            us = "美国 NHANES 2005–2010 同性别、同年龄段人群（加权百分位）"
+            if "cn" in refs:
+                head = (f"> 化验参照：标「中国」的行用{_cell(cn_label)}" + (f"；标「美国」的行用{us}，这几项还没有可用的中国人群分布，"
+                        "美国人群的分布可能与中国人不同，只作方向参考。" if refs - {"cn"} else "。"))
+            else:
+                fb = any("回退" in str(x.get("reference_label_zh")) for x in pos["labs"])
+                head = f"> 化验参照：{us}；" + ("还没有可用的中国人群分布，" if fb else "") + "美国人群的分布可能与中国人不同，只作方向参考。"
+            L += ["## 你在同龄人群中的位置", "", head, ""]
             if pos["labs"]:
                 L += ["| 指标 | 你的结果 | 参照人群 | 百分位 | 该人群中位数 |", "|---|---|---|---|---|"]
                 for x in pos["labs"]:
                     pct = ("低于第 1 百分位" if x["bound"] == "below" else "高于第 99 百分位" if x["bound"] == "above" else
                            f"第 {_fmt(x['pct_low'])}–{_fmt(x['pct_high'])} 百分位（该人群很多人与你同值，多为检测下限）" if x["bound"] == "tie"
                            else f"第 {_fmt(x['pct'])} 百分位")
-                    L.append(f"| {_cell(x['label_zh'])} | {_cell(_fmt(x['value']))} {_cell(x['unit'])} | {_cell(x['stratum'])}（{x['n']} 人） | {pct} | {_cell(_fmt(x['median']))} |")
+                    L.append(f"| {_cell(x['label_zh'])} | {_cell(_fmt(x['value']))} {_cell(x['unit'])} | {"中国 " if x.get("reference") == "cn" else "美国 " if "cn" in refs else ""}{_cell(x['stratum'])}{f"（{x['n']} 人）" if x.get("n") else ""} | {pct} | {_cell(_fmt(x['median']))} |")
                 L.append("")
             if pos["gmhi"]:
                 gm = pos["gmhi"]
@@ -773,6 +783,8 @@ def insight_sections(ws: Path, ro: Dict[str, Dict[str, Any]]) -> List[str]:
                     diff = "—" if x.get("minus_age") is None else f"{x['minus_age']:+.1f} 岁"
                     L.append(f"| {_cell(x['label_zh'])} | {_cell(_fmt(x['value']))} 岁{rng} | {diff} |")
                 L.append("")
+            if pos.get("phenoage_note_zh"):
+                L += [f"> 表型年龄：{_cell(pos['phenoage_note_zh'])}", ""]
     prj = ws / "work" / "insights" / "projections.json"
     if prj.exists():
         L += ["## 干预的因果推算（孟德尔随机化）", "",

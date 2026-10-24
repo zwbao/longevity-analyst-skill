@@ -317,6 +317,18 @@ def plan(st: Dict[str, Any], ws_root: Path) -> Dict[str, Any]:
                           "run": {"kind": "native", "fn": "apoe", "path": variants["path"], "assembly": variants["provenance"].get("assembly")}})
         items.append({"method": "native.vcf_summary", "tier": "native", "status": "ready", "reasons": [],
                       "run": {"kind": "native", "fn": "vcf_summary", "path": variants["path"]}})
+    elif _reused_apoe(ws_root):
+        # germline does not change (WS-I.1): an earlier visit's APOE call, hash-checked, stands in when no VCF came this time
+        consent = (member.get("answers") or {}).get("genetic_disclosure")
+        if consent not in ("yes", "no"):
+            items.append({"method": "native.apoe", "tier": "native", "status": "needs_answers", "needs": ["genetic_disclosure"],
+                          "reasons": ["reused APOE result from an earlier visit: ask whether the member wants it in the report: "
+                                      "`la.py member <ws> genetic_disclosure=yes|no --source \"<quote>\"`"]})
+        elif consent == "no":
+            items.append({"method": "native.apoe", "tier": "native", "status": "declined", "reasons": ["member declined APOE results"]})
+        else:
+            items.append({"method": "native.apoe", "tier": "native", "status": "ready", "reasons": ["reused from an earlier visit (no new VCF)"],
+                          "run": {"kind": "native", "fn": "apoe_reused"}})
     if gut:
         items.append({"method": "native.gut_diversity", "tier": "native", "status": "ready", "reasons": [], "uncertain": bool(gut.get("provenance_uncertain")),
                       "run": {"kind": "native", "fn": "gut_diversity", "path": gut["path"]}})
@@ -435,6 +447,23 @@ def _run_skill(home: Path, it: Dict[str, Any], member: Dict[str, Any], out: Path
     return res
 
 
+def _reused_apoe(ws_root: Path) -> Optional[Path]:
+    from .genomics import reused_germline
+    return reused_germline(ws_root, "apoe.json")
+
+
+def _apoe_reused(ws_root: Path) -> Dict[str, Any]:
+    p = _reused_apoe(ws_root)
+    if not p:
+        raise LAError("the reused APOE file is missing or changed since init (work/reuse/germline/apoe.json)", EXIT_INPUT)
+    src = load_json(ws_root / "work" / "reuse" / "germline.json").get("from")
+    ro = [{k: v for k, v in r.items() if k not in ("method", "tier", "systems", "source")} for r in load_json(p)["readouts"]
+          if str(r.get("id", "")).startswith("native.apoe")]
+    for r in ro:
+        r["reused_from"] = src
+    return {"readouts": ro, "notes": [f"APOE reused from {src} (germline does not change)"]}
+
+
 def _readouts_from(name: str, manifest: Dict[str, Any], result: Dict[str, Any]) -> List[Dict[str, Any]]:
     outs = {o["key"]: o for o in manifest.get("outputs", [])}
     vals = result.get("outputs", result) if isinstance(result.get("outputs", result), dict) else result
@@ -490,6 +519,8 @@ def run(st: Dict[str, Any], ws_root: Path, only: Optional[List[str]] = None,
                     res = _organs.compute_indices(st)
                 elif r["fn"] == "apoe":
                     res = fn(Path(r["path"]), r.get("assembly"))
+                elif r["fn"] == "apoe_reused":
+                    res = _apoe_reused(ws_root)
                 elif r["fn"] == "proteomics_describe":
                     res = fn(Path(r["path"]), r.get("platform"))
                 else:
