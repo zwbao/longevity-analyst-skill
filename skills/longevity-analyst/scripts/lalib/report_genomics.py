@@ -61,7 +61,10 @@ def surveillance_section(doc: Dict[str, Any]) -> List[str]:
     L = ["| 测什么 | 多久一次 | 为什么 | 谁来安排 |", "|---|---|---|---|"]
     for x in items:
         if x["once"]:
-            when = "已经测过，测一次就够，不需要复测" if x["done"] else "成年后测一次"
+            mx = x.get("measured") or {}
+            seen = (f"你在 {mx['t']} 测过（{_cell(mx.get('value'))} {_cell(mx.get('unit') or '')}"
+                    + (f"，参考 {_cell(mx['ref_range'])}" if mx.get("ref_range") else "") + "）") if mx.get("t") else "你已经测过"
+            when = f"成人至少测一次；{seen}，不放进复测计划" if x["done"] else "成人至少测一次"
         else:
             when = f"{int(x['interval_weeks'])} 周后" if x.get("interval_weeks") else "—"
         why = "、".join(REASON_ZH.get(r, r) for r in x.get("reasons") or [x["reason"]])

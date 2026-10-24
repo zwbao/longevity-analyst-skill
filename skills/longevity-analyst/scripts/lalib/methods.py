@@ -483,6 +483,8 @@ def _missing_inputs_rule(res: Dict[str, Any]) -> None:
         res["readouts"] = []
         res["notes"] = [f"inputs missing{f' ({n:.0f})' if isinstance(n, (int, float)) else ''}: their weights add up to "
                         f"{mw:.1f} years of possible error (limit {MISSING_WEIGHT_MAX_YEARS:g}); not reported"]
+        res["reason_zh"] = (f"需要的化验缺了{f' {n:.0f} 项' if isinstance(n, (int, float)) else '很多项'}，"
+                            f"缺项带来的误差可能有 {mw:.0f} 岁，结果不报告")
         return
     for k in ("missing_count", "missing_weight_years"):
         if k in by:

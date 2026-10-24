@@ -569,7 +569,9 @@ def render(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
             rt = i.get("retest") or {}
             what = substitute(str(rt.get("what") or ""), ro)
             rtxt = f"{_cell(what)}，{int(rt['after_weeks'])} 周后" if rt.get("after_weeks") else (_cell(what) if what else "—")
-            L.append(f"| {_cell(i['id'])} | {cats.get(i['category'], _cell(i['category']))} | {_cell(substitute(i['action_zh'], ro))} | {_cell(tg)} | {_cell(i['executor'])} | {ev} | {rtxt} |")
+            why = f"。理由：{_cell(substitute(i['rationale_zh'], ro))}" if i.get("rationale_zh") else ""
+            L.append(f"| {_cell(i['id'])} | {cats.get(i['category'], _cell(i['category']))} | {_cell(substitute(i['action_zh'], ro))}{why} | {_cell(tg)} | "
+                     f"{EXECUTOR_ZH.get(i['executor'], _cell(i['executor']))} | {ev} | {rtxt} |")
         L.append("")
     notes = [(it["method"], n) for it in (st.get("methods") or {}).get("items", []) if it.get("status") == "done"
              for n in (it.get("result") or {}).get("notes", [])]
@@ -584,7 +586,7 @@ def render(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
         if it["status"] == "manual":
             manual.append(it["method"])
         elif it["status"] not in ("done",):
-            L.append(f"| {_cell(it['method'])} | {METHOD_STATUS_ZH.get(it['status'], '未计算')} |")
+            L.append(f"| {_cell(it['method'])} | {_cell((it.get('result') or {}).get('reason_zh') or METHOD_STATUS_ZH.get(it['status'], '未计算'))} |")
     if manual:
         L.append(f"| 其他 {len(manual)} 个已收录方法 | {METHOD_STATUS_ZH['manual']}：{_cell('、'.join(manual))} |")
     skipped = sorted((st.get("organs") or {}).get("skipped") or {})
@@ -837,6 +839,7 @@ def insight_sections(ws: Path, ro: Dict[str, Dict[str, Any]]) -> List[str]:
     return L
 
 
+EXECUTOR_ZH = {"member": "你自己", "nutritionist": "营养师", "physician": "医生"}
 GRADE_ZH = {"human_rct": "人体随机对照试验", "human_cohort": "人群队列研究", "animal_or_cell": "动物或细胞研究", "guideline": "指南"}
 STATUS_ZH = {"adopted": "已在执行", "paused": "暂停中", "graduated": "已养成习惯", "dropped": "已放弃"}
 DESIGN_ZH = {"meta-analysis": "荟萃分析", "rct": "随机对照试验", "RCT": "随机对照试验"}
@@ -860,7 +863,8 @@ def _ev_link(e: Dict[str, Any]) -> str:
     if t == "effects" and _effect_row(r):
         x = _effect_row(r)
         what = f"{DESIGN_ZH.get(x.get('design'), x.get('design') or '研究')}，人群：{x.get('population') or '未注明'}"
-        return f"[{_cell(x.get('intervention_zh') or r)}（{_cell(what)}）](https://doi.org/{x['doi']})" if x.get("doi") else _cell(what)
+        lim = f"；研究的局限：{_cell(x['note_zh'])}" if x.get("note_zh") else ""
+        return (f"[{_cell(x.get('intervention_zh') or r)}（{_cell(what)}）](https://doi.org/{x['doi']})" if x.get("doi") else _cell(what)) + lim
     if t == "pubmed" and r.isdigit():
         return f"[PMID {r}](https://pubmed.ncbi.nlm.nih.gov/{r}/)"
     if t == "guideline" and re.match(r"^https?://[^\s)?#]+$", r):

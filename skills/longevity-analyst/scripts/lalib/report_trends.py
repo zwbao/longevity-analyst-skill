@@ -127,10 +127,11 @@ def _fmt(v: Any) -> str:
 
 def sections(ws_root: Path, ctx: Dict[str, Any]) -> List[Tuple[str, str]]:
     sp = Path(ws_root) / "work" / "twin" / "series.json"
-    if not sp.exists():
-        return []
-    ser = load_json(sp)
     from .report import _cell as esc
+    if not sp.exists():
+        doc = doctor_list(Path(ws_root), {})
+        return [(DOCTOR_TITLE, "\n".join([DOCTOR_INTRO_ZH, ""] + [f"- {esc(x)}" for x in doc]))] if doc else []
+    ser = load_json(sp)
     L: List[str] = [INTRO_ZH, ""]
     for a in ser.get("identity_alerts") or []:
         L += [f"> **样本核对**：{a['wording_zh']}", ""]
@@ -167,6 +168,35 @@ def sections(ws_root: Path, ctx: Dict[str, Any]) -> List[Tuple[str, str]]:
             cz = concurrent_zh(t.get("concurrent_exposures") or [])
             text = t["wording_zh"] if t in now else f"{t.get('to_t')} 那次检测时：" + t["wording_zh"].replace("这次", "那次")
             L.append(f"- **{esc(t.get('marker') or t['analyte'])}**：{text}{esc(cz) if cz else ''}")
-    if len(L) <= 2:
-        return []
-    return [(SECTION_TITLE, "\n".join(L).strip())]
+    out = [(SECTION_TITLE, "\n".join(L).strip())] if len(L) > 2 else []
+    doc = doctor_list(Path(ws_root), ser)
+    if doc:
+        out.append((DOCTOR_TITLE, "\n".join([DOCTOR_INTRO_ZH, ""] + [f"- {esc(x)}" for x in doc])))
+    return out
+
+
+DOCTOR_TITLE = "问医生的单子"
+DOCTOR_INTRO_ZH = "下次看医生时，请带上这几项（报告里说“列入问医生的单子”的，都在这里）："
+FLAG_ZH = {"high": "高于参考范围", "low": "低于参考范围"}
+
+
+def doctor_list(ws: Path, ser: Dict[str, Any]) -> List[str]:
+    """Everything the report sends to the doctor, in one place: gene-lab tendencies that show now, adverse trends past
+    the reference range, registered diagnostic conclusions, drugs the member takes that CPIC/guidelines flag."""
+    out: List[str] = []
+    cp = ws / "work" / "insights" / "concordance.json"
+    for c in (load_json(cp).get("items") or []) if cp.exists() else []:
+        if c.get("class") in ("concordant_adverse", "clinvar_override"):
+            out.append(f"{c.get('label_zh') or c['analyte']}：{FLAG_ZH.get(c.get('lab_flag'), '不在参考范围内')}，"
+                       + ("而且有较明显的先天倾向" if c["class"] == "concordant_adverse" else "基因检测发现需要临床确认的变异"))
+    for m in ser.get("markers") or []:
+        if ask_doctor(m):
+            out.append(f"{m['marker']}：{wording(m)}")
+    for name, kind in (("diagnoses.json", "dx"), ("medications.json", "rx")):
+        p = ws / "work" / "clinical" / name
+        for x in (load_json(p).get("items") or []) if p.exists() else []:
+            if kind == "dx":
+                out.append(f"诊断性结论「{x.get('label_zh')}」：请医生复查确认")
+            elif x.get("currently_taking") and x.get("action") in ("avoid", "consider_switch", "adjust", "consider_stop"):
+                out.append(f"你正在用的{x.get('drug_or_class_zh')}：用药建议见「用药建议」一节，请医生决定是否调整")
+    return out

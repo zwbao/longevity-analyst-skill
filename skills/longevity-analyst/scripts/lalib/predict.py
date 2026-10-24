@@ -25,6 +25,7 @@ from .common import EXIT_INPUT, LAError, load_json, longevity_skills_home, now_i
 SCHEMA = "la-predictions/1"
 N = NormalDist()
 Z80 = 1.2816
+PRIOR_ONLY_ZH = "只按研究结果、不算你自己的前后对比时：下次实验能测出有利变化的概率{det}，真实效应方向有利的概率{true}"
 
 
 # ------------------------------------------------------------ the model (appendix B.7)
@@ -225,8 +226,11 @@ def predict_item(item: Dict[str, Any], row: Dict[str, Any], marker: Dict[str, An
                    "效应和测量误差按正态分布近似", "效应换算为相对基线的百分比，基线取你最近一次的测量值",
                    "测量误差取个体内变异和分析变异" + ("（分析变异按 0.5 倍个体内变异缺省）" if marker.get("cva_pct") is None else "")]
     if personal:
+        r0 = model(eff["value"], tuple(eff["ci"]), base["value"], marker["cvi_pct"], marker.get("cva_pct"), k, k,
+                   lower_better=marker.get("better") == "lower", a=a, a_next=1.0, tau=tau, z=z)
         assumptions += ["你本人做过的各次实验相互独立",
-                        "你本人的前后对比没有对照组，同一段时间里其他因素带来的变化也被算作这项干预的效果"]
+                        "你本人的前后对比没有对照组，同一段时间里其他因素带来的变化也被算作这项干预的效果",
+                        PRIOR_ONLY_ZH.format(det=L._about(r0["p_detect_favorable"]), true=L._about(r0["p_true_favorable"]))]
     iv = [round(res["interval_80_pct"][0], 1), round(res["interval_80_pct"][1], 1)]
     sources = [{"type": "effects", "ref": row["id"]}, {"type": "biovar", "ref": marker["key"]}]
     if row.get("doi"):

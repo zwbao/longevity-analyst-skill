@@ -167,7 +167,8 @@ def item_text(kind: str, it: Dict[str, Any]) -> str:
         own = any(s.get("type") == "personal_experiment" for s in it["label"].get("sources") or [])
         return (f"{head}：按前后各测 {d.get('repeats_each_side')} 次的设计，下次实验能测出有利变化的概率{_about(it['p_detect_favorable'])}，"
                 f"真实效应方向有利的概率{_about(it['p_true_favorable'])}，预计变化的 80% 区间 {_pct(lo)} 到 {_pct(hi)}。"
-                + (PERSONAL_ZH if own else ""))
+                + (PERSONAL_ZH + next((a + "。" for a in it["label"].get("assumptions") or [] if a.startswith("只按研究结果")), "")
+                   if own else ""))
     if kind == "dx":
         g = it["label"].get("guideline_zh")
         c = it["conclusion_zh"]

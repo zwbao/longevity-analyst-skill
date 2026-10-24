@@ -77,6 +77,21 @@ def measured_before(analyte: str, history: List[Path]) -> bool:
     return False
 
 
+def last_measured(analyte: str, st: Dict[str, Any], labs: Dict[str, Any], history: List[Path]) -> Optional[Dict[str, Any]]:
+    """Where a once-only marker was measured: this visit's confirmed row, else the latest earlier snapshot row."""
+    if analyte in labs:
+        x = labs[analyte]
+        return {"t": st["member"].get("sample_date"), "value": x.get("value"), "unit": x.get("unit"), "ref_range": x.get("ref_range")}
+    kit = skillkit()
+    want = {kit.fold_name(n) for n in _names(analyte)}
+    hits = [o for p in history for o in load_json(p).get("observations") or []
+            if o.get("kind", "lab") == "lab" and kit.fold_name(str(o.get("marker", ""))) in want]
+    if not hits:
+        return None
+    o = max(hits, key=lambda o: str(o.get("t") or ""))
+    return {"t": o.get("t"), "value": o.get("value"), "unit": o.get("unit"), "ref_range": o.get("ref_range")}
+
+
 def _holds(when: Dict[str, Any], st: Dict[str, Any], ws: Path, labs: Dict[str, Any], history: List[Path]) -> bool:
     for k, v in (when or {}).items():
         if k == "age_min":
@@ -128,6 +143,7 @@ def plan(st: Dict[str, Any], ws: Path, history: Optional[List[Path]] = None) -> 
                       "interval_weeks": None if once else int(a["interval"]), "once": once, "done": done,
                       "reason": r["reason"], "reasons": [r["reason"]], "rule_ids": [r["id"]], "interventions": [],
                       "executor": r["executor"], "note_zh": r.get("note_zh"),
+                      **({"measured": last_measured(a["analyte"], st, labs, history)} if done else {}),
                       "source": {k: r["source"].get(k) for k in ("title", "doi", "url", "quote", "locator") if r["source"].get(k)}})
     if (st.get("processed") or {}).get("variants"):
         items.append({"id": "S-germline", "marker": "胚系基因型", "analyte": None, "interval_weeks": None, "once": True, "done": True,

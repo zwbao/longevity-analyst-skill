@@ -312,7 +312,7 @@ def _summary_v4(ws: Path) -> str:
     if dxi:
         lines += ["", f"诊断性结论：{{{{dx:{dxi[0]['id']}}}}}。请带着这一条去看医生。"]
     lines += ["", f"用药基因（他汀类降脂药）：{{{{rx:{rx['id']}}}}}。这一条只在医生考虑用这类药时才用得上。",
-              "", "尿酸这一项有先天倾向，从上一年那次检测起已经表现出来，已列入问医生的单子。"]
+              "", "尿酸这一项有先天倾向，从上一年那次检测起已经表现出来，这次仍高于参考范围，已列入报告末尾的问医生的单子。"]
     return "\n".join(lines)
 
 
@@ -497,6 +497,9 @@ def test_full_chain_case_c(tmp_path, capsys, case_c_net):
     assert dx["guideline_set"] == "ada" and [x["rule_id"] for x in dx["items"]] == ["DX-ifg-ada"]
     md = (v4 / "deliver" / "report.md").read_text()
     assert "{{" not in md and "## 复测对比与趋势" in md and "做饭用限盐勺" in md and "约 超过" not in md
+    doctor = md.split("## 问医生的单子")[1].split("\n## ")[0]
+    assert "尿酸" in doctor and "空腹血糖受损" in doctor and "只按研究结果、不算你自己的前后对比时" in md
+    assert "不报告" in md and "LinAge" not in md.split("## 本期没有给出结果的项目")[0]       # mostly-missing LinAge withheld
     ex = json.loads((v4 / "deliver" / "la-export.json").read_text())
     assert ex["diagnoses"][0]["rule"] == "DX-ifg-ada" and ex["diagnoses"][0]["hit"] is True and ex["diagnoses"][0]["source_zh"]
     assert all("drug" in x and "drug_zh" in x and isinstance(x["routine"], bool) for x in ex["medications"])

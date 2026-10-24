@@ -111,7 +111,7 @@ def test_report_section_quotes_the_guideline(tmp_path, monkeypatch):
                           "intervene_plan_sha256": C.sha256_file(ws / "work" / "intervene" / "plan.json", limit=None)}
     secs = dict(report_genomics.sections(ws, {"st": st}))
     md = secs["监测计划"]
-    assert "测一次就够，不需要复测" in md and "12 周后" in md
+    assert "成人至少测一次；" in md and "不放进复测计划" in md and "12 周后" in md
     assert "Lp(a) should be measured at least once in adults" in md and "10.1093/eurheartj/ehac361" in md and LPA_URL in md
 
 
