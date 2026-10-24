@@ -442,7 +442,8 @@ def _run_skill(home: Path, it: Dict[str, Any], member: Dict[str, Any], out: Path
                 kept.append(ro)
             res["readouts"] = kept
     elif (out / "problems.json").exists():
-        res["problems"] = load_json(out / "problems.json")
+        pr = load_json(out / "problems.json")
+        res["problems"] = pr.get("problems", []) if isinstance(pr, dict) else pr     # longevity-problems/1 wraps the list
     res["report_md"] = str(out / "report.md") if (out / "report.md").exists() else None
     return res
 
