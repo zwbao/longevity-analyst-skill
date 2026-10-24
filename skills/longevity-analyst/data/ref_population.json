@@ -1,6 +1,6 @@
 {
  "schema": "la-refpop/1",
- "note": "Population reference distributions. Labs: NHANES 2005-2010 US civilian non-institutionalised population, MEC-weighted percentiles by sex and age band; glucose and triglycerides there are non-fasting for most participants. Gut: GMHI in 4347 public metagenomes. A member's position is read off these tables; which table is appropriate for a Chinese member is stated in the report, not assumed.",
+ "note": "Population reference distributions. Labs: NHANES 2005-2010 US civilian non-institutionalised population, MEC-weighted percentiles by sex and age band; glucose and triglycerides there are non-fasting for most participants, so a member's fasting glucose and triglycerides are placed in the fasting-subsample tables (`glucose`, `tg`), never in the non-fasting ones. Gut: GMHI in 4347 public metagenomes. A member's position is read off these tables; which table is appropriate for a Chinese member is stated in the report, not assumed.",
  "pcts": [
   1,
   2.5,

@@ -261,7 +261,10 @@ def summary(pairs: List[Dict[str, Any]], bvl: Dict[str, Any], tr: Dict[str, Any]
     if bvl.get("verdict") in BEYOND:
         return "change_beyond_noise"
     if any(p.get("verdict") in BEYOND for p in pairs):
-        if bvl.get("verdict") == "within_noise":
+        last = max(i for i, p in enumerate(pairs) if p.get("verdict") in BEYOND)
+        # "came back" only when a later comparison followed the change and the first-vs-latest is within noise;
+        # a change in the latest comparison has not come back, whatever the first value was
+        if bvl.get("verdict") == "within_noise" and last < len(pairs) - 1:
             _caveat(caveats, "returned_within_noise")
         return "change_beyond_noise"
     if any(p.get("verdict") == "within_noise" for p in pairs) or bvl.get("verdict") == "within_noise" \

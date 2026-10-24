@@ -126,6 +126,10 @@ def render_sources(label: Dict[str, Any]) -> str:
     return "来源：" + "；".join(parts)
 
 
+PERSONAL_ZH = ("这个估计用到了你自己做过的前后对比；它没有对照，同一段时间里其他因素带来的变化也算在里面，"
+               "所以把握可能偏高。")
+
+
 def _about(x: Any) -> str:
     """"约 77%", but "超过 99%" / "不到 1%" without 约 in front."""
     t = _p(x)
@@ -160,14 +164,22 @@ def item_text(kind: str, it: Dict[str, Any]) -> str:
             return f"{head}：AI 判断，" + "，".join(bits) + "。"
         d = it.get("design") or {}
         lo, hi = it["interval_80_pct"]
+        own = any(s.get("type") == "personal_experiment" for s in it["label"].get("sources") or [])
         return (f"{head}：按前后各测 {d.get('repeats_each_side')} 次的设计，下次实验能测出有利变化的概率{_about(it['p_detect_favorable'])}，"
-                f"真实效应方向有利的概率{_about(it['p_true_favorable'])}，预计变化的 80% 区间 {_pct(lo)} 到 {_pct(hi)}。")
+                f"真实效应方向有利的概率{_about(it['p_true_favorable'])}，预计变化的 80% 区间 {_pct(lo)} 到 {_pct(hi)}。"
+                + (PERSONAL_ZH if own else ""))
     if kind == "dx":
-        return it["conclusion_zh"]
+        g = it["label"].get("guideline_zh")
+        c = it["conclusion_zh"]
+        if g and c.startswith(f"按《{g}》的标准，"):             # the tag in front already names the guideline
+            c = c[len(f"按《{g}》的标准，"):]
+        return c + "".join(it.get("caveats_zh") or [])
     txt = it.get("text_zh") or ""
+    if it.get("kind") == "cpic" and it.get("label_zh"):
+        txt = f"{it['label_zh']}：{txt}"
     if it.get("dose_text_zh"):
         txt += f"（剂量：{it['dose_text_zh']}）"
-    return txt
+    return txt + "".join(it.get("caveats_zh") or [])
 
 
 def render_item(kind: str, it: Dict[str, Any]) -> str:

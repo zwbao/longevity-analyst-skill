@@ -39,7 +39,7 @@ def test_case_c_fasting_glucose_5_6_ada_yes_cn_no(tmp_path):
     assert d["guidelines_used_zh"] and "Guidelines on primary healthcare for type 2 diabetes in China, 2025" in d["guidelines_used_zh"]
     from lalib import report_clinical
     md = dict(report_clinical.sections(ws, {}))["诊断性结论"]
-    assert "所用指南集：中国指南" in md and "已核对、未达到标准：空腹血糖受损" in md and "拨打 120" in md
+    assert "所用的指南集：中国指南" in md and "已核对、未达到标准：空腹血糖受损" in md and "拨打 120" in md
 
 
 def test_unit_conversion_and_distinct_days(tmp_path):

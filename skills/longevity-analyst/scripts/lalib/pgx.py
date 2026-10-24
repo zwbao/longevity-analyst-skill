@@ -255,9 +255,16 @@ def run(st: Dict[str, Any], ws: Path, absent_as_ref: Optional[str] = None) -> Di
             if gene not in e.get("genes", []) or not (drug in discuss or drug in med_drugs):
                 continue
             rows = [r for r in text_rows if r.get("drug") == drug]
+            sev = {"avoid": 3, "caution": 2, "standard": 1}
+            cats = [r.get("category") for r in rows if r.get("category")]
+            text = [str(r.get("recommendation") or r.get("recommendation_text") or "") for r in rows]
+            if len(rows) > 1:                      # one CPIC row per population: each once, with its population as CPIC names it
+                text = [f"[{r.get('population') or '—'}] {t}" for r, t in zip(rows, text)]
             drugs.append({"drug": drug, "drug_zh": next((r.get("drug_zh") for r in rows if r.get("drug_zh")), None),
-                          "category": next((r.get("category") for r in rows if r.get("category")), None),
-                          "recommendation_text": "\n".join(str(r.get("recommendation") or r.get("recommendation_text") or "") for r in rows) or None,
+                          "category": max(cats, key=lambda c: sev.get(c, 0)) if cats else None,
+                          "untested_genes": sorted({g for r in rows for g, v in (r.get("lookup") or {}).items()
+                                                    if str(v).strip().lower() in ("no result", "")}),
+                          "recommendation_text": "\n".join(text) or None,
                           "dose_text": next((r.get("dose_text") for r in rows if r.get("dose_text")), None),
                           "strength": next((r.get("classification") or r.get("strength") for r in rows if r.get("classification") or r.get("strength")), None),
                           "guideline": e.get("guideline"), "guideline_url": e.get("guideline_url"), "guideline_doi": e.get("guideline_doi"),

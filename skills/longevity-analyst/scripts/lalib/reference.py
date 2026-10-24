@@ -161,7 +161,8 @@ def position(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
     op = ws / "work" / "organs" / "organ_readouts.json"
     organ = load_json(op)["readouts"] if op.exists() else []
     for r in list(ro.values()) + organ:
-        if r.get("unit") == "a" and isinstance(r.get("value"), (int, float)) and "advance" not in r["id"] and r.get("kind") != "implausible":
+        if r.get("unit") == "a" and isinstance(r.get("value"), (int, float)) and r.get("kind") not in ("implausible", "descriptive") \
+                and not any(w in r["id"] for w in ("advance", "delta", "missing", "_gap", "acceleration")):   # ages only, not gaps or QC
             ages.append({"id": r["id"], "label_zh": r.get("label_zh"), "value": r["value"], "kind": r.get("kind"),
                          "minus_age": round(r["value"] - age, 1) if age else None, "low": r.get("low"), "high": r.get("high")})
     clocks = [a["value"] for a in ages if str(a["id"]).startswith("epiage.") and a.get("kind") in ("computed", "computed_low_coverage")]

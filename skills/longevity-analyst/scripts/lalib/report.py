@@ -18,7 +18,7 @@ import re
 import subprocess
 import unicodedata
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 from .common import (EXIT_BLOCKED, EXIT_INPUT, LAError, data, load_json, longevity_skills_home,
                      now_iso, sha256_file, write_json)
@@ -556,9 +556,16 @@ def render(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
     if pl.exists():
         cats = {c["id"]: c["label_zh"] for c in data("intervention_menu.json")["categories"]}
         L += ["## 干预方案（营养师审核后生效）", "", "| # | 类别 | 做什么 | 针对 | 执行人 | 证据 | 复测 |", "|---|---|---|---|---|---|---|"]
+        tw = ws / "work" / "twin" / "twin.json"
+        status = {x["id"]: x for x in (load_json(tw).get("interventions") or [])} if tw.exists() else {}
         for i in load_json(pl)["items"]:
             tg = "、".join(ro[t]["label_zh"] if t in ro else t for t in i["targets"])
             ev = "；".join(_ev_link(e) for e in i.get("evidence", [])) or "—"
+            if i.get("evidence_grade") in GRADE_ZH:
+                ev = f"{GRADE_ZH[i['evidence_grade']]}：{ev}"
+            sx = status.get(i["id"]) or {}
+            if sx.get("status") in STATUS_ZH:
+                i = dict(i, action_zh=i["action_zh"] + f"（{STATUS_ZH[sx['status']]}" + (f"，自 {sx['since']}" if sx.get("since") else "") + "）")
             rt = i.get("retest") or {}
             what = substitute(str(rt.get("what") or ""), ro)
             rtxt = f"{_cell(what)}，{int(rt['after_weeks'])} 周后" if rt.get("after_weeks") else (_cell(what) if what else "—")
@@ -580,6 +587,11 @@ def render(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
             L.append(f"| {_cell(it['method'])} | {METHOD_STATUS_ZH.get(it['status'], '未计算')} |")
     if manual:
         L.append(f"| 其他 {len(manual)} 个已收录方法 | {METHOD_STATUS_ZH['manual']}：{_cell('、'.join(manual))} |")
+    skipped = sorted((st.get("organs") or {}).get("skipped") or {})
+    if skipped:
+        spec = data("organs.json")["organs"]
+        names = "、".join(_cell((spec.get(o) or {}).get("label_zh", o)) for o in skipped)
+        L.append(f"| 器官 AI 估计：{names} | 本期没有做 AI 估计（器官体检表里这几个器官只有公式指数或测量值） |")
     for f in st["files"]:
         if f.get("status") in FILE_STATUS_ZH:
             L.append(f"| 文件 {_cell(f['name'])} | {FILE_STATUS_ZH[f['status']]} |")
@@ -825,8 +837,30 @@ def insight_sections(ws: Path, ro: Dict[str, Dict[str, Any]]) -> List[str]:
     return L
 
 
+GRADE_ZH = {"human_rct": "人体随机对照试验", "human_cohort": "人群队列研究", "animal_or_cell": "动物或细胞研究", "guideline": "指南"}
+STATUS_ZH = {"adopted": "已在执行", "paused": "暂停中", "graduated": "已养成习惯", "dropped": "已放弃"}
+DESIGN_ZH = {"meta-analysis": "荟萃分析", "rct": "随机对照试验", "RCT": "随机对照试验"}
+_EFFECTS: Dict[str, Dict[str, Any]] = {}
+
+
+def _effect_row(ref: str) -> Optional[Dict[str, Any]]:
+    if not _EFFECTS:
+        from .common import longevity_skills_home
+        p = longevity_skills_home(required=False)
+        if p and (p / "data" / "effects.jsonl").exists():
+            for line in open(p / "data" / "effects.jsonl", encoding="utf-8"):
+                if line.strip():
+                    r = json.loads(line)
+                    _EFFECTS[r["id"]] = r
+    return _EFFECTS.get(ref)
+
+
 def _ev_link(e: Dict[str, Any]) -> str:
     t, r = e.get("type"), str(e.get("ref"))
+    if t == "effects" and _effect_row(r):
+        x = _effect_row(r)
+        what = f"{DESIGN_ZH.get(x.get('design'), x.get('design') or '研究')}，人群：{x.get('population') or '未注明'}"
+        return f"[{_cell(x.get('intervention_zh') or r)}（{_cell(what)}）](https://doi.org/{x['doi']})" if x.get("doi") else _cell(what)
     if t == "pubmed" and r.isdigit():
         return f"[PMID {r}](https://pubmed.ncbi.nlm.nih.gov/{r}/)"
     if t == "guideline" and re.match(r"^https?://[^\s)?#]+$", r):

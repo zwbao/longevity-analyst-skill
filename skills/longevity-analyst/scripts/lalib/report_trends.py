@@ -18,6 +18,7 @@ TREND_ZH = "出现了超出你个人正常波动的缓慢{dir}，下一次复测
 CHANGE_ZH = "最近一次（{to}）和第一次（{frm}）相比的{dir}超出了你个人正常波动。"
 PAIR_RETURNED_ZH = "中间有一次变化超出了你个人正常波动，之后又回到了波动范围内。"
 PAIR_ZH = "中间有一次变化超出了你个人正常波动。"
+LATEST_PAIR_ZH = "最近一次（{to}）和上一次（{frm}）相比的{dir}超出了你个人正常波动。"
 WITHIN_ZH = "几次结果的差别都在你个人正常波动之内，还看不出真实变化。"
 NOT_JUDGED_ZH = "这一项没有噪声模型，只能并排看几次结果，不能判断是不是真的变化。"
 ASK_DOCTOR_ZH = "这个方向对健康不利，而且最近一次已经超出参考范围，建议列入问医生的单子。"
@@ -87,6 +88,10 @@ def wording(m: Dict[str, Any]) -> str:
         b = m.get("baseline_vs_latest") or {}
         if b.get("verdict") in ("increase_beyond_noise", "decrease_beyond_noise"):
             return CHANGE_ZH.format(to=b.get("to"), frm=b.get("from"), dir=d)
+        last = (m.get("pairs") or [{}])[-1]
+        if last.get("verdict") in ("increase_beyond_noise", "decrease_beyond_noise"):
+            return LATEST_PAIR_ZH.format(to=last.get("to"), frm=last.get("from"),
+                                         dir=UP if last["verdict"] == "increase_beyond_noise" else DOWN)
         returned = any(c.get("code") == "returned_within_noise" for c in m.get("caveats") or [])
         return PAIR_RETURNED_ZH if returned else PAIR_ZH
     if sv == "within_noise":
@@ -152,13 +157,16 @@ def sections(ws_root: Path, ctx: Dict[str, Any]) -> List[Tuple[str, str]]:
     nj += [r.get("label_zh") or r["readout"] for r in ser.get("readouts") or [] if (r.get("baseline_vs_latest") or {}).get("verdict") == "not_judged"]
     if nj:
         L += ["", f"以下各项没有噪声模型，只并排展示，不判断好坏：{'、'.join(esc(x) for x in nj)}。"]
-    tr = ser.get("transitions") or []
+    tr = [t for t in ser.get("transitions") or [] if t.get("wording_zh")]
     if tr:
-        L += ["", "基因倾向与化验的对照有了更新（基因分值只能解释这一项差异的一部分）："]
-        for t in tr:
-            if t.get("wording_zh"):
-                cz = concurrent_zh(t.get("concurrent_exposures") or [])
-                L.append(f"- **{esc(t.get('marker') or t['analyte'])}**：{t['wording_zh']}{esc(cz) if cz else ''}")
+        latest = max((s.get("t") or "" for s in ser.get("snapshots") or [] if not s.get("excluded")), default="")
+        now = [t for t in tr if (t.get("to_t") or "") >= latest]
+        before = [t for t in tr if (t.get("to_t") or "") < latest]
+        L += ["", "基因倾向与化验的对照（基因分值只能解释这一项差异的一部分）："]
+        for t in now + before:
+            cz = concurrent_zh(t.get("concurrent_exposures") or [])
+            text = t["wording_zh"] if t in now else f"{t.get('to_t')} 那次检测时：" + t["wording_zh"].replace("这次", "那次")
+            L.append(f"- **{esc(t.get('marker') or t['analyte'])}**：{text}{esc(cz) if cz else ''}")
     if len(L) <= 2:
         return []
     return [(SECTION_TITLE, "\n".join(L).strip())]

@@ -246,7 +246,8 @@ def _dx_aliases(x: Dict[str, Any]) -> Dict[str, Any]:
 def _rx_aliases(x: Dict[str, Any]) -> Dict[str, Any]:
     """drug / drug_zh / routine (CPIC says use as usual: nothing to change) for the proactive engine and the website."""
     text = str(x.get("text_zh") or "").casefold().strip()
-    routine = x.get("kind") == "cpic" and x.get("action") == "monitor" and text.startswith(ROUTINE_CPIC)
+    routine = x.get("kind") == "cpic" and x.get("action") == "monitor" and \
+        (x.get("cpic_category") == "standard" if x.get("cpic_category") else text.startswith(ROUTINE_CPIC))
     return {**x, "drug": x.get("drug") or x.get("drug_or_class_zh"), "drug_zh": x.get("drug_or_class_zh"), "routine": routine,
             "source_zh": _source_zh(x)}
 

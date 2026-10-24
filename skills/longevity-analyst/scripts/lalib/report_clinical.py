@@ -77,14 +77,15 @@ def diagnoses(ws: Path) -> List[str]:
     gl = [x for x in items if x["kind"] == "guideline_criteria"]
     ai = [x for x in items if x["kind"] == "ai_estimate"]
     used = "、".join(f"《{g}》" for g in d.get("guidelines_used_zh", []))
-    out = [f"> {EMERGENCY}", "", f"所用指南集：{SET_ZH.get(d.get('guideline_set'), d.get('guideline_set'))}（{_cell(used)}）。{REVIEW}", ""]
+    out = [f"> {EMERGENCY}", "", f"糖尿病相关条目所用的指南集：{SET_ZH.get(d.get('guideline_set'), d.get('guideline_set'))}。"
+                                   f"本次核对用到的指南：{_cell(used)}。{REVIEW}", ""]
     if gl:
         out += ["| 结论 | 你的数值 | 类别 | 指南原文 |", "|---|---|---|---|"]
         for x in gl:
             vals = "；".join(f"{_cell(e['ref'])} {e['value']:g} {_cell(e.get('unit', ''))}（{e.get('t', '')}）" if isinstance(e.get("value"), (int, float))
                             else f"{_cell(e['ref'])} {_cell(e.get('value'))}" for e in x.get("evidence", []))
             g = next(s for s in x["label"]["sources"] if s["type"] == "guideline")
-            note = f"（{_cell(x['note_zh'])}）" if x.get("note_zh") else ""
+            note = (f"（{_cell(x['note_zh'])}）" if x.get("note_zh") else "") + "".join(_cell(c) for c in x.get("caveats_zh") or [])
             out.append(f"| {_cell(x['conclusion_zh'])}{note} | {vals or '—'} | {L.render_label(x['label'])} | {_cell(g.get('quote'))}（{_cell(g.get('ref'))}） |")
         out.append("")
     else:
@@ -113,7 +114,8 @@ def medications(ws: Path) -> List[str]:
         for x in main:
             taking = "（你正在用）" if x.get("currently_taking") else ""
             who = f"{_cell(x.get('gene'))} {_cell(x.get('phenotype'))}：" if x["kind"] == "cpic" else ""
-            out.append(f"| {_cell(x['drug_or_class_zh'])}{taking} | {ACTION_ZH[x['action']]} | {who}{_cell(x['text_zh'])} | "
+            cav = "".join(_cell(c) for c in x.get("caveats_zh") or [])
+            out.append(f"| {_cell(x['drug_or_class_zh'])}{taking} | {ACTION_ZH[x['action']]} | {who}{_cell(x['text_zh'])}{'；' + cav if cav else ''} | "
                        f"{_cell(x.get('dose_text_zh') or '—')} | {L.render_label(x['label'])} | {_src(x['label'])} |")
         out.append("")
     elif not ai:

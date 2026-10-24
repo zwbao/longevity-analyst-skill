@@ -250,12 +250,12 @@ def _visit(tmp: Path, ym: str, capsys, *, raw: Path = None, prev: Path = None, h
     for b in st["integrate"]["bundles"]:
         rid = json.loads(Path(b["bundle"]).read_text())["readouts"][0]["id"]
         (ana / f"{b['system']}.md").write_text(
-            f"## 结论\n主要读数见下。\n\n## 证据\n- {{{{r:{rid}|label}}}} = {{{{r:{rid}}}}}\n\n"
-            "## 不确定性\n单次测量。\n\n## 建议复测\n按方案复测。\n", encoding="utf-8")
+            f"## 结论\n这一组本期的读数见下；化验的多次变化见「复测对比与趋势」。\n\n## 证据\n- {{{{r:{rid}|label}}}} = {{{{r:{rid}}}}}\n\n"
+            "## 不确定性\n这些读数只来自本期数据；化验有没有真实变化，以复测对比为准。\n\n## 建议复测\n按方案复测。\n", encoding="utf-8")
         ok("integrate", "register", str(ws), "--system", b["system"])
     ok("organ", "bundle", str(ws))
     for organ in C.data("organs.json")["organs"]:
-        ok("organ", "skip", str(ws), "--organ", organ, "--reason", "fixture: organ estimates are not part of case-C")
+        ok("organ", "skip", str(ws), "--organ", organ, "--reason", "本期以复查化验为主，没有做器官 AI 估计")
     run_json(capsys, "insights", "genomics", str(ws))
     run_json(capsys, "insights", "pgx", str(ws))
     ok("insights", "position", str(ws))
@@ -267,7 +267,7 @@ def _visit(tmp: Path, ym: str, capsys, *, raw: Path = None, prev: Path = None, h
     (bdir / "q.json").write_text(json.dumps(qs, ensure_ascii=False), encoding="utf-8")
     ok("board", "questions", str(ws), "--file", str(bdir / "q.json"))
     for i in (1, 2, 3):
-        ok("board", "skip", str(ws), "--id", f"Q{i}", "--reason", "offline test")
+        ok("board", "skip", str(ws), "--id", f"Q{i}", "--reason", "本期没有安排研究员，留到下次")
     ok("evidence", "fetch", str(ws), "--url", LPA_URL)
     ok("intervene", "register", str(ws), "--plan", str(plan or CASE_C / ym / "plan.json"))
     ok("surveillance", "plan", str(ws), *(["--history", *map(str, history)] if history else []))
@@ -312,7 +312,7 @@ def _summary_v4(ws: Path) -> str:
     if dxi:
         lines += ["", f"诊断性结论：{{{{dx:{dxi[0]['id']}}}}}。请带着这一条去看医生。"]
     lines += ["", f"用药基因（他汀类降脂药）：{{{{rx:{rx['id']}}}}}。这一条只在医生考虑用这类药时才用得上。",
-              "", "尿酸这一项有先天倾向，这次已经表现出来，建议列入问医生的单子。"]
+              "", "尿酸这一项有先天倾向，从上一年那次检测起已经表现出来，已列入问医生的单子。"]
     return "\n".join(lines)
 
 

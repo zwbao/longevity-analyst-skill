@@ -419,6 +419,7 @@ def _run_skill(home: Path, it: Dict[str, Any], member: Dict[str, Any], out: Path
     rj = out / "result.json"
     if p.returncode == 0 and rj.exists():
         res["readouts"] = _readouts_from(name, manifest, load_json(rj))
+        _missing_inputs_rule(res)
         if name == "epiage":
             cov = _epiage_coverage(out / "report.md")
             allowed = {f"dnam_{c}" for c in run["clocks"]}
@@ -462,7 +463,30 @@ def _apoe_reused(ws_root: Path) -> Dict[str, Any]:
           if str(r.get("id", "")).startswith("native.apoe")]
     for r in ro:
         r["reused_from"] = src
-    return {"readouts": ro, "notes": [f"APOE reused from {src} (germline does not change)"]}
+    return {"readouts": ro, "notes": ["沿用之前一次检测的 APOE 结果（胚系 DNA 不会改变）"]}
+
+
+MISSING_WEIGHT_MAX_YEARS = 5.0
+
+
+def _missing_inputs_rule(res: Dict[str, Any]) -> None:
+    """A model that fills absent inputs with 0 and reports the error that adds (LinAge: `missing_weight_years`, the
+    sum of the missing parameters' weights, which the paper gives as the error each brings): at 5 years or more the
+    age is not a measurement of this person and nothing of the run is reported (the clocks' coverage rule); below
+    that the two counts are QC, not health findings."""
+    by = {r["id"].split(".", 1)[1]: r for r in res.get("readouts") or []}
+    mw = (by.get("missing_weight_years") or {}).get("value")
+    if not isinstance(mw, (int, float)):
+        return
+    if mw >= MISSING_WEIGHT_MAX_YEARS:
+        n = (by.get("missing_count") or {}).get("value")
+        res["readouts"] = []
+        res["notes"] = [f"inputs missing{f' ({n:.0f})' if isinstance(n, (int, float)) else ''}: their weights add up to "
+                        f"{mw:.1f} years of possible error (limit {MISSING_WEIGHT_MAX_YEARS:g}); not reported"]
+        return
+    for k in ("missing_count", "missing_weight_years"):
+        if k in by:
+            by[k]["kind"] = "descriptive"
 
 
 def _readouts_from(name: str, manifest: Dict[str, Any], result: Dict[str, Any]) -> List[Dict[str, Any]]:

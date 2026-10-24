@@ -61,7 +61,7 @@ def surveillance_section(doc: Dict[str, Any]) -> List[str]:
     L = ["| 测什么 | 多久一次 | 为什么 | 谁来安排 |", "|---|---|---|---|"]
     for x in items:
         if x["once"]:
-            when = "测一次就够，不需要复测" if x["done"] else "成年后测一次"
+            when = "已经测过，测一次就够，不需要复测" if x["done"] else "成年后测一次"
         else:
             when = f"{int(x['interval_weeks'])} 周后" if x.get("interval_weeks") else "—"
         why = "、".join(REASON_ZH.get(r, r) for r in x.get("reasons") or [x["reason"]])
@@ -102,7 +102,10 @@ def pgx_section(doc: Dict[str, Any]) -> List[str]:
             link = f"指南：{d['guideline_url']}" + (f"（doi:{d['guideline_doi']}）" if d.get("guideline_doi") else "")
             if d.get("recommendation_text"):
                 strength = f"，推荐强度 {_cell(d['strength'])}" if d.get("strength") else ""
-                L.append(f"- {CPIC_TAG}{_cell(d['drug'])}{mine}：{_cell(d['recommendation_text'])}（CPIC 原文{strength}）。{link}")
+                ut = "、".join(d.get("untested_genes") or [])
+                miss = f"{ut} 没有检测结果，这条推荐没有考虑它；用这个药之前，请医生确认{ut}。" if ut else ""
+                name = f"{_cell(d['drug_zh'])}（{_cell(d['drug'])}）" if d.get("drug_zh") else _cell(d["drug"])
+                L.append(f"- {CPIC_TAG}{name}{mine}：{_cell(d['recommendation_text'])}（CPIC 原文{strength}）。{miss}{link}")
             else:
                 head = (d.get("skill_text_zh") or [f"- {d['drug']}"])[0].lstrip("- ").strip()
                 rest = [l.strip().lstrip("- ").strip() for l in (d.get("skill_text_zh") or [])[1:] if not l.strip().lstrip("- ").startswith("指南")]

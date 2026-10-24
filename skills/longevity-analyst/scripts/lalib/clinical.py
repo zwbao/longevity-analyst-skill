@@ -227,6 +227,22 @@ def inputs_digest(st: Dict[str, Any], ws: Path, kind: str) -> str:
     return L.digest(parts)
 
 
+def _dx_caveats(rule: Dict[str, Any], ev: List[Dict[str, Any]], d: Dict[str, Any], ctx: Dict[str, Any]) -> List[str]:
+    """What the reader must know next to a met criterion: it rests on one measurement; the same condition in another
+    guideline set of the file is (not) met (data-driven: the rules with the same label in other sets)."""
+    out = []
+    labs = [e for e in ev if e.get("type") == "lab"]
+    if len(labs) == 1:
+        out.append(f"这是 {labs[0].get('t')} 一次测量得出的结论，需要复查确认。")
+    for other in d["rules"]:
+        if other is rule or other["label_zh"] != rule["label_zh"] or other["set"] in (rule["set"], "any"):
+            continue
+        res, _ = evaluate(other["when"], ctx)
+        if res is False:
+            out.append(f"按《{other['guideline_zh']}》的界值，这次的结果不符合{other['label_zh']}。")
+    return out
+
+
 def dx(st: Dict[str, Any], ws: Path, guideline_set: str = "cn", ai_file: Optional[Path] = None) -> Dict[str, Any]:
     d = data("diagnostic_criteria.json")
     if guideline_set not in d["guideline_sets"]:
@@ -245,8 +261,8 @@ def dx(st: Dict[str, Any], ws: Path, guideline_set: str = "cn", ai_file: Optiona
         if res:
             items.append({"id": f"DX{len(items) + 1}", "kind": "guideline_criteria", "rule_id": rule["id"], "label_zh": rule["label_zh"],
                           "conclusion_zh": DX_WORDING.format(g=rule["guideline_zh"], c=rule["label_zh"]),
-                          "note_zh": rule.get("note_zh"), "evidence": ev, "executor": ["physician"],
-                          "label": _src_label(rule, "guideline_criteria", ev)})
+                          "note_zh": rule.get("note_zh"), "caveats_zh": _dx_caveats(rule, ev, d, ctx), "evidence": ev,
+                          "executor": ["physician"], "label": _src_label(rule, "guideline_criteria", ev)})
     if ai_file:
         items += _ai_dx(st, ws, ai_file, len(items))
     elif (ws / "work" / "clinical" / "ai_dx.json").exists():
@@ -348,9 +364,17 @@ def _taking(meds: List[str], *names: str) -> bool:
     return any(n and (f(n) in f(m) or f(m) in f(n)) for m in meds for n in names)
 
 
-def _cpic_action(rec: str, taking: bool) -> str:
-    """The action CPIC's own words call for; the words themselves are shown verbatim."""
+def _cpic_action(rec: str, taking: bool, category: Optional[str] = None) -> str:
+    """The action CPIC's own words call for; the words themselves are shown verbatim. The skill's category of the
+    row (standard / caution / avoid) decides when it is there; the text only refines caution into a dose change."""
     t = rec.casefold().strip()
+    dose = re.search(r"[≤<]\s*\d|\bdose\b|\d+\s*%|\btimes\b", t)
+    if category == "avoid":
+        return "consider_switch" if taking else "avoid"
+    if category == "standard":
+        return "monitor"
+    if category == "caution":
+        return "adjust" if dose and "desired starting dose" not in t else "monitor"
     if re.search(r"\bavoid\b|not recommended|contraindicated|prescribe an alternative|alternative (?:statin|drug|agent)", t):
         return "consider_switch" if taking else "avoid"
     if t.startswith(("prescribe desired starting dose", "initiate therapy with recommended starting dose")):
@@ -384,7 +408,10 @@ def _cpic_items(st: Dict[str, Any], ws: Path, start: int) -> Tuple[List[Dict[str
             lab = L.make_label("cpic", [src, {"type": "lab", "ref": f"{res.get('gene')} {res.get('phenotype')}"}])
             out.append({"id": f"RX{start + len(out) + 1}", "kind": "cpic", "gene": res.get("gene"), "phenotype": res.get("phenotype"),
                         "drug_or_class_zh": dz or x.get("drug"), "drug": x.get("drug"),
-                        "action": _cpic_action(rec, taking), "currently_taking": taking,
+                        "action": _cpic_action(rec, taking, x.get("category")), "cpic_category": x.get("category"),
+                        "currently_taking": taking,
+                        **({"caveats_zh": [f"{'、'.join(x['untested_genes'])} 没有检测结果，这条推荐没有考虑它；"
+                                           f"用这个药之前，请医生确认{'、'.join(x['untested_genes'])}。"]} if x.get("untested_genes") else {}),
                         "label_zh": f"{res.get('gene')} 与 {dz or x.get('drug')}",
                         "text_zh": rec, **({"dose_text_zh": x["dose_text"]} if x.get("dose_text") else {}),
                         "strength": x.get("strength"), "executor": list(EXECUTOR), "label": lab})
