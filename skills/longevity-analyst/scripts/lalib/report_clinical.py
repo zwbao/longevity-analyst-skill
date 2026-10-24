@@ -101,9 +101,13 @@ def diagnoses(ws: Path) -> List[str]:
     items = d.get("items") or []
     gl = [x for x in items if x["kind"] == "guideline_criteria"]
     ai = [x for x in items if x["kind"] == "ai_estimate"]
-    used = "、".join(f"《{g}》" for g in d.get("guidelines_used_zh", []))
+    ev = d.get("evaluated") or []
+    checked = sorted({e["guideline_zh"] for e in ev if e.get("result") in ("met", "not_met") and e.get("guideline_zh")})
+    nodata = sorted({e["guideline_zh"] for e in ev if e.get("guideline_zh")} - set(checked))
+    used = "、".join(f"《{g}》" for g in checked) or "无"
+    miss = ("缺少数据、没有核对的指南：" + "、".join(f"《{_cell(g)}》" for g in nodata) + "。") if nodata else ""
     out = [f"> {EMERGENCY}", "", f"糖尿病相关条目所用的指南集：{SET_ZH.get(d.get('guideline_set'), d.get('guideline_set'))}。"
-                                   f"本次核对用到的指南：{_cell(used)}。{REVIEW}", ""]
+                                   f"本次实际核对的指南：{_cell(used)}。{miss}{REVIEW}", ""]
     if gl:
         out += ["| 结论 | 你的数值 | 类别 | 指南原文 |", "|---|---|---|---|"]
         for x in gl:
