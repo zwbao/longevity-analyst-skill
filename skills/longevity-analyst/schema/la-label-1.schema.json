@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "la-label/1",
+  "title": "Judgement label carried by every prediction, diagnostic conclusion and medication suggestion (PLAN WS-L.1)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "basis_kind", "label_zh", "sources", "generated_at"],
+  "properties": {
+    "schema": {"const": "la-label/1"},
+    "basis_kind": {"enum": ["measurement", "published_model", "guideline_criteria", "guideline_recommendation", "cpic", "statistical_model", "ai_estimate"]},
+    "label_zh": {"type": "string", "description": "Rendered from basis_kind by the renderer, never written by a model: 测量, 已发表模型, 按《指南名》的标准, 《指南名》推荐, CPIC 指南, 统计模型估计, AI 判断."},
+    "guideline_zh": {"type": "string", "description": "Guideline name used in label_zh for guideline_criteria and guideline_recommendation."},
+    "sources": {
+      "type": "array", "minItems": 1,
+      "items": {"type": "object", "additionalProperties": false, "required": ["type", "ref"],
+                "properties": {"type": {"enum": ["effects", "biovar", "readout", "lab", "pmid", "doi", "guideline", "cpic", "personal_experiment", "rule", "url"]},
+                               "ref": {"type": "string", "minLength": 1}, "quote": {"type": "string"}, "url": {"type": "string"}}}
+    },
+    "assumptions": {"type": "array", "items": {"type": "string"}},
+    "confidence": {
+      "oneOf": [
+        {"type": "object", "additionalProperties": false, "required": ["level"], "properties": {"level": {"enum": ["low", "very_low"]}, "range": {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2}}},
+        {"type": "object", "additionalProperties": false, "required": ["interval_80"], "properties": {"interval_80": {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2}, "unit": {"type": "string"}}},
+        {"type": "object", "additionalProperties": false, "required": ["level"], "properties": {"level": {"enum": ["high", "moderate"]}}}
+      ]
+    },
+    "generated_at": {"type": "string"},
+    "physician_review": {"enum": ["none", "pending", "confirmed"], "default": "none"}
+  },
+  "allOf": [
+    {"if": {"properties": {"basis_kind": {"const": "ai_estimate"}}}, "then": {"required": ["confidence"], "properties": {"confidence": {"type": "object", "required": ["level"], "properties": {"level": {"enum": ["low", "very_low"]}}}}}},
+    {"if": {"properties": {"basis_kind": {"const": "statistical_model"}}}, "then": {"required": ["confidence", "assumptions"], "properties": {"confidence": {"required": ["interval_80"]}}}}
+  ]
+}
