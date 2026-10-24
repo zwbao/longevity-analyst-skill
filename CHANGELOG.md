@@ -53,6 +53,8 @@ clinical items. Three lanes (core, genomics, clinical) plus integration.
   (HLA-B for phenytoin) named next to the recommendation.
 
 ### Fixed (release gate 8: independent review of the case-C report)
+Ten rounds by fresh reviewer subagents (references/reviewer.md); rounds 1-9 blocked (13, 4, 2, 2, 3, 3, 1, 1, 2 P1),
+round 10 passed with no P0/P1 (18 P2 polish items left, listed in the integration report).
 - LinAge with most inputs missing (missing-weight error ≥ 5 years) is no longer reported; the ages table holds ages
   only, not gaps or QC totals.
 - Trend wording: a change in the latest comparison is said as such; "came back within noise" only when it did;
