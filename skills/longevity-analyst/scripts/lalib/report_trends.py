@@ -146,7 +146,8 @@ def sections(ws_root: Path, ctx: Dict[str, Any]) -> List[Tuple[str, str]]:
         cz = concurrent_zh(m.get("concurrent_exposures") or [])
         if cz:
             extra.append(esc(cz))
-        extra += [c["zh"] + "。" for c in m.get("caveats") or [] if c.get("code") in ("returned_within_noise", "seasonal")]
+        extra += [c["zh"] + "。" for c in m.get("caveats") or [] if c.get("code") == "seasonal"
+                  or (c.get("code") == "returned_within_noise" and wording(m) != PAIR_RETURNED_ZH)]   # never said twice
         L.append(line + ("".join(extra) if extra else ""))
     rj = [r for r in ser.get("readouts") or [] if (r.get("baseline_vs_latest") or {}).get("verdict") != "not_judged"]
     for r in rj:

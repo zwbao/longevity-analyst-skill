@@ -277,7 +277,10 @@ def _visit(tmp: Path, ym: str, capsys, *, raw: Path = None, prev: Path = None, h
     if history:
         ok("twin", "series", "--snapshots", *map(str, history), "--ws", str(ws))
     ok("predict", "response", str(ws), "--repeats", "14")
-    runs = {gs: run_json(capsys, "clinical", "dx", str(ws), "--guideline-set", gs) for gs in dx}
+    runs = {}
+    for gs in dx:                                # the last set is the one reported; each set's items are kept for the test
+        runs[gs] = run_json(capsys, "clinical", "dx", str(ws), "--guideline-set", gs)
+        runs[gs]["items"] = _load(ws, "clinical", "diagnoses.json")["items"]
     (tmp / f"{ym}-dx-runs.json").write_text(json.dumps(runs, ensure_ascii=False), encoding="utf-8")
     ok("clinical", "rx", str(ws))
     (ws / "work" / "report").mkdir(parents=True, exist_ok=True)
@@ -322,7 +325,7 @@ def _case_c_chain(tmp: Path, capsys):
     v2 = _visit(tmp, "2024-09", capsys, prev=v1, history=[_twin(v1)], exposures=CASE_C / "2024-09" / "exposures.json")
     v3 = _visit(tmp, "2025-09", capsys, prev=v2, history=[_twin(v1), _twin(v2)], exposures=CASE_C / "2025-09" / "exposures.json")
     v4 = _visit(tmp, "2026-09", capsys, prev=v3, history=[_twin(v1), _twin(v2), _twin(v3)],
-                exposures=CASE_C / "2026-09" / "exposures.json", dx=("cn", "ada"), summary=_summary_v4)
+                exposures=CASE_C / "2026-09" / "exposures.json", dx=("ada", "cn"), summary=_summary_v4)
     return vcf1, v1, v2, v3, v4
 
 
@@ -492,20 +495,25 @@ def test_full_chain_case_c(tmp_path, capsys, case_c_net):
     assert any(s["type"] == "personal_experiment" for s in p4["label"]["sources"])
     reps = {p["plan_item"]: p["design"]["repeats_each_side"] for p in _load(v4, "predict", "predictions.json")["items"]}
     assert reps["I3"] == 14 and reps["I1"] == reps["I2"] == reps["I4"] == 1      # blood tests: one draw each side
-    dcard = next(c for c in json.loads((v4 / "deliver" / "cards.json").read_text()) if c["kind"] == "diagnosis")
-    assert "一次测量" in dcard["summary_zh"] and "不符合" in dcard["summary_zh"]
-    # diagnostic conclusion for fasting glucose 5.6: ADA impaired fasting glucose yes, China no; the guideline is named
-    cn = json.loads((tmp_path / "2026-09-dx-runs.json").read_text())["cn"]
-    assert not cn["met"] and "DX-ifg-cn" in cn["not_met"]
+    # diagnostic conclusion for fasting glucose 5.6: ADA impaired fasting glucose yes, China no. The member lives in
+    # China, so the report uses the default cn set; the ADA item says it rests on one value and that cn disagrees
+    runs = json.loads((tmp_path / "2026-09-dx-runs.json").read_text())
+    assert runs["ada"]["met"] == ["DX-ifg-ada"] and not runs["cn"]["met"] and "DX-ifg-cn" in runs["cn"]["not_met"]
+    ada = runs["ada"]["items"][0]
+    assert ada["label"]["guideline_zh"].startswith("ADA") and "一次测量" in ada["caveats_zh"][0] and "不符合" in ada["caveats_zh"][1]
+    from lalib import export as X
+    al = X._dx_aliases(ada)
+    assert al["rule"] == "DX-ifg-ada" and al["hit"] is True and al["source_zh"].startswith("按《ADA")
     dx = _load(v4, "clinical", "diagnoses.json")
-    assert dx["guideline_set"] == "ada" and [x["rule_id"] for x in dx["items"]] == ["DX-ifg-ada"]
+    assert dx["guideline_set"] == "cn" and dx["items"] == []
     md = (v4 / "deliver" / "report.md").read_text()
     assert "{{" not in md and "## 复测对比与趋势" in md and "做饭用限盐勺" in md and "约 超过" not in md
     doctor = md.split("## 问医生的单子")[1].split("\n## ")[0]
-    assert "尿酸" in doctor and "空腹血糖受损" in doctor and "只按研究结果、不算你自己的前后对比时" in md
+    assert "尿酸" in doctor and "空腹血糖受损" not in doctor and "只按研究结果、不算你自己的前后对比时" in md
+    assert "已核对、未达到标准：空腹血糖受损" in md
     assert "不报告" in md and "LinAge" not in md.split("## 本期没有给出结果的项目")[0]       # mostly-missing LinAge withheld
     ex = json.loads((v4 / "deliver" / "la-export.json").read_text())
-    assert ex["diagnoses"][0]["rule"] == "DX-ifg-ada" and ex["diagnoses"][0]["hit"] is True and ex["diagnoses"][0]["source_zh"]
+    assert ex["diagnoses"] == []
     assert all("drug" in x and "drug_zh" in x and isinstance(x["routine"], bool) for x in ex["medications"])
     assert "rs4149056" not in json.dumps(ex) and json.loads((v4 / "deliver" / "cards.json").read_text())
     assert "中国" in md.split("## 你在同龄人群中的位置")[1][:400]          # LDL against the Chinese lipid reference

@@ -22,6 +22,7 @@ def _export_v2():
                                   confidence={"interval_80": [-7.4, -1.9], "unit": "%"})}
     dx = {"id": "DX1", "kind": "guideline_criteria", "rule_id": "DX-ifg-ada", "label_zh": "空腹血糖受损（糖尿病前期）",
           "conclusion_zh": "按《ADA Standards of Care in Diabetes—2026》的标准，符合空腹血糖受损（糖尿病前期）的诊断标准。",
+          "caveats_zh": ["这是 2026-09-01 一次测量得出的结论，需要复查确认。"],
           "evidence": [{"type": "lab", "ref": "空腹血糖", "value": 5.6, "unit": "mmol/L", "t": "2026-09-01"}], "executor": ["physician"],
           "label": L.make_label("guideline_criteria", [{"type": "guideline", "ref": "ADA", "quote": "q"}], guideline_zh="ADA Standards of Care in Diabetes—2026")}
     aidx = {"id": "DX2", "kind": "ai_estimate", "label_zh": "胰岛素抵抗", "probability_range": [0.2, 0.5],
@@ -56,6 +57,8 @@ def test_cards_cover_every_kind_and_numbers_resolve(tmp_path):
         assert c["schema"] == "pi-card/1" and c["source"] == {"export": "la-export/2", "sha256": sha}
         assert c["deep_link"] == f"longpi://cards/{c['id']}" and c["actions"] and c["title_zh"] and c["summary_zh"]
         assert c["kind"] == "retest_due" or L.label_problems(c["label"]) == []
+    dxc = next(c for c in cs if c["id"].endswith("dx-DX1"))
+    assert dxc["summary_zh"].endswith("这是 2026-09-01 一次测量得出的结论，需要复查确认。")          # caveats as in the report
     tr = next(c for c in cs if c["kind"] == "trend")
     assert tr["numbers"] == [{"ref": "trends[0].trend.annual_change_pct", "value": 6.4, "unit": "%/年", "label": "测量"}]
     pr = next(c for c in cs if c["kind"] == "prediction")
