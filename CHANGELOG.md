@@ -46,6 +46,21 @@ clinical items. Three lanes (core, genomics, clinical) plus integration.
 - `clinical rx` did not see medications recorded as `medications=` (the key `la.py member` and pgx use).
 - `methods` crashed on the library's new `longevity-problems/1` problems document.
 - A method input without LOINC (principal-component-clinical-aging 血糖) asked a second glucose question.
+- Germline reuse now chains (a labs-only visit after a labs-only visit reused nothing).
+- Male chrX haploid calls counted as two copies for allele counting instead of being dropped as no call.
+- myvariant.info is queried 100 ids at a time (it now answers HTTP 400 above about 100).
+- CPIC rows: action from the skill's row category, one row per population with its label, untested genes
+  (HLA-B for phenytoin) named next to the recommendation.
+
+### Fixed (release gate 8: independent review of the case-C report)
+- LinAge with most inputs missing (missing-weight error ≥ 5 years) is no longer reported; the ages table holds ages
+  only, not gaps or QC totals.
+- Trend wording: a change in the latest comparison is said as such; "came back within noise" only when it did;
+  earlier gene-lab transitions are dated instead of read as this visit's news.
+- A personal before/after comparison used in a prediction is flagged as uncontrolled in the item text.
+- Diagnostic items say when they rest on one measurement and whether the other guideline set agrees.
+- The plan table states the evidence grade, the trial population and DOI, and marks items already under way;
+  skipped organ AI estimates are disclosed.
 
 ### Before / after (PLAN §2 baseline, 2026-10-24 → this release)
 | | before | after |
