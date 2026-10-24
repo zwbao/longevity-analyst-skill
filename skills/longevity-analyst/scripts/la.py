@@ -521,6 +521,58 @@ def cmd_intervene(a):
     C.invalidate_after(st, "intervene", "plan registered")
     st["stages"]["intervene"] = "done"
     ws.log(st, "intervene_register", items=res["items"])
+    from lalib import predict                    # every item with an effects row and a judgeable target gets a prediction
+    try:
+        pr = predict.run(st, ws.root, **_predict_opts(st))
+        res = dict(res, predictions={k: pr[k] for k in ("statistical", "ai")},
+                   ai_requests=[x["plan_item"] for x in pr["ai_requests"]])
+    except C.LAError as e:
+        res = dict(res, predictions={"error": str(e)})
+    ws.save(st)
+    C.emit(res)
+
+
+def _predict_opts(st):
+    o = (st.get("predict") or {}).get("opts") or {}
+    return {"repeats": o.get("repeats"), "planned_per_week": o.get("planned_per_week") or 7.0}
+
+
+def _labelled_changed(st):
+    """A labelled file changed: the trace, review and report made before it no longer hold."""
+    for s in ("review", "report"):
+        if st["stages"].get(s) == "done":
+            st["stages"][s] = "todo"
+
+
+def cmd_predict(a):
+    from lalib import predict
+    ws, st = _open(a)
+    C.require(st, "intervene")
+    opts = _predict_opts(st)
+    if a.repeats:
+        opts["repeats"] = a.repeats
+    if a.planned_per_week:
+        opts["planned_per_week"] = a.planned_per_week
+    res = predict.run(st, ws.root, ai_file=Path(a.ai) if a.ai else None,
+                      exposures_file=Path(a.exposures) if a.exposures else None, **opts)
+    _labelled_changed(st)
+    ws.log(st, "predict_response", statistical=res["statistical"], ai=res["ai"])
+    ws.save(st)
+    C.emit(res)
+
+
+def cmd_clinical(a):
+    from lalib import clinical
+    ws, st = _open(a)
+    C.require(st, "organs", "insights")
+    ai = Path(a.ai) if a.ai else None
+    if a.action == "dx":
+        res = clinical.dx(st, ws.root, a.guideline_set, ai_file=ai)
+        print(f"guideline set: {res['guideline_set']} ({'、'.join(res['guidelines_used_zh'])})", file=sys.stderr)
+    else:
+        res = clinical.rx(st, ws.root, ai_file=ai)
+    _labelled_changed(st)
+    ws.log(st, f"clinical_{a.action}")
     ws.save(st)
     C.emit(res)
 
@@ -820,6 +872,22 @@ def build_parser():
     s.add_argument("workspace")
     s.add_argument("--plan", required=True)
     s.set_defaults(fn=cmd_intervene)
+
+    s = sub.add_parser("predict", help="personal response predictions for plan items (statistical model; AI judgements via --ai)")
+    s.add_argument("action", choices=["response"])
+    s.add_argument("workspace")
+    s.add_argument("--repeats", type=int, help="measurements on each side of the next experiment (default: the marker's averaging days)")
+    s.add_argument("--planned-per-week", type=float, help="planned check-ins per week for the adherence ratio (default 7)")
+    s.add_argument("--exposures", help="la-exposures/1 file from the host, when twin.json carries none")
+    s.add_argument("--ai", help="the response-estimator's answers for the items listed in work/predict/ai_requests.json")
+    s.set_defaults(fn=cmd_predict)
+
+    s = sub.add_parser("clinical", help="diagnostic conclusions (dx) and medication suggestions (rx), each a labelled item")
+    s.add_argument("action", choices=["dx", "rx"])
+    s.add_argument("workspace")
+    s.add_argument("--guideline-set", default="cn", help="dx: cn (default) or ada")
+    s.add_argument("--ai", help="the clinical-estimator's answers (references/clinical-estimator.md)")
+    s.set_defaults(fn=cmd_clinical)
 
     s = sub.add_parser("twin")
     s.add_argument("action", choices=["build", "compare"])

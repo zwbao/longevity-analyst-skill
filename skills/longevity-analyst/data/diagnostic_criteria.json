@@ -1,0 +1,434 @@
+{
+  "schema": "la-dx-criteria/1",
+  "guideline_sets": [
+    "cn",
+    "ada"
+  ],
+  "note": "Rules apply to the chosen set; set 'any' applies under every set. Thresholds are in the guideline's unit; clinical.py converts the member's value. Quotes are verbatim from the full text fetched 2026-10-24 (PDF/XML text; table cells joined with ' | '). The Chinese Diabetes Society's 2020 and 2024 guidelines have no open full text, so the cn set uses the open-access national primary-care guideline (2025). ADA text is not openly licensed: only the criteria rows are quoted.",
+  "markers": {
+    "egfr": {
+      "derived_from": "creatinine",
+      "units": {
+        "mL/min/1.73m²": 1.0
+      },
+      "plausible": [
+        1,
+        200
+      ]
+    }
+  },
+  "rules": [
+    {
+      "id": "DX-ifg-cn",
+      "set": "cn",
+      "guideline_zh": "Guidelines on primary healthcare for type 2 diabetes in China, 2025",
+      "label_zh": "空腹血糖受损（糖尿病前期）",
+      "when": {
+        "marker": "glucose",
+        "unit": "mmol/L",
+        "gte": 6.1,
+        "lt": 7.0,
+        "distinct_days": 1
+      },
+      "note_zh": "空腹静脉血浆葡萄糖 6.1 到 7.0 mmol/L（不含 7.0）；指南把空腹血糖受损和糖耐量异常都称为糖尿病前期。",
+      "source": {
+        "title": "Guidelines on primary healthcare for type 2 diabetes in China, 2025 (Jia W, Zhu D, et al.). Fam Med Community Health 2025;13(4):e003765 (CC BY-NC 4.0)",
+        "doi": "10.1136/fmch-2025-003765",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12766796/",
+        "quote": "IFG | 6.1–7.0 | <7.8",
+        "locator": "Table 1 Categories of hyperglycaemia (WHO 1999), venous plasma glucose (mmol/L), columns FPG | OGTT 2hPG (cells joined with ' | ')",
+        "also": [
+          {
+            "quote": "Both IFG and IGT are considered impaired glucose regulation, also known as prediabetes.",
+            "locator": "Table 1 note"
+          },
+          {
+            "quote": "Diabetes | ≥7.0 | ≥11.1",
+            "locator": "Table 1, diabetes row"
+          }
+        ]
+      }
+    },
+    {
+      "id": "DX-dm-fpg-cn",
+      "set": "cn",
+      "guideline_zh": "Guidelines on primary healthcare for type 2 diabetes in China, 2025",
+      "label_zh": "糖尿病（空腹血糖）",
+      "when": {
+        "marker": "glucose",
+        "unit": "mmol/L",
+        "gte": 7.0,
+        "distinct_days": 2
+      },
+      "note_zh": "没有典型症状时，须在另一天复查空腹血糖确认；这里要求两个不同日期都达到。",
+      "source": {
+        "title": "Guidelines on primary healthcare for type 2 diabetes in China, 2025 (Jia W, Zhu D, et al.). Fam Med Community Health 2025;13(4):e003765 (CC BY-NC 4.0)",
+        "doi": "10.1136/fmch-2025-003765",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12766796/",
+        "quote": "For those with no typical symptoms of diabetes, venous FPG or OGTT 2hPG level must be retested on a different day to confirm diabetes",
+        "locator": "Table 2 Diagnostic criteria for DM, row note",
+        "also": [
+          {
+            "quote": "or FPG | ≥7.0 mmol/L",
+            "locator": "Table 2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "DX-dm-hba1c-cn",
+      "set": "cn",
+      "guideline_zh": "Guidelines on primary healthcare for type 2 diabetes in China, 2025",
+      "label_zh": "糖尿病（糖化血红蛋白）",
+      "when": {
+        "marker": "hba1c",
+        "unit": "%",
+        "gte": 6.5,
+        "distinct_days": 1
+      },
+      "note_zh": "糖化血红蛋白须在符合标准化要求的机构检测；单次结果，须由医生结合症状和复查确认。",
+      "source": {
+        "title": "Guidelines on primary healthcare for type 2 diabetes in China, 2025 (Jia W, Zhu D, et al.). Fam Med Community Health 2025;13(4):e003765 (CC BY-NC 4.0)",
+        "doi": "10.1136/fmch-2025-003765",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12766796/",
+        "quote": "or HbA 1c | ≥6.5%",
+        "locator": "Table 2 Diagnostic criteria for DM (cells joined with ' | ')",
+        "also": [
+          {
+            "quote": "Fasting is defined as no caloric intake for at least 8 hours, which is recommended for use at healthcare facilities that use standardised testing methods",
+            "locator": "Table 2 note"
+          }
+        ]
+      }
+    },
+    {
+      "id": "DX-ifg-ada",
+      "set": "ada",
+      "guideline_zh": "ADA Standards of Care in Diabetes—2026",
+      "label_zh": "空腹血糖受损（糖尿病前期）",
+      "when": {
+        "marker": "glucose",
+        "unit": "mg/dL",
+        "gte": 100,
+        "lt": 126,
+        "distinct_days": 1
+      },
+      "note_zh": "按 ADA，空腹血糖 100–125 mg/dL（5.6–6.9 mmol/L）为空腹血糖受损。",
+      "source": {
+        "title": "2. Diagnosis and Classification of Diabetes: Standards of Care in Diabetes—2026. Diabetes Care 2026;49(Suppl 1):S27–S49",
+        "doi": "10.2337/dc26-S002",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12690183/",
+        "quote": "FPG 100 mg/dL (5.6 mmol/L) to 125 mg/dL (6.9 mmol/L) (IFG)",
+        "locator": "Table 2.2 Criteria defining prediabetes in nonpregnant individuals",
+        "also": [
+          {
+            "quote": "People with prediabetes are defined by the presence of IFG and/or IGT and/or A1C 5.7–6.4% (39–47 mmol/mol) (Table 2.2).",
+            "locator": "Section 'Prediabetes'"
+          }
+        ]
+      }
+    },
+    {
+      "id": "DX-pre-a1c-ada",
+      "set": "ada",
+      "guideline_zh": "ADA Standards of Care in Diabetes—2026",
+      "label_zh": "糖尿病前期（糖化血红蛋白）",
+      "when": {
+        "marker": "hba1c",
+        "unit": "%",
+        "gte": 5.7,
+        "lt": 6.5,
+        "distinct_days": 1
+      },
+      "source": {
+        "title": "2. Diagnosis and Classification of Diabetes: Standards of Care in Diabetes—2026. Diabetes Care 2026;49(Suppl 1):S27–S49",
+        "doi": "10.2337/dc26-S002",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12690183/",
+        "quote": "A1C 5.7–6.4% (39–47 mmol/mol)",
+        "locator": "Table 2.2 Criteria defining prediabetes in nonpregnant individuals"
+      }
+    },
+    {
+      "id": "DX-dm-ada",
+      "set": "ada",
+      "guideline_zh": "ADA Standards of Care in Diabetes—2026",
+      "label_zh": "糖尿病",
+      "when": {
+        "any_of": [
+          {
+            "marker": "glucose",
+            "unit": "mg/dL",
+            "gte": 126,
+            "distinct_days": 2
+          },
+          {
+            "marker": "hba1c",
+            "unit": "%",
+            "gte": 6.5,
+            "distinct_days": 2
+          },
+          {
+            "all_of": [
+              {
+                "marker": "glucose",
+                "unit": "mg/dL",
+                "gte": 126,
+                "distinct_days": 1
+              },
+              {
+                "marker": "hba1c",
+                "unit": "%",
+                "gte": 6.5,
+                "distinct_days": 1
+              }
+            ]
+          }
+        ]
+      },
+      "note_zh": "没有明确高血糖症状时，须两项不同检测同时异常，或同一检测在两个时间点异常。",
+      "source": {
+        "title": "2. Diagnosis and Classification of Diabetes: Standards of Care in Diabetes—2026. Diabetes Care 2026;49(Suppl 1):S27–S49",
+        "doi": "10.2337/dc26-S002",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12690183/",
+        "quote": "*In the absence of unequivocal hyperglycemia, diagnosis requires two abnormal results from different tests, which may be obtained at the same time (e.g., A1C and FPG), or the same test at two different time points.",
+        "locator": "Table 2.1 footnote",
+        "also": [
+          {
+            "quote": "FPG ≥126 mg/dL (≥7.0 mmol/L). Fasting is defined as no caloric intake for at least 8 h.*",
+            "locator": "Table 2.1"
+          },
+          {
+            "quote": "A1C ≥6.5% (≥48 mmol/mol). The test should be performed in a laboratory using a method that is NGSP certified and standardized to the DCCT assay.*",
+            "locator": "Table 2.1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "DX-gfr-g3a",
+      "set": "any",
+      "guideline_zh": "KDIGO 2024 慢性肾脏病评估与管理指南",
+      "label_zh": "肾小球滤过率分类 G3a（轻到中度下降，单次测量）",
+      "when": {
+        "readout": "native.organ.egfr",
+        "lt": 60,
+        "gte": 45
+      },
+      "note_zh": "单次测量的 GFR 分类；慢性肾脏病须异常持续 3 个月以上，并结合尿白蛋白判断。",
+      "source": {
+        "title": "KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease. Kidney Int 2024;105(4S):S117–S314",
+        "doi": "10.1016/j.kint.2023.10.018",
+        "url": "https://kdigo.org/wp-content/uploads/2026/04/KDIGO-2024-CKD-Guideline.pdf",
+        "quote": "G3a 45–59 Mildly to moderately decreased",
+        "locator": "Table 2 GFR categories in CKD (PDF p.22; layout text)",
+        "also": [
+          {
+            "quote": "CKD is deﬁned as abnormalities of kidney structure or function, present for a minimum of 3 months, with implications for health.",
+            "locator": "Current CKD nomenclature used by KDIGO (PDF p.11)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "DX-gfr-g3b",
+      "set": "any",
+      "guideline_zh": "KDIGO 2024 慢性肾脏病评估与管理指南",
+      "label_zh": "肾小球滤过率分类 G3b（中到重度下降，单次测量）",
+      "when": {
+        "readout": "native.organ.egfr",
+        "lt": 45,
+        "gte": 30
+      },
+      "note_zh": "单次测量的 GFR 分类；慢性肾脏病须异常持续 3 个月以上，并结合尿白蛋白判断。",
+      "source": {
+        "title": "KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease. Kidney Int 2024;105(4S):S117–S314",
+        "doi": "10.1016/j.kint.2023.10.018",
+        "url": "https://kdigo.org/wp-content/uploads/2026/04/KDIGO-2024-CKD-Guideline.pdf",
+        "quote": "G3b 30–44 Moderately to severely decreased",
+        "locator": "Table 2 GFR categories in CKD (PDF p.22; layout text)",
+        "also": [
+          {
+            "quote": "CKD is deﬁned as abnormalities of kidney structure or function, present for a minimum of 3 months, with implications for health.",
+            "locator": "Current CKD nomenclature used by KDIGO (PDF p.11)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "DX-gfr-g4",
+      "set": "any",
+      "guideline_zh": "KDIGO 2024 慢性肾脏病评估与管理指南",
+      "label_zh": "肾小球滤过率分类 G4（重度下降，单次测量）",
+      "when": {
+        "readout": "native.organ.egfr",
+        "lt": 30,
+        "gte": 15
+      },
+      "note_zh": "单次测量的 GFR 分类；慢性肾脏病须异常持续 3 个月以上，并结合尿白蛋白判断。",
+      "source": {
+        "title": "KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease. Kidney Int 2024;105(4S):S117–S314",
+        "doi": "10.1016/j.kint.2023.10.018",
+        "url": "https://kdigo.org/wp-content/uploads/2026/04/KDIGO-2024-CKD-Guideline.pdf",
+        "quote": "G4 15–29 Severely decreased",
+        "locator": "Table 2 GFR categories in CKD (PDF p.22; layout text)",
+        "also": [
+          {
+            "quote": "CKD is deﬁned as abnormalities of kidney structure or function, present for a minimum of 3 months, with implications for health.",
+            "locator": "Current CKD nomenclature used by KDIGO (PDF p.11)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "DX-gfr-g5",
+      "set": "any",
+      "guideline_zh": "KDIGO 2024 慢性肾脏病评估与管理指南",
+      "label_zh": "肾小球滤过率分类 G5（肾衰竭，单次测量）",
+      "when": {
+        "readout": "native.organ.egfr",
+        "lt": 15
+      },
+      "note_zh": "单次测量的 GFR 分类；慢性肾脏病须异常持续 3 个月以上，并结合尿白蛋白判断。",
+      "source": {
+        "title": "KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease. Kidney Int 2024;105(4S):S117–S314",
+        "doi": "10.1016/j.kint.2023.10.018",
+        "url": "https://kdigo.org/wp-content/uploads/2026/04/KDIGO-2024-CKD-Guideline.pdf",
+        "quote": "G5 <15 Kidney failure",
+        "locator": "Table 2 GFR categories in CKD (PDF p.22; layout text)",
+        "also": [
+          {
+            "quote": "CKD is deﬁned as abnormalities of kidney structure or function, present for a minimum of 3 months, with implications for health.",
+            "locator": "Current CKD nomenclature used by KDIGO (PDF p.11)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "DX-ckd-gfr",
+      "set": "any",
+      "guideline_zh": "KDIGO 2024 慢性肾脏病评估与管理指南",
+      "label_zh": "慢性肾脏病（eGFR 持续低于 60）",
+      "when": {
+        "marker": "egfr",
+        "unit": "mL/min/1.73m²",
+        "lt": 60,
+        "distinct_days": 2,
+        "min_span_days": 91
+      },
+      "note_zh": "由各次肌酐按 CKD-EPI 2021 公式换算的 eGFR，两次低于 60 且相隔超过 3 个月。",
+      "source": {
+        "title": "KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease. Kidney Int 2024;105(4S):S117–S314",
+        "doi": "10.1016/j.kint.2023.10.018",
+        "url": "https://kdigo.org/wp-content/uploads/2026/04/KDIGO-2024-CKD-Guideline.pdf",
+        "quote": "GFR <60 ml/min per 1.73 m2 (GFR categories G3a–G5) for >3 months to indicate a diagnosis of CKD",
+        "locator": "Introduction narrative (also Table 1)",
+        "also": [
+          {
+            "quote": "CKD is deﬁned as abnormalities of kidney structure or function, present for a minimum of 3 months, with implications for health.",
+            "locator": "Current CKD nomenclature used by KDIGO (PDF p.11)"
+          },
+          {
+            "quote": "Relative to the young adult level. In the absence of evidence of kidney damage, neither G1 nor G2 fulﬁlls the criteria for CKD.",
+            "locator": "Table 2 footnote a"
+          }
+        ]
+      }
+    },
+    {
+      "id": "DX-fib4-low",
+      "set": "any",
+      "guideline_zh": "EASL-EASD-EASO 2024 代谢相关脂肪性肝病指南",
+      "label_zh": "进展期肝纤维化低风险（FIB-4 分层）",
+      "when": {
+        "any_of": [
+          {
+            "all_of": [
+              {
+                "member": "age",
+                "lte": 65
+              },
+              {
+                "readout": "native.organ.fib4",
+                "lt": 1.3
+              }
+            ]
+          },
+          {
+            "all_of": [
+              {
+                "member": "age",
+                "gt": 65
+              },
+              {
+                "readout": "native.organ.fib4",
+                "lt": 2.0
+              }
+            ]
+          }
+        ]
+      },
+      "note_zh": "该分层用于脂肪肝或有代谢危险因素的人；FIB-4 会漏掉约一成进展期纤维化，可每 1 到 3 年复查。",
+      "source": {
+        "title": "EASL-EASD-EASO Clinical Practice Guidelines on the Management of Metabolic Dysfunction-Associated Steatotic Liver Disease (MASLD). Obesity Facts 2024;17(4):374 (CC BY-NC 4.0; joint publication with J Hepatol 2024)",
+        "doi": "10.1159/000539371",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11299976/",
+        "quote": "If FIB-4 is below 1.3, these individuals can be assumed to be at low risk of advanced fibrosis and may be re-assessed every 1-3 years.",
+        "locator": "Section 'Recommended Strategy in Adults with Suspected MASLD'",
+        "also": [
+          {
+            "quote": "Notably, in individuals older than 65 years, a different lower FIB-4 cut-off of 2.0 applies.",
+            "locator": "Section 'Screening, Case-Finding, Diagnosis and Monitoring'"
+          }
+        ]
+      }
+    },
+    {
+      "id": "DX-fib4-raised",
+      "set": "any",
+      "guideline_zh": "EASL-EASD-EASO 2024 代谢相关脂肪性肝病指南",
+      "label_zh": "进展期肝纤维化风险升高（FIB-4 分层，需进一步评估）",
+      "when": {
+        "any_of": [
+          {
+            "all_of": [
+              {
+                "member": "age",
+                "lte": 65
+              },
+              {
+                "readout": "native.organ.fib4",
+                "gt": 1.3
+              }
+            ]
+          },
+          {
+            "all_of": [
+              {
+                "member": "age",
+                "gt": 65
+              },
+              {
+                "readout": "native.organ.fib4",
+                "gt": 2.0
+              }
+            ]
+          }
+        ]
+      },
+      "note_zh": "指南建议进一步做肝脏弹性检查，或在 1.3 到 2.67 之间时先做一年生活方式干预后复查。",
+      "source": {
+        "title": "EASL-EASD-EASO Clinical Practice Guidelines on the Management of Metabolic Dysfunction-Associated Steatotic Liver Disease (MASLD). Obesity Facts 2024;17(4):374 (CC BY-NC 4.0; joint publication with J Hepatol 2024)",
+        "doi": "10.1159/000539371",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11299976/",
+        "quote": "If FIB-4 is >1.3 (or >2.0 in individuals aged >65), the risk for advanced fibrosis is increased.",
+        "locator": "Section 'Recommended Strategy in Adults with Suspected MASLD'",
+        "also": [
+          {
+            "quote": "Thus, two options are recommended in individuals with FIB-4 scores between 1.3 and 2.67, depending on medical history, clinical context, and local resources.",
+            "locator": "same section"
+          }
+        ]
+      }
+    }
+  ]
+}
