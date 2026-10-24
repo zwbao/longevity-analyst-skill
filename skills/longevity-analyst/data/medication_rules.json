@@ -1,0 +1,169 @@
+{
+  "schema": "la-rx-rules/1",
+  "note": "Guideline recommendations for medication, each with the guideline's own words. The Chinese original of the 2023 lipid guideline has no open full text; the English versions published by the same committee (Front Pharmacol, CC BY 4.0; J Geriatr Cardiol, free on PMC) are quoted verbatim, so text_zh and dose_text_zh are in English. Table cells joined with ' | ' as extracted from the PMC full text. CPIC results are not here: clinical rx reads them from work/pgx/pgx.json.",
+  "markers": {
+    "ldl": {
+      "names": [
+        "LDL-C",
+        "LDL",
+        "低密度脂蛋白",
+        "低密度脂蛋白胆固醇",
+        "低密度脂蛋白胆固醇(LDL-C)",
+        "LDL cholesterol"
+      ],
+      "units": {
+        "mmol/L": 1.0,
+        "mg/dL": 0.02586
+      },
+      "plausible": [
+        0.1,
+        20
+      ],
+      "units_note": "mg/dL factor is the cholesterol factor already used for HDL-C in data/organs.json"
+    }
+  },
+  "rules": [
+    {
+      "id": "RX-lipid-ldl49-cn",
+      "set": "cn",
+      "guideline_zh": "中国血脂管理指南（2023年）",
+      "when": {
+        "marker": "ldl",
+        "unit": "mmol/L",
+        "gte": 4.9,
+        "distinct_days": 1
+      },
+      "drug_class_zh": "他汀类降脂药（中等强度起始）",
+      "drug_names_zh": [
+        "他汀",
+        "阿托伐他汀",
+        "瑞舒伐他汀",
+        "辛伐他汀",
+        "普伐他汀",
+        "氟伐他汀",
+        "洛伐他汀",
+        "匹伐他汀",
+        "statin",
+        "atorvastatin",
+        "rosuvastatin",
+        "simvastatin",
+        "pravastatin",
+        "fluvastatin",
+        "lovastatin",
+        "pitavastatin"
+      ],
+      "action": "consider_start",
+      "text_zh": "2. Moderate-intensity statins as initiation therapy for achieving lipid-lowering target",
+      "dose_text_zh": "Moderate intensity (25%–50% reduction in LDL-C at daily dose) | Atorvastatin 10–20 mg | Rosuvastatin 5–10 mg | Fluvastatin 80 mg | Lovastatin 40 mg | Pitavastatin 1∼4 mg | Pravastatin 40 mg | Simvastatin 20–40 mg | XZK 1.2 g",
+      "executor": [
+        "physician",
+        "member"
+      ],
+      "note_zh": "低密度脂蛋白胆固醇达到 4.9 mmol/L 及以上，按指南直接归为高危；生活方式干预是降脂治疗的基础。是否用药由医生决定。",
+      "source": {
+        "title": "2023 Chinese guideline for lipid management (Li JJ, Zhao SP, et al.; Joint Committee on the 2023 Chinese guideline for lipid management). Front Pharmacol 2023;14:1190934 (CC BY 4.0)",
+        "doi": "10.3389/fphar.2023.1190934",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10498001/",
+        "quote": "Among those without ASCVD, those who meet one of the following 3 conditions are directly classified as high-risk and do not require additional 10-year risk assessment for ASCVD: 1) LDL-C ≥ 4.9 mmol/L (or TC ≥ 7.2 mmol/L); 2) diabetic patients aged ≥40 years; or 3) CKD stage 3–5.",
+        "locator": "Section 5 Overall risk assessment for atherosclerotic cardiovascular disease",
+        "also": [
+          {
+            "quote": "| <2.6 (Ridker et al., 2008; Cholesterol Treatment Trialists Collaboration, 2010; Cholesterol Treatment Trialists Collaboration, 2015; Yusuf et al., 2016a) | I | A |",
+            "locator": "Table 6 (Section 9.2), row 'Medium and high risk': LDL-C target, mmol/L"
+          },
+          {
+            "quote": "1. Lifestyle interventions are the foundation of lipid-lowering treatment | I | B |",
+            "locator": "Table 7 recommendation 1"
+          },
+          {
+            "quote": "2. Moderate-intensity statins as initiation therapy for achieving lipid-lowering target",
+            "locator": "Table 7 (Section 9.3) recommendation 2, class I, level A"
+          },
+          {
+            "quote": "Moderate intensity (25%–50% reduction in LDL-C at daily dose) | Atorvastatin 10–20 mg | Rosuvastatin 5–10 mg | Fluvastatin 80 mg | Lovastatin 40 mg | Pitavastatin 1∼4 mg | Pravastatin 40 mg | Simvastatin 20–40 mg | XZK 1.2 g",
+            "locator": "Table 11 Cholesterol-lowering intensity of statins (Section 10.1.1), moderate-intensity rows"
+          }
+        ]
+      }
+    },
+    {
+      "id": "RX-lipid-dm40-cn",
+      "set": "cn",
+      "guideline_zh": "中国血脂管理指南（2023年）",
+      "when": {
+        "all_of": [
+          {
+            "any_of": [
+              {
+                "dx": "DX-dm-fpg-cn"
+              },
+              {
+                "dx": "DX-dm-hba1c-cn"
+              }
+            ]
+          },
+          {
+            "member": "age",
+            "gte": 40
+          },
+          {
+            "marker": "ldl",
+            "unit": "mmol/L",
+            "gte": 1.8,
+            "distinct_days": 1
+          }
+        ]
+      },
+      "drug_class_zh": "他汀类降脂药（中等强度起始）",
+      "drug_names_zh": [
+        "他汀",
+        "阿托伐他汀",
+        "瑞舒伐他汀",
+        "辛伐他汀",
+        "普伐他汀",
+        "氟伐他汀",
+        "洛伐他汀",
+        "匹伐他汀",
+        "statin",
+        "atorvastatin",
+        "rosuvastatin",
+        "simvastatin",
+        "pravastatin",
+        "fluvastatin",
+        "lovastatin",
+        "pitavastatin"
+      ],
+      "action": "consider_start",
+      "text_zh": "2. Moderate-intensity statins as initiation therapy for achieving lipid-lowering target",
+      "dose_text_zh": "Moderate intensity (25%–50% reduction in LDL-C at daily dose) | Atorvastatin 10–20 mg | Rosuvastatin 5–10 mg | Fluvastatin 80 mg | Lovastatin 40 mg | Pitavastatin 1∼4 mg | Pravastatin 40 mg | Simvastatin 20–40 mg | XZK 1.2 g",
+      "executor": [
+        "physician",
+        "member"
+      ],
+      "note_zh": "40 岁及以上的糖尿病患者按指南属于动脉粥样硬化性心血管病高危，低密度脂蛋白胆固醇目标低于 1.8 mmol/L。糖尿病诊断须先经医生确认。",
+      "source": {
+        "title": "2023 China Guidelines for Lipid Management (Li JJ, Zhao SP, Zhao D, et al.). J Geriatr Cardiol 2023;20(9):621-663",
+        "doi": "10.26599/1671-5411.2023.09.008",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10568545/",
+        "quote": "Patients with diabetes at high risk for ASCVD: LDL-C < 1.8 mmol/L[248]",
+        "locator": "Table 16 Recommended lipid target values for diabetic patients (Section 11.2)",
+        "also": [
+          {
+            "quote": "Patients at high risk for ASCVD refer to patients with diabetes mellitus aged ≥ 40 years",
+            "locator": "Table 16 footnote"
+          },
+          {
+            "quote": "2. Moderate-intensity statins as initiation therapy for achieving lipid-lowering target",
+            "locator": "Front Pharmacol version, Table 7 recommendation 2, class I, level A",
+            "doi": "10.3389/fphar.2023.1190934"
+          },
+          {
+            "quote": "Moderate intensity (25%–50% reduction in LDL-C at daily dose) | Atorvastatin 10–20 mg | Rosuvastatin 5–10 mg | Fluvastatin 80 mg | Lovastatin 40 mg | Pitavastatin 1∼4 mg | Pravastatin 40 mg | Simvastatin 20–40 mg | XZK 1.2 g",
+            "locator": "Front Pharmacol version, Table 11, moderate-intensity rows",
+            "doi": "10.3389/fphar.2023.1190934"
+          }
+        ]
+      }
+    }
+  ]
+}

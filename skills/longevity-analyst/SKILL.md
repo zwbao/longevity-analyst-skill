@@ -94,8 +94,16 @@ library path in the workspace, so later commands find it without any environment
   pipeline that cannot run is listed with its preflight reason. PubMed down
   means "evidence not retrieved", not remembered citations.
 - **Never fabricate:** measured lab values, computed clock values, PMIDs, DOIs,
-  effect sizes, doses. In prose, cite member numbers only as
+  effect sizes, guideline thresholds. In prose, cite member numbers only as
   `{{r:<readout id>}}`; `$LA review trace` refuses any other number.
+- **Doses:** a dose comes only from the verbatim text of a registered source (a rule in
+  `data/medication_rules.json`, CPIC text in `work/pgx/pgx.json`) or is an AI judgement labelled as such. It reaches
+  prose only inside a registered item cited as `{{rx:<id>}}`; a dose written anywhere else is refused.
+- **Labelled items:** predictions (`$LA predict response`), diagnostic conclusions (`$LA clinical dx`) and medication
+  suggestions (`$LA clinical rx`) are registered items, each with a `la-label/1` label: its category (测量, 已发表模型,
+  按《指南》的标准, 《指南》推荐, CPIC 指南, 统计模型估计, AI 判断, rendered from `basis_kind`, never written by you) and
+  its sources. Prose cites them as `{{p:<id>}}`, `{{dx:<id>}}`, `{{rx:<id>}}`; rendering prints the tag, the sentence
+  and the sources. AI judgements carry confidence low/very_low and are shown in their own column.
 - **AI estimates (allowed in this skill):** where no validated algorithm or no
   member data exists, organ ages and disease probabilities may be estimated by
   an LLM estimator subagent. Every estimate is a range with its basis (readout
@@ -113,7 +121,7 @@ library path in the workspace, so later commands find it without any environment
 | `--mode commercial` (default) runs only the provisional clock list (no GrimAge, DunedinPACE, DNAm PhenoAge, skin & blood, DNAmTL); counsel has not cleared it yet | licences are listed in `data/license_policy.json` |
 | A multi-sample file is never read by position; the member's column is a judgment | another person's column gives that person's results |
 | Any edit after `review trace` voids the trace and the review | the report is built only from the files that were checked |
-| No diagnosis, no drug or dose advice; referrals go to a physician | the report is a research estimate |
+| Diagnoses, medication suggestions and predictions only as registered, labelled items (`clinical dx`, `clinical rx`, `predict response`); an AI judgement is always labelled AI 判断; an emergency means "拨打 120" first | every such sentence must show where it came from and what kind of judgement it is |
 | Change workspace state only through `la.py` commands; result files are read-only for you | the trace and the twin depend on them |
 
 ## Subagents
@@ -123,7 +131,9 @@ researcher per board question, and workflow 06 one independent reviewer. Each ha
 fixed scope and returns exactly the fields named in its contract: [`references/system-analyst.md`](references/system-analyst.md)
 returns `{system, file, readouts_cited, pubmed_cited, open_questions}`, [`references/organ-estimator.md`](references/organ-estimator.md)
 returns `{organ, file, pmids_cited, diseases, age_estimated}`, [`references/researcher.md`](references/researcher.md)
-returns `{id, file, verdict, public_evidence_count}`, and [`references/reviewer.md`](references/reviewer.md)
+returns `{id, file, verdict, public_evidence_count}`, [`references/clinical-estimator.md`](references/clinical-estimator.md)
+returns `{files, diagnoses, medications, pmids_cited}`, [`references/response-estimator.md`](references/response-estimator.md)
+returns `{file, items, pmids_cited}`, and [`references/reviewer.md`](references/reviewer.md)
 returns `{verdict, findings[]}`. Free prose instead of those fields counts as a failed dispatch; send it back.
 
 ## Output Requirements

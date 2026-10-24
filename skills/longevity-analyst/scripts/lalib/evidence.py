@@ -236,6 +236,9 @@ def check_plan(st: Dict[str, Any], ws_root: Path, plan_path: Path) -> Dict[str, 
     items = plan.get("items")
     if not isinstance(items, list) or not items:
         raise LAError("plan.json needs a non-empty `items` list", EXIT_INPUT)
+    from . import labels as _L
+    labelled = _L.registry(ws_root)
+    lab_bad = [b for b in _L.problems(st, ws_root) if not b.startswith("predictions.json")]
     item_keys = {"id", "category", "action_zh", "rationale_zh", "targets", "evidence", "evidence_grade", "executor", "retest"}
     for it in items:
         if not isinstance(it, dict):
@@ -251,6 +254,19 @@ def check_plan(st: Dict[str, Any], ws_root: Path, plan_path: Path) -> Dict[str, 
         for k in ("id", "category", "action_zh", "targets", "evidence", "executor"):
             if k not in it:
                 problems.append(f"{iid}: missing field {k}")
+        cited = _L.cited(" ".join(str(it.get(f, "")) for f in ("action_zh", "rationale_zh")))
+        for k, ref in cited:
+            if k == "p":
+                problems.append(f"{iid}: {{{{p:{ref}}}}}: predictions are attached to plan items automatically after registration; do not cite them in the plan")
+            elif k == "rx" and it.get("category") != "medication":
+                problems.append(f"{iid}: {{{{rx:{ref}}}}} belongs in a `medication` item")
+            elif ref not in labelled[k]:
+                problems.append(f"{iid}: {{{{{k}:{ref}}}}} is not a registered item (run `la.py clinical {k}` first)")
+        if cited and lab_bad:
+            problems.append(f"{iid}: the labelled items it cites cannot be used: {lab_bad[0]}")
+        if it.get("category") == "medication" and not any(k == "rx" for k, _ in cited):
+            problems.append(f"{iid}: a medication item cites its registered suggestion as {{{{rx:<id>}}}} in action_zh "
+                            "(the drug, the dose and the source come from that item, never from the plan text)")
         cat = cats.get(it.get("category"))
         if not cat:
             problems.append(f"{iid}: category {it.get('category')!r} is not on the intervention menu")
@@ -258,15 +274,16 @@ def check_plan(st: Dict[str, Any], ws_root: Path, plan_path: Path) -> Dict[str, 
             problems.append(f"{iid}: executor {it.get('executor')!r} not allowed for {cat['id']} (allowed {cat['executors']})")
         for fld in ("action_zh", "rationale_zh"):
             if has_dose_outside_literals(it.get(fld, "")) or (fld == "action_zh" and has_dose_outside_literals(str((it.get("retest") or {}).get("what", "")))):
-                problems.append(f"{iid}: {fld} names a dose or pill count; doses are for the physician, remove it")
+                problems.append(f"{iid}: {fld} names a dose or pill count; a dose reaches the plan only inside a registered "
+                                "medication suggestion cited as {{rx:<id>}}")
         file_ids = {f["id"] for f in st["files"]}
         for t in it.get("targets", []):
-            if t.startswith("file:") and t[5:] in file_ids and it.get("category") in ("test", "referral"):
+            if t.startswith("file:") and t[5:] in file_ids and it.get("category") in ("test", "referral", "medication"):
                 continue            # e.g. "ask the lab what assay F005 is"
             if t not in ro_ids and t not in lab_names:
                 problems.append(f"{iid}: target {t!r} is neither a readout id, a lab marker of this member, nor file:<id> on a test/referral item")
         ev = it.get("evidence", [])
-        if not ev and it.get("category") not in ("test", "referral"):
+        if not ev and it.get("category") not in ("test", "referral", "medication"):
             problems.append(f"{iid}: no evidence cited")
         for e in ev:
             typ, ref = e.get("type"), str(e.get("ref", ""))
@@ -280,11 +297,11 @@ def check_plan(st: Dict[str, Any], ws_root: Path, plan_path: Path) -> Dict[str, 
             problems.append(f"{iid}: retest.after_weeks must be a JSON integer")
         if it.get("evidence_grade") not in (None, "human_rct", "human_cohort", "animal_or_cell", "guideline", "not_applicable"):
             problems.append(f"{iid}: evidence_grade must be human_rct|human_cohort|animal_or_cell|guideline|not_applicable")
-        if it.get("category") not in ("test", "referral") and it.get("evidence_grade") == "not_applicable":
-            problems.append(f"{iid}: only test/referral items may have evidence_grade not_applicable")
+        if it.get("category") not in ("test", "referral", "medication") and it.get("evidence_grade") == "not_applicable":
+            problems.append(f"{iid}: only test/referral/medication items may have evidence_grade not_applicable")
         if not re.fullmatch(r"I[1-9][0-9]?", str(it.get("id", "")), re.ASCII):
             problems.append(f"{iid!r}: item id must be I1, I2, … (the digits are item numbers only)")
-        if it.get("category") not in ("test", "referral"):
+        if it.get("category") not in ("test", "referral", "medication"):
             if not rt.get("what") or not rt.get("after_weeks"):
                 problems.append(f"{iid}: retest needs `what` and `after_weeks`")
         if rt.get("after_weeks") is not None:

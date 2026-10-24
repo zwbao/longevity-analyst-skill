@@ -31,8 +31,9 @@ KIND_ZH = {"computed": "为你计算", "computed_low_coverage": "为你计算（
            "population_position": "人群位置（参照人群见说明）",
            "computed_coverage_unknown": "为你计算（覆盖率未知）", "descriptive": "数据描述", "lookup": "论文名单查表"}
 SEX_ZH = {"male": "男", "female": "女"}
-BOUNDARY = ("本报告由模型和已发表方法根据你交来的数据计算，是研究性估计，不是诊断，也不是治疗或用药建议。"
-            "生物年龄类读数有测量误差，单次结果不足以下结论；是否干预、如何用药由你的医生决定。")
+BOUNDARY = ("本报告由模型和已发表方法根据你交来的数据计算，是研究性估计。诊断性结论、用药建议和个人反应预测都标明了类别和来源，"
+            "其中「AI 判断」不是测量，也不是指南结论；它们供你和医生参考，不是处方。"
+            "生物年龄类读数有测量误差，单次结果不足以下结论；是否干预、如何用药由你的医生决定。出现急症时先拨打 120。")
 
 # Authored prose may carry digits ONLY inside placeholders:
 #   {{r:<readout id>[|label|value|unit|own words]}}  a member readout (bound to readouts.json)
@@ -94,6 +95,9 @@ def _readouts(ws: Path) -> Dict[str, Dict[str, Any]]:
     ip = ws / "work" / "insights" / "insight_readouts.json"
     if ip.exists():
         ro.update({r["id"]: r for r in load_json(ip)["readouts"]})
+    from .labels import Bound, registry                 # labelled items ({{p:}} {{dx:}} {{rx:}}) travel with the readouts
+    ro = Bound(ro)
+    ro.labelled = registry(ws)
     return ro
 
 
@@ -122,6 +126,8 @@ def substitute(text: str, ro: Dict[str, Dict[str, Any]]) -> str:
             return f"{_fmt(r['value'])} 岁（AI 估计，区间 {_fmt(r.get('low'))}–{_fmt(r.get('high'))} 岁）"
         u = {"a": " 岁", "1": ""}.get(u, f" {u}" if u else "")
         return f"{_fmt(r['value'])}{u}"
+    from .labels import substitute_items
+    text = substitute_items(text, getattr(ro, "labelled", {}))   # tag + registered sentence + sources
     text = PLACEHOLDER.sub(rep, text)
     text = LITERAL.sub(lambda m: m.group(1), text)
     return PMID_PH.sub(lambda m: f"[PMID {m.group(1)}](https://pubmed.ncbi.nlm.nih.gov/{m.group(1)}/)", text)
@@ -138,7 +144,9 @@ def normalise(text: str) -> str:
 
 
 def trace_text(text: str, allowed_values: List[str] = None) -> List[str]:
-    """Violations: any digit, numeral run or URL outside the three placeholder kinds."""
+    """Violations: any digit, numeral run or URL outside the placeholder kinds."""
+    from .labels import ITEM_PH
+    text = ITEM_PH.sub(" ", text)             # a labelled item renders its own registered numbers (checked in labels.check)
     t = PLACEHOLDER.sub(lambda m: f" {m.group(2)} " if m.group(2) and m.group(2).strip() not in MODES else " ", text)
     t = LITERAL.sub(" ", t)
     t = PMID_PH.sub(" ", t)
@@ -271,7 +279,8 @@ def _authored(ws: Path, st: Dict[str, Any] = None) -> List[Tuple[str, str]]:
             rt = i.get("retest") or {}
             fields += [i.get("action_zh", ""), i.get("rationale_zh", ""), str(rt.get("what", ""))]
         out.append((str(pl), "\n".join(fields)))
-    return out
+    from .labels import authored
+    return out + authored(ws)
 
 
 def bound_files(ws: Path, st: Dict[str, Any] = None) -> List[Path]:
@@ -287,6 +296,8 @@ def bound_files(ws: Path, st: Dict[str, Any] = None) -> List[Path]:
         from .board import registered_findings
         files += [bq] + sorted(registered_findings(ws, st).values())
     files += registered_analyses(ws, st)
+    from .labels import bound_files as labelled_files
+    files += labelled_files(ws)
     return [f for f in files if f.exists()]
 
 
@@ -336,6 +347,7 @@ def trace(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
     missing_ids = {}
     lits: Dict[str, List[str]] = {}
     declined = (st["member"].get("answers") or {}).get("genetic_disclosure") == "no"
+    from . import labels
     for path, text in _authored(ws, st):
         bad = trace_text(text, allowed)
         if declined and apoe_mentioned(LITERAL.sub(lambda m: m.group(1), text)):
@@ -344,7 +356,8 @@ def trace(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
             findings[path] = bad
         if literals(text):
             lits[path] = literals(text)
-        miss = sorted({m.group(1) for m in PLACEHOLDER.finditer(text) if m.group(1) not in ro})
+        miss = sorted({m.group(1) for m in PLACEHOLDER.finditer(text) if m.group(1) not in ro}
+                      | {f"{k}:{i}" for k, i in labels.cited(text) if i not in ro.labelled.get(k, {})})
         if miss:
             missing_ids[path] = miss
     cited = sorted({m.group(1) for _, text in _authored(ws, st) for m in PMID_PH.finditer(text)})
@@ -354,6 +367,9 @@ def trace(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
         dead = [p for p in cited if p not in live]
         if dead:
             findings["citations"] = [f"PMID {p} does not exist or is retracted" for p in dead]
+    lab_bad = labels.check(st, ws)
+    if lab_bad:
+        findings["labelled items"] = lab_bad
     ok = not findings and not missing_ids
     hashes = _hashes(ws, st) if ok else {}
     trace_id = C_sha(json.dumps(hashes, sort_keys=True))[:16] if ok else None
@@ -611,6 +627,9 @@ def render(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
     from .export import build as build_export              # what a host app (longpi) imports: same data as the report
     write_json(out / "la-export.json", build_export(st, ws, out / "report.html"))
     written.append("la-export.json")
+    from .cards import build as build_cards                # health-page cards: numbers taken from that same export
+    write_json(out / "cards.json", build_cards(ws, out / "la-export.json"))
+    written.append("cards.json")
     st["report"] = {"md": str(out / "report.md"), "html": str(out / "report.html"), "at": now_iso(),
                     "hashes": st["review"]["reviewer"]["hashes"],
                     "deliver_sha256": {n: sha256_file(out / n, limit=None) for n in written}}
