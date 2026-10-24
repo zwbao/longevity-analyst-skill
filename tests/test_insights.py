@@ -493,3 +493,14 @@ def test_clinvar_oversized_batches_are_split(tmp_path, monkeypatch):
     monkeypatch.setattr(pubdata, "_ncbi", fake)
     recs = pubdata.clinvar_gene(ws, "LDLR")
     assert sorted(r["ref"] for r in recs) == ["clinvar:VCV1", "clinvar:VCV2", "clinvar:VCV4"]
+
+
+def test_haploid_male_x_call_counts_two_copies(tmp_path):
+    p = tmp_path / "x.vcf"
+    p.write_text("##fileformat=VCFv4.2\n#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\tS1\n"
+                 "chrX\t100\t.\tA\tG\t50\tPASS\t.\tGT:GQ:DP\t1:40:30\nchrX\t200\t.\tA\tG\t50\tPASS\t.\tGT:GQ:DP\t0:40:30\n")
+    v = genomics.Vcf(p, RULES)
+    v.prefetch({("X", 100), ("X", 200)}, [("X", 1, 1000)])
+    assert v.alt_dosage("X", 100, "A", "G")["dosage"] == 2 and v.ref_dosage("X", 100, "A")["dosage"] == 0
+    assert v.alt_dosage("X", 200, "A", "G")["dosage"] == 0 and v.ref_dosage("X", 200, "A")["dosage"] == 2
+    assert {x["pos"]: x["zygosity"] for x in v.carried("X", 1, 1000)} == {100: "hemi"}

@@ -47,9 +47,13 @@ def _is_block(f: List[str]) -> bool:
 
 
 def _gt(fmt: List[str], val: List[str]) -> List[str]:
-    gt = re.split(r"[/|]", dict(zip(fmt, val)).get("GT", "./."))
-    # a haploid call (male chrX/chrY outside the PARs) counts as two copies of that allele, the usual X dosage
-    # convention: a hemizygous man is scored like a homozygous woman instead of being dropped as "no call"
+    return re.split(r"[/|]", dict(zip(fmt, val)).get("GT", "./."))
+
+
+def _dosage_gt(fmt: List[str], val: List[str]) -> List[str]:
+    """For allele counting: a haploid call (male chrX/chrY outside the PARs) counts as two copies of that allele, the
+    usual X dosage convention, so a hemizygous man is scored like a homozygous woman instead of dropped as no call."""
+    gt = _gt(fmt, val)
     return gt * 2 if len(gt) == 1 and gt[0] != "." else gt
 
 
@@ -208,7 +212,7 @@ class Vcf:
             alts = [a.upper() for a in f[4].split(",")]
             fmt, val = f[8].split(":"), f[9].split(":")
             ok, why = self.quality(fmt, val, f[6])
-            gt = _gt(fmt, val)
+            gt = _dosage_gt(fmt, val)
             if alt.upper() in alts:
                 if not ok:
                     return {"dosage": None, "status": why}
@@ -239,7 +243,7 @@ class Vcf:
             for f in same:
                 fmt, val = f[8].split(":"), f[9].split(":")
                 ok, why = self.quality(fmt, val, f[6])
-                gt = _gt(fmt, val)
+                gt = _dosage_gt(fmt, val)
                 if not ok:
                     return {"dosage": None, "status": why}
                 if "." in gt or len(gt) != 2:

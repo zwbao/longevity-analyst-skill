@@ -51,7 +51,7 @@ def predictions(ws: Path) -> List[str]:
         for x in stat:
             lo, hi = x["interval_80_pct"]
             out.append(f"| {_cell(x.get('plan_item'))} | {_cell(x['intervention_zh'])} | {_cell(x['marker'])} | "
-                       f"约 {_p(x['p_detect_favorable'])}（前后各测 {x['design']['repeats_each_side']} 次） | 约 {_p(x['p_true_favorable'])} | "
+                       f"{L._about(x['p_detect_favorable'])}（前后各测 {x['design']['repeats_each_side']} 次） | {L._about(x['p_true_favorable'])} | "
                        f"{lo:.1f}% 到 {hi:.1f}% | {L.render_label(x['label'])} | {_src(x['label'])} |")
         out.append("")
         assum = []

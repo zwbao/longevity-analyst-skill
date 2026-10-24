@@ -304,14 +304,14 @@ def _summary_v4(ws: Path) -> str:
     """What an agent would write for visit 4: every member number through a placeholder (a SYNTHETIC member)."""
     pr = next(p for p in _load(ws, "predict", "predictions.json")["items"] if p["plan_item"] == "I3")
     dxi = _load(ws, "clinical", "diagnoses.json")["items"]
-    rx = next(x for x in _load(ws, "clinical", "medications.json")["items"] if x["kind"] == "cpic")
+    rx = next(x for x in _load(ws, "clinical", "medications.json")["items"] if x["kind"] == "cpic" and x["gene"] == "SLCO1B1")
     lines = ["这几年的体检连起来看：空腹血糖每次都在参考范围内，但几次结果连起来出现了超出你个人正常波动的缓慢上升；低密度脂蛋白胆固醇一直在波动范围内。",
              "",
              "家庭血压在减盐期间下降，超出了你的正常波动；这是同期发生的变化，不能说明是减盐造成的。下一次同样设计的减盐实验："
              f"{{{{p:{pr['id']}}}}}。"]
     if dxi:
         lines += ["", f"诊断性结论：{{{{dx:{dxi[0]['id']}}}}}。请带着这一条去看医生。"]
-    lines += ["", f"用药基因：{{{{rx:{rx['id']}}}}}。这一条只在医生考虑用这类药时才用得上。",
+    lines += ["", f"用药基因（他汀类降脂药）：{{{{rx:{rx['id']}}}}}。这一条只在医生考虑用这类药时才用得上。",
               "", "尿酸这一项有先天倾向，这次已经表现出来，建议列入问医生的单子。"]
     return "\n".join(lines)
 
@@ -496,7 +496,7 @@ def test_full_chain_case_c(tmp_path, capsys, case_c_net):
     dx = _load(v4, "clinical", "diagnoses.json")
     assert dx["guideline_set"] == "ada" and [x["rule_id"] for x in dx["items"]] == ["DX-ifg-ada"]
     md = (v4 / "deliver" / "report.md").read_text()
-    assert "{{" not in md and "## 复测对比与趋势" in md and "做饭用限盐勺" in md
+    assert "{{" not in md and "## 复测对比与趋势" in md and "做饭用限盐勺" in md and "约 超过" not in md
     ex = json.loads((v4 / "deliver" / "la-export.json").read_text())
     assert ex["diagnoses"][0]["rule"] == "DX-ifg-ada" and ex["diagnoses"][0]["hit"] is True and ex["diagnoses"][0]["source_zh"]
     assert all("drug" in x and "drug_zh" in x and isinstance(x["routine"], bool) for x in ex["medications"])

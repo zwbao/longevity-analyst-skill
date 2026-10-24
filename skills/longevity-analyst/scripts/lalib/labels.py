@@ -126,6 +126,12 @@ def render_sources(label: Dict[str, Any]) -> str:
     return "来源：" + "；".join(parts)
 
 
+def _about(x: Any) -> str:
+    """"约 77%", but "超过 99%" / "不到 1%" without 约 in front."""
+    t = _p(x)
+    return t if t.startswith(("超过", "不到", "低于")) else f"约 {t}"
+
+
 def _p(x: Any) -> str:
     if isinstance(x, list):
         return f"{_p(x[0])}–{_p(x[1])}"
@@ -154,8 +160,8 @@ def item_text(kind: str, it: Dict[str, Any]) -> str:
             return f"{head}：AI 判断，" + "，".join(bits) + "。"
         d = it.get("design") or {}
         lo, hi = it["interval_80_pct"]
-        return (f"{head}：按前后各测 {d.get('repeats_each_side')} 次的设计，下次实验能测出有利变化的概率约 {_p(it['p_detect_favorable'])}，"
-                f"真实效应方向有利的概率约 {_p(it['p_true_favorable'])}，预计变化的 80% 区间 {_pct(lo)} 到 {_pct(hi)}。")
+        return (f"{head}：按前后各测 {d.get('repeats_each_side')} 次的设计，下次实验能测出有利变化的概率{_about(it['p_detect_favorable'])}，"
+                f"真实效应方向有利的概率{_about(it['p_true_favorable'])}，预计变化的 80% 区间 {_pct(lo)} 到 {_pct(hi)}。")
     if kind == "dx":
         return it["conclusion_zh"]
     txt = it.get("text_zh") or ""
