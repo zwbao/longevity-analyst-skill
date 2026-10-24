@@ -18,7 +18,7 @@ license: MIT
 category: health-omics
 metadata:
   author: CancerDAO / zwbao
-  version: "0.7.1"
+  version: "0.8.0"
   tags: longevity aging multiomics digital-twin epigenetic-clock nf-core bioinformatics
 ---
 

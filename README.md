@@ -13,6 +13,28 @@ run starts only after the user agrees.
 
 中文说明见 [README.zh-CN.md](README.zh-CN.md).
 
+## New in 0.8.0: retests over time, genes and labs together, labelled clinical items
+
+- **Several visits, one member.** Each lab row keeps its own sampling date. `la.py twin series` compares adjacent
+  visits, first vs latest, and tests for a slow trend (weighted least squares against the published within-person
+  variation; 32 markers now have a noise model, clocks use technical-replicate noise where it is published). A change
+  is called real only beyond that noise; a marker without a noise model is shown side by side.
+- **What the member was doing at the time.** Hosts pass the adopted plan items and check-ins (`la-exposures/1`); a
+  change lists them as concurrent ("同期"), never as the cause.
+- **Genes vs labs as a class** (`concordance.json`): tendency expressed, tendency not (yet) expressed, acquired, typical;
+  a retest records the transition (for example latent → concordant_adverse goes on the list for the doctor).
+- **Germline fingerprint**: two visits whose genotypes disagree raise an identity alert and the odd visit leaves the
+  comparison. Germline results (APOE, genes vs labs, PGx) are reused at a labs-only retest.
+- **Pharmacogenomics and nutrigenetics from the member's VCF** (CPIC text verbatim) and a **surveillance plan**
+  (guideline rules such as "Lp(a) once", merged with the plan's retests).
+- **Labelled items** (`la-label/1`): diagnostic conclusions by guideline criteria (choose `cn` or `ada`), medication
+  suggestions (guideline or CPIC), and personal response predictions (statistical model: will the next experiment show
+  it?). Every item names its category and source; AI judgements are marked as such.
+- **China reference** for lipids (Shandong community adults) with NHANES as the stated fallback.
+- `deliver/la-export.json` is now `la-export/2`; `deliver/cards.json` feeds the host's health page.
+- A four-visit example member, `examples/case-C` (real 1000 Genomes genotypes, synthetic labs), runs the whole chain in
+  the tests.
+
 ## Install
 
 ```bash

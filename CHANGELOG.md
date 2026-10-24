@@ -1,5 +1,75 @@
 # Changelog
 
+## [0.8.0] - 2026-10-24
+
+Release of the PLAN "LongPi 下一版本" analyst work items: retests over time, genes and labs together, labelled
+clinical items. Three lanes (core, genomics, clinical) plus integration.
+
+### Added
+- **Multi-visit trends (WS-A)**: every lab row keeps its own sampling date (`collected_at`, row/file/workspace);
+  `la.py twin series --snapshots … --ws` (adjacent pairs, first vs latest, weighted-least-squares trend test against the
+  published within-person variation, PLAN appendix B); `twin compare` is its two-point case; fixed trend wording in the
+  report section 复测对比与趋势; shared `trend-cases/1`.
+- **Noise coverage (WS-B)**: retests are checked for judgeability at `intervene register` (warnings, never refusals);
+  clocks are judged against technical-replicate noise where the library has it (`readout_noise.json`).
+- **Exposures (WS-C)**: `twin build --exposures <la-exposures/1>`; interventions carry status/since; concurrent
+  interventions are listed as 同期, never as the cause.
+- **Genes vs labs (WS-D)**: `work/insights/concordance.json` (four classes, fixed wording, ClinVar override), class
+  transitions across visits (latent → concordant_adverse goes on the doctor list), germline fingerprint and identity
+  alerts (a swapped sample leaves every comparison).
+- **Surveillance plan (WS-E)**: `la.py surveillance plan` (guideline rules such as Lp(a) once, sources fetched in the
+  workspace) merged with the plan's retests.
+- **Pharmacogenomics and nutrigenetics (WS-F)**: VCF → 23andMe adapter, `cpic-pharmacogenomics` with
+  `--include-cpic-text` (CPIC recommendation text verbatim) and `nutrigenetic-variant-panel`; `work/pgx/pgx.json`.
+- **China reference (WS-H)**: lipids against Shandong community adults (CC BY), NHANES as the stated fallback; the
+  position section names the reference per row and prints the PhenoAge note.
+- **Germline reuse and labs-only fast route (WS-I)**: `init --reuse-germline-from`; APOE, genes vs labs, fingerprint
+  and PGx are reused when no new VCF arrives (reused APOE readouts now reach readouts.json, the twin and organs).
+- **Labelled items (WS-L)**: `la-label/1`; `predict response` (statistical model, appendix B.7; AI judgements via
+  `--ai`, intervals only), `clinical dx` (guideline sets cn / ada), `clinical rx` (guideline rules and CPIC);
+  placeholders `{{p:}}` `{{dx:}}` `{{rx:}}`; gates rewritten per WS-L.5.
+- **Host interface (WS-M)**: `la-export/2` (trends, concordance and transitions, surveillance, predictions, diagnoses,
+  medications, identity alerts, retests with reason/judgeable/due_at; privacy check: no fingerprint, no rsid+genotype)
+  with the names the proactive engine and the site read (`diagnoses[].rule/hit/source_zh`,
+  `medications[].drug/drug_zh/routine`); `deliver/cards.json` (`pi-card/1`).
+- **case-C (WS-J.1)**: a four-visit member (2023-09 … 2026-09) and `case-C-swap`; `tests/test_cli_chain.py` runs
+  case-A, case-B and case-C end to end (no pipelines, no network) and `la.py validate` is ok for all three.
+
+### Changed
+- `reviewer.md` checks numbered 1–18 in one sequence (genes vs labs 14, pharmacogenomics 15, surveillance 16, trends 17,
+  concurrent interventions 18).
+- `la-export/2` boundary text follows the label rule (every item names its category and source; AI judgements are marked).
+- Adherence in predictions counts check-ins up to the visit date, not the date the command runs.
+
+### Fixed (integration)
+- `labels.record` crashed when the state had no clinical/predict entry yet.
+- `clinical rx` did not see medications recorded as `medications=` (the key `la.py member` and pgx use).
+- `methods` crashed on the library's new `longevity-problems/1` problems document.
+- A method input without LOINC (principal-component-clinical-aging 血糖) asked a second glucose question.
+
+### Before / after (PLAN §2 baseline, 2026-10-24 → this release)
+| | before | after |
+|---|---|---|
+| Within-person variation table | 22 markers | 32 markers (+ alt, ast, ggt, urate, apob, hcy, insulin, tsh, resting_hr, body_fat_pct) |
+| Readout (clock) noise | none | 6 clocks (Horvath, Hannum with sd_abs; Lin, Vidal-Bralo, Zhang, EpiTOC1 icc only) |
+| Trial effects table | 25 rows | 80 rows (all `verified_by: quote_match`; person review pending, see below) |
+| Tier A validation | reproduced 4, draft 8 | reproduced 4, reproduced_secondary 3 (PhenoAge, blood DNAm IC, HFRS proteomics frailty), draft 5 |
+| Twin | `la-twin/1`, one date per snapshot, compare of two | `la-twin/2`, per-row dates, exposures, concordance, fingerprint, surveillance; series of any number |
+| Genes vs labs | percentiles and flags | + four-class concordance with transitions and fingerprint |
+| Pharmacogenomics / nutrigenetics | not run | run from the member's VCF; CPIC text verbatim |
+| Population reference | NHANES only | Chinese lipid reference + NHANES fallback |
+| Predictions, diagnoses, medication suggestions | not output | labelled items (statistical model, guideline criteria/recommendation, CPIC, AI judgement) |
+| Shared tests | rcv-cases/1 (7 cases) | rcv-cases/1 (17 cases), trend-cases/1, prediction-cases/1 |
+| Example members | case-A, case-B (one visit) | + case-C (four visits) and case-C-swap |
+| Auto-run tiers, licence policy | A + tool; commercial clock list | unchanged |
+
+### Not done in this release
+- WS-G.2 person review of the 80 effects rows: the fields exist (`verified_by_name`, `verified_on`); no row is
+  person-reviewed yet (needs the owner's reviewer).
+- WS-B.4 (commercial clock licences): legal opinion pending, so `license_policy.json` is unchanged (P2, non-code).
+- WS-J.3 product metrics: defined together with the LongPi site (P2, deferred).
+- `tau_pct` (person-to-person spread) is in the schema but no effects row carries one yet; predictions use |mu0| and say so.
+
 ## [0.7.1] - 2026-09-30
 
 Fixes from the bridge review and the Sonnet end-to-end run (below).

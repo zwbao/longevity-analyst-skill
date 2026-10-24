@@ -19,6 +19,9 @@ deliverables. It is also used later to compare a new visit with an old snapshot.
    and `identity_alerts` (a visit whose germline genotype disagrees is left out of every comparison). The report
    section uses fixed wording; never rephrase a trend as worse, a disease or a cause. Snapshots of another member
    are refused. `la-twin/1` snapshots work with a warning (their observation dates are the snapshot date).
+1c. Labelled items read the twin and the series, so run them now, in this order: `$LA predict response <ws>`
+   (`--repeats N` for the experiment design, e.g. 14 home readings each side), `$LA clinical dx <ws> [--guideline-set cn|ada]`,
+   `$LA clinical rx <ws>`. Trace refuses predictions or clinical items made before the latest exposures or series.
 2. Write `work/report/summary.md` (Chinese, member-facing, at most about 300 characters of prose plus a short list):
    what stands out, where modalities agree or conflict, what is not known yet. Digits only inside placeholders:
    `{{n:…}}` for non-member numbers, `{{pmid:N}}` for citations, and member numbers only as `{{r:<id>}}` (prints value **and unit**, so do not repeat the unit); `{{r:<id>|label}}` prints the readout's
