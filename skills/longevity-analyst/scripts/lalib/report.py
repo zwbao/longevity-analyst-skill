@@ -225,7 +225,7 @@ def registered_analyses(ws: Path, st: Dict[str, Any] = None) -> List[Path]:
     return [Path(v["path"]) for k, v in sorted(reg.items()) if Path(v["path"]).exists()]
 
 
-VOLATILE = ("events", "updated_at", "review", "report", "review_history", "stages", "review_blocks")
+VOLATILE = ("events", "updated_at", "review", "report", "review_history", "stages", "review_blocks", "timing")
 
 
 def state_digest(st: Dict[str, Any]) -> str:
@@ -275,7 +275,8 @@ def _authored(ws: Path, st: Dict[str, Any] = None) -> List[Tuple[str, str]]:
 def bound_files(ws: Path, st: Dict[str, Any] = None) -> List[Path]:
     """Everything the rendered report is made from; any change after trace/review voids them."""
     files = [ws / "work" / "readouts.json", ws / "work" / "report" / "summary.md", ws / "work" / "intervene" / "plan.json",
-             ws / "work" / "twin" / "twin.json", ws / "work" / "organs" / "organ_readouts.json"]
+             ws / "work" / "twin" / "twin.json", ws / "work" / "organs" / "organ_readouts.json",
+             ws / "work" / "twin" / "exposures.json", ws / "work" / "twin" / "series.json"]
     files += sorted((ws / "work" / "organs" / "estimates").glob("*.json"))
     files += [ws / "work" / "insights" / n for n in ("insight_readouts.json", "genotype_phenotype.json", "positions.json", "projections.json")]
     bq = ws / "work" / "insights" / "board" / "questions.json"
@@ -320,7 +321,8 @@ def trace(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
     if ip.exists() and (not iw or sha256_file(ip, limit=None) != iw):
         raise LAError("insight_readouts.json does not match what `la.py insights` wrote; run it again", EXIT_BLOCKED)
     from .board import integrity
-    bad_files = insight_file_problems(ws, st)
+    from .twin import series_problems
+    bad_files = insight_file_problems(ws, st) + series_problems(ws, st)
     if bad_files:
         raise LAError("; ".join(bad_files), EXIT_BLOCKED)
     bad_board = integrity(ws, st)
@@ -571,8 +573,11 @@ def render(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
               f"本期快照记录了 {len(t['observations'])} 项化验、{len(t['readouts'])} 个读数、{len(t['interventions'])} 条拟执行事项。"
               "下次复测后对比：化验项按个体内生物学变异判断变化是否超出正常波动；没有噪声模型的读数只并列展示，不判好坏。", ""]
         if t["retest_plan"]:
-            L += ["| 事项 | 复测什么 | 多久后 |", "|---|---|---|"] + [
-                f"| {_cell(r['intervention'])} | {_cell(substitute(str(r.get('what') or ''), ro))} | {int(r['after_weeks']) if r.get('after_weeks') else '—'} 周 |" for r in t["retest_plan"]] + [""]
+            from .twin import JUDGEABLE_FALSE_ZH
+            note = {True: "复测时按你个人正常波动判断是否真的变化", False: JUDGEABLE_FALSE_ZH}
+            L += ["| 事项 | 复测什么 | 多久后 | 复测时能否判断 |", "|---|---|---|---|"] + [
+                f"| {_cell(r['intervention'])} | {_cell(substitute(str(r.get('what') or ''), ro))} | {int(r['after_weeks']) if r.get('after_weeks') else '—'} 周 | {note.get(r.get('judgeable'), '—')} |"
+                for r in t["retest_plan"]] + [""]
     L += ["## 数据来源与版本", "", "| 文件 | 类型 | 状态 | 校验 |", "|---|---|---|---|"]
     for f in st["files"]:
         L.append(f"| {_cell(f['name'])} | {_cell(f.get('kind'))} | {_cell(f.get('status'))} | {str(f.get('sha256', ''))[:18]} |")
@@ -580,6 +585,7 @@ def render(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
     lic = data("license_policy.json")["modes"][m.get("mode", "commercial")]["excluded"]
     if lic:
         L += ["因商用授权未确认而未使用：" + "；".join(_cell(e["component"]) for e in lic), ""]
+    L += extra_sections(ws, {"st": st, "ro": ro})
     L += ["## 边界", "", BOUNDARY, ""]
     md = "\n".join(L)
     if "{{" in md or "}}" in md:                      # a placeholder that was not substituted never reaches the member
@@ -594,7 +600,10 @@ def render(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
     (out / "report.html").write_text(_html(md, str(m.get("id"))), encoding="utf-8")
     written = ["report.md", "report.html"]
     if tw.exists():
-        (out / "twin.json").write_text(tw.read_text(encoding="utf-8"), encoding="utf-8")
+        tdoc = json.loads(tw.read_text(encoding="utf-8"))
+        if isinstance(tdoc.get("genotype_fingerprint"), dict):     # germline calls stay in the workspace (WS-K)
+            tdoc["genotype_fingerprint"] = {k: v for k, v in tdoc["genotype_fingerprint"].items() if k != "calls"}
+        write_json(out / "twin.json", tdoc)
         written.append("twin.json")
     from .export import build as build_export              # what a host app (longpi) imports: same data as the report
     write_json(out / "la-export.json", build_export(st, ws, out / "report.html"))
@@ -603,6 +612,25 @@ def render(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
                     "hashes": st["review"]["reviewer"]["hashes"],
                     "deliver_sha256": {n: sha256_file(out / n, limit=None) for n in written}}
     return st["report"]
+
+
+SECTION_MODULES = ("report_trends", "report_genomics", "report_clinical")
+
+
+def extra_sections(ws: Path, ctx: Dict[str, Any]) -> List[str]:
+    """Sections other modules render from their own files, in this order; a module that is not there prints nothing."""
+    import importlib
+    L: List[str] = []
+    for name in SECTION_MODULES:
+        try:
+            mod = importlib.import_module(f"{__package__}.{name}")
+        except ModuleNotFoundError as e:
+            if e.name and e.name.endswith(name):
+                continue
+            raise
+        for head, body in mod.sections(ws, ctx) or []:
+            L += [f"## {head}", "", body.strip(), ""]
+    return L
 
 
 def _pct(x: Any) -> str:

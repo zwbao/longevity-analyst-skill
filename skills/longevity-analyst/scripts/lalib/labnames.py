@@ -140,9 +140,91 @@ def _answers(st: Dict[str, Any]) -> List[tuple]:
     return out
 
 
-def usable_rows(st: Dict[str, Any]) -> List[Dict[str, Any]]:
-    """Numeric rows the agent confirmed 'yes' for exactly this content and position (a map is a yes, unless refused)."""
-    return [r for _, r, ans in _answers(st) if numeric(r) and (ans == "yes" or (r.get("maps_to") and ans != "no"))]
+def usable_rows(st: Dict[str, Any], history: bool = False) -> List[Dict[str, Any]]:
+    """Numeric rows the agent confirmed 'yes' for exactly this content and position (a map is a yes, unless refused).
+
+    Only rows of this visit (see `visit_date`) unless `history`: methods, indices and estimators read one visit;
+    the twin keeps every confirmed row with its own date for `twin series`."""
+    rows = [r for _, r, ans in _answers(st) if numeric(r) and (ans == "yes" or (r.get("maps_to") and ans != "no"))]
+    if history:
+        return rows
+    v = visit_date(st)
+    return [r for r in rows if not v or collected_at(r, st)[0] in (None, v)]
+
+
+# ------------------------------------------------------------ sampling dates (collected_at)
+DATE_COLUMNS = ("date", "collectedat", "collectiondate", "sampledate", "sampletime", "采样日期", "采样时间", "检验日期",
+                "采集日期", "采集时间", "送检日期", "检测日期", "体检日期", "日期")
+_DATE = re.compile(r"^\s*(\d{4})\s*(?:[-/.年]\s*(\d{1,2})\s*[-/.月]\s*(\d{1,2})\s*日?|(\d{2})(\d{2}))(?:[\sT].*)?$")
+
+
+def parse_date(raw: Any) -> Optional[str]:
+    """'2024-09-03', '2024/9/3', '2024.09.03 08:10', '20240903', '2024年9月3日' -> ISO date; anything else None."""
+    import datetime as _d
+    m = _DATE.match(str(raw or ""))
+    if not m:
+        return None
+    y, mo, d = (m.group(1), m.group(2) or m.group(4), m.group(3) or m.group(5))
+    try:
+        return _d.date(int(y), int(mo), int(d)).isoformat()
+    except ValueError:
+        return None
+
+
+def collected_at(r: Dict[str, Any], st: Dict[str, Any]) -> tuple:
+    """(date, source) for a lab row: its own date column (row), else the date the agent recorded for its file with a
+    quote (file), else the workspace sample date (workspace), else (None, None)."""
+    d = parse_date(r.get("date_raw")) if r.get("date_raw") else None
+    if d:
+        return d, "row"
+    f = next((x for x in st.get("files", []) if x["id"] == r.get("source_file")), None) or {}
+    if (f.get("collected_at") or {}).get("date"):
+        return f["collected_at"]["date"], "file"
+    if st["member"].get("sample_date"):
+        return st["member"]["sample_date"], "workspace"
+    return None, None
+
+
+def visit_date(st: Dict[str, Any]) -> Optional[str]:
+    """The visit this workspace reports on: the sample date, else the latest row date (None: rows carry no dates)."""
+    if st["member"].get("sample_date"):
+        return st["member"]["sample_date"]
+    ds = [collected_at(r, st)[0] for r in st.get("labs", [])]
+    ds = [d for d in ds if d]
+    return max(ds) if ds else None
+
+
+def stamp_dates(st: Dict[str, Any]) -> List[str]:
+    """Write collected_at / collected_at_source on every row; ask (pending judgment) where a file's date is not clear:
+    a date cell that is not a date, rows of one file with and without dates, or an undated file in a workspace whose
+    other rows carry dates and that has no sample date. Never defaulted."""
+    from .common import add_judgment
+    asked = []
+    by_file: Dict[str, List[Dict[str, Any]]] = {}
+    for r in st.get("labs", []):
+        d, src = collected_at(r, st)
+        r["collected_at"], r["collected_at_source"] = d, src
+        by_file.setdefault(r.get("source_file") or "", []).append(r)
+    dated_elsewhere = any(r.get("collected_at_source") in ("row", "file") for r in st.get("labs", []))
+    for fid, rows in by_file.items():
+        f = next((x for x in st.get("files", []) if x["id"] == fid), None)
+        if not f or (f.get("collected_at") or {}).get("date"):
+            continue
+        bad = [r.get("date_raw") for r in rows if r.get("date_raw") and not parse_date(r["date_raw"])]
+        has = [r for r in rows if parse_date(r.get("date_raw"))]
+        why = None
+        if bad:
+            why = f"date cells that are not dates ({', '.join(map(str, bad[:3]))})"
+        elif has and len(has) < len(rows):
+            why = f"{len(rows) - len(has)} of {len(rows)} rows have no date while the others do"
+        elif not has and not st["member"].get("sample_date") and dated_elsewhere:
+            why = "no date in the file, other files carry dates, and the workspace has no sample date"
+        if why:
+            add_judgment(st, "collected_at", fid,
+                         f"{f['name']}: when were these samples collected? {why}. Read the report header (采样/检验日期) or ask "
+                         "the user, then `la.py labs date <ws> --file " + fid + " --date YYYY-MM-DD --source \"<quote>\" --reason \"...\"`.")
+            asked.append(fid)
+    return asked
 
 
 def refused_rows(st: Dict[str, Any]) -> List[Dict[str, Any]]:
@@ -159,7 +241,7 @@ def pending(st: Dict[str, Any]) -> List[Dict[str, Any]]:
         out.append({"row_key": k, "position": st["labs"].index(r) + 1, "page": r.get("page", ""),
                     "marker": r["marker"], "value": r.get("value"), "unit": r.get("unit", ""),
                     "ref_range": r.get("ref_range", ""), "source_file": r.get("source_file"),
-                    "candidates": candidates_zh(analytes(r))})
+                    "collected_at": collected_at(r, st)[0], "candidates": candidates_zh(analytes(r))})
     return out
 
 

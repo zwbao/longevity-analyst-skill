@@ -135,7 +135,7 @@ def test_full_chain_case_a(tmp_path, capsys, monkeypatch):
     assert "## 器官体检表" in md and "AI 估计" in md and "8%（AI 估计，区间 4%–16%，10 年）" in md
     tw = json.loads((ws / "deliver" / "twin.json").read_text())
     ex = json.loads((ws / "deliver" / "la-export.json").read_text())
-    assert ex["schema"] == "la-export/1" and ex["member"]["age"]
+    assert ex["schema"] == "la-export/2" and ex["member"]["age"]
     assert all("{{" not in (x.get("title") or "") + (x.get("detail") or "") for x in ex["plan"]["items"])
     assert all(x["category"] in ("diet", "exercise", "sleep", "supplement", "behavior", "other") for x in ex["plan"]["items"])
     assert ex["readouts"] and ex["report"]["html"].endswith("report.html")
