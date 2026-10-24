@@ -63,7 +63,7 @@ def _ws(tmp_path: Path):
     (ws / "work" / "intervene").mkdir(parents=True)
     (ws / "work" / "intervene" / "plan.json").write_text(json.dumps({"items": [
         {"id": "I3", "category": "diet", "action_zh": "限盐", "targets": ["收缩压"], "executor": "member", "retest": {"what": "收缩压", "after_weeks": 6}},
-        {"id": "I4", "category": "exercise", "action_zh": "运动", "targets": ["ALT"], "executor": "member", "retest": {"what": "握力", "after_weeks": 12}},
+        {"id": "I4", "category": "exercise", "action_zh": "运动", "targets": ["握力"], "executor": "member", "retest": {"what": "握力", "after_weeks": 12}},
         {"id": "I5", "category": "sleep", "action_zh": "早睡", "targets": ["收缩压"], "executor": "member"}]}, ensure_ascii=False))
     st = C.new_state({"id": "m", "age": 50, "sex": "male", "sample_date": "2026-09-01", "answers": {}}, tmp_path)
     st["labs"] = [{"marker": "收缩压", "value": "131", "unit": "mmHg", "source_file": "F001",

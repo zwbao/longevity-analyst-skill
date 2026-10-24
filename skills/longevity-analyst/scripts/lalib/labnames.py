@@ -48,8 +48,14 @@ def _index() -> Dict[str, Set[str]]:
             keys = {str(k).casefold() for k in a.get("loinc", [analyte])}
             for k in keys:
                 _LABEL[k] = a.get("confirm_zh") or _LABEL.get(k) or analyte
-            for n in a["names"] + a.get("abbrev", []):
-                idx.setdefault(kit.fold_name(n), set()).update(keys)
+            names = {kit.fold_name(n) for n in a["names"] + a.get("abbrev", [])}
+            for n in names:
+                idx.setdefault(n, set()).update(keys)
+            # a method input without LOINC whose own label is one of this analyte's names is the same question
+            # (principal-component-clinical-aging's 血糖 = glucose_mmol_l): one candidate, not two
+            for g in list(_GROUPS):
+                if len(g) == 1 and not next(iter(g))[:1].isdigit() and kit.fold_name(_LABEL.get(next(iter(g)), "")) in names:
+                    _GROUPS.append(g | keys)
         _INDEX = idx
     return _INDEX
 

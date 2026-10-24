@@ -116,7 +116,7 @@ def _chain_to_intervene(ws: Path, capsys, monkeypatch):
     for i in (1, 2, 3):
         ok("board", "skip", str(ws), "--id", f"Q{i}", "--reason", "offline test")
     plan = {"items": [
-        {"id": "I1", "category": "diet", "action_zh": "在营养师指导下尝试适度热量限制", "targets": ["epiage.dnam_phenoage"],
+        {"id": "I1", "category": "diet", "action_zh": "在营养师指导下尝试适度热量限制", "targets": ["epiage.dnam_stoch"],
          "evidence": [{"type": "effects", "ref": "calerie-cr-dunedinpace"}], "evidence_grade": "human_rct",
          "executor": "nutritionist", "retest": {"what": "甲基化时钟", "after_weeks": 52}},
         {"id": "I2", "category": "diet", "action_zh": "工作日晚饭少放盐", "targets": ["收缩压"],
@@ -206,6 +206,8 @@ def test_chain_export_v2_series_exposures_and_privacy(tmp_path, capsys, monkeypa
     assert sbp["concurrent_exposures"] == [{"plan_item": "I2", "label_zh": "工作日晚饭少放盐", "status": "adopted",
                                             "adopted_at": "2026-03-02", "cumulative_in_window": 9, "cumulative_total": 9}]
     assert [(t["analyte"], t["kind"]) for t in ser["transitions"]] == [("glucose", "tendency_expressed")]
+    assert la.main(["review", "trace", str(ws)]) == C.EXIT_BLOCKED       # predictions predate the exposures and the series
+    ok("predict", "response", str(ws))
     # trace, review, report, export
     (ws / "work" / "report").mkdir(parents=True, exist_ok=True)
     (ws / "work" / "report" / "summary.md").write_text("{{r:accelerated-biological-aging-risk.phenoage|label}}为 "
@@ -238,14 +240,15 @@ def test_chain_export_v2_series_exposures_and_privacy(tmp_path, capsys, monkeypa
     assert ex["concordance_note_zh"] == "基因分值只能解释这一项差异的一部分。"
     assert ex["concordance_transitions"][0]["kind"] == "tendency_expressed" and ex["identity_alerts"]
     assert [s["id"] for s in ex["surveillance"]] == ["SV1", "SV2"]
-    assert ex["predictions"] == [] and ex["diagnoses"] == [] and ex["medications"] == []
+    assert [(p["plan_item"], p["label"]["basis_kind"]) for p in ex["predictions"]] == [("I2", "statistical_model")]
+    assert ex["diagnoses"] == [] and ex["medications"] == []
     rts = {r["item"]: r for r in ex["retests"]}
     assert rts["I1"]["judgeable"] is False and rts["I1"]["reason"] == "intervention"
     assert rts["I1"]["due_at"] == "2027-09-09T00:00:00+08:00"                     # sample date + 52 weeks, China time
     assert rts["I2"]["id"] == "I2" and rts["I2"]["marker"] == "收缩压" and rts["SV1"]["marker"] == "空腹血糖"
     assert ex["concordance"][0]["transition"] == {"from": "latent", "to": "concordant_adverse", "observed_at": "2026-09-10",
                                                   "kind": "tendency_expressed"}
-    assert {x["source_item"]: x["targets"] for x in ex["plan"]["items"]} == {"I1": ["epiage.dnam_phenoage"], "I2": ["收缩压"]}
+    assert {x["source_item"]: x["targets"] for x in ex["plan"]["items"]} == {"I1": ["epiage.dnam_stoch"], "I2": ["收缩压"]}
     assert rts["SV1"]["reason"] == "genetic" and rts["SV1"]["judgeable"] is True and "SV2" not in rts
     capsys.readouterr()
     ok("export", str(ws))
