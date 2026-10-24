@@ -194,6 +194,12 @@ def run(st: Dict[str, Any], ws: Path, absent_as_ref: Optional[str] = None) -> Di
     if (st["member"].get("answers") or {}).get("genetic_disclosure") != "yes":
         return _not_run(ws, "consent")
     variants = methods.pick(st, "variants")
+    if not variants and genomics.reused_germline(ws, "pgx.json"):
+        doc = load_json(genomics.reused_germline(ws, "pgx.json"))      # germline does not change (WS-I.1)
+        doc.update(reused_from=load_json(ws / "work" / "reuse" / "germline.json").get("from"), reused_at=now_iso(),
+                   reuse_note_zh="用药基因沿用上一次的结果；当时登记的在用药物可能与现在不同，请把现在用的药告诉医生。")
+        write_json(ws / "work" / "pgx" / "pgx.json", doc)
+        return doc
     if not variants:
         return _not_run(ws, "no_vcf")
     asm = genomics._assembly(st)

@@ -161,3 +161,26 @@ def test_report_section_uses_fixed_wordings_and_refuses_edits(tmp_path):
     with pytest.raises(C.LAError, match="not written by la.py"):
         report_genomics.sections(ws, {"st": st})
     assert report_genomics.sections(ws, {"st": dict(st, insights={})}) == []          # unregistered: not rendered
+
+
+def test_reused_germline_without_vcf_relabels_with_this_visits_labs(tmp_path, monkeypatch):
+    ws = tmp_path / "ws"
+    g = ws / "work" / "reuse" / "germline"
+    C.write_json(g / "genotype_phenotype.json", {"generated_at": "2025-09-01T10:00:00", "analytes": {
+        "urate": dict(_res("in_range", 88), coverage=0.9, loci_called=12), "ldl": _res("in_range", 50)}})
+    C.write_json(g / "fingerprint.json", {"schema": "la-fingerprint/1", "sites": 1, "sha256": "x", "calls": {"rs1": "AA"}})
+    C.write_json(ws / "work" / "reuse" / "germline.json", {"from": "/prev/ws", "reused": True, "files": {
+        n: C.sha256_file(g / n, limit=None) for n in ("genotype_phenotype.json", "fingerprint.json")}})
+    from lalib import methods
+    monkeypatch.setattr(methods, "pick", lambda st, k: None)
+    monkeypatch.setattr(genomics, "member_labs", lambda st: {"urate": {"flag": "high", "value": 500}})
+    st = {"member": {"answers": {"genetic_disclosure": "yes"}}}
+    res = genomics.explain(st, ws)
+    assert res["reused_from"] == "/prev/ws" and [r["id"] for r in res["readouts"]] == ["gen.urate.grs_pct"]
+    doc, _ = genomics.write_concordance(ws)
+    assert [(x["analyte"], x["class"]) for x in doc["items"]] == [("urate", "concordant_adverse")]   # latent -> expressed
+    assert doc["retrieved_on"] == "2025-09-01"                                  # public data as retrieved then
+    assert C.load_json(ws / "work" / "insights" / "fingerprint.json")["calls"] == {"rs1": "AA"}
+    (g / "genotype_phenotype.json").write_text("{}")                                # tampered copy is not reused
+    with pytest.raises(C.LAError, match="no usable VCF"):
+        genomics.explain(st, ws)

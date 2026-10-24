@@ -84,6 +84,8 @@ def pgx_section(doc: Dict[str, Any]) -> List[str]:
         return [_cell(doc.get("reason_zh") or "用药基因没有分析。")]
     L = ["> 下面是按 CPIC（临床药物基因组学实施联盟）指南对照的结果。用药、换药、调剂量都要由开药的医生或药师决定，"
          "请把这一节给他们看；不要自己停药或改药。", ""]
+    if doc.get("reuse_note_zh"):
+        L += [f"> {_cell(doc['reuse_note_zh'])}", ""]
     if doc.get("cpic_text") != "included":
         L += [f"> {_cell(doc.get('cpic_text_gap_zh'))}", ""]
     if not doc.get("results"):

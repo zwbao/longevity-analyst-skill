@@ -177,3 +177,14 @@ def test_cli_insights_pgx_registers_readouts(tmp_path, capsys):
     assert st["insights"]["files"]["pgx.json"] == C.sha256_file(root / "work" / "pgx" / "pgx.json", limit=None)
     ro = {r["id"]: r for r in C.load_json(root / "work" / "insights" / "insight_readouts.json")["readouts"]}
     assert ro["pgx.slco1b1.phenotype"]["kind"] == "pgx" and ro["pgx.slco1b1.phenotype"]["group"] == "pgx"
+
+
+def test_reused_pgx_when_no_vcf(tmp_path):
+    st, ws = _st(tmp_path, vcf=None)
+    g = ws / "work" / "reuse" / "germline"
+    C.write_json(g / "pgx.json", {"schema": "la-pgx/1", "status": "ran", "results": [{"gene": "SLCO1B1", "phenotype": "Decreased Function", "drugs": []}], "nutrigenetic": []})
+    C.write_json(ws / "work" / "reuse" / "germline.json", {"from": "/prev", "reused": True, "files": {"pgx.json": C.sha256_file(g / "pgx.json", limit=None)}})
+    doc = pgx.run(st, ws)
+    assert doc["status"] == "ran" and doc["reused_from"] == "/prev" and doc["reuse_note_zh"]
+    st["member"]["answers"]["genetic_disclosure"] = "no"
+    assert pgx.run(st, ws)["status"] == "not_run"                                  # consent still comes first

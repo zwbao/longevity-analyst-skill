@@ -450,6 +450,8 @@ def explain(st: Dict[str, Any], ws: Path, absent_as_ref: Optional[str] = None) -
         raise LAError("--absent-as-ref needs the reason (what says this VCF lists every non-reference site)", EXIT_INPUT)
     from .methods import pick
     variants = pick(st, "variants")
+    if not variants and reused_germline(ws, "genotype_phenotype.json"):
+        return explain_reused(st, ws)
     if not variants:
         raise LAError("no usable VCF for this member (intake, identity, primary)", EXIT_INPUT)
     tm = data("trait_map.json")
@@ -761,3 +763,45 @@ def write_concordance(ws: Path) -> Tuple[Dict[str, Any], List[Dict[str, Any]]]:
              "near_band_edge": x["near_band_edge"], "systems": []}
             for x in doc["items"] if x["class"] in CLASS_ZH or x["class"] == "clinvar_override"]
     return doc, rows
+
+
+# ------------------------------------------------------------------ germline reuse (WS-I.1, core writes the manifest)
+def reused_germline(ws: Path, name: str) -> Optional[Path]:
+    """A file core copied into work/reuse/germline/ (manifest work/reuse/germline.json), only while its hash matches."""
+    mp = ws / "work" / "reuse" / "germline.json"
+    if not mp.exists():
+        return None
+    from .common import sha256_file
+    m = load_json(mp)
+    p = ws / "work" / "reuse" / "germline" / name
+    sha = (m.get("files") or {}).get(name)
+    return p if m.get("reused") and sha and p.exists() and sha256_file(p, limit=None) == sha else None
+
+
+def explain_reused(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
+    """No VCF this visit: the genotype side (percentiles, ClinVar scan) comes from the reused earlier result; the lab
+    side is this visit's labs. An analyte with no earlier genetic result stays out (nothing is recomputed from memory)."""
+    src = reused_germline(ws, "genotype_phenotype.json")
+    old = load_json(src)
+    labs = member_labs(st)
+    results, readouts = {}, []
+    for key, res in (old.get("analytes") or {}).items():
+        if key not in labs:
+            continue
+        res = dict(res, member_lab=labs[key])
+        results[key] = res
+        a = data("trait_map.json")["analytes"].get(key, {})
+        if res.get("pct_eas") is not None:
+            readouts.append({"id": f"gen.{key}.grs_pct", "label_zh": f"{a.get('label_zh', key)}遗传倾向（东亚人群百分位）", "value": res["pct_eas"],
+                             "unit": "%", "kind": "genetic_score", "method": "native.genotype_phenotype", "analyte": key,
+                             "coverage_pct": round(100 * (res.get("coverage") or 0), 1), "loci": res.get("loci_called"),
+                             "reused_from": str(src), "systems": []})
+    out = dict(old, analytes=results, reused_from=load_json(ws / "work" / "reuse" / "germline.json").get("from"), relabelled_at=now_iso())
+    p = ws / "work" / "insights" / "genotype_phenotype.json"
+    write_json(p, out)
+    fp = reused_germline(ws, "fingerprint.json")
+    if fp:
+        write_json(ws / "work" / "insights" / "fingerprint.json", load_json(fp))
+    return {"path": str(p), "reused_from": out["reused_from"],
+            "analytes": {k: {"flag": v["member_lab"]["flag"], "pct_eas": v.get("pct_eas")} for k, v in results.items()},
+            "readouts": readouts}
