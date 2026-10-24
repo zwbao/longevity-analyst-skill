@@ -169,9 +169,11 @@ def item_text(kind: str, it: Dict[str, Any]) -> str:
         body = (f"下次实验能测出有利变化的概率{_about(it['p_detect_favorable'])}，"
                 f"真实效应方向有利的概率{_about(it['p_true_favorable'])}，预计变化的 80% 区间 {_pct(lo)} 到 {_pct(hi)}。")
         if own and prior:
-            # the trials alone first; the figure that also counts the member's uncontrolled before/after comes second
+            # the trials alone are the answer; the uncontrolled before/after only shifts the expected size, and no
+            # "true effect" probability is printed from it (it would read the concurrent change as the cause)
             return (f"{head}：按前后各测 {d.get('repeats_each_side')} 次的设计，{prior}。"
-                    f"如果把你自己那次没有对照的前后对比也算进去：{body}{PERSONAL_ZH}")
+                    f"如果假定你自己那次没有对照的前后对比全部来自这项干预：下次能测出有利变化的概率{_about(it['p_detect_favorable'])}，"
+                    f"预计变化的 80% 区间 {_pct(lo)} 到 {_pct(hi)}。{PERSONAL_ZH}")
         return f"{head}：按前后各测 {d.get('repeats_each_side')} 次的设计，{body}" + (PERSONAL_ZH if own else "")
     if kind == "dx":
         g = it["label"].get("guideline_zh")

@@ -92,8 +92,9 @@ def build(ws: Path, export_path: Path) -> List[Dict[str, Any]]:
             continue
         tag = lab["label_zh"]
         nums = []
+        own = any(x.get("type") == "personal_experiment" for x in lab.get("sources") or [])
         for k, u in (("p_detect_favorable", "概率"), ("p_true_favorable", "概率"), ("interval_80_pct", "%"), ("expected_change_pct", "%")):
-            if p.get(k) is not None:
+            if p.get(k) is not None and not (own and k == "p_true_favorable"):     # see labels.item_text
                 nums.append(_num(f"{ref}.{k}", p[k], u, tag))
         card(f"pred-{p.get('id')}", "prediction", f"{p.get('intervention_zh')}对{p.get('marker')}：有多大可能有用",
              L.item_text("p", p), nums, lab, plan_item=p.get("plan_item"))
@@ -141,10 +142,12 @@ def build(ws: Path, export_path: Path) -> List[Dict[str, Any]]:
                     **({"url": f"https://doi.org/{ss['doi']}" if ss.get("doi") else ss["url"]} if ss.get("doi") or ss.get("url") else {}),
                     **({"quote": ss["quote"]} if ss.get("quote") else {})}] \
             if (ss.get("doi") or ss.get("url") or ss.get("title")) else [{"type": "rule", "ref": ",".join(s.get("rule_ids") or []) or str(s.get("id"))}]
-        lab = L.make_label("guideline_recommendation", sources, guideline_zh=ss.get("title")) if ss.get("title") \
-            else L.make_label("measurement", sources)
-        nums = [_num(f"{ref}.interval_weeks", s["interval_weeks"], "周", lab["label_zh"])] if isinstance(s.get("interval_weeks"), (int, float)) else []
-        card(f"surv-{s.get('id') or s.get('marker')}", "surveillance", f"定期查：{s.get('marker')}",
+        # a guideline rule carries its guideline label; a retest the plan chose is a plan date (no label, as retest_due)
+        lab = L.make_label("guideline_recommendation", sources, guideline_zh=ss.get("title")) if ss.get("title") else None
+        nums = [_num(f"{ref}.interval_weeks", s["interval_weeks"], "周", lab["label_zh"] if lab else "方案")] \
+            if isinstance(s.get("interval_weeks"), (int, float)) else []
+        card(f"surv-{s.get('id') or s.get('marker')}", "surveillance",
+             f"{'测一次就够' if s.get('once') else '定期查'}：{s.get('marker')}",
              s.get("note_zh") or ("查一次就够。" if s.get("once") else "按计划定期复查。"), nums, lab, once=s.get("once"), done=s.get("done"))
     return cards
 
@@ -168,7 +171,8 @@ def verify(cards: List[Dict[str, Any]], export_path: Path, ws: Path) -> List[str
     for c in cards:
         if c.get("source", {}).get("sha256") != sha:
             bad.append(f"{c['id']}: not made from this export")
-        if c["kind"] != "retest_due" and L.label_problems(c.get("label")):
+        if not (c["kind"] == "retest_due" or (c["kind"] == "surveillance" and c.get("label") is None)) \
+                and L.label_problems(c.get("label")):
             bad.append(f"{c['id']}: label problems {L.label_problems(c.get('label'))}")
         for n in c.get("numbers", []):
             try:

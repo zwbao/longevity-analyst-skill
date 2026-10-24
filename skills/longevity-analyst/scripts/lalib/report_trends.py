@@ -178,6 +178,7 @@ def sections(ws_root: Path, ctx: Dict[str, Any]) -> List[Tuple[str, str]]:
 
 DOCTOR_TITLE = "问医生的单子"
 DOCTOR_INTRO_ZH = "下次看医生时，请带上这几项（报告里说“列入问医生的单子”的，都在这里）："
+BP_DOCTOR_ZH = "血压：这份报告没有按诊断标准核对血压，请医生结合你的诊室和家庭血压记录评估"
 FLAG_ZH = {"high": "高于参考范围", "low": "低于参考范围"}
 
 
@@ -193,6 +194,8 @@ def doctor_list(ws: Path, ser: Dict[str, Any]) -> List[str]:
     for m in ser.get("markers") or []:
         if ask_doctor(m):
             out.append(f"{m['marker']}：{wording(m)}")
+    if any(m.get("marker_key") in ("sbp", "dbp") and len(m.get("points") or []) > 1 for m in ser.get("markers") or []):
+        out.append(BP_DOCTOR_ZH)                      # no blood-pressure diagnostic rule is checked here: say so, every time
     sp = ws / "state.json"
     if sp.exists():                                   # any confirmed lab of this visit outside its printed range
         from .genomics import _ref_bounds

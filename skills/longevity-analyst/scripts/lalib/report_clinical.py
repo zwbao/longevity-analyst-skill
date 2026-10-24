@@ -5,6 +5,7 @@ organ table's AI column. Called by report.py's section hook: sections(ws_root, c
 """
 from __future__ import annotations
 
+import re
 from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
@@ -21,6 +22,15 @@ SET_ZH = {"cn": "中国指南", "ada": "美国糖尿病协会（ADA）标准"}
 def _cell(x: Any) -> str:
     from .report import _cell as c
     return c(x)
+
+
+def _true_cell(x: Dict[str, Any]) -> str:
+    """With an uncontrolled personal before/after in the model, the 'true effect' figure is the trials-only one."""
+    if any(s.get("type") == "personal_experiment" for s in x["label"].get("sources") or []):
+        prior = next((a for a in x["label"].get("assumptions") or [] if a.startswith("只按研究结果")), "")
+        m = re.search(r"真实效应方向有利的概率(约 \d+%|超过 99%|不到 1%)", prior)
+        return f"{m.group(1)}（只按研究结果）" if m else "—（见下方说明）"
+    return L._about(x["p_true_favorable"])
 
 
 def _p(x: Any) -> str:
@@ -51,7 +61,7 @@ def predictions(ws: Path) -> List[str]:
         for x in stat:
             lo, hi = x["interval_80_pct"]
             out.append(f"| {_cell(x.get('plan_item'))} | {_cell(x['intervention_zh'])} | {_cell(x['marker'])} | "
-                       f"{L._about(x['p_detect_favorable'])}（前后各测 {x['design']['repeats_each_side']} 次） | {L._about(x['p_true_favorable'])} | "
+                       f"{L._about(x['p_detect_favorable'])}（前后各测 {x['design']['repeats_each_side']} 次） | {_true_cell(x)} | "
                        f"{lo:.1f}% 到 {hi:.1f}% | {L.render_label(x['label'])} | {_src(x['label'])} |")
         out.append("")
         assum = []

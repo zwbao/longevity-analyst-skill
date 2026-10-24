@@ -509,7 +509,7 @@ def test_full_chain_case_c(tmp_path, capsys, case_c_net):
     md = (v4 / "deliver" / "report.md").read_text()
     assert "{{" not in md and "## 复测对比与趋势" in md and "做饭用限盐勺" in md and "约 超过" not in md
     doctor = md.split("## 问医生的单子")[1].split("\n## ")[0]
-    assert "尿酸" in doctor and "空腹血糖受损" not in doctor and "只按研究结果、不算你自己的前后对比时" in md
+    assert "尿酸" in doctor and "血压" in doctor and "空腹血糖受损" not in doctor and "只按研究结果、不算你自己的前后对比时" in md
     assert "已核对、未达到标准：空腹血糖受损" in md
     assert "不报告" in md and "LinAge" not in md.split("## 本期没有给出结果的项目")[0]       # mostly-missing LinAge withheld
     ex = json.loads((v4 / "deliver" / "la-export.json").read_text())

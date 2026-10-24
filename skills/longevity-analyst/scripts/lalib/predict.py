@@ -212,6 +212,11 @@ def _sha(p: Path) -> Optional[str]:
 
 
 # ------------------------------------------------------------ predict response
+def _clip(x: float) -> float:
+    """A model probability is never printed as certain: 0.001 to 0.999."""
+    return min(0.999, max(0.001, round(x, 3)))
+
+
 def predict_item(item: Dict[str, Any], row: Dict[str, Any], marker: Dict[str, Any], base: Dict[str, Any], k: int, z: float,
                  exp: Optional[Dict[str, Any]], personal: List[Dict[str, Any]], planned_per_week: float, today: str,
                  pid: str) -> Dict[str, Any]:
@@ -240,7 +245,7 @@ def predict_item(item: Dict[str, Any], row: Dict[str, Any], marker: Dict[str, An
     return {"schema": "la-prediction/1", "id": pid, "plan_item": item["id"], "intervention_zh": row.get("intervention_zh") or item["action_zh"],
             "marker": marker.get("label_zh") or marker["key"],
             "design": {"repeats_each_side": k, "weeks": (item.get("retest") or {}).get("after_weeks"), "adherence": round(a, 3)},
-            "p_detect_favorable": round(res["p_detect_favorable"], 3), "p_true_favorable": round(res["p_true_favorable"], 3),
+            "p_detect_favorable": _clip(res["p_detect_favorable"]), "p_true_favorable": _clip(res["p_true_favorable"]),
             "expected_change_pct": round(res["expected_change_pct"], 1), "interval_80_pct": iv, "label": label}, \
         {"marker_key": marker["key"], "baseline": {"value": base["value"], "unit": marker["unit"], "from": base["from"], "marker": base["marker"]},
          "model": {k_: round(v, 4) for k_, v in res.items() if isinstance(v, float)}}
