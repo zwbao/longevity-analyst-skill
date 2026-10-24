@@ -1,0 +1,16 @@
+{
+  "source": "ensembl",
+  "query": "gene:GRCh38:LDLR",
+  "url": "https://rest.ensembl.org/lookup/symbol/homo_sapiens/LDLR?content-type=application/json",
+  "retrieved_at": "2026-10-24T16:05:09+08:00",
+  "records": [
+    {
+      "ref": "ensembl:ENSG00000130164",
+      "symbol": "LDLR",
+      "chrom": "19",
+      "start": 11089418,
+      "end": 11133830,
+      "assembly": "GRCh38"
+    }
+  ]
+}

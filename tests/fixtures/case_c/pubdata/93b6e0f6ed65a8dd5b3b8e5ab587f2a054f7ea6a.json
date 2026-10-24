@@ -1,0 +1,3417 @@
+{
+  "source": "gwas",
+  "query": "trait:EFO_0004761:5e-08",
+  "url": "https://www.ebi.ac.uk/gwas/rest/api/v2/associations?efo_id=EFO_0004761&size=100&sort=p_value&direction=asc",
+  "retrieved_at": "2026-10-24T16:05:59+08:00",
+  "records": [
+    {
+      "ref": "gwas:GCST90018977:rs62294282-G",
+      "rsid": "rs62294282",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.3013 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "SLC2A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018757:rs121907892-A",
+      "rsid": "rs121907892",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "1.16285 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018757",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "SLC22A12"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs121907892-A",
+      "rsid": "rs121907892",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "1.1626 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "SLC22A12"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90444429:rs121907892-A",
+      "rsid": "rs121907892",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "1.1638 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90444429",
+      "pubmed_id": "39702642",
+      "mapped_genes": [
+        "SLC22A12"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels (1KG-JEWEL7K)"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs45499402-C",
+      "rsid": "rs45499402",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "0.1462 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "ABCG2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs7677939-G",
+      "rsid": "rs7677939",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.12677 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "SLC2A9",
+        "SLC2A9-AS1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs4148157-A",
+      "rsid": "rs4148157",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "0.139878 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "ABCG2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007733:rs505802-T",
+      "rsid": "rs505802",
+      "effect_allele": "T",
+      "p_value": 1e-300,
+      "beta_text": "0.1974 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST007733",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "SLC22A11",
+        "SLC22A12"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007725:rs57633992-A",
+      "rsid": "rs57633992",
+      "effect_allele": "A",
+      "p_value": 1e-300,
+      "beta_text": "0.668 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST007725",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "NRXN2",
+        "NRXN2-AS1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007733:rs3775948-C",
+      "rsid": "rs3775948",
+      "effect_allele": "C",
+      "p_value": 1e-300,
+      "beta_text": "0.25714287 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST007733",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "SLC2A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs2762353-G",
+      "rsid": "rs2762353",
+      "effect_allele": "G",
+      "p_value": 7.000000000000001e-276,
+      "beta_text": "0.0668 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "SLC17A1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018757:rs3775948-C",
+      "rsid": "rs3775948",
+      "effect_allele": "C",
+      "p_value": 4.0000000000000002e-227,
+      "beta_text": "0.112921 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018757",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "SLC2A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007725:rs7679724-T",
+      "rsid": "rs7679724",
+      "effect_allele": "T",
+      "p_value": 2e-224,
+      "beta_text": "0.13 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST007725",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "SLC2A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007733:rs3775948-C",
+      "rsid": "rs3775948",
+      "effect_allele": "C",
+      "p_value": 4e-218,
+      "beta_text": "0.1269 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST007733",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "SLC2A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90837316:rs3775946-G",
+      "rsid": "rs3775946",
+      "effect_allele": "G",
+      "p_value": 3e-204,
+      "beta_text": "0.2081 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90837316",
+      "pubmed_id": "42509370",
+      "mapped_genes": [
+        "SLC2A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid in pregnancy"
+    },
+    {
+      "ref": "gwas:GCST000418:rs734553-T",
+      "rsid": "rs734553",
+      "effect_allele": "T",
+      "p_value": 9.999999999999999e-193,
+      "beta_text": "0.4 mg/dl increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST000418",
+      "pubmed_id": "19503597",
+      "mapped_genes": [
+        "SLC2A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018757:rs2231142-T",
+      "rsid": "rs2231142",
+      "effect_allele": "T",
+      "p_value": 9.999999999999999e-185,
+      "beta_text": "0.110289 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018757",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "ABCG2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90104168:rs12190789-A",
+      "rsid": "rs12190789",
+      "effect_allele": "A",
+      "p_value": 1.9999999999999999e-184,
+      "beta_text": "1.91945 mg/dL increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90104168",
+      "pubmed_id": "35121771",
+      "mapped_genes": [
+        "LINC02828"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90444429:rs3775948-G",
+      "rsid": "rs3775948",
+      "effect_allele": "G",
+      "p_value": 6e-173,
+      "beta_text": "0.1213 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90444429",
+      "pubmed_id": "39702642",
+      "mapped_genes": [
+        "SLC2A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels (1KG-JEWEL7K)"
+    },
+    {
+      "ref": "gwas:GCST007725:rs4148155-A",
+      "rsid": "rs4148155",
+      "effect_allele": "A",
+      "p_value": 2e-149,
+      "beta_text": "0.115 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST007725",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "ABCG2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007733:rs2199936-A",
+      "rsid": "rs2199936",
+      "effect_allele": "A",
+      "p_value": 1e-148,
+      "beta_text": "0.1145 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST007733",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "ABCG2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs1260326-C",
+      "rsid": "rs1260326",
+      "effect_allele": "C",
+      "p_value": 2e-136,
+      "beta_text": "0.0445 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "GCKR"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90104168:rs117925626-C",
+      "rsid": "rs117925626",
+      "effect_allele": "C",
+      "p_value": 2e-129,
+      "beta_text": "1.3691 mg/dL increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90104168",
+      "pubmed_id": "35121771",
+      "mapped_genes": [
+        "MAP4K2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007733:rs2199936-A",
+      "rsid": "rs2199936",
+      "effect_allele": "A",
+      "p_value": 5e-128,
+      "beta_text": "0.16428572 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST007733",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "ABCG2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90444429:rs4148155-G",
+      "rsid": "rs4148155",
+      "effect_allele": "G",
+      "p_value": 2e-122,
+      "beta_text": "0.1123 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90444429",
+      "pubmed_id": "39702642",
+      "mapped_genes": [
+        "ABCG2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels (1KG-JEWEL7K)"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs1171614-C",
+      "rsid": "rs1171614",
+      "effect_allele": "C",
+      "p_value": 2e-120,
+      "beta_text": "0.0563 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "SLC16A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs1165196-G",
+      "rsid": "rs1165196",
+      "effect_allele": "G",
+      "p_value": 1e-105,
+      "beta_text": "0.0928288 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "SLC17A1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs10910845-C",
+      "rsid": "rs10910845",
+      "effect_allele": "C",
+      "p_value": 4e-101,
+      "beta_text": "0.0415 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "CD160",
+        "PDZK1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs2229357-A",
+      "rsid": "rs2229357",
+      "effect_allele": "A",
+      "p_value": 1e-90,
+      "beta_text": "0.0449 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "INHBC"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs11264341-T",
+      "rsid": "rs11264341",
+      "effect_allele": "T",
+      "p_value": 2e-82,
+      "beta_text": "0.0352 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "TRIM46"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST001269:rs734553-T",
+      "rsid": "rs734553",
+      "effect_allele": "T",
+      "p_value": 1e-80,
+      "beta_text": "0.24 s.d. increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST001269",
+      "pubmed_id": "21983786",
+      "mapped_genes": [
+        "SLC2A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs9895661-C",
+      "rsid": "rs9895661",
+      "effect_allele": "C",
+      "p_value": 7e-78,
+      "beta_text": "0.0555049 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "BCAS3",
+        "TBX2-AS1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs1260326-C",
+      "rsid": "rs1260326",
+      "effect_allele": "C",
+      "p_value": 8e-75,
+      "beta_text": "0.0545492 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "GCKR"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90837316:rs6838317-C",
+      "rsid": "rs6838317",
+      "effect_allele": "C",
+      "p_value": 5e-73,
+      "beta_text": "0.1498 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90837316",
+      "pubmed_id": "42509370",
+      "mapped_genes": [
+        "SLC2A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid in pregnancy"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs2941484-T",
+      "rsid": "rs2941484",
+      "effect_allele": "T",
+      "p_value": 1e-71,
+      "beta_text": "0.0318 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "HNF4G"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST001247:rs7671266-T",
+      "rsid": "rs7671266",
+      "effect_allele": "T",
+      "p_value": 8.999999999999999e-71,
+      "beta_text": "0.305 umol/l decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST001247",
+      "pubmed_id": "21943158",
+      "mapped_genes": [
+        "SLC2A9",
+        "SLC2A9-AS1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Cardiovascular disease risk factors"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs4966019-T",
+      "rsid": "rs4966019",
+      "effect_allele": "T",
+      "p_value": 1e-70,
+      "beta_text": "0.0323 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "IGF1R"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs671-A",
+      "rsid": "rs671",
+      "effect_allele": "A",
+      "p_value": 7e-69,
+      "beta_text": "0.0718 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "ALDH2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018757:rs671-A",
+      "rsid": "rs671",
+      "effect_allele": "A",
+      "p_value": 8e-69,
+      "beta_text": "0.0718278 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018757",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "ALDH2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs10994860-T",
+      "rsid": "rs10994860",
+      "effect_allele": "T",
+      "p_value": 8e-67,
+      "beta_text": "0.0437 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "A1CF"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007733:rs1165178-A",
+      "rsid": "rs1165178",
+      "effect_allele": "A",
+      "p_value": 3e-66,
+      "beta_text": "0.065714285 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST007733",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "SLC17A1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST001608:rs3775948-C",
+      "rsid": "rs3775948",
+      "effect_allele": "C",
+      "p_value": 2e-65,
+      "beta_text": "0.1786 mg/dl increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST001608",
+      "pubmed_id": "22797727",
+      "mapped_genes": [
+        "SLC2A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Renal function-related traits (urate)"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs2581824-A",
+      "rsid": "rs2581824",
+      "effect_allele": "A",
+      "p_value": 4.9999999999999997e-64,
+      "beta_text": "0.03 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "SFMBT1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST008445:rs3775948-G",
+      "rsid": "rs3775948",
+      "effect_allele": "G",
+      "p_value": 8e-64,
+      "beta_text": "0.4 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST008445",
+      "pubmed_id": "31207883",
+      "mapped_genes": [
+        "SLC2A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST001608:rs504915-T",
+      "rsid": "rs504915",
+      "effect_allele": "T",
+      "p_value": 3.0000000000000003e-63,
+      "beta_text": "0.2251 mg/dl increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST001608",
+      "pubmed_id": "22797727",
+      "mapped_genes": [
+        "NRXN2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Renal function-related traits (urate)"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs11243143-A",
+      "rsid": "rs11243143",
+      "effect_allele": "A",
+      "p_value": 5e-63,
+      "beta_text": "0.0353 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "RREB1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90104168:rs183467134-A",
+      "rsid": "rs183467134",
+      "effect_allele": "A",
+      "p_value": 3e-61,
+      "beta_text": "1.07665 mg/dL increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90104168",
+      "pubmed_id": "35121771",
+      "mapped_genes": [
+        "CAPN1-AS1",
+        "PGAM1P8"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90104168:rs149687471-A",
+      "rsid": "rs149687471",
+      "effect_allele": "A",
+      "p_value": 6e-61,
+      "beta_text": "1.03416 mg/dL increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90104168",
+      "pubmed_id": "35121771",
+      "mapped_genes": [
+        "ARL2",
+        "BATF2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90837316:rs74544177-G",
+      "rsid": "rs74544177",
+      "effect_allele": "G",
+      "p_value": 5.999999999999999e-60,
+      "beta_text": "0.2158 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90837316",
+      "pubmed_id": "42509370",
+      "mapped_genes": [],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid in pregnancy"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs13230509-C",
+      "rsid": "rs13230509",
+      "effect_allele": "C",
+      "p_value": 3e-58,
+      "beta_text": "0.0314 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "MICALL2",
+        "UNCX"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs4886755-G",
+      "rsid": "rs4886755",
+      "effect_allele": "G",
+      "p_value": 3e-57,
+      "beta_text": "0.0285 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "NRG4"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007725:rs79105258-A",
+      "rsid": "rs79105258",
+      "effect_allele": "A",
+      "p_value": 2e-56,
+      "beta_text": "0.078 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST007725",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "CUX2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs17632159-C",
+      "rsid": "rs17632159",
+      "effect_allele": "C",
+      "p_value": 3e-54,
+      "beta_text": "0.0299 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "TMEM171",
+        "TMEM174"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs9421581-A",
+      "rsid": "rs9421581",
+      "effect_allele": "A",
+      "p_value": 3e-54,
+      "beta_text": "0.0478106 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "GLUD1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST010512:rs121907892-A",
+      "rsid": "rs121907892",
+      "effect_allele": "A",
+      "p_value": 7.000000000000001e-54,
+      "beta_text": "1.1511 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST010512",
+      "pubmed_id": "32514006",
+      "mapped_genes": [
+        "SLC22A12"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90444429:rs671-A",
+      "rsid": "rs671",
+      "effect_allele": "A",
+      "p_value": 5e-53,
+      "beta_text": "0.0836 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90444429",
+      "pubmed_id": "39702642",
+      "mapped_genes": [
+        "ALDH2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels (1KG-JEWEL7K)"
+    },
+    {
+      "ref": "gwas:GCST001247:rs4698036-G",
+      "rsid": "rs4698036",
+      "effect_allele": "G",
+      "p_value": 2e-52,
+      "beta_text": "0.257 umol/l decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST001247",
+      "pubmed_id": "21943158",
+      "mapped_genes": [
+        "RAF1P1",
+        "ZNF518B"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Cardiovascular disease risk factors"
+    },
+    {
+      "ref": "gwas:GCST010512:rs117925626-T",
+      "rsid": "rs117925626",
+      "effect_allele": "T",
+      "p_value": 3e-52,
+      "beta_text": "1.1051 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST010512",
+      "pubmed_id": "32514006",
+      "mapped_genes": [
+        "MAP4K2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs1317983-C",
+      "rsid": "rs1317983",
+      "effect_allele": "C",
+      "p_value": 3e-50,
+      "beta_text": "0.0304 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "LINC02537",
+        "VEGFA"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs13247874-T",
+      "rsid": "rs13247874",
+      "effect_allele": "T",
+      "p_value": 2e-49,
+      "beta_text": "0.0345 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "MLXIPL"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007733:rs1260326-T",
+      "rsid": "rs1260326",
+      "effect_allele": "T",
+      "p_value": 3e-45,
+      "beta_text": "0.055 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST007733",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "GCKR"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018757:rs1165195-G",
+      "rsid": "rs1165195",
+      "effect_allele": "G",
+      "p_value": 4.999999999999999e-44,
+      "beta_text": "0.0663006 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018757",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "SLC17A1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs7224610-A",
+      "rsid": "rs7224610",
+      "effect_allele": "A",
+      "p_value": 7e-44,
+      "beta_text": "0.0265 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "HLF"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs4575545-A",
+      "rsid": "rs4575545",
+      "effect_allele": "A",
+      "p_value": 2e-43,
+      "beta_text": "0.0267 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "LINC01229",
+        "MAFTRR"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs963837-C",
+      "rsid": "rs963837",
+      "effect_allele": "C",
+      "p_value": 5e-43,
+      "beta_text": "0.0245 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "DCDC1",
+        "MPPED2-AS1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST006905:rs7678287-A",
+      "rsid": "rs7678287",
+      "effect_allele": "A",
+      "p_value": 2e-42,
+      "beta_text": "0.47 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST006905",
+      "pubmed_id": "30305239",
+      "mapped_genes": [
+        "SLC2A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST002355:rs2231142-T",
+      "rsid": "rs2231142",
+      "effect_allele": "T",
+      "p_value": 3e-42,
+      "beta_text": "0.045 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST002355",
+      "pubmed_id": "24513273",
+      "mapped_genes": [
+        "ABCG2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST010512:rs184521656-T",
+      "rsid": "rs184521656",
+      "effect_allele": "T",
+      "p_value": 1e-41,
+      "beta_text": "1.1107 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST010512",
+      "pubmed_id": "32514006",
+      "mapped_genes": [
+        "FRMD8"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST000418:rs734553-T",
+      "rsid": "rs734553",
+      "effect_allele": "T",
+      "p_value": 1e-41,
+      "beta_text": "0.22 mg/dl increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST000418",
+      "pubmed_id": "19503597",
+      "mapped_genes": [
+        "SLC2A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs1047891-A",
+      "rsid": "rs1047891",
+      "effect_allele": "A",
+      "p_value": 2e-41,
+      "beta_text": "0.0271 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "CPS1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90837316:rs45499402-C",
+      "rsid": "rs45499402",
+      "effect_allele": "C",
+      "p_value": 2e-41,
+      "beta_text": "0.1186 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90837316",
+      "pubmed_id": "42509370",
+      "mapped_genes": [
+        "ABCG2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid in pregnancy"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs16856823-T",
+      "rsid": "rs16856823",
+      "effect_allele": "T",
+      "p_value": 3e-41,
+      "beta_text": "0.050176 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "LRP2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST010512:rs117897057-T",
+      "rsid": "rs117897057",
+      "effect_allele": "T",
+      "p_value": 1e-40,
+      "beta_text": "1.1089 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST010512",
+      "pubmed_id": "32514006",
+      "mapped_genes": [
+        "MAP3K11"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90837316:rs938564-G",
+      "rsid": "rs938564",
+      "effect_allele": "G",
+      "p_value": 1e-40,
+      "beta_text": "0.3476 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90837316",
+      "pubmed_id": "42509370",
+      "mapped_genes": [
+        "SLC2A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid in pregnancy"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs2075252-C",
+      "rsid": "rs2075252",
+      "effect_allele": "C",
+      "p_value": 2e-40,
+      "beta_text": "0.0261 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "LRP2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007733:rs4766566-T",
+      "rsid": "rs4766566",
+      "effect_allele": "T",
+      "p_value": 6.9999999999999995e-40,
+      "beta_text": "0.0558 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST007733",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "CUX2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs1649068-C",
+      "rsid": "rs1649068",
+      "effect_allele": "C",
+      "p_value": 8e-40,
+      "beta_text": "0.0233 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "BICC1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs2240751-G",
+      "rsid": "rs2240751",
+      "effect_allele": "G",
+      "p_value": 3e-38,
+      "beta_text": "0.0403668 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "MFSD12",
+        "MFSD12-AS1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs1797052-T",
+      "rsid": "rs1797052",
+      "effect_allele": "T",
+      "p_value": 7e-38,
+      "beta_text": "0.0499678 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "PDZK1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs9895661-T",
+      "rsid": "rs9895661",
+      "effect_allele": "T",
+      "p_value": 3e-37,
+      "beta_text": "0.0273 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "BCAS3",
+        "TBX2-AS1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs6679229-A",
+      "rsid": "rs6679229",
+      "effect_allele": "A",
+      "p_value": 2e-35,
+      "beta_text": "0.0368429 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "DNAJC16"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs2941422-T",
+      "rsid": "rs2941422",
+      "effect_allele": "T",
+      "p_value": 5e-35,
+      "beta_text": "0.0368381 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "HNF4G",
+        "RNU2-54P"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs17050272-A",
+      "rsid": "rs17050272",
+      "effect_allele": "A",
+      "p_value": 2e-34,
+      "beta_text": "0.0218 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "LINC01101",
+        "Y_RNA"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs17786744-G",
+      "rsid": "rs17786744",
+      "effect_allele": "G",
+      "p_value": 1e-33,
+      "beta_text": "0.0223 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "RNU1-148P",
+        "STC1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs12908437-T",
+      "rsid": "rs12908437",
+      "effect_allele": "T",
+      "p_value": 2e-33,
+      "beta_text": "0.0357284 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "IGF1R"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs114165349-C",
+      "rsid": "rs114165349",
+      "effect_allele": "C",
+      "p_value": 8e-33,
+      "beta_text": "0.0805 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "ARID1A"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs6464165-C",
+      "rsid": "rs6464165",
+      "effect_allele": "C",
+      "p_value": 4e-32,
+      "beta_text": "0.0267 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "PRKAG2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs62435145-T",
+      "rsid": "rs62435145",
+      "effect_allele": "T",
+      "p_value": 4e-31,
+      "beta_text": "0.0358883 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "MICALL2",
+        "UNCX"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007733:rs505802-T",
+      "rsid": "rs505802",
+      "effect_allele": "T",
+      "p_value": 7.000000000000001e-31,
+      "beta_text": "0.04857143 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST007733",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "SLC22A11",
+        "SLC22A12"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST002355:rs11722228-T",
+      "rsid": "rs11722228",
+      "effect_allele": "T",
+      "p_value": 9e-31,
+      "beta_text": "0.043 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST002355",
+      "pubmed_id": "24513273",
+      "mapped_genes": [
+        "SLC2A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90429179:rs121907892-A",
+      "rsid": "rs121907892",
+      "effect_allele": "A",
+      "p_value": 3.0000000000000003e-30,
+      "beta_text": "1.23539 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90429179",
+      "pubmed_id": "38626723",
+      "mapped_genes": [
+        "SLC22A12"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Urine uric Acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs10429294-T",
+      "rsid": "rs10429294",
+      "effect_allele": "T",
+      "p_value": 4e-30,
+      "beta_text": "0.0205 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "NDUFAF6"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST001608:rs2725220-C",
+      "rsid": "rs2725220",
+      "effect_allele": "C",
+      "p_value": 4e-30,
+      "beta_text": "0.135 mg/dl increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST001608",
+      "pubmed_id": "22797727",
+      "mapped_genes": [
+        "PKD2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Renal function-related traits (urate)"
+    },
+    {
+      "ref": "gwas:GCST007733:rs1471633-A",
+      "rsid": "rs1471633",
+      "effect_allele": "A",
+      "p_value": 1e-29,
+      "beta_text": "0.043571427 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST007733",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "CD160",
+        "PDZK1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs28517717-T",
+      "rsid": "rs28517717",
+      "effect_allele": "T",
+      "p_value": 1e-29,
+      "beta_text": "0.0218 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "B4GALT1-AS1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST010512:rs2231142-T",
+      "rsid": "rs2231142",
+      "effect_allele": "T",
+      "p_value": 2e-29,
+      "beta_text": "0.2207 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST010512",
+      "pubmed_id": "32514006",
+      "mapped_genes": [
+        "ABCG2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST010512:rs55817236-T",
+      "rsid": "rs55817236",
+      "effect_allele": "T",
+      "p_value": 2e-29,
+      "beta_text": "0.817 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST010512",
+      "pubmed_id": "32514006",
+      "mapped_genes": [
+        "POLA2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs4328011-A",
+      "rsid": "rs4328011",
+      "effect_allele": "A",
+      "p_value": 4e-29,
+      "beta_text": "0.0167 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "DUSP9",
+        "MRFAP1P1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST010283:rs184521656-T",
+      "rsid": "rs184521656",
+      "effect_allele": "T",
+      "p_value": 1e-28,
+      "beta_text": "0.99 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST010283",
+      "pubmed_id": "32271837",
+      "mapped_genes": [
+        "FRMD8"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs11202328-T",
+      "rsid": "rs11202328",
+      "effect_allele": "T",
+      "p_value": 2e-27,
+      "beta_text": "0.0254 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "GLUD1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST010512:rs3733588-A",
+      "rsid": "rs3733588",
+      "effect_allele": "A",
+      "p_value": 2e-27,
+      "beta_text": "0.1922 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST010512",
+      "pubmed_id": "32514006",
+      "mapped_genes": [
+        "SLC2A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs1169288-C",
+      "rsid": "rs1169288",
+      "effect_allele": "C",
+      "p_value": 2e-27,
+      "beta_text": "0.0202 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "HNF1A",
+        "HNF1A-AS1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs17632159-C",
+      "rsid": "rs17632159",
+      "effect_allele": "C",
+      "p_value": 5e-27,
+      "beta_text": "0.0357482 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "TMEM171",
+        "TMEM174"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90837316:rs12911662-G",
+      "rsid": "rs12911662",
+      "effect_allele": "G",
+      "p_value": 1e-26,
+      "beta_text": "0.0835 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90837316",
+      "pubmed_id": "42509370",
+      "mapped_genes": [],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid in pregnancy"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs6445558-T",
+      "rsid": "rs6445558",
+      "effect_allele": "T",
+      "p_value": 2e-26,
+      "beta_text": "0.0319104 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "SERBP1P3",
+        "SFMBT1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs10405423-A",
+      "rsid": "rs10405423",
+      "effect_allele": "A",
+      "p_value": 2e-26,
+      "beta_text": "0.0216 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "INSR"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs1511299-C",
+      "rsid": "rs1511299",
+      "effect_allele": "C",
+      "p_value": 4e-26,
+      "beta_text": "0.0211 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "TFDP2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs671-A",
+      "rsid": "rs671",
+      "effect_allele": "A",
+      "p_value": 6e-26,
+      "beta_text": "0.0521593 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "ALDH2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90681869:rs12507330-A",
+      "rsid": "rs12507330",
+      "effect_allele": "A",
+      "p_value": 8e-26,
+      "beta_text": "0.116 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90681869",
+      "pubmed_id": "41606330",
+      "mapped_genes": [
+        "SLC2A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid x sex interaction"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs11164916-C",
+      "rsid": "rs11164916",
+      "effect_allele": "C",
+      "p_value": 2e-25,
+      "beta_text": "0.0188 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "FNBP1L",
+        "Y_RNA"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs12987661-C",
+      "rsid": "rs12987661",
+      "effect_allele": "C",
+      "p_value": 4e-25,
+      "beta_text": "0.0302 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "AAK1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs34532891-T",
+      "rsid": "rs34532891",
+      "effect_allele": "T",
+      "p_value": 6.0000000000000005e-25,
+      "beta_text": "0.0182 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "LINC02985"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs760077-A",
+      "rsid": "rs760077",
+      "effect_allele": "A",
+      "p_value": 8e-25,
+      "beta_text": "0.0455494 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "MTX1",
+        "THBS3"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs11564722-T",
+      "rsid": "rs11564722",
+      "effect_allele": "T",
+      "p_value": 1e-24,
+      "beta_text": "0.0204 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "IGF2",
+        "INS-IGF2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs963837-C",
+      "rsid": "rs963837",
+      "effect_allele": "C",
+      "p_value": 1e-24,
+      "beta_text": "0.0311485 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "DCDC1",
+        "MPPED2-AS1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007725:rs642803-T",
+      "rsid": "rs642803",
+      "effect_allele": "T",
+      "p_value": 1e-24,
+      "beta_text": "0.041 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST007725",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "OVOL1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90094591:rs3770636-G",
+      "rsid": "rs3770636",
+      "effect_allele": "G",
+      "p_value": 2.9999999999999996e-24,
+      "beta_text": "0.0743 increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90094591",
+      "pubmed_id": "34719683",
+      "mapped_genes": [
+        "LRP2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007733:rs3741414-T",
+      "rsid": "rs3741414",
+      "effect_allele": "T",
+      "p_value": 4e-24,
+      "beta_text": "0.050714284 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST007733",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "INHBC"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs4886748-A",
+      "rsid": "rs4886748",
+      "effect_allele": "A",
+      "p_value": 5.999999999999999e-24,
+      "beta_text": "0.0300881 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "UBE2Q2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007733:rs675209-T",
+      "rsid": "rs675209",
+      "effect_allele": "T",
+      "p_value": 5.999999999999999e-24,
+      "beta_text": "0.045 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST007733",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "RN7SL554P",
+        "RREB1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007725:rs2762353-A",
+      "rsid": "rs2762353",
+      "effect_allele": "A",
+      "p_value": 9e-24,
+      "beta_text": "0.054 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST007725",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "SLC17A1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs150147865-T",
+      "rsid": "rs150147865",
+      "effect_allele": "T",
+      "p_value": 9e-24,
+      "beta_text": "0.1163 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "HMGCS2",
+        "REG4"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs13234378-T",
+      "rsid": "rs13234378",
+      "effect_allele": "T",
+      "p_value": 1e-23,
+      "beta_text": "0.0481669 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "MLXIPL"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs9503077-C",
+      "rsid": "rs9503077",
+      "effect_allele": "C",
+      "p_value": 2e-23,
+      "beta_text": "0.018 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "GMDS"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs738409-G",
+      "rsid": "rs738409",
+      "effect_allele": "G",
+      "p_value": 7e-23,
+      "beta_text": "0.0199 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "PNPLA3"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90837316:rs75786299-A",
+      "rsid": "rs75786299",
+      "effect_allele": "A",
+      "p_value": 8e-23,
+      "beta_text": "0.4772 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90837316",
+      "pubmed_id": "42509370",
+      "mapped_genes": [
+        "SLC22A12"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid in pregnancy"
+    },
+    {
+      "ref": "gwas:GCST007733:rs9895661-T",
+      "rsid": "rs9895661",
+      "effect_allele": "T",
+      "p_value": 9e-23,
+      "beta_text": "0.0443 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST007733",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "BCAS3",
+        "TBX2-AS1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007725:rs9895661-T",
+      "rsid": "rs9895661",
+      "effect_allele": "T",
+      "p_value": 9e-23,
+      "beta_text": "0.044 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST007725",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "BCAS3",
+        "TBX2-AS1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007733:rs1165178-A",
+      "rsid": "rs1165178",
+      "effect_allele": "A",
+      "p_value": 1e-22,
+      "beta_text": "0.0527 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST007733",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "SLC17A1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs7247977-C",
+      "rsid": "rs7247977",
+      "effect_allele": "C",
+      "p_value": 2e-22,
+      "beta_text": "0.0176 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "SLC7A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs111329014-G",
+      "rsid": "rs111329014",
+      "effect_allele": "G",
+      "p_value": 3e-22,
+      "beta_text": "0.0305291 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "MYO9A"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018757:rs9895661-T",
+      "rsid": "rs9895661",
+      "effect_allele": "T",
+      "p_value": 3e-22,
+      "beta_text": "0.0339867 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018757",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "BCAS3",
+        "TBX2-AS1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs219777-A",
+      "rsid": "rs219777",
+      "effect_allele": "A",
+      "p_value": 4e-22,
+      "beta_text": "0.0227 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "CLDN14",
+        "LNCTSI"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018757:rs2974935-T",
+      "rsid": "rs2974935",
+      "effect_allele": "T",
+      "p_value": 6e-22,
+      "beta_text": "0.04427 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018757",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "GBA1LP",
+        "MTX1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST010512:rs142439069-T",
+      "rsid": "rs142439069",
+      "effect_allele": "T",
+      "p_value": 7e-22,
+      "beta_text": "0.8012 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST010512",
+      "pubmed_id": "32514006",
+      "mapped_genes": [
+        "MACROD1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs12105304-G",
+      "rsid": "rs12105304",
+      "effect_allele": "G",
+      "p_value": 8e-22,
+      "beta_text": "0.0206 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "KCNS3",
+        "RDH14"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs4715517-A",
+      "rsid": "rs4715517",
+      "effect_allele": "A",
+      "p_value": 1e-21,
+      "beta_text": "0.071 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "HCRTR2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018757:rs4715517-A",
+      "rsid": "rs4715517",
+      "effect_allele": "A",
+      "p_value": 1e-21,
+      "beta_text": "0.0709677 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018757",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "HCRTR2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs181673-C",
+      "rsid": "rs181673",
+      "effect_allele": "C",
+      "p_value": 2e-21,
+      "beta_text": "0.0173 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "EMX2",
+        "LINC02674"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90837316:rs2762353-G",
+      "rsid": "rs2762353",
+      "effect_allele": "G",
+      "p_value": 2e-21,
+      "beta_text": "0.0855 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90837316",
+      "pubmed_id": "42509370",
+      "mapped_genes": [
+        "SLC17A1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid in pregnancy"
+    },
+    {
+      "ref": "gwas:GCST001233:rs4686914-T",
+      "rsid": "rs4686914",
+      "effect_allele": "T",
+      "p_value": 2.9999999999999995e-21,
+      "beta_text": "0.0242 mg/dL decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST001233",
+      "pubmed_id": "21909109",
+      "mapped_genes": [
+        "LINC01991"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Metabolite levels"
+    },
+    {
+      "ref": "gwas:GCST90018757:rs28855176-C",
+      "rsid": "rs28855176",
+      "effect_allele": "C",
+      "p_value": 5e-21,
+      "beta_text": "0.03289 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018757",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "BICC1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs3212198-T",
+      "rsid": "rs3212198",
+      "effect_allele": "T",
+      "p_value": 5e-21,
+      "beta_text": "0.0172 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "HNF4A"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs10857147-T",
+      "rsid": "rs10857147",
+      "effect_allele": "T",
+      "p_value": 5.999999999999999e-21,
+      "beta_text": "0.0182 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "FGF5",
+        "PRDM8"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007725:rs1828911-T",
+      "rsid": "rs1828911",
+      "effect_allele": "T",
+      "p_value": 8e-21,
+      "beta_text": "0.038 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST007725",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "HNF4G"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs62294340-A",
+      "rsid": "rs62294340",
+      "effect_allele": "A",
+      "p_value": 1e-20,
+      "beta_text": "0.017 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "MECOM"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007733:rs2941484-T",
+      "rsid": "rs2941484",
+      "effect_allele": "T",
+      "p_value": 1e-20,
+      "beta_text": "0.0375 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST007733",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "HNF4G"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90094591:rs7166287-C",
+      "rsid": "rs7166287",
+      "effect_allele": "C",
+      "p_value": 1e-20,
+      "beta_text": "0.0545 increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90094591",
+      "pubmed_id": "34719683",
+      "mapped_genes": [
+        "IGF1R"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90837316:rs36062975-G",
+      "rsid": "rs36062975",
+      "effect_allele": "G",
+      "p_value": 1e-20,
+      "beta_text": "0.0741 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90837316",
+      "pubmed_id": "42509370",
+      "mapped_genes": [
+        "ABCG2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid in pregnancy"
+    },
+    {
+      "ref": "gwas:GCST010283:rs117625825-A",
+      "rsid": "rs117625825",
+      "effect_allele": "A",
+      "p_value": 2e-20,
+      "beta_text": "0.84 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST010283",
+      "pubmed_id": "32271837",
+      "mapped_genes": [
+        "EIF1AD"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST001269:rs2231142-T",
+      "rsid": "rs2231142",
+      "effect_allele": "T",
+      "p_value": 2e-20,
+      "beta_text": "0.16 s.d. increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST001269",
+      "pubmed_id": "21983786",
+      "mapped_genes": [
+        "ABCG2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90094591:rs2941428-A",
+      "rsid": "rs2941428",
+      "effect_allele": "A",
+      "p_value": 2.9999999999999997e-20,
+      "beta_text": "0.0551 increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90094591",
+      "pubmed_id": "34719683",
+      "mapped_genes": [
+        "HNF4G",
+        "RNU2-54P"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs2466077-T",
+      "rsid": "rs2466077",
+      "effect_allele": "T",
+      "p_value": 2.9999999999999997e-20,
+      "beta_text": "0.017 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "NRG1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST002355:rs3114018-T",
+      "rsid": "rs3114018",
+      "effect_allele": "T",
+      "p_value": 4e-20,
+      "beta_text": "0.029 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST002355",
+      "pubmed_id": "24513273",
+      "mapped_genes": [
+        "ABCG2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs10763551-A",
+      "rsid": "rs10763551",
+      "effect_allele": "A",
+      "p_value": 5e-20,
+      "beta_text": "0.0271053 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "BICC1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90444429:rs1177442-A",
+      "rsid": "rs1177442",
+      "effect_allele": "A",
+      "p_value": 7e-20,
+      "beta_text": "0.0537 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90444429",
+      "pubmed_id": "39702642",
+      "mapped_genes": [
+        "SLC17A1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels (1KG-JEWEL7K)"
+    },
+    {
+      "ref": "gwas:GCST007725:rs4072037-T",
+      "rsid": "rs4072037",
+      "effect_allele": "T",
+      "p_value": 7e-20,
+      "beta_text": "0.048 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST007725",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "MUC1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs455213-C",
+      "rsid": "rs455213",
+      "effect_allele": "C",
+      "p_value": 1e-19,
+      "beta_text": "0.0165 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "RAI14",
+        "RAI14-DT"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90444429:rs9895661-T",
+      "rsid": "rs9895661",
+      "effect_allele": "T",
+      "p_value": 1e-19,
+      "beta_text": "0.039 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90444429",
+      "pubmed_id": "39702642",
+      "mapped_genes": [
+        "BCAS3",
+        "TBX2-AS1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels (1KG-JEWEL7K)"
+    },
+    {
+      "ref": "gwas:GCST001374:rs13129697-G",
+      "rsid": "rs13129697",
+      "effect_allele": "G",
+      "p_value": 2e-19,
+      "beta_text": "28.99 umol/L decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST001374",
+      "pubmed_id": "22229870",
+      "mapped_genes": [
+        "SLC2A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST003359:rs3775948-G",
+      "rsid": "rs3775948",
+      "effect_allele": "G",
+      "p_value": 2e-19,
+      "beta_text": "15.45 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST003359",
+      "pubmed_id": "26902266",
+      "mapped_genes": [
+        "SLC2A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs28419182-A",
+      "rsid": "rs28419182",
+      "effect_allele": "A",
+      "p_value": 3e-19,
+      "beta_text": "0.018 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "RAB24"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018757:rs2977944-A",
+      "rsid": "rs2977944",
+      "effect_allele": "A",
+      "p_value": 3e-19,
+      "beta_text": "0.03163 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018757",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "HNF4G"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018757:rs1260326-C",
+      "rsid": "rs1260326",
+      "effect_allele": "C",
+      "p_value": 4e-19,
+      "beta_text": "0.0314887 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018757",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "GCKR"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007733:rs2941484-T",
+      "rsid": "rs2941484",
+      "effect_allele": "T",
+      "p_value": 5e-19,
+      "beta_text": "0.035 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST007733",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "HNF4G"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007733:rs1260326-T",
+      "rsid": "rs1260326",
+      "effect_allele": "T",
+      "p_value": 8e-19,
+      "beta_text": "0.0357 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST007733",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "GCKR"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007733:rs4971100-A",
+      "rsid": "rs4971100",
+      "effect_allele": "A",
+      "p_value": 8e-19,
+      "beta_text": "0.0457 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST007733",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "TRIM46"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007725:rs1260326-T",
+      "rsid": "rs1260326",
+      "effect_allele": "T",
+      "p_value": 8e-19,
+      "beta_text": "0.036 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST007725",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "GCKR"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs187355703-G",
+      "rsid": "rs187355703",
+      "effect_allele": "G",
+      "p_value": 1e-18,
+      "beta_text": "0.0563 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "HOXD-AS2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90837316:rs893006-A",
+      "rsid": "rs893006",
+      "effect_allele": "A",
+      "p_value": 1e-18,
+      "beta_text": "0.0722 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90837316",
+      "pubmed_id": "42509370",
+      "mapped_genes": [
+        "SLC22A12"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid in pregnancy"
+    },
+    {
+      "ref": "gwas:GCST90444429:rs1828911-C",
+      "rsid": "rs1828911",
+      "effect_allele": "C",
+      "p_value": 1e-18,
+      "beta_text": "0.0391 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90444429",
+      "pubmed_id": "39702642",
+      "mapped_genes": [
+        "HNF4G"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels (1KG-JEWEL7K)"
+    },
+    {
+      "ref": "gwas:GCST008445:rs2231142-T",
+      "rsid": "rs2231142",
+      "effect_allele": "T",
+      "p_value": 1e-18,
+      "beta_text": "0.23 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST008445",
+      "pubmed_id": "31207883",
+      "mapped_genes": [
+        "ABCG2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs66822347-T",
+      "rsid": "rs66822347",
+      "effect_allele": "T",
+      "p_value": 2e-18,
+      "beta_text": "0.016 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "DDX1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST000418:rs2231142-T",
+      "rsid": "rs2231142",
+      "effect_allele": "T",
+      "p_value": 2e-18,
+      "beta_text": "0.22 mg/dl increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST000418",
+      "pubmed_id": "19503597",
+      "mapped_genes": [
+        "ABCG2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007725:rs9416703-A",
+      "rsid": "rs9416703",
+      "effect_allele": "A",
+      "p_value": 2e-18,
+      "beta_text": "0.036 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST007725",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "BICC1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST001233:rs13069049-T",
+      "rsid": "rs13069049",
+      "effect_allele": "T",
+      "p_value": 3.0000000000000002e-18,
+      "beta_text": "0.0182 mg/dL increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST001233",
+      "pubmed_id": "21909109",
+      "mapped_genes": [
+        "KBTBD8",
+        "RPL21P41"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Metabolite levels"
+    },
+    {
+      "ref": "gwas:GCST002355:rs4148152-C",
+      "rsid": "rs4148152",
+      "effect_allele": "C",
+      "p_value": 3.0000000000000002e-18,
+      "beta_text": "0.029 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST002355",
+      "pubmed_id": "24513273",
+      "mapped_genes": [
+        "ABCG2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST003359:rs16890979-A",
+      "rsid": "rs16890979",
+      "effect_allele": "A",
+      "p_value": 3.0000000000000002e-18,
+      "beta_text": "16.01 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST003359",
+      "pubmed_id": "26902266",
+      "mapped_genes": [
+        "SLC2A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs148179165-A",
+      "rsid": "rs148179165",
+      "effect_allele": "A",
+      "p_value": 3.0000000000000002e-18,
+      "beta_text": "0.0164 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "ANKRD33",
+        "FIGNL2-DT"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007733:rs6770152-T",
+      "rsid": "rs6770152",
+      "effect_allele": "T",
+      "p_value": 5e-18,
+      "beta_text": "0.034285713 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST007733",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "RFT1",
+        "SERBP1P3"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs13021972-T",
+      "rsid": "rs13021972",
+      "effect_allele": "T",
+      "p_value": 5e-18,
+      "beta_text": "0.016 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "ACVR2A"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007725:rs11264341-T",
+      "rsid": "rs11264341",
+      "effect_allele": "T",
+      "p_value": 8e-18,
+      "beta_text": "0.04 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST007725",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "TRIM46"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90474655:rs4328011-A",
+      "rsid": "rs4328011",
+      "effect_allele": "A",
+      "p_value": 1e-17,
+      "beta_text": "0.0106674 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90474655",
+      "pubmed_id": "38233393",
+      "mapped_genes": [
+        "DUSP9",
+        "MRFAP1P1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs523288-T",
+      "rsid": "rs523288",
+      "effect_allele": "T",
+      "p_value": 1e-17,
+      "beta_text": "0.0205 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "MC4R",
+        "RNU4-17P"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST008445:rs11722228-T",
+      "rsid": "rs11722228",
+      "effect_allele": "T",
+      "p_value": 1e-17,
+      "beta_text": "0.36 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST008445",
+      "pubmed_id": "31207883",
+      "mapped_genes": [
+        "SLC2A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs9927317-G",
+      "rsid": "rs9927317",
+      "effect_allele": "G",
+      "p_value": 2e-17,
+      "beta_text": "0.0177 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "FTO"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs140175243-A",
+      "rsid": "rs140175243",
+      "effect_allele": "A",
+      "p_value": 2e-17,
+      "beta_text": "0.0164 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "USP38-DT"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs6804946-C",
+      "rsid": "rs6804946",
+      "effect_allele": "C",
+      "p_value": 2e-17,
+      "beta_text": "0.0216 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "ALDH1L1-AS2",
+        "KLF15"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST001247:rs2199936-A",
+      "rsid": "rs2199936",
+      "effect_allele": "A",
+      "p_value": 2e-17,
+      "beta_text": "0.188 umol/l increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST001247",
+      "pubmed_id": "21943158",
+      "mapped_genes": [
+        "ABCG2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Cardiovascular disease risk factors"
+    },
+    {
+      "ref": "gwas:GCST90474653:rs4328011-A",
+      "rsid": "rs4328011",
+      "effect_allele": "A",
+      "p_value": 2e-17,
+      "beta_text": "0.009 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90474653",
+      "pubmed_id": "38233393",
+      "mapped_genes": [
+        "DUSP9",
+        "MRFAP1P1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90837316:rs3127756-G",
+      "rsid": "rs3127756",
+      "effect_allele": "G",
+      "p_value": 2e-17,
+      "beta_text": "0.0664 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90837316",
+      "pubmed_id": "42509370",
+      "mapped_genes": [
+        "NUTM2A-AS1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid in pregnancy"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs715-C",
+      "rsid": "rs715",
+      "effect_allele": "C",
+      "p_value": 3e-17,
+      "beta_text": "0.0315339 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "CPS1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007733:rs1171659-A",
+      "rsid": "rs1171659",
+      "effect_allele": "A",
+      "p_value": 3e-17,
+      "beta_text": "0.03642857 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST007733",
+      "pubmed_id": "30993211",
+      "mapped_genes": [
+        "SLC16A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs686364-G",
+      "rsid": "rs686364",
+      "effect_allele": "G",
+      "p_value": 3e-17,
+      "beta_text": "0.0167 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "CLDN8"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs2012385-A",
+      "rsid": "rs2012385",
+      "effect_allele": "A",
+      "p_value": 3e-17,
+      "beta_text": "0.0181 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "FARP2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs5929781-A",
+      "rsid": "rs5929781",
+      "effect_allele": "A",
+      "p_value": 4e-17,
+      "beta_text": "0.013 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "DCAF12L2",
+        "MTCO1P53"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90429179:rs117925626-C",
+      "rsid": "rs117925626",
+      "effect_allele": "C",
+      "p_value": 7e-17,
+      "beta_text": "0.754486 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90429179",
+      "pubmed_id": "38626723",
+      "mapped_genes": [
+        "MAP4K2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Urine uric Acid levels"
+    },
+    {
+      "ref": "gwas:GCST90474653:rs111884516-T",
+      "rsid": "rs111884516",
+      "effect_allele": "T",
+      "p_value": 7e-17,
+      "beta_text": "0.0195738 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90474653",
+      "pubmed_id": "38233393",
+      "mapped_genes": [
+        "DUSP9",
+        "MRFAP1P1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs35591585-T",
+      "rsid": "rs35591585",
+      "effect_allele": "T",
+      "p_value": 8e-17,
+      "beta_text": "0.0228 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs113177823-A",
+      "rsid": "rs113177823",
+      "effect_allele": "A",
+      "p_value": 8e-17,
+      "beta_text": "0.0378 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "DNAJC13"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs72681869-C",
+      "rsid": "rs72681869",
+      "effect_allele": "C",
+      "p_value": 1e-16,
+      "beta_text": "0.0798 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "SOS2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs2288066-C",
+      "rsid": "rs2288066",
+      "effect_allele": "C",
+      "p_value": 2e-16,
+      "beta_text": "0.0253172 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "MAF"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs7039-G",
+      "rsid": "rs7039",
+      "effect_allele": "G",
+      "p_value": 2e-16,
+      "beta_text": "0.0147 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "ARL6IP5"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90662871:rs1169288-C",
+      "rsid": "rs1169288",
+      "effect_allele": "C",
+      "p_value": 2e-16,
+      "beta_text": "0.0245205 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662871",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "HNF1A",
+        "HNF1A-AS1"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90837316:rs6547692-A",
+      "rsid": "rs6547692",
+      "effect_allele": "A",
+      "p_value": 2e-16,
+      "beta_text": "0.0619 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90837316",
+      "pubmed_id": "42509370",
+      "mapped_genes": [
+        "GCKR"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Uric acid in pregnancy"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs4897160-A",
+      "rsid": "rs4897160",
+      "effect_allele": "A",
+      "p_value": 2e-16,
+      "beta_text": "0.0145 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "NCOA7"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST007918:rs3775948-G",
+      "rsid": "rs3775948",
+      "effect_allele": "G",
+      "p_value": 2e-16,
+      "beta_text": "10.62 umol/L decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST007918",
+      "pubmed_id": "29124443",
+      "mapped_genes": [
+        "SLC2A9"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs146787580-C",
+      "rsid": "rs146787580",
+      "effect_allele": "C",
+      "p_value": 3e-16,
+      "beta_text": "0.0264 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "BMPR2"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018757:rs144825998-T",
+      "rsid": "rs144825998",
+      "effect_allele": "T",
+      "p_value": 3e-16,
+      "beta_text": "0.0501752 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018757",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "ATP2A2",
+        "IFT81"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    },
+    {
+      "ref": "gwas:GCST90018977:rs3845534-A",
+      "rsid": "rs3845534",
+      "effect_allele": "A",
+      "p_value": 4e-16,
+      "beta_text": "0.0151 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018977",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "RNA5SP63",
+        "U3"
+      ],
+      "efo": "EFO_0004761",
+      "reported_trait": "Serum uric acid levels"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "source": "ensembl",
+  "query": "gene:GRCh38:HPRT1",
+  "url": "https://rest.ensembl.org/lookup/symbol/homo_sapiens/HPRT1?content-type=application/json",
+  "retrieved_at": "2026-10-24T16:06:07+08:00",
+  "records": [
+    {
+      "ref": "ensembl:ENSG00000165704",
+      "symbol": "HPRT1",
+      "chrom": "X",
+      "start": 134460139,
+      "end": 134527168,
+      "assembly": "GRCh38"
+    }
+  ]
+}

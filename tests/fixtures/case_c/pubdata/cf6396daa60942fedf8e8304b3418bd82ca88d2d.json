@@ -1,0 +1,16 @@
+{
+  "source": "ensembl",
+  "query": "gene:GRCh38:MTHFR",
+  "url": "https://rest.ensembl.org/lookup/symbol/homo_sapiens/MTHFR?content-type=application/json",
+  "retrieved_at": "2026-10-24T16:06:53+08:00",
+  "records": [
+    {
+      "ref": "ensembl:ENSG00000177000",
+      "symbol": "MTHFR",
+      "chrom": "1",
+      "start": 11785723,
+      "end": 11806455,
+      "assembly": "GRCh38"
+    }
+  ]
+}

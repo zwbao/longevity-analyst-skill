@@ -1,0 +1,16 @@
+{
+  "source": "ensembl",
+  "query": "gene:GRCh38:PCSK9",
+  "url": "https://rest.ensembl.org/lookup/symbol/homo_sapiens/PCSK9?content-type=application/json",
+  "retrieved_at": "2026-10-24T16:05:14+08:00",
+  "records": [
+    {
+      "ref": "ensembl:ENSG00000169174",
+      "symbol": "PCSK9",
+      "chrom": "1",
+      "start": 55039445,
+      "end": 55064852,
+      "assembly": "GRCh38"
+    }
+  ]
+}

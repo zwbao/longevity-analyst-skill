@@ -1,0 +1,16 @@
+{
+  "source": "ensembl",
+  "query": "gene:GRCh38:SLC2A9",
+  "url": "https://rest.ensembl.org/lookup/symbol/homo_sapiens/SLC2A9?content-type=application/json",
+  "retrieved_at": "2026-10-24T16:06:20+08:00",
+  "records": [
+    {
+      "ref": "ensembl:ENSG00000109667",
+      "symbol": "SLC2A9",
+      "chrom": "4",
+      "start": 9771148,
+      "end": 10054936,
+      "assembly": "GRCh38"
+    }
+  ]
+}

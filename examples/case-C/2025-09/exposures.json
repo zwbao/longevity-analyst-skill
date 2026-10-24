@@ -1,0 +1,228 @@
+{
+ "schema": "la-exposures/1",
+ "member": "caseC",
+ "source": "coach_member_file",
+ "generated_at": "2025-09-14T20:00:00+08:00",
+ "items": [
+  {
+   "plan_item": "I1",
+   "origin_snapshot": "2023-09-04",
+   "label_zh": "早餐用燕麦等全谷物代替精米白面",
+   "category": "diet",
+   "targets": [
+    "空腹血糖(GLU)"
+   ],
+   "status": "proposed",
+   "adopted_at": null,
+   "status_since": null,
+   "cumulative": null
+  },
+  {
+   "plan_item": "I2",
+   "origin_snapshot": "2024-09-09",
+   "label_zh": "每周安排几次中等强度运动",
+   "category": "exercise",
+   "targets": [
+    "谷丙转氨酶(ALT)"
+   ],
+   "status": "adopted",
+   "adopted_at": "2024-10-14",
+   "status_since": "2024-10-14",
+   "weekly_checkins": [
+    {
+     "week_start": "2024-10-14",
+     "count": 2
+    },
+    {
+     "week_start": "2024-10-21",
+     "count": 3
+    },
+    {
+     "week_start": "2024-10-28",
+     "count": 3
+    },
+    {
+     "week_start": "2024-11-04",
+     "count": 2
+    },
+    {
+     "week_start": "2024-11-11",
+     "count": 3
+    },
+    {
+     "week_start": "2024-11-18",
+     "count": 2
+    },
+    {
+     "week_start": "2024-11-25",
+     "count": 3
+    },
+    {
+     "week_start": "2024-12-02",
+     "count": 3
+    },
+    {
+     "week_start": "2024-12-09",
+     "count": 2
+    },
+    {
+     "week_start": "2024-12-16",
+     "count": 3
+    },
+    {
+     "week_start": "2024-12-23",
+     "count": 2
+    },
+    {
+     "week_start": "2024-12-30",
+     "count": 3
+    },
+    {
+     "week_start": "2025-01-06",
+     "count": 3
+    },
+    {
+     "week_start": "2025-01-13",
+     "count": 2
+    },
+    {
+     "week_start": "2025-01-20",
+     "count": 3
+    },
+    {
+     "week_start": "2025-01-27",
+     "count": 2
+    },
+    {
+     "week_start": "2025-02-03",
+     "count": 3
+    },
+    {
+     "week_start": "2025-02-10",
+     "count": 3
+    },
+    {
+     "week_start": "2025-02-17",
+     "count": 2
+    },
+    {
+     "week_start": "2025-02-24",
+     "count": 3
+    },
+    {
+     "week_start": "2025-03-03",
+     "count": 2
+    },
+    {
+     "week_start": "2025-03-10",
+     "count": 3
+    },
+    {
+     "week_start": "2025-03-17",
+     "count": 3
+    },
+    {
+     "week_start": "2025-03-24",
+     "count": 2
+    },
+    {
+     "week_start": "2025-03-31",
+     "count": 3
+    },
+    {
+     "week_start": "2025-04-07",
+     "count": 2
+    },
+    {
+     "week_start": "2025-04-14",
+     "count": 3
+    },
+    {
+     "week_start": "2025-04-21",
+     "count": 3
+    },
+    {
+     "week_start": "2025-04-28",
+     "count": 2
+    },
+    {
+     "week_start": "2025-05-05",
+     "count": 3
+    },
+    {
+     "week_start": "2025-05-12",
+     "count": 2
+    },
+    {
+     "week_start": "2025-05-19",
+     "count": 3
+    },
+    {
+     "week_start": "2025-05-26",
+     "count": 3
+    },
+    {
+     "week_start": "2025-06-02",
+     "count": 2
+    },
+    {
+     "week_start": "2025-06-09",
+     "count": 3
+    },
+    {
+     "week_start": "2025-06-16",
+     "count": 2
+    },
+    {
+     "week_start": "2025-06-23",
+     "count": 3
+    },
+    {
+     "week_start": "2025-06-30",
+     "count": 3
+    },
+    {
+     "week_start": "2025-07-07",
+     "count": 2
+    },
+    {
+     "week_start": "2025-07-14",
+     "count": 3
+    },
+    {
+     "week_start": "2025-07-21",
+     "count": 2
+    },
+    {
+     "week_start": "2025-07-28",
+     "count": 3
+    },
+    {
+     "week_start": "2025-08-04",
+     "count": 3
+    },
+    {
+     "week_start": "2025-08-11",
+     "count": 2
+    },
+    {
+     "week_start": "2025-08-18",
+     "count": 3
+    },
+    {
+     "week_start": "2025-08-25",
+     "count": 2
+    },
+    {
+     "week_start": "2025-09-01",
+     "count": 3
+    },
+    {
+     "week_start": "2025-09-08",
+     "count": 3
+    }
+   ],
+   "cumulative": 125
+  }
+ ]
+}

@@ -47,7 +47,10 @@ def _is_block(f: List[str]) -> bool:
 
 
 def _gt(fmt: List[str], val: List[str]) -> List[str]:
-    return re.split(r"[/|]", dict(zip(fmt, val)).get("GT", "./."))
+    gt = re.split(r"[/|]", dict(zip(fmt, val)).get("GT", "./."))
+    # a haploid call (male chrX/chrY outside the PARs) counts as two copies of that allele, the usual X dosage
+    # convention: a hemizygous man is scored like a homozygous woman instead of being dropped as "no call"
+    return gt * 2 if len(gt) == 1 and gt[0] != "." else gt
 
 
 # ------------------------------------------------------------------ VCF access

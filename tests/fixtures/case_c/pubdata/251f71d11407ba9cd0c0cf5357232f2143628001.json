@@ -1,0 +1,3454 @@
+{
+  "source": "gwas",
+  "query": "trait:OBA_2050062:5e-08",
+  "url": "https://www.ebi.ac.uk/gwas/rest/api/v2/associations?efo_id=OBA_2050062&size=100&sort=p_value&direction=asc",
+  "retrieved_at": "2026-10-24T16:09:11+08:00",
+  "records": [
+    {
+      "ref": "gwas:GCST90662898:rs147998249-C",
+      "rsid": "rs147998249",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "1.516 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "GPT"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90428729:rs738409-G",
+      "rsid": "rs738409",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.0222 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90428729",
+      "pubmed_id": "38632349",
+      "mapped_genes": [
+        "PNPLA3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90428729:rs141505249-C",
+      "rsid": "rs141505249",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "0.2243 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90428729",
+      "pubmed_id": "38632349",
+      "mapped_genes": [
+        "GPT"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90018943:rs141505249-C",
+      "rsid": "rs141505249",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "1.2242 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018943",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "GPT"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90019492:rs147998249-C",
+      "rsid": "rs147998249",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "1.2794 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019492",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "GPT"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90018943:rs3747207-A",
+      "rsid": "rs3747207",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "0.0844 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018943",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "PNPLA3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs1883350-T",
+      "rsid": "rs1883350",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.0606 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "PNPLA3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90479508:rs738409-C",
+      "rsid": "rs738409",
+      "effect_allele": "C",
+      "p_value": 1e-323,
+      "beta_text": "0.11 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90479508",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "PNPLA3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475109:rs147998249-G",
+      "rsid": "rs147998249",
+      "effect_allele": "G",
+      "p_value": 1e-323,
+      "beta_text": "1.251 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475109",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "GPT"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475115:rs147998249-G",
+      "rsid": "rs147998249",
+      "effect_allele": "G",
+      "p_value": 1e-323,
+      "beta_text": "1.348 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475115",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "GPT"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475115:rs112635299-G",
+      "rsid": "rs112635299",
+      "effect_allele": "G",
+      "p_value": 1e-323,
+      "beta_text": "0.3707 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90475115",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "SERPINA1",
+        "SERPINA2"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475115:rs738409-C",
+      "rsid": "rs738409",
+      "effect_allele": "C",
+      "p_value": 1e-323,
+      "beta_text": "0.1185 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90475115",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "PNPLA3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475112:rs147998249-G",
+      "rsid": "rs147998249",
+      "effect_allele": "G",
+      "p_value": 1e-323,
+      "beta_text": "1.446 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475112",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "GPT"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90479507:rs738409-C",
+      "rsid": "rs738409",
+      "effect_allele": "C",
+      "p_value": 1e-323,
+      "beta_text": "0.1312 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90479507",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "PNPLA3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90479508:rs147998249-G",
+      "rsid": "rs147998249",
+      "effect_allele": "G",
+      "p_value": 1e-323,
+      "beta_text": "1.319 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479508",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "GPT"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90479507:rs147998249-G",
+      "rsid": "rs147998249",
+      "effect_allele": "G",
+      "p_value": 1e-323,
+      "beta_text": "1.415 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479507",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "GPT"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90479506:rs147998249-G",
+      "rsid": "rs147998249",
+      "effect_allele": "G",
+      "p_value": 1e-323,
+      "beta_text": "1.235 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479506",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "GPT"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90479506:rs738409-C",
+      "rsid": "rs738409",
+      "effect_allele": "C",
+      "p_value": 1e-323,
+      "beta_text": "0.1209 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90479506",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "PNPLA3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475112:rs112635299-G",
+      "rsid": "rs112635299",
+      "effect_allele": "G",
+      "p_value": 1e-323,
+      "beta_text": "0.347 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90475112",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "SERPINA1",
+        "SERPINA2"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475109:rs738409-C",
+      "rsid": "rs738409",
+      "effect_allele": "C",
+      "p_value": 1e-323,
+      "beta_text": "0.1293 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90475109",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "PNPLA3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475112:rs738409-C",
+      "rsid": "rs738409",
+      "effect_allele": "C",
+      "p_value": 1e-323,
+      "beta_text": "0.1423 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90475112",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "PNPLA3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90013405:rs738409-C",
+      "rsid": "rs738409",
+      "effect_allele": "C",
+      "p_value": 1e-300,
+      "beta_text": "0.0212986 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90013405",
+      "pubmed_id": "33972514",
+      "mapped_genes": [
+        "PNPLA3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Liver enzyme levels (alanine transaminase)"
+    },
+    {
+      "ref": "gwas:GCST90011898:rs738409-G",
+      "rsid": "rs738409",
+      "effect_allele": "G",
+      "p_value": 5e-300,
+      "beta_text": "37.0 z-score increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90011898",
+      "pubmed_id": "33547301",
+      "mapped_genes": [
+        "PNPLA3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90129601:rs738408-T",
+      "rsid": "rs738408",
+      "effect_allele": "T",
+      "p_value": 4e-273,
+      "beta_text": "0.267 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90129601",
+      "pubmed_id": "35654975",
+      "mapped_genes": [
+        "PNPLA3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Chronic elevation of alanine aminotransferase (cALT) levels"
+    },
+    {
+      "ref": "gwas:GCST90479508:rs28929474-C",
+      "rsid": "rs28929474",
+      "effect_allele": "C",
+      "p_value": 8e-250,
+      "beta_text": "0.353 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90479508",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "SERPINA1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90428729:rs2862954-C",
+      "rsid": "rs2862954",
+      "effect_allele": "C",
+      "p_value": 6.9999999999999995e-245,
+      "beta_text": "0.0129 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90428729",
+      "pubmed_id": "38632349",
+      "mapped_genes": [
+        "ERLIN1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs4979373-T",
+      "rsid": "rs4979373",
+      "effect_allele": "T",
+      "p_value": 2e-237,
+      "beta_text": "0.0483 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "AKNA"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90479507:rs28929474-C",
+      "rsid": "rs28929474",
+      "effect_allele": "C",
+      "p_value": 4e-223,
+      "beta_text": "0.3338 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90479507",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "SERPINA1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90013405:rs2862954-T",
+      "rsid": "rs2862954",
+      "effect_allele": "T",
+      "p_value": 9e-215,
+      "beta_text": "0.0120693 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90013405",
+      "pubmed_id": "33972514",
+      "mapped_genes": [
+        "ERLIN1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Liver enzyme levels (alanine transaminase)"
+    },
+    {
+      "ref": "gwas:GCST90129602:rs738409-G",
+      "rsid": "rs738409",
+      "effect_allele": "G",
+      "p_value": 3e-213,
+      "beta_text": "0.269 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90129602",
+      "pubmed_id": "35654975",
+      "mapped_genes": [
+        "PNPLA3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Chronic elevation of alanine aminotransferase (cALT) levels"
+    },
+    {
+      "ref": "gwas:GCST90475112:rs1408579-C",
+      "rsid": "rs1408579",
+      "effect_allele": "C",
+      "p_value": 3e-213,
+      "beta_text": "0.07517 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475112",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "ERLIN1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs1408579-T",
+      "rsid": "rs1408579",
+      "effect_allele": "T",
+      "p_value": 4.999999999999999e-212,
+      "beta_text": "0.0627 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "ERLIN1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90475109:rs28929474-C",
+      "rsid": "rs28929474",
+      "effect_allele": "C",
+      "p_value": 2.9999999999999994e-208,
+      "beta_text": "0.274 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90475109",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "SERPINA1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475109:rs1408579-C",
+      "rsid": "rs1408579",
+      "effect_allele": "C",
+      "p_value": 9.999999999999999e-193,
+      "beta_text": "0.07105 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475109",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "ERLIN1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90662864:rs3747207-A",
+      "rsid": "rs3747207",
+      "effect_allele": "A",
+      "p_value": 6.9999999999999994e-177,
+      "beta_text": "0.0918813 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662864",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "PNPLA3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs11066132-T",
+      "rsid": "rs11066132",
+      "effect_allele": "T",
+      "p_value": 4e-158,
+      "beta_text": "0.0711 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "NAA25"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs13141441-A",
+      "rsid": "rs13141441",
+      "effect_allele": "A",
+      "p_value": 4e-156,
+      "beta_text": "0.0425 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "KLHL8",
+        "MIR5705"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90018943:rs2862954-C",
+      "rsid": "rs2862954",
+      "effect_allele": "C",
+      "p_value": 5e-155,
+      "beta_text": "0.0573 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018943",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "ERLIN1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90479507:rs1408579-C",
+      "rsid": "rs1408579",
+      "effect_allele": "C",
+      "p_value": 3e-154,
+      "beta_text": "0.06958 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479507",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "ERLIN1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90479506:rs28929474-C",
+      "rsid": "rs28929474",
+      "effect_allele": "C",
+      "p_value": 4e-154,
+      "beta_text": "0.2689 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90479506",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "SERPINA1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90428729:rs10733608-T",
+      "rsid": "rs10733608",
+      "effect_allele": "T",
+      "p_value": 1e-153,
+      "beta_text": "0.0102 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90428729",
+      "pubmed_id": "38632349",
+      "mapped_genes": [
+        "AKNA"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90479506:rs1408579-C",
+      "rsid": "rs1408579",
+      "effect_allele": "C",
+      "p_value": 3e-147,
+      "beta_text": "0.06627 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479506",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "ERLIN1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90244009:rs738409-G",
+      "rsid": "rs738409",
+      "effect_allele": "G",
+      "p_value": 2e-141,
+      "beta_text": "0.0731 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90244009",
+      "pubmed_id": "36333282",
+      "mapped_genes": [
+        "PNPLA3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs2954021-A",
+      "rsid": "rs2954021",
+      "effect_allele": "A",
+      "p_value": 3.0000000000000004e-141,
+      "beta_text": "0.0371 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "TRIB1AL"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90475112:rs58542926-C",
+      "rsid": "rs58542926",
+      "effect_allele": "C",
+      "p_value": 6.000000000000001e-141,
+      "beta_text": "0.1146 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90475112",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "TM6SF2"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475115:rs1408579-C",
+      "rsid": "rs1408579",
+      "effect_allele": "C",
+      "p_value": 2e-139,
+      "beta_text": "0.06077 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475115",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "ERLIN1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90013405:rs7041363-C",
+      "rsid": "rs7041363",
+      "effect_allele": "C",
+      "p_value": 1e-136,
+      "beta_text": "0.00957417 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90013405",
+      "pubmed_id": "33972514",
+      "mapped_genes": [
+        "AKNA"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Liver enzyme levels (alanine transaminase)"
+    },
+    {
+      "ref": "gwas:GCST90018943:rs7041363-G",
+      "rsid": "rs7041363",
+      "effect_allele": "G",
+      "p_value": 3e-136,
+      "beta_text": "0.0467 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018943",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "AKNA"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs1857682-T",
+      "rsid": "rs1857682",
+      "effect_allele": "T",
+      "p_value": 2e-134,
+      "beta_text": "0.043 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "ARPC3P3",
+        "IZUMO1R"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90428729:rs58542926-T",
+      "rsid": "rs58542926",
+      "effect_allele": "T",
+      "p_value": 5e-133,
+      "beta_text": "0.0179 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90428729",
+      "pubmed_id": "38632349",
+      "mapped_genes": [
+        "TM6SF2"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90475112:rs28601761-C",
+      "rsid": "rs28601761",
+      "effect_allele": "C",
+      "p_value": 2e-130,
+      "beta_text": "0.06038 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475112",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "TRIB1AL"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475112:rs10733608-G",
+      "rsid": "rs10733608",
+      "effect_allele": "G",
+      "p_value": 1e-127,
+      "beta_text": "0.05946 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475112",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "AKNA"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs4835265-A",
+      "rsid": "rs4835265",
+      "effect_allele": "A",
+      "p_value": 3e-124,
+      "beta_text": "0.0392 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "ZNF827"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90475109:rs10733608-G",
+      "rsid": "rs10733608",
+      "effect_allele": "G",
+      "p_value": 7e-124,
+      "beta_text": "0.05829 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475109",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "AKNA"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90011898:rs7041363-C",
+      "rsid": "rs7041363",
+      "effect_allele": "C",
+      "p_value": 8e-124,
+      "beta_text": "23.7 z-score increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90011898",
+      "pubmed_id": "33547301",
+      "mapped_genes": [
+        "AKNA"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs13395911-A",
+      "rsid": "rs13395911",
+      "effect_allele": "A",
+      "p_value": 9.000000000000001e-122,
+      "beta_text": "0.0379 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "EFHD1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90013405:rs58542926-C",
+      "rsid": "rs58542926",
+      "effect_allele": "C",
+      "p_value": 2e-119,
+      "beta_text": "0.01705 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90013405",
+      "pubmed_id": "33972514",
+      "mapped_genes": [
+        "TM6SF2"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Liver enzyme levels (alanine transaminase)"
+    },
+    {
+      "ref": "gwas:GCST90475110:rs738409-C",
+      "rsid": "rs738409",
+      "effect_allele": "C",
+      "p_value": 2e-116,
+      "beta_text": "0.1463 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90475110",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "PNPLA3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475109:rs58542926-C",
+      "rsid": "rs58542926",
+      "effect_allele": "C",
+      "p_value": 2e-114,
+      "beta_text": "0.1026 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90475109",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "TM6SF2"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90011898:rs2862954-T",
+      "rsid": "rs2862954",
+      "effect_allele": "T",
+      "p_value": 3e-114,
+      "beta_text": "22.7 z-score increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90011898",
+      "pubmed_id": "33547301",
+      "mapped_genes": [
+        "ERLIN1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90479507:rs58542926-C",
+      "rsid": "rs58542926",
+      "effect_allele": "C",
+      "p_value": 5.0000000000000006e-114,
+      "beta_text": "0.1097 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90479507",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "TM6SF2"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs12613034-A",
+      "rsid": "rs12613034",
+      "effect_allele": "A",
+      "p_value": 2e-113,
+      "beta_text": "0.042 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "ABCB11"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90475109:rs28601761-C",
+      "rsid": "rs28601761",
+      "effect_allele": "C",
+      "p_value": 2.0000000000000001e-112,
+      "beta_text": "0.05566 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475109",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "TRIB1AL"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90129601:rs10883451-C",
+      "rsid": "rs10883451",
+      "effect_allele": "C",
+      "p_value": 3e-112,
+      "beta_text": "0.152 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90129601",
+      "pubmed_id": "35654975",
+      "mapped_genes": [
+        "ERLIN1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Chronic elevation of alanine aminotransferase (cALT) levels"
+    },
+    {
+      "ref": "gwas:GCST90662864:rs671-A",
+      "rsid": "rs671",
+      "effect_allele": "A",
+      "p_value": 8.0000000000000005e-112,
+      "beta_text": "0.119599 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662864",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "ALDH2"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs756350040-T",
+      "rsid": "rs756350040",
+      "effect_allele": "T",
+      "p_value": 1e-109,
+      "beta_text": "0.0992 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "HAPLN4"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90475115:rs58542926-C",
+      "rsid": "rs58542926",
+      "effect_allele": "C",
+      "p_value": 2e-109,
+      "beta_text": "0.101 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90475115",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "TM6SF2"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90428729:rs2954021-A",
+      "rsid": "rs2954021",
+      "effect_allele": "A",
+      "p_value": 5.0000000000000003e-107,
+      "beta_text": "0.0085 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90428729",
+      "pubmed_id": "38632349",
+      "mapped_genes": [
+        "TRIB1AL"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90129602:rs10883451-C",
+      "rsid": "rs10883451",
+      "effect_allele": "C",
+      "p_value": 4e-106,
+      "beta_text": "0.161 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90129602",
+      "pubmed_id": "35654975",
+      "mapped_genes": [
+        "ERLIN1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Chronic elevation of alanine aminotransferase (cALT) levels"
+    },
+    {
+      "ref": "gwas:GCST90479506:rs10733608-G",
+      "rsid": "rs10733608",
+      "effect_allele": "G",
+      "p_value": 1e-105,
+      "beta_text": "0.05263 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479506",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "AKNA"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90479508:rs1408579-C",
+      "rsid": "rs1408579",
+      "effect_allele": "C",
+      "p_value": 2.9999999999999996e-104,
+      "beta_text": "0.05681 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479508",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "ERLIN1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs12539997-T",
+      "rsid": "rs12539997",
+      "effect_allele": "T",
+      "p_value": 7e-102,
+      "beta_text": "0.0373 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "ABCB1",
+        "ABCB4"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90428729:rs13141441-A",
+      "rsid": "rs13141441",
+      "effect_allele": "A",
+      "p_value": 8e-102,
+      "beta_text": "0.0092 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90428729",
+      "pubmed_id": "38632349",
+      "mapped_genes": [
+        "KLHL8",
+        "MIR5705"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90479507:rs10733608-G",
+      "rsid": "rs10733608",
+      "effect_allele": "G",
+      "p_value": 1e-101,
+      "beta_text": "0.05273 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479507",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "AKNA"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475115:rs28601761-C",
+      "rsid": "rs28601761",
+      "effect_allele": "C",
+      "p_value": 1e-100,
+      "beta_text": "0.05303 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475115",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "TRIB1AL"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475107:rs738409-C",
+      "rsid": "rs738409",
+      "effect_allele": "C",
+      "p_value": 4e-100,
+      "beta_text": "0.1357 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90475107",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "PNPLA3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90479506:rs58542926-C",
+      "rsid": "rs58542926",
+      "effect_allele": "C",
+      "p_value": 3e-98,
+      "beta_text": "0.09921 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90479506",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "TM6SF2"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90013405:rs2954021-A",
+      "rsid": "rs2954021",
+      "effect_allele": "A",
+      "p_value": 4.9999999999999995e-98,
+      "beta_text": "0.00813488 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90013405",
+      "pubmed_id": "33972514",
+      "mapped_genes": [
+        "TRIB1AL"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Liver enzyme levels (alanine transaminase)"
+    },
+    {
+      "ref": "gwas:GCST90013405:rs71633359-T",
+      "rsid": "rs71633359",
+      "effect_allele": "T",
+      "p_value": 1e-96,
+      "beta_text": "0.00889967 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90013405",
+      "pubmed_id": "33972514",
+      "mapped_genes": [
+        "KLHL8",
+        "MIR5705"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Liver enzyme levels (alanine transaminase)"
+    },
+    {
+      "ref": "gwas:GCST90428729:rs56175344-G",
+      "rsid": "rs56175344",
+      "effect_allele": "G",
+      "p_value": 2e-94,
+      "beta_text": "0.0124 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90428729",
+      "pubmed_id": "38632349",
+      "mapped_genes": [
+        "PANX1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90428729:rs28929474-T",
+      "rsid": "rs28929474",
+      "effect_allele": "T",
+      "p_value": 8e-93,
+      "beta_text": "0.0282 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90428729",
+      "pubmed_id": "38632349",
+      "mapped_genes": [
+        "SERPINA1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90018943:rs2954021-G",
+      "rsid": "rs2954021",
+      "effect_allele": "G",
+      "p_value": 2e-91,
+      "beta_text": "0.0378 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018943",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "TRIB1AL"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs1497406-A",
+      "rsid": "rs1497406",
+      "effect_allele": "A",
+      "p_value": 6e-91,
+      "beta_text": "0.0336 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "EPHA2-AS1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90479507:rs2954038-C",
+      "rsid": "rs2954038",
+      "effect_allele": "C",
+      "p_value": 2e-89,
+      "beta_text": "0.05505 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479507",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "TRIB1AL"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475113:rs738409-C",
+      "rsid": "rs738409",
+      "effect_allele": "C",
+      "p_value": 4.9999999999999995e-88,
+      "beta_text": "0.1262 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90475113",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "PNPLA3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90479508:rs58542926-C",
+      "rsid": "rs58542926",
+      "effect_allele": "C",
+      "p_value": 2e-87,
+      "beta_text": "0.09537 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90479508",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "TM6SF2"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90479506:rs2954038-C",
+      "rsid": "rs2954038",
+      "effect_allele": "C",
+      "p_value": 2e-86,
+      "beta_text": "0.05284 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479506",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "TRIB1AL"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90019492:rs58542926-T",
+      "rsid": "rs58542926",
+      "effect_allele": "T",
+      "p_value": 6e-86,
+      "beta_text": "0.0886 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019492",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "TM6SF2"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90428729:rs4835265-A",
+      "rsid": "rs4835265",
+      "effect_allele": "A",
+      "p_value": 9e-85,
+      "beta_text": "0.0103 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90428729",
+      "pubmed_id": "38632349",
+      "mapped_genes": [
+        "ZNF827"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90013405:rs7117339-C",
+      "rsid": "rs7117339",
+      "effect_allele": "C",
+      "p_value": 2e-83,
+      "beta_text": "0.0116997 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90013405",
+      "pubmed_id": "33972514",
+      "mapped_genes": [
+        "PANX1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Liver enzyme levels (alanine transaminase)"
+    },
+    {
+      "ref": "gwas:GCST90479507:rs11607757-T",
+      "rsid": "rs11607757",
+      "effect_allele": "T",
+      "p_value": 2e-83,
+      "beta_text": "0.06766 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479507",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "PANX1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90018943:rs140868651-A",
+      "rsid": "rs140868651",
+      "effect_allele": "A",
+      "p_value": 7e-82,
+      "beta_text": "0.0833 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018943",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "MAU2"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90428729:rs1497406-A",
+      "rsid": "rs1497406",
+      "effect_allele": "A",
+      "p_value": 7e-82,
+      "beta_text": "0.0074 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90428729",
+      "pubmed_id": "38632349",
+      "mapped_genes": [
+        "EPHA2-AS1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90129601:rs7041363-G",
+      "rsid": "rs7041363",
+      "effect_allele": "G",
+      "p_value": 1e-81,
+      "beta_text": "0.13 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90129601",
+      "pubmed_id": "35654975",
+      "mapped_genes": [
+        "AKNA"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Chronic elevation of alanine aminotransferase (cALT) levels"
+    },
+    {
+      "ref": "gwas:GCST90475115:rs10733608-G",
+      "rsid": "rs10733608",
+      "effect_allele": "G",
+      "p_value": 2e-79,
+      "beta_text": "0.04682 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475115",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "AKNA"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475112:rs71633359-T",
+      "rsid": "rs71633359",
+      "effect_allele": "T",
+      "p_value": 3e-78,
+      "beta_text": "0.05054 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475112",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "KLHL8",
+        "MIR5705"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90019492:rs145331563-A",
+      "rsid": "rs145331563",
+      "effect_allele": "A",
+      "p_value": 4e-77,
+      "beta_text": "1.2395 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019492",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "GPT"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90013405:rs4835265-C",
+      "rsid": "rs4835265",
+      "effect_allele": "C",
+      "p_value": 8e-76,
+      "beta_text": "0.0096823 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90013405",
+      "pubmed_id": "33972514",
+      "mapped_genes": [
+        "ZNF827"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Liver enzyme levels (alanine transaminase)"
+    },
+    {
+      "ref": "gwas:GCST90011898:rs2954021-A",
+      "rsid": "rs2954021",
+      "effect_allele": "A",
+      "p_value": 2e-75,
+      "beta_text": "18.4 z-score increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90011898",
+      "pubmed_id": "33547301",
+      "mapped_genes": [
+        "TRIB1AL"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90129601:rs28929474-T",
+      "rsid": "rs28929474",
+      "effect_allele": "T",
+      "p_value": 9e-73,
+      "beta_text": "0.492 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90129601",
+      "pubmed_id": "35654975",
+      "mapped_genes": [
+        "SERPINA1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Chronic elevation of alanine aminotransferase (cALT) levels"
+    },
+    {
+      "ref": "gwas:GCST90129601:rs2980888-T",
+      "rsid": "rs2980888",
+      "effect_allele": "T",
+      "p_value": 4e-72,
+      "beta_text": "0.13 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90129601",
+      "pubmed_id": "35654975",
+      "mapped_genes": [
+        "TRIB1AL"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Chronic elevation of alanine aminotransferase (cALT) levels"
+    },
+    {
+      "ref": "gwas:GCST90013405:rs1497406-A",
+      "rsid": "rs1497406",
+      "effect_allele": "A",
+      "p_value": 5e-72,
+      "beta_text": "0.00705001 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90013405",
+      "pubmed_id": "33972514",
+      "mapped_genes": [
+        "EPHA2-AS1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Liver enzyme levels (alanine transaminase)"
+    },
+    {
+      "ref": "gwas:GCST90011898:rs58542926-T",
+      "rsid": "rs58542926",
+      "effect_allele": "T",
+      "p_value": 1e-71,
+      "beta_text": "17.9 z-score increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90011898",
+      "pubmed_id": "33547301",
+      "mapped_genes": [
+        "TM6SF2"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90129602:rs7041363-G",
+      "rsid": "rs7041363",
+      "effect_allele": "G",
+      "p_value": 1e-71,
+      "beta_text": "0.135 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90129602",
+      "pubmed_id": "35654975",
+      "mapped_genes": [
+        "AKNA"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Chronic elevation of alanine aminotransferase (cALT) levels"
+    },
+    {
+      "ref": "gwas:GCST90475109:rs71633359-T",
+      "rsid": "rs71633359",
+      "effect_allele": "T",
+      "p_value": 2e-71,
+      "beta_text": "0.04804 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475109",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "KLHL8",
+        "MIR5705"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90018723:rs738409-G",
+      "rsid": "rs738409",
+      "effect_allele": "G",
+      "p_value": 2.9999999999999997e-71,
+      "beta_text": "0.0606877 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018723",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "PNPLA3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90129602:rs2954038-C",
+      "rsid": "rs2954038",
+      "effect_allele": "C",
+      "p_value": 2e-70,
+      "beta_text": "0.139 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90129602",
+      "pubmed_id": "35654975",
+      "mapped_genes": [
+        "TRIB1AL"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Chronic elevation of alanine aminotransferase (cALT) levels"
+    },
+    {
+      "ref": "gwas:GCST90020236:rs2980888-C",
+      "rsid": "rs2980888",
+      "effect_allele": "C",
+      "p_value": 4e-70,
+      "beta_text": "0.038 U/L decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90020236",
+      "pubmed_id": "33980691",
+      "mapped_genes": [
+        "TRIB1AL"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90018943:rs13141441-A",
+      "rsid": "rs13141441",
+      "effect_allele": "A",
+      "p_value": 1e-69,
+      "beta_text": "0.036 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018943",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "KLHL8",
+        "MIR5705"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90019492:rs17216525-T",
+      "rsid": "rs17216525",
+      "effect_allele": "T",
+      "p_value": 2e-69,
+      "beta_text": "0.0768 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019492",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "CILP2",
+        "PBX4"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs28929474-T",
+      "rsid": "rs28929474",
+      "effect_allele": "T",
+      "p_value": 3e-69,
+      "beta_text": "0.1444 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "SERPINA1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90011898:rs6834314-A",
+      "rsid": "rs6834314",
+      "effect_allele": "A",
+      "p_value": 4.999999999999999e-69,
+      "beta_text": "17.6 z-score increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90011898",
+      "pubmed_id": "33547301",
+      "mapped_genes": [
+        "KLHL8",
+        "MIR5705"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90479508:rs11607757-T",
+      "rsid": "rs11607757",
+      "effect_allele": "T",
+      "p_value": 6e-68,
+      "beta_text": "0.06049 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479508",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "PANX1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475115:rs429358-T",
+      "rsid": "rs429358",
+      "effect_allele": "T",
+      "p_value": 7e-68,
+      "beta_text": "0.06032 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475115",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90428729:rs4503880-T",
+      "rsid": "rs4503880",
+      "effect_allele": "T",
+      "p_value": 1e-67,
+      "beta_text": "0.0084 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90428729",
+      "pubmed_id": "38632349",
+      "mapped_genes": [
+        "MIR122HG",
+        "NEDD4L"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90479506:rs4342991-G",
+      "rsid": "rs4342991",
+      "effect_allele": "G",
+      "p_value": 2e-67,
+      "beta_text": "0.06192 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479506",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "HEPHL1",
+        "PANX1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475112:rs429358-T",
+      "rsid": "rs429358",
+      "effect_allele": "T",
+      "p_value": 2.9999999999999997e-67,
+      "beta_text": "0.05985 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475112",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90019492:rs4835265-A",
+      "rsid": "rs4835265",
+      "effect_allele": "A",
+      "p_value": 2.9999999999999997e-67,
+      "beta_text": "0.0565 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019492",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "ZNF827"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90428729:rs132642-A",
+      "rsid": "rs132642",
+      "effect_allele": "A",
+      "p_value": 2e-66,
+      "beta_text": "0.0089 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90428729",
+      "pubmed_id": "38632349",
+      "mapped_genes": [
+        "APOL3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90129602:rs28929474-T",
+      "rsid": "rs28929474",
+      "effect_allele": "T",
+      "p_value": 1e-65,
+      "beta_text": "0.481 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90129602",
+      "pubmed_id": "35654975",
+      "mapped_genes": [
+        "SERPINA1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Chronic elevation of alanine aminotransferase (cALT) levels"
+    },
+    {
+      "ref": "gwas:GCST90475112:rs1801689-A",
+      "rsid": "rs1801689",
+      "effect_allele": "A",
+      "p_value": 2.9999999999999996e-65,
+      "beta_text": "0.1165 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90475112",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "APOH"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90018943:rs7117339-T",
+      "rsid": "rs7117339",
+      "effect_allele": "T",
+      "p_value": 8e-65,
+      "beta_text": "0.0545 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018943",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "PANX1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90019492:rs2954038-A",
+      "rsid": "rs2954038",
+      "effect_allele": "A",
+      "p_value": 9e-65,
+      "beta_text": "0.0443 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019492",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "TRIB1AL"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs2642438-A",
+      "rsid": "rs2642438",
+      "effect_allele": "A",
+      "p_value": 2e-64,
+      "beta_text": "0.0302 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "MTARC1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90475112:rs79287178-G",
+      "rsid": "rs79287178",
+      "effect_allele": "G",
+      "p_value": 2e-64,
+      "beta_text": "0.1414 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475112",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "LINC02068"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90018943:rs4835265-A",
+      "rsid": "rs4835265",
+      "effect_allele": "A",
+      "p_value": 3e-64,
+      "beta_text": "0.0395 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018943",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "ZNF827"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST001233:rs11066280-A",
+      "rsid": "rs11066280",
+      "effect_allele": "A",
+      "p_value": 3.0000000000000003e-63,
+      "beta_text": "0.0016 IU/L increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST001233",
+      "pubmed_id": "21909109",
+      "mapped_genes": [
+        "HECTD4"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Metabolite levels"
+    },
+    {
+      "ref": "gwas:GCST90428729:rs13395911-A",
+      "rsid": "rs13395911",
+      "effect_allele": "A",
+      "p_value": 4e-63,
+      "beta_text": "0.0066 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90428729",
+      "pubmed_id": "38632349",
+      "mapped_genes": [
+        "EFHD1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90013405:rs28929474-C",
+      "rsid": "rs28929474",
+      "effect_allele": "C",
+      "p_value": 4e-63,
+      "beta_text": "0.0230928 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90013405",
+      "pubmed_id": "33972514",
+      "mapped_genes": [
+        "SERPINA1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Liver enzyme levels (alanine transaminase)"
+    },
+    {
+      "ref": "gwas:GCST90013405:rs4503880-T",
+      "rsid": "rs4503880",
+      "effect_allele": "T",
+      "p_value": 4e-63,
+      "beta_text": "0.00802734 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90013405",
+      "pubmed_id": "33972514",
+      "mapped_genes": [
+        "MIR122HG",
+        "NEDD4L"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Liver enzyme levels (alanine transaminase)"
+    },
+    {
+      "ref": "gwas:GCST90475115:rs79287178-G",
+      "rsid": "rs79287178",
+      "effect_allele": "G",
+      "p_value": 1e-62,
+      "beta_text": "0.1397 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475115",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "LINC02068"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs12500824-A",
+      "rsid": "rs12500824",
+      "effect_allele": "A",
+      "p_value": 2e-62,
+      "beta_text": "0.0249 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "SHROOM3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90011898:rs4835265-A",
+      "rsid": "rs4835265",
+      "effect_allele": "A",
+      "p_value": 2e-62,
+      "beta_text": "16.7 z-score increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90011898",
+      "pubmed_id": "33547301",
+      "mapped_genes": [
+        "ZNF827"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90428729:rs2642438-A",
+      "rsid": "rs2642438",
+      "effect_allele": "A",
+      "p_value": 3e-62,
+      "beta_text": "0.007 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90428729",
+      "pubmed_id": "38632349",
+      "mapped_genes": [
+        "MTARC1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs4918722-T",
+      "rsid": "rs4918722",
+      "effect_allele": "T",
+      "p_value": 3e-62,
+      "beta_text": "0.0276 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "GPAM"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90475112:rs4841132-A",
+      "rsid": "rs4841132",
+      "effect_allele": "A",
+      "p_value": 4e-62,
+      "beta_text": "0.07548 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475112",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "PPP1R3B-DT"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90019492:rs4753124-G",
+      "rsid": "rs4753124",
+      "effect_allele": "G",
+      "p_value": 5e-62,
+      "beta_text": "0.0644 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019492",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "HEPHL1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90129601:rs58542926-T",
+      "rsid": "rs58542926",
+      "effect_allele": "T",
+      "p_value": 7e-62,
+      "beta_text": "0.209 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90129601",
+      "pubmed_id": "35654975",
+      "mapped_genes": [
+        "TM6SF2"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Chronic elevation of alanine aminotransferase (cALT) levels"
+    },
+    {
+      "ref": "gwas:GCST90428729:rs429358-C",
+      "rsid": "rs429358",
+      "effect_allele": "C",
+      "p_value": 2e-61,
+      "beta_text": "0.0088 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90428729",
+      "pubmed_id": "38632349",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90019492:rs2862926-G",
+      "rsid": "rs2862926",
+      "effect_allele": "G",
+      "p_value": 3e-61,
+      "beta_text": "0.0399 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019492",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "CPN1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90479508:rs10733608-G",
+      "rsid": "rs10733608",
+      "effect_allele": "G",
+      "p_value": 5e-61,
+      "beta_text": "0.04037 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479508",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "AKNA"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90129601:rs141505249-C",
+      "rsid": "rs141505249",
+      "effect_allele": "C",
+      "p_value": 7e-61,
+      "beta_text": "2.02 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90129601",
+      "pubmed_id": "35654975",
+      "mapped_genes": [
+        "GPT"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Chronic elevation of alanine aminotransferase (cALT) levels"
+    },
+    {
+      "ref": "gwas:GCST90129602:rs147998249-C",
+      "rsid": "rs147998249",
+      "effect_allele": "C",
+      "p_value": 8e-61,
+      "beta_text": "2.019 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90129602",
+      "pubmed_id": "35654975",
+      "mapped_genes": [
+        "GPT"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Chronic elevation of alanine aminotransferase (cALT) levels"
+    },
+    {
+      "ref": "gwas:GCST90019492:rs28929474-T",
+      "rsid": "rs28929474",
+      "effect_allele": "T",
+      "p_value": 2e-60,
+      "beta_text": "0.1413 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019492",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SERPINA1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90428729:rs79287178-A",
+      "rsid": "rs79287178",
+      "effect_allele": "A",
+      "p_value": 2e-60,
+      "beta_text": "0.019 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90428729",
+      "pubmed_id": "38632349",
+      "mapped_genes": [
+        "LINC02068"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs79287178-A",
+      "rsid": "rs79287178",
+      "effect_allele": "A",
+      "p_value": 2.9999999999999996e-60,
+      "beta_text": "0.1139 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "LINC02068"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs645040-T",
+      "rsid": "rs645040",
+      "effect_allele": "T",
+      "p_value": 4e-60,
+      "beta_text": "0.0316 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "PCCB",
+        "RPL31P23"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90244009:rs79105258-A",
+      "rsid": "rs79105258",
+      "effect_allele": "A",
+      "p_value": 5.999999999999999e-60,
+      "beta_text": "0.0594 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90244009",
+      "pubmed_id": "36333282",
+      "mapped_genes": [
+        "CUX2"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs934295-A",
+      "rsid": "rs934295",
+      "effect_allele": "A",
+      "p_value": 7e-60,
+      "beta_text": "0.0256 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "RPL32P8",
+        "TM4SF1-AS1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90013405:rs132631-A",
+      "rsid": "rs132631",
+      "effect_allele": "A",
+      "p_value": 7e-60,
+      "beta_text": "0.00854387 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90013405",
+      "pubmed_id": "33972514",
+      "mapped_genes": [
+        "APOL3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Liver enzyme levels (alanine transaminase)"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs140980078-T",
+      "rsid": "rs140980078",
+      "effect_allele": "T",
+      "p_value": 1e-59,
+      "beta_text": "0.0551 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "CYP2A6",
+        "CYP2F2P"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90129602:rs58542926-T",
+      "rsid": "rs58542926",
+      "effect_allele": "T",
+      "p_value": 2e-59,
+      "beta_text": "0.222 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90129602",
+      "pubmed_id": "35654975",
+      "mapped_genes": [
+        "TM6SF2"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Chronic elevation of alanine aminotransferase (cALT) levels"
+    },
+    {
+      "ref": "gwas:GCST90479508:rs28601761-C",
+      "rsid": "rs28601761",
+      "effect_allele": "C",
+      "p_value": 5e-59,
+      "beta_text": "0.04027 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479508",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "TRIB1AL"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90018943:rs1497406-G",
+      "rsid": "rs1497406",
+      "effect_allele": "G",
+      "p_value": 3e-58,
+      "beta_text": "0.0322 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018943",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "EPHA2-AS1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs132631-A",
+      "rsid": "rs132631",
+      "effect_allele": "A",
+      "p_value": 3e-58,
+      "beta_text": "0.0488 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "APOL3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90244009:rs4979373-T",
+      "rsid": "rs4979373",
+      "effect_allele": "T",
+      "p_value": 4e-58,
+      "beta_text": "0.047 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90244009",
+      "pubmed_id": "36333282",
+      "mapped_genes": [
+        "AKNA"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90013405:rs2642438-A",
+      "rsid": "rs2642438",
+      "effect_allele": "A",
+      "p_value": 6e-57,
+      "beta_text": "0.00676311 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90013405",
+      "pubmed_id": "33972514",
+      "mapped_genes": [
+        "MTARC1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Liver enzyme levels (alanine transaminase)"
+    },
+    {
+      "ref": "gwas:GCST90013405:rs429358-T",
+      "rsid": "rs429358",
+      "effect_allele": "T",
+      "p_value": 1e-56,
+      "beta_text": "0.0085211 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90013405",
+      "pubmed_id": "33972514",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Liver enzyme levels (alanine transaminase)"
+    },
+    {
+      "ref": "gwas:GCST90479507:rs4841132-A",
+      "rsid": "rs4841132",
+      "effect_allele": "A",
+      "p_value": 5e-56,
+      "beta_text": "0.06222 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479507",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "PPP1R3B-DT"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475115:rs1801689-A",
+      "rsid": "rs1801689",
+      "effect_allele": "A",
+      "p_value": 5e-56,
+      "beta_text": "0.108 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90475115",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "APOH"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90018943:rs28929474-T",
+      "rsid": "rs28929474",
+      "effect_allele": "T",
+      "p_value": 6.000000000000001e-56,
+      "beta_text": "0.1249 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90018943",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "SERPINA1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90428729:rs9663238-A",
+      "rsid": "rs9663238",
+      "effect_allele": "A",
+      "p_value": 2e-55,
+      "beta_text": "0.0066 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90428729",
+      "pubmed_id": "38632349",
+      "mapped_genes": [
+        "HKDC1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90475111:rs61730509-C",
+      "rsid": "rs61730509",
+      "effect_allele": "C",
+      "p_value": 4e-55,
+      "beta_text": "0.2971 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90475111",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "ABCB4"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90011898:rs7117339-C",
+      "rsid": "rs7117339",
+      "effect_allele": "C",
+      "p_value": 7e-55,
+      "beta_text": "15.6 z-score increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90011898",
+      "pubmed_id": "33547301",
+      "mapped_genes": [
+        "PANX1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90011898:rs1497406-G",
+      "rsid": "rs1497406",
+      "effect_allele": "G",
+      "p_value": 1e-54,
+      "beta_text": "15.6 z-score increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90011898",
+      "pubmed_id": "33547301",
+      "mapped_genes": [
+        "EPHA2-AS1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90479507:rs10433937-T",
+      "rsid": "rs10433937",
+      "effect_allele": "T",
+      "p_value": 3e-54,
+      "beta_text": "0.0455 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479507",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "HSD17B13"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90479506:rs4841132-A",
+      "rsid": "rs4841132",
+      "effect_allele": "A",
+      "p_value": 5e-54,
+      "beta_text": "0.06003 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479506",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "PPP1R3B-DT"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs6504549-A",
+      "rsid": "rs6504549",
+      "effect_allele": "A",
+      "p_value": 6e-54,
+      "beta_text": "0.0257 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "BPTF"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90479506:rs10433937-T",
+      "rsid": "rs10433937",
+      "effect_allele": "T",
+      "p_value": 4e-53,
+      "beta_text": "0.0439 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479506",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "HSD17B13"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90013405:rs13395911-A",
+      "rsid": "rs13395911",
+      "effect_allele": "A",
+      "p_value": 5e-53,
+      "beta_text": "0.00611107 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90013405",
+      "pubmed_id": "33972514",
+      "mapped_genes": [
+        "EFHD1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Liver enzyme levels (alanine transaminase)"
+    },
+    {
+      "ref": "gwas:GCST90019492:rs4940691-G",
+      "rsid": "rs4940691",
+      "effect_allele": "G",
+      "p_value": 1e-52,
+      "beta_text": "0.0451 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019492",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "MIR122HG",
+        "NEDD4L"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90018723:rs116873087-C",
+      "rsid": "rs116873087",
+      "effect_allele": "C",
+      "p_value": 3e-52,
+      "beta_text": "0.0671594 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018723",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "NAA25"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90018943:rs116873087-C",
+      "rsid": "rs116873087",
+      "effect_allele": "C",
+      "p_value": 3e-52,
+      "beta_text": "0.0672 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018943",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "NAA25"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90475112:rs2642438-A",
+      "rsid": "rs2642438",
+      "effect_allele": "A",
+      "p_value": 5e-52,
+      "beta_text": "0.03989 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90475112",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "MTARC1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475109:rs4841132-A",
+      "rsid": "rs4841132",
+      "effect_allele": "A",
+      "p_value": 5e-52,
+      "beta_text": "0.06854 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475109",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "PPP1R3B-DT"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475109:rs8178824-C",
+      "rsid": "rs8178824",
+      "effect_allele": "C",
+      "p_value": 6e-52,
+      "beta_text": "0.1049 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90475109",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "APOH"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs12373325-T",
+      "rsid": "rs12373325",
+      "effect_allele": "T",
+      "p_value": 1e-51,
+      "beta_text": "0.0287 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "MIR122HG",
+        "NEDD4L"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs2126259-T",
+      "rsid": "rs2126259",
+      "effect_allele": "T",
+      "p_value": 3e-51,
+      "beta_text": "0.0553 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "PPP1R3B-DT"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90018943:rs4503880-C",
+      "rsid": "rs4503880",
+      "effect_allele": "C",
+      "p_value": 3e-51,
+      "beta_text": "0.042 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018943",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "MIR122HG",
+        "NEDD4L"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90428729:rs1461729-A",
+      "rsid": "rs1461729",
+      "effect_allele": "A",
+      "p_value": 6e-51,
+      "beta_text": "0.0096 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90428729",
+      "pubmed_id": "38632349",
+      "mapped_genes": [
+        "PPP1R3B-DT"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs35696875-T",
+      "rsid": "rs35696875",
+      "effect_allele": "T",
+      "p_value": 7e-51,
+      "beta_text": "0.0272 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "HKDC1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90479507:rs61730509-C",
+      "rsid": "rs61730509",
+      "effect_allele": "C",
+      "p_value": 1e-50,
+      "beta_text": "0.3001 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90479507",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "ABCB4"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475112:rs1547014-T",
+      "rsid": "rs1547014",
+      "effect_allele": "T",
+      "p_value": 2e-50,
+      "beta_text": "0.03893 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90475112",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "CHEK2"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475109:rs1547014-T",
+      "rsid": "rs1547014",
+      "effect_allele": "T",
+      "p_value": 3e-50,
+      "beta_text": "0.03869 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90475109",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "CHEK2"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90011898:rs13395911-T",
+      "rsid": "rs13395911",
+      "effect_allele": "T",
+      "p_value": 4e-50,
+      "beta_text": "14.9 z-score increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90011898",
+      "pubmed_id": "33547301",
+      "mapped_genes": [
+        "EFHD1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs687621-A",
+      "rsid": "rs687621",
+      "effect_allele": "A",
+      "p_value": 2e-49,
+      "beta_text": "0.0223 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "ABO"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90475112:rs7653249-C",
+      "rsid": "rs7653249",
+      "effect_allele": "C",
+      "p_value": 2.9999999999999996e-49,
+      "beta_text": "0.04156 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90475112",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "PCCB"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90244009:rs12613034-T",
+      "rsid": "rs12613034",
+      "effect_allele": "T",
+      "p_value": 5.999999999999999e-49,
+      "beta_text": "0.0445 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90244009",
+      "pubmed_id": "36333282",
+      "mapped_genes": [
+        "ABCB11"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs57720904-T",
+      "rsid": "rs57720904",
+      "effect_allele": "T",
+      "p_value": 7e-48,
+      "beta_text": "0.0253 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "JAZF1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90428729:rs12904-A",
+      "rsid": "rs12904",
+      "effect_allele": "A",
+      "p_value": 2e-47,
+      "beta_text": "0.0056 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90428729",
+      "pubmed_id": "38632349",
+      "mapped_genes": [
+        "EFNA1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90018943:rs4148826-C",
+      "rsid": "rs4148826",
+      "effect_allele": "C",
+      "p_value": 4e-47,
+      "beta_text": "0.0333 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018943",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "ABCB4"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90428729:rs114165349-C",
+      "rsid": "rs114165349",
+      "effect_allele": "C",
+      "p_value": 5.999999999999999e-47,
+      "beta_text": "0.0184 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90428729",
+      "pubmed_id": "38632349",
+      "mapped_genes": [
+        "ARID1A"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90479507:rs574044675-A",
+      "rsid": "rs574044675",
+      "effect_allele": "A",
+      "p_value": 9e-47,
+      "beta_text": "0.1468 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479507",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "LINC02068"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs61856806-A",
+      "rsid": "rs61856806",
+      "effect_allele": "A",
+      "p_value": 2e-46,
+      "beta_text": "0.0247 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "PIK3AP1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90475114:rs61730509-C",
+      "rsid": "rs61730509",
+      "effect_allele": "C",
+      "p_value": 3.0000000000000003e-46,
+      "beta_text": "0.2668 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90475114",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "ABCB4"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90479508:rs574044675-A",
+      "rsid": "rs574044675",
+      "effect_allele": "A",
+      "p_value": 7e-46,
+      "beta_text": "0.145 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479508",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "LINC02068"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90019492:rs62531503-G",
+      "rsid": "rs62531503",
+      "effect_allele": "G",
+      "p_value": 1e-45,
+      "beta_text": "0.1381 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019492",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "ZNF517"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST001275:rs738409-G",
+      "rsid": "rs738409",
+      "effect_allele": "G",
+      "p_value": 1e-45,
+      "beta_text": "6.0 % increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST001275",
+      "pubmed_id": "22001757",
+      "mapped_genes": [
+        "PNPLA3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Liver enzyme levels (alanine transaminase)"
+    },
+    {
+      "ref": "gwas:GCST90475109:rs574044675-A",
+      "rsid": "rs574044675",
+      "effect_allele": "A",
+      "p_value": 2e-45,
+      "beta_text": "0.1255 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475109",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "LINC02068"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90428729:rs10787429-T",
+      "rsid": "rs10787429",
+      "effect_allele": "T",
+      "p_value": 2e-45,
+      "beta_text": "0.0061 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90428729",
+      "pubmed_id": "38632349",
+      "mapped_genes": [
+        "GPAM"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90019492:rs7587-T",
+      "rsid": "rs7587",
+      "effect_allele": "T",
+      "p_value": 2e-45,
+      "beta_text": "0.0402 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019492",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SAMM50"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90448599:rs12484801-T",
+      "rsid": "rs12484801",
+      "effect_allele": "T",
+      "p_value": 4e-45,
+      "beta_text": "0.106 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90448599",
+      "pubmed_id": "39414775",
+      "mapped_genes": [
+        "PNPLA3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90475109:rs5117-T",
+      "rsid": "rs5117",
+      "effect_allele": "T",
+      "p_value": 6e-45,
+      "beta_text": "0.04187 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475109",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "APOC1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90479507:rs5117-T",
+      "rsid": "rs5117",
+      "effect_allele": "T",
+      "p_value": 6e-45,
+      "beta_text": "0.04072 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479507",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "APOC1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90479507:rs8178824-C",
+      "rsid": "rs8178824",
+      "effect_allele": "C",
+      "p_value": 2e-44,
+      "beta_text": "0.1069 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90479507",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "APOH"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine transaminase (ALT, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90013405:rs1461729-A",
+      "rsid": "rs1461729",
+      "effect_allele": "A",
+      "p_value": 2e-44,
+      "beta_text": "0.00901384 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90013405",
+      "pubmed_id": "33972514",
+      "mapped_genes": [
+        "PPP1R3B-DT"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Liver enzyme levels (alanine transaminase)"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs4782568-C",
+      "rsid": "rs4782568",
+      "effect_allele": "C",
+      "p_value": 2e-44,
+      "beta_text": "0.0231 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "MLYCD",
+        "OSGIN1"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs10430531-T",
+      "rsid": "rs10430531",
+      "effect_allele": "T",
+      "p_value": 2e-44,
+      "beta_text": "0.0245 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "DLG5"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90662898:rs11061602-T",
+      "rsid": "rs11061602",
+      "effect_allele": "T",
+      "p_value": 2.9999999999999997e-44,
+      "beta_text": "0.0204 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662898",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "MLXIP"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90129604:rs738409-G",
+      "rsid": "rs738409",
+      "effect_allele": "G",
+      "p_value": 5.999999999999999e-44,
+      "beta_text": "0.338 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90129604",
+      "pubmed_id": "35654975",
+      "mapped_genes": [
+        "PNPLA3"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Chronic elevation of alanine aminotransferase (cALT) levels"
+    },
+    {
+      "ref": "gwas:GCST90018943:rs79287178-A",
+      "rsid": "rs79287178",
+      "effect_allele": "A",
+      "p_value": 7e-44,
+      "beta_text": "0.0935 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018943",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "LINC02068"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90681949:rs671-A",
+      "rsid": "rs671",
+      "effect_allele": "A",
+      "p_value": 8e-44,
+      "beta_text": "0.0719 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90681949",
+      "pubmed_id": "41606330",
+      "mapped_genes": [
+        "ALDH2"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "ALT x ever-drinking interaction"
+    },
+    {
+      "ref": "gwas:GCST90244009:rs10433879-C",
+      "rsid": "rs10433879",
+      "effect_allele": "C",
+      "p_value": 1e-43,
+      "beta_text": "0.0427 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90244009",
+      "pubmed_id": "36333282",
+      "mapped_genes": [
+        "HSD17B13"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    },
+    {
+      "ref": "gwas:GCST90428729:rs1801689-C",
+      "rsid": "rs1801689",
+      "effect_allele": "C",
+      "p_value": 2e-43,
+      "beta_text": "0.0155 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90428729",
+      "pubmed_id": "38632349",
+      "mapped_genes": [
+        "APOH"
+      ],
+      "efo": "OBA_2050062",
+      "reported_trait": "Alanine aminotransferase levels"
+    }
+  ]
+}

@@ -1,0 +1,2591 @@
+{
+ "source": "clinvar",
+ "query": "clinvar:gene:MTHFR",
+ "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi (MTHFR[gene] AND (clinsig_pathogenic[prop] OR clinsig_likely_pathogenic[prop] OR clinsig_has_conflicts[prop]))",
+ "retrieved_at": "2026-10-24T16:17:24+08:00",
+ "records": [
+  {
+   "ref": "clinvar:VCV004977521",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.956A>G (p.His319Arg)",
+   "spdi": "NC_000001.11:11795172:T:C",
+   "deleted": "T",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795173,
+     "stop": 11795173
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855230,
+     "stop": 11855230
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "MTHFR-related disorder"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV004815475",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.891T>A (p.Tyr297Ter)",
+   "spdi": "NC_000001.11:11795237:A:T",
+   "deleted": "A",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795238,
+     "stop": 11795238
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855295,
+     "stop": 11855295
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV004815474",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.832C>T (p.Gln278Ter)",
+   "spdi": "NC_000001.11:11795296:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795297,
+     "stop": 11795297
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855354,
+     "stop": 11855354
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV004815473",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.762del (p.Ile256fs)",
+   "spdi": "NC_000001.11:11796223:GGGG:GGG",
+   "deleted": "GGGG",
+   "inserted": "GGG",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11796224,
+     "stop": 11796224
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11856281,
+     "stop": 11856281
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV004815472",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.628_631delinsCT (p.Asp210fs)",
+   "spdi": "NC_000001.11:11796354:GGTC:AG",
+   "deleted": "GGTC",
+   "inserted": "AG",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11796355,
+     "stop": 11796358
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11856412,
+     "stop": 11856415
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV004815471",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.602_605del (p.His201fs)",
+   "spdi": "NC_000001.11:11796380:GGGTGG:GG",
+   "deleted": "GGGTGG",
+   "inserted": "GG",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11796381,
+     "stop": 11796384
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11856438,
+     "stop": 11856441
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV004815463",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1314C>G (p.Tyr438Ter)",
+   "spdi": "NC_000001.11:11794390:G:C",
+   "deleted": "G",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794391,
+     "stop": 11794391
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854448,
+     "stop": 11854448
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV004815462",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1290del (p.Ser430fs)",
+   "spdi": "NC_000001.11:11794414:A:",
+   "deleted": "A",
+   "inserted": "",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794415,
+     "stop": 11794415
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854472,
+     "stop": 11854472
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV004813052",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.919C>T (p.Gln307Ter)",
+   "spdi": "NC_000001.11:11795209:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795210,
+     "stop": 11795210
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855267,
+     "stop": 11855267
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV004718999",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.799C>T (p.Gln267Ter)",
+   "spdi": "NC_000001.11:11795329:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795330,
+     "stop": 11795330
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855387,
+     "stop": 11855387
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV004057936",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1143G>A (p.Trp381Ter)",
+   "spdi": "NC_000001.11:11794751:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794752,
+     "stop": 11794752
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854809,
+     "stop": 11854809
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV003731420",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.740del (p.Gly247fs)",
+   "spdi": "NC_000001.11:11796245:CCC:CC",
+   "deleted": "CCC",
+   "inserted": "CC",
+   "loc": {
+    "GRCh37": {
+     "chr": "1",
+     "start": 11856303,
+     "stop": 11856303
+    },
+    "GRCh38": {
+     "chr": "1",
+     "start": 11796246,
+     "stop": 11796246
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV003576271",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.727T>G (p.Cys243Gly)",
+   "spdi": "NC_000001.11:11796258:A:C",
+   "deleted": "A",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11796259,
+     "stop": 11796259
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11856316,
+     "stop": 11856316
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Neural tube defects, folate-sensitive",
+    "Schizophrenia",
+    "Thrombophilia due to thrombin defect"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV003239803",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.991G>T (p.Glu331Ter)",
+   "spdi": "NC_000001.11:11795137:C:A",
+   "deleted": "C",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795138,
+     "stop": 11795138
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855195,
+     "stop": 11855195
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Neural tube defects, folate-sensitive"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV003239802",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.781-2A>G",
+   "spdi": "NC_000001.11:11795349:T:C",
+   "deleted": "T",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795350,
+     "stop": 11795350
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855407,
+     "stop": 11855407
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Neural tube defects, folate-sensitive"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV003009987",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1252_1275del (p.Leu418_Leu425del)",
+   "spdi": "NC_000001.11:11794429:CAGCTCCTCCCCCCACATCTTCAGCAGCTCCTCC:CAGCTCCTCC",
+   "deleted": "CAGCTCCTCCCCCCACATCTTCAGCAGCTCCTCC",
+   "inserted": "CAGCTCCTCC",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794430,
+     "stop": 11794453
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854487,
+     "stop": 11854510
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002906845",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1167G>A (p.Trp389Ter)",
+   "spdi": "NC_000001.11:11794537:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794538,
+     "stop": 11794538
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854595,
+     "stop": 11854595
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002902718",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.778C>T (p.Gln260Ter)",
+   "spdi": "NC_000001.11:11796207:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh37": {
+     "chr": "1",
+     "start": 11856265,
+     "stop": 11856265
+    },
+    "GRCh38": {
+     "chr": "1",
+     "start": 11796208,
+     "stop": 11796208
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002866601",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1047G>A (p.Trp349Ter)",
+   "spdi": "NC_000001.11:11794847:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794848,
+     "stop": 11794848
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854905,
+     "stop": 11854905
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002863880",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.872_875dup (p.Ala293fs)",
+   "spdi": "NC_000001.11:11795253:GCAT:GCATGCAT",
+   "deleted": "GCAT",
+   "inserted": "GCATGCAT",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795253,
+     "stop": 11795254
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855310,
+     "stop": 11855311
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002861400",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.712del (p.Arg238fs)",
+   "spdi": "NC_000001.11:11796273:GG:G",
+   "deleted": "GG",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11796274,
+     "stop": 11796274
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11856331,
+     "stop": 11856331
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002854554",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1297G>T (p.Glu433Ter)",
+   "spdi": "NC_000001.11:11794407:C:A",
+   "deleted": "C",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794408,
+     "stop": 11794408
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854465,
+     "stop": 11854465
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002836482",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.790del (p.Ser264fs)",
+   "spdi": "NC_000001.11:11795338:A:",
+   "deleted": "A",
+   "inserted": "",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795339,
+     "stop": 11795339
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855396,
+     "stop": 11855396
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002779949",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1142G>A (p.Trp381Ter)",
+   "spdi": "NC_000001.11:11794752:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794753,
+     "stop": 11794753
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854810,
+     "stop": 11854810
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Neural tube defects, folate-sensitive"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002759577",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.835G>T (p.Glu279Ter)",
+   "spdi": "NC_000001.11:11795293:C:A",
+   "deleted": "C",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795294,
+     "stop": 11795294
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855351,
+     "stop": 11855351
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002742998",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1032-1G>C",
+   "spdi": "NC_000001.11:11794863:C:G",
+   "deleted": "C",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794864,
+     "stop": 11794864
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854921,
+     "stop": 11854921
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002738817",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.906del (p.Ala302_Val303insTer)",
+   "spdi": "NC_000001.11:11795222:GG:G",
+   "deleted": "GG",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795223,
+     "stop": 11795223
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855280,
+     "stop": 11855280
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002733824",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.780+1G>A",
+   "spdi": "NC_000001.11:11796204:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11796205,
+     "stop": 11796205
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11856262,
+     "stop": 11856262
+    }
+   },
+   "classification": "Pathogenic/Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002694381",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.934del (p.Ser312fs)",
+   "spdi": "NC_000001.11:11795194:T:",
+   "deleted": "T",
+   "inserted": "",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795195,
+     "stop": 11795195
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855252,
+     "stop": 11855252
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002681142",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1011G>T (p.Gly337=)",
+   "spdi": "NC_000001.11:11795117:C:A",
+   "deleted": "C",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795118,
+     "stop": 11795118
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855175,
+     "stop": 11855175
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002676856",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.591C>A (p.Tyr197Ter)",
+   "spdi": "NC_000001.11:11796394:G:T",
+   "deleted": "G",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11796395,
+     "stop": 11796395
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11856452,
+     "stop": 11856452
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Neural tube defects, folate-sensitive"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002676849",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1304T>C (p.Phe435Ser)",
+   "spdi": "NC_000001.11:11794400:A:G",
+   "deleted": "A",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794401,
+     "stop": 11794401
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854458,
+     "stop": 11854458
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Neural tube defects, folate-sensitive"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002676848",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1166+1G>T",
+   "spdi": "NC_000001.11:11794727:C:A",
+   "deleted": "C",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794728,
+     "stop": 11794728
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854785,
+     "stop": 11854785
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "MTHFR-related disorder",
+    "Neural tube defects, folate-sensitive"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002676847",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1347+2T>C",
+   "spdi": "NC_000001.11:11794355:A:G",
+   "deleted": "A",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794356,
+     "stop": 11794356
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854413,
+     "stop": 11854413
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Neural tube defects, folate-sensitive"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002676843",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1347+1G>A",
+   "spdi": "NC_000001.11:11794356:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794357,
+     "stop": 11794357
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854414,
+     "stop": 11854414
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Neural tube defects, folate-sensitive"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002676842",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1246G>T (p.Glu416Ter)",
+   "spdi": "NC_000001.11:11794458:C:A",
+   "deleted": "C",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794459,
+     "stop": 11794459
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854516,
+     "stop": 11854516
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Neural tube defects, folate-sensitive"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002676841",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1279del (p.Ser427fs)",
+   "spdi": "NC_000001.11:11794425:T:",
+   "deleted": "T",
+   "inserted": "",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794426,
+     "stop": 11794426
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854483,
+     "stop": 11854483
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Neural tube defects, folate-sensitive"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002676837",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1151_1152delinsG (p.Phe384fs)",
+   "spdi": "NC_000001.11:11794742:GA:C",
+   "deleted": "GA",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794743,
+     "stop": 11794744
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854800,
+     "stop": 11854801
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Neural tube defects, folate-sensitive"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002676836",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1011dup (p.Met338fs)",
+   "spdi": "NC_000001.11:11795117:CCCC:CCCCC",
+   "deleted": "CCCC",
+   "inserted": "CCCCC",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795117,
+     "stop": 11795118
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855174,
+     "stop": 11855175
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Neural tube defects, folate-sensitive"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002676831",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.655dup (p.Ser219fs)",
+   "spdi": "NC_000001.11:11796330:A:AA",
+   "deleted": "A",
+   "inserted": "AA",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11796330,
+     "stop": 11796331
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11856387,
+     "stop": 11856388
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Neural tube defects, folate-sensitive"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002628082",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.781-6G>A",
+   "spdi": "NC_000001.11:11795353:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795354,
+     "stop": 11795354
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855411,
+     "stop": 11855411
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002444291",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1249del (p.Leu417fs)",
+   "spdi": "NC_000001.11:11794455:G:",
+   "deleted": "G",
+   "inserted": "",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794456,
+     "stop": 11794456
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854513,
+     "stop": 11854513
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002441566",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.704_705del (p.Thr235fs)",
+   "spdi": "NC_000001.11:11796280:TGTGT:TGT",
+   "deleted": "TGTGT",
+   "inserted": "TGT",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11796281,
+     "stop": 11796282
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11856338,
+     "stop": 11856339
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002177759",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.781-1G>A",
+   "spdi": "NC_000001.11:11795348:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795349,
+     "stop": 11795349
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855406,
+     "stop": 11855406
+    }
+   },
+   "classification": "Pathogenic/Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Neural tube defects, folate-sensitive"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002161827",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1334G>A (p.Arg445Gln)",
+   "spdi": "NC_000001.11:11794370:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794371,
+     "stop": 11794371
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854428,
+     "stop": 11854428
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Inborn genetic diseases"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002134727",
+   "gene": "MTHFR",
+   "title": "NC_000001.11:g.11796400del",
+   "spdi": "NC_000001.11:11796398:CC:C",
+   "deleted": "CC",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11796399,
+     "stop": 11796399
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11856456,
+     "stop": 11856456
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002054912",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1003C>T (p.Arg335Cys)",
+   "spdi": "NC_000001.11:11795125:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795126,
+     "stop": 11795126
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855183,
+     "stop": 11855183
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Neural tube defects, folate-sensitive",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001937701",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.963C>A (p.Tyr321Ter)",
+   "spdi": "NC_000001.11:11795165:G:T",
+   "deleted": "G",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795166,
+     "stop": 11795166
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855223,
+     "stop": 11855223
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001510009",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1032-12_1038del",
+   "spdi": "NC_000001.11:11794856:GGGACGCCTGGGTGAGGATGGG:GGG",
+   "deleted": "GGGACGCCTGGGTGAGGATGGG",
+   "inserted": "GGG",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794857,
+     "stop": 11794875
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854914,
+     "stop": 11854932
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001457543",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1262G>A (p.Trp421Ter)",
+   "spdi": "NC_000001.11:11794442:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794443,
+     "stop": 11794443
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854500,
+     "stop": 11854500
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001452549",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1069C>T (p.Arg357Cys)",
+   "spdi": "NC_000001.11:11794825:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794826,
+     "stop": 11794826
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854883,
+     "stop": 11854883
+    }
+   },
+   "classification": "Pathogenic/Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Neural tube defects, folate-sensitive",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001451973",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1121dup (p.Tyr374Ter)",
+   "spdi": "NC_000001.11:11794773:T:TT",
+   "deleted": "T",
+   "inserted": "TT",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794773,
+     "stop": 11794774
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854830,
+     "stop": 11854831
+    }
+   },
+   "classification": "Pathogenic/Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001445648",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.860_863del (p.Ile287fs)",
+   "spdi": "NC_000001.11:11795265:TTGATTG:TTG",
+   "deleted": "TTGATTG",
+   "inserted": "TTG",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795266,
+     "stop": 11795269
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855323,
+     "stop": 11855326
+    }
+   },
+   "classification": "Pathogenic/Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001369489",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.673A>G (p.Ile225Val)",
+   "spdi": "NC_000001.11:11796312:T:C",
+   "deleted": "T",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11796313,
+     "stop": 11796313
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11856370,
+     "stop": 11856370
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Neural tube defects, folate-sensitive",
+    "Schizophrenia",
+    "Thrombophilia due to thrombin defect",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001324746",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1270G>T (p.Glu424Ter)",
+   "spdi": "NC_000001.11:11794434:C:A",
+   "deleted": "C",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794435,
+     "stop": 11794435
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854492,
+     "stop": 11854492
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001098292",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1316T>C (p.Leu439Pro)",
+   "spdi": "NC_000001.11:11794388:A:G",
+   "deleted": "A",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794389,
+     "stop": 11794389
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854446,
+     "stop": 11854446
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Neural tube defects, folate-sensitive",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001073673",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1144del (p.Asp382fs)",
+   "spdi": "NC_000001.11:11794750:CCC:CC",
+   "deleted": "CCC",
+   "inserted": "CC",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794751,
+     "stop": 11794751
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854808,
+     "stop": 11854808
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001073018",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1063_1075del (p.Pro355fs)",
+   "spdi": "NC_000001.11:11794819:CTCGGCGCTTGGG:",
+   "deleted": "CTCGGCGCTTGGG",
+   "inserted": "",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794820,
+     "stop": 11794832
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854877,
+     "stop": 11854889
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001072666",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1304_1305del (p.Phe435fs)",
+   "spdi": "NC_000001.11:11794399:GA:",
+   "deleted": "GA",
+   "inserted": "",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794400,
+     "stop": 11794401
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854457,
+     "stop": 11854458
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001068573",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1114_1115del (p.Lys372fs)",
+   "spdi": "NC_000001.11:11794779:TTT:T",
+   "deleted": "TTT",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794780,
+     "stop": 11794781
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854837,
+     "stop": 11854838
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001024006",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1228_1242del (p.Ser410_Lys414del)",
+   "spdi": "NC_000001.11:11794462:CTTGGGGGACTTGCTCTT:CTT",
+   "deleted": "CTTGGGGGACTTGCTCTT",
+   "inserted": "CTT",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794463,
+     "stop": 11794477
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854520,
+     "stop": 11854534
+    }
+   },
+   "classification": "Pathogenic/Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Neural tube defects, folate-sensitive",
+    "Schizophrenia",
+    "Thrombophilia due to thrombin defect"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001004148",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1166+5G>C",
+   "spdi": "NC_000001.11:11794723:C:G",
+   "deleted": "C",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794724,
+     "stop": 11794724
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854781,
+     "stop": 11854781
+    }
+   },
+   "classification": "Pathogenic/Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Neural tube defects, folate-sensitive"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000992662",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.602A>C (p.His201Pro)",
+   "spdi": "NC_000001.11:11796383:T:G",
+   "deleted": "T",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11796384,
+     "stop": 11796384
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11856441,
+     "stop": 11856441
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000992586",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1070G>A (p.Arg357His)",
+   "spdi": "NC_000001.11:11794824:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794825,
+     "stop": 11794825
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854882,
+     "stop": 11854882
+    }
+   },
+   "classification": "Pathogenic/Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "MTHFR-related disorder",
+    "Neural tube defects, folate-sensitive",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000975600",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.973C>T (p.Arg325Cys)",
+   "spdi": "NC_000001.11:11795155:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795156,
+     "stop": 11795156
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855213,
+     "stop": 11855213
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "MTHFR-related disorder",
+    "Neural tube defects, folate-sensitive",
+    "Schizophrenia",
+    "Thrombophilia due to thrombin defect"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000969038",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.867_868insG (p.Asn290fs)",
+   "spdi": "NC_000001.11:11795261::C",
+   "deleted": "",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795261,
+     "stop": 11795262
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855318,
+     "stop": 11855319
+    }
+   },
+   "classification": "Pathogenic/Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Neural tube defects, folate-sensitive"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000851282",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.863_864del (p.Lys288fs)",
+   "spdi": "NC_000001.11:11795264:TTT:T",
+   "deleted": "TTT",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795265,
+     "stop": 11795266
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855322,
+     "stop": 11855323
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000851183",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1011del (p.Met338fs)",
+   "spdi": "NC_000001.11:11795117:CCCC:CCC",
+   "deleted": "CCCC",
+   "inserted": "CCC",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795118,
+     "stop": 11795118
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855175,
+     "stop": 11855175
+    }
+   },
+   "classification": "Pathogenic/Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000800827",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.680C>T (p.Thr227Met)",
+   "spdi": "NC_000001.11:11796305:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11796306,
+     "stop": 11796306
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11856363,
+     "stop": 11856363
+    }
+   },
+   "classification": "Pathogenic/Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Neural tube defects, folate-sensitive",
+    "Schizophrenia",
+    "Thrombophilia due to thrombin defect",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000657146",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1013T>C (p.Met338Thr)",
+   "spdi": "NC_000001.11:11795115:A:G",
+   "deleted": "A",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795116,
+     "stop": 11795116
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855173,
+     "stop": 11855173
+    }
+   },
+   "classification": "Pathogenic/Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Neural tube defects, folate-sensitive"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000654511",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1130G>A (p.Arg377His)",
+   "spdi": "NC_000001.11:11794764:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794765,
+     "stop": 11794765
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854822,
+     "stop": 11854822
+    }
+   },
+   "classification": "Pathogenic/Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "MTHFR-related disorder",
+    "Neural tube defects, folate-sensitive",
+    "Schizophrenia",
+    "Thrombophilia due to thrombin defect"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000590816",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1267dup (p.Glu423fs)",
+   "spdi": "NC_000001.11:11794437:CCCCCC:CCCCCCC",
+   "deleted": "CCCCCC",
+   "inserted": "CCCCCCC",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794437,
+     "stop": 11794438
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854494,
+     "stop": 11854495
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000579195",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1263G>C (p.Trp421Cys)",
+   "spdi": "NC_000001.11:11794441:C:G",
+   "deleted": "C",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794442,
+     "stop": 11794442
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854499,
+     "stop": 11854499
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000548463",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1163G>A (p.Arg388His)",
+   "spdi": "NC_000001.11:11794731:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794732,
+     "stop": 11794732
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854789,
+     "stop": 11854789
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "not provided",
+    "not specified"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000502096",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1162C>T (p.Arg388Cys)",
+   "spdi": "NC_000001.11:11794732:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794733,
+     "stop": 11794733
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854790,
+     "stop": 11854790
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Inborn errors of metabolism",
+    "Neural tube defects, folate-sensitive",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000499744",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.667G>A (p.Asp223Asn)",
+   "spdi": "NC_000001.11:11796318:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11796319,
+     "stop": 11796319
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11856376,
+     "stop": 11856376
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "not provided",
+    "not specified"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000499432",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1032-6A>G",
+   "spdi": "NC_000001.11:11794868:T:C",
+   "deleted": "T",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794869,
+     "stop": 11794869
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854926,
+     "stop": 11854926
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000466269",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1072C>T (p.Arg358Ter)",
+   "spdi": "NC_000001.11:11794822:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794823,
+     "stop": 11794823
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854880,
+     "stop": 11854880
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Neural tube defects, folate-sensitive"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000287120",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.708C>T (p.Phe236=)",
+   "spdi": "NC_000001.11:11796277:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11796278,
+     "stop": 11796278
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11856335,
+     "stop": 11856335
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Inborn genetic diseases",
+    "not provided",
+    "not specified"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000287060",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.853G>A (p.Glu285Lys)",
+   "spdi": "NC_000001.11:11795275:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855333,
+     "stop": 11855333
+    },
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795276,
+     "stop": 11795276
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Inborn genetic diseases",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000286730",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.788A>C (p.His263Pro)",
+   "spdi": "NC_000001.11:11795340:T:G",
+   "deleted": "T",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795341,
+     "stop": 11795341
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855398,
+     "stop": 11855398
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Neural tube defects, folate-sensitive",
+    "Schizophrenia",
+    "Thrombophilia due to thrombin defect",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000222896",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1033C>T (p.Arg345Cys)",
+   "spdi": "NC_000001.11:11794861:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794862,
+     "stop": 11794862
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854919,
+     "stop": 11854919
+    }
+   },
+   "classification": "Pathogenic/Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000222895",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.662del (p.Gly221fs)",
+   "spdi": "NC_000001.11:11796323:CCC:CC",
+   "deleted": "CCC",
+   "inserted": "CC",
+   "loc": {
+    "GRCh37": {
+     "chr": "1",
+     "start": 11856381,
+     "stop": 11856381
+    },
+    "GRCh38": {
+     "chr": "1",
+     "start": 11796324,
+     "stop": 11796324
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "no assertion criteria provided",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000222894",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.604C>A (p.Pro202Thr)",
+   "spdi": "NC_000001.11:11796381:G:T",
+   "deleted": "G",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11796382,
+     "stop": 11796382
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11856439,
+     "stop": 11856439
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000187893",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1320G>A (p.Ser440=)",
+   "spdi": "NC_000001.11:11794384:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794385,
+     "stop": 11794385
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854442,
+     "stop": 11854442
+    }
+   },
+   "classification": "Pathogenic/Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Neural tube defects, folate-sensitive",
+    "Schizophrenia",
+    "Thrombophilia due to thrombin defect"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000187892",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1262G>C (p.Trp421Ser)",
+   "spdi": "NC_000001.11:11794442:C:G",
+   "deleted": "C",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794443,
+     "stop": 11794443
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854500,
+     "stop": 11854500
+    }
+   },
+   "classification": "Pathogenic/Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Neural tube defects, folate-sensitive",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000187891",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1167-2del",
+   "spdi": "NC_000001.11:11794539:T:",
+   "deleted": "T",
+   "inserted": "",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794540,
+     "stop": 11794540
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854597,
+     "stop": 11854597
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Neural tube defects, folate-sensitive",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000187890",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1114A>G (p.Lys372Glu)",
+   "spdi": "NC_000001.11:11794780:T:C",
+   "deleted": "T",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794781,
+     "stop": 11794781
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854838,
+     "stop": 11854838
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000187887",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1042C>T (p.Pro348Ser)",
+   "spdi": "NC_000001.11:11794852:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794853,
+     "stop": 11794853
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854910,
+     "stop": 11854910
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "no assertion criteria provided",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000187886",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1004G>A (p.Arg335His)",
+   "spdi": "NC_000001.11:11795124:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795125,
+     "stop": 11795125
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855182,
+     "stop": 11855182
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Neural tube defects, folate-sensitive",
+    "Schizophrenia",
+    "Thrombophilia due to thrombin defect",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000187885",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.780+1G>T",
+   "spdi": "NC_000001.11:11796204:C:A",
+   "deleted": "C",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11796205,
+     "stop": 11796205
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11856262,
+     "stop": 11856262
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "no assertion criteria provided",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000187882",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.764G>T (p.Gly255Val)",
+   "spdi": "NC_000001.11:11796221:C:A",
+   "deleted": "C",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11796222,
+     "stop": 11796222
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11856279,
+     "stop": 11856279
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "no assertion criteria provided",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000187880",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.671TCA[2] (p.Ile226del)",
+   "spdi": "NC_000001.11:11796306:TGATGATGA:TGATGA",
+   "deleted": "TGATGATGA",
+   "inserted": "TGATGA",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11796307,
+     "stop": 11796309
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11856364,
+     "stop": 11856366
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000187879",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.673A>C (p.Ile225Leu)",
+   "spdi": "NC_000001.11:11796312:T:G",
+   "deleted": "T",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11796313,
+     "stop": 11796313
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11856370,
+     "stop": 11856370
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "no assertion criteria provided",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000187877",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.587G>A (p.Gly196Asp)",
+   "spdi": "NC_000001.11:11796398:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11796399,
+     "stop": 11796399
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11856456,
+     "stop": 11856456
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "no assertion criteria provided",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000003529",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.968T>C (p.Leu323Pro)",
+   "spdi": "NC_000001.11:11795160:A:G",
+   "deleted": "A",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795161,
+     "stop": 11795161
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855218,
+     "stop": 11855218
+    }
+   },
+   "classification": "Pathogenic/Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Neural tube defects, folate-sensitive",
+    "Schizophrenia",
+    "Thrombophilia due to thrombin defect"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000003528",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1129C>T (p.Arg377Cys)",
+   "spdi": "NC_000001.11:11794765:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794766,
+     "stop": 11794766
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854823,
+     "stop": 11854823
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Neural tube defects, folate-sensitive",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000003523",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1015T>G (p.Trp339Gly)",
+   "spdi": "NC_000001.11:11795113:A:C",
+   "deleted": "A",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795114,
+     "stop": 11795114
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855171,
+     "stop": 11855171
+    }
+   },
+   "classification": "Pathogenic/Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000003522",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.971A>G (p.Asn324Ser)",
+   "spdi": "NC_000001.11:11795157:T:C",
+   "deleted": "T",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11795158,
+     "stop": 11795158
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11855215,
+     "stop": 11855215
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000003521",
+   "gene": "MTHFR",
+   "title": "NM_005957.5(MTHFR):c.1286A>C (p.Glu429Ala)",
+   "spdi": "NC_000001.11:11794418:T:G",
+   "deleted": "T",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "1",
+     "start": 11794419,
+     "stop": 11794419
+    },
+    "GRCh37": {
+     "chr": "1",
+     "start": 11854476,
+     "stop": 11854476
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity; other",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Homocystinuria due to methylene tetrahydrofolate reductase deficiency",
+    "Neural tube defects, folate-sensitive",
+    "Schizophrenia",
+    "Thrombophilia due to thrombin defect",
+    "not provided"
+   ]
+  }
+ ],
+ "oversized_skipped": [],
+ "filtered_for_fixture": "records within 2000 bp of a case-C VCF record, of 249 retrieved"
+}

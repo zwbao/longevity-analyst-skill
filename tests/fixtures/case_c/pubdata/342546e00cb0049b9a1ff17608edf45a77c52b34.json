@@ -1,0 +1,9 @@
+{
+ "source": "clinvar",
+ "query": "clinvar:gene:LDLRAP1",
+ "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi (LDLRAP1[gene] AND (clinsig_pathogenic[prop] OR clinsig_likely_pathogenic[prop] OR clinsig_has_conflicts[prop]))",
+ "retrieved_at": "2026-10-24T16:13:06+08:00",
+ "records": [],
+ "oversized_skipped": [],
+ "filtered_for_fixture": "records within 2000 bp of a case-C VCF record, of 112 retrieved"
+}

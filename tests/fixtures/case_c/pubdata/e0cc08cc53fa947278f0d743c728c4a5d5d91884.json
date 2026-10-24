@@ -1,0 +1,16 @@
+{
+  "source": "ensembl",
+  "query": "gene:GRCh38:HNF1A",
+  "url": "https://rest.ensembl.org/lookup/symbol/homo_sapiens/HNF1A?content-type=application/json",
+  "retrieved_at": "2026-10-24T16:08:19+08:00",
+  "records": [
+    {
+      "ref": "ensembl:ENSG00000135100",
+      "symbol": "HNF1A",
+      "chrom": "12",
+      "start": 120978543,
+      "end": 121002512,
+      "assembly": "GRCh38"
+    }
+  ]
+}

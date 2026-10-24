@@ -1,0 +1,16 @@
+{
+  "source": "ensembl",
+  "query": "gene:GRCh38:HNF1B",
+  "url": "https://rest.ensembl.org/lookup/symbol/homo_sapiens/HNF1B?content-type=application/json",
+  "retrieved_at": "2026-10-24T16:08:26+08:00",
+  "records": [
+    {
+      "ref": "ensembl:ENSG00000275410",
+      "symbol": "HNF1B",
+      "chrom": "17",
+      "start": 37686431,
+      "end": 37745095,
+      "assembly": "GRCh38"
+    }
+  ]
+}

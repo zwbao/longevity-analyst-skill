@@ -1,0 +1,16 @@
+{
+  "source": "ensembl",
+  "query": "gene:GRCh38:GCK",
+  "url": "https://rest.ensembl.org/lookup/symbol/homo_sapiens/GCK?content-type=application/json",
+  "retrieved_at": "2026-10-24T16:08:15+08:00",
+  "records": [
+    {
+      "ref": "ensembl:ENSG00000106633",
+      "symbol": "GCK",
+      "chrom": "7",
+      "start": 44143213,
+      "end": 44198170,
+      "assembly": "GRCh38"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "source": "ensembl",
+  "query": "gene:GRCh38:APOB",
+  "url": "https://rest.ensembl.org/lookup/symbol/homo_sapiens/APOB?content-type=application/json",
+  "retrieved_at": "2026-10-24T16:05:12+08:00",
+  "records": [
+    {
+      "ref": "ensembl:ENSG00000084674",
+      "symbol": "APOB",
+      "chrom": "2",
+      "start": 21001305,
+      "end": 21044075,
+      "assembly": "GRCh38"
+    }
+  ]
+}

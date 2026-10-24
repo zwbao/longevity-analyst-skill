@@ -199,8 +199,8 @@ def myvariant_rsids(ws: Path, rsids: Iterable[str], assembly: str = "hg38") -> D
     out: Dict[str, List[Dict[str, Any]]] = {}
     recs: List[Dict[str, Any]] = []
     fields = "dbsnp.rsid,dbsnp.ref,dbsnp.alt,dbsnp.chrom,gnomad_genome.af.af_eas,gnomad_genome.af.af,clinvar.rcv.clinical_significance,clinvar.rcv.accession,clinvar.gene.symbol,chrom,vcf,hg19,hg38"
-    for i in range(0, len(ids), 500):
-        chunk = ids[i:i + 500]
+    for i in range(0, len(ids), 100):              # myvariant.info answers HTTP 400 "Too Many Hits" above about 100 ids
+        chunk = ids[i:i + 100]
         body = urllib.parse.urlencode({"q": ",".join(chunk), "scopes": "dbsnp.rsid", "fields": fields,
                                        "assembly": assembly, "size": 1000}).encode()
         res = _http("https://myvariant.info/v1/query", data=body,

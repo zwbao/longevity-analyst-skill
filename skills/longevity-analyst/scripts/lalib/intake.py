@@ -955,6 +955,11 @@ def reuse_germline(st: Dict[str, Any], ws_root: Path, prev_ws: Path, raw_dir: Pa
         raise LAError("--reuse-germline-from points at another member's workspace; germline results are never shared", EXIT_USAGE)
     prev_vcf = {f["sha256"]: f["name"] for f in ps.get("files", []) if f.get("kind") == "variants_vcf" and not f.get("excluded")}
     rec: Dict[str, Any] = {"from": str(prev), "at": now_iso(), "reused": False, "trait_map_version": trait_map_version(), "files": {}}
+    pr = ps.get("reuse_germline") or {}
+    if not prev_vcf and pr.get("reused") and pr.get("vcf_sha256"):
+        # a labs-only visit after a labs-only visit: the germline results it reused stand for the original VCF
+        prev_vcf = {sha: f"(reused by {prev.name} from {pr.get('from')})" for sha in pr["vcf_sha256"]}
+        rec["chain"] = [pr.get("from")] + list(pr.get("chain") or [])
     if not prev_vcf:
         rec["reason"] = "the previous workspace has no member VCF"
         st["reuse_germline"] = rec
