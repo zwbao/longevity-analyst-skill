@@ -781,7 +781,7 @@ def insight_sections(ws: Path, ro: Dict[str, Dict[str, Any]]) -> List[str]:
                     pct = ("低于第 1 百分位" if x["bound"] == "below" else "高于第 99 百分位" if x["bound"] == "above" else
                            f"第 {_fmt(x['pct_low'])}–{_fmt(x['pct_high'])} 百分位（该人群很多人与你同值，多为检测下限）" if x["bound"] == "tie"
                            else f"第 {_fmt(x['pct'])} 百分位")
-                    L.append(f"| {_cell(x['label_zh'])} | {_cell(_fmt(x['value']))} {_cell(x['unit'])} | {"中国 " if x.get("reference") == "cn" else "美国 " if "cn" in refs else ""}{_cell(x['stratum'])}{f"（{x['n']} 人）" if x.get("n") else ""} | {pct} | {_cell(_fmt(x['median']))} |")
+                    L.append(f"| {_cell(x['label_zh'])} | {_cell(_fmt(x['value']))} {_cell(x['unit'])} | {"中国 " if x.get("reference") == "cn" else "美国 " if "cn" in refs else ""}{_cell(_stratum_zh(x['stratum']))}{f"（{x['n']} 人）" if x.get("n") else ""} | {pct} | {_cell(_fmt(x['median']))} |")
                 L.append("")
             if pos["gmhi"]:
                 gm = pos["gmhi"]
@@ -856,6 +856,12 @@ def _effect_row(ref: str) -> Optional[Dict[str, Any]]:
                     r = json.loads(line)
                     _EFFECTS[r["id"]] = r
     return _EFFECTS.get(ref)
+
+
+def _stratum_zh(t: Any) -> str:
+    """'male 50-54' -> '男 50–54 岁'."""
+    m = re.fullmatch(r"(male|female)\s+(\d+)\s*-\s*(\d+)", str(t).strip())
+    return f"{'男' if m.group(1) == 'male' else '女'} {m.group(2)}–{m.group(3)} 岁" if m else str(t)
 
 
 def _ev_link(e: Dict[str, Any]) -> str:

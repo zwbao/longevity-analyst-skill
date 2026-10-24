@@ -12,7 +12,7 @@ from typing import Any, Dict, List, Optional, Tuple
 from .common import EXIT_BLOCKED, LAError, load_json, sha256_file
 
 CPIC_TAG = "【CPIC】"
-EXECUTOR_ZH = {"physician": "医生", "member": "你自己"}
+EXECUTOR_ZH = {"physician": "医生", "member": "你自己", "nutritionist": "营养师"}
 REASON_ZH = {"genetic": "基因", "guideline": "指南", "intervention": "干预复测"}
 
 

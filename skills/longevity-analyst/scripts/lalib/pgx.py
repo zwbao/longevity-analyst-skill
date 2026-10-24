@@ -297,6 +297,7 @@ def readouts(doc: Dict[str, Any]) -> List[Dict[str, Any]]:
     rows = [{"id": f"pgx.{r['gene'].lower()}.phenotype", "label_zh": f"{r['gene']} 表型（CPIC 用语）", "value": r["phenotype"], "unit": "",
              "kind": "pgx", "method": "cpic-pharmacogenomics", "source": "work/pgx/pgx.json", "systems": []} for r in doc.get("results", [])]
     rows += [{"id": f"nutrigenetic.{x['key']}.copies", "label_zh": f"{x['gene']} {x['effect_name']} 的份数", "value": x["copies"],
-              "unit": "份", "kind": "descriptive", "method": "nutrigenetic-variant-panel", "source": "work/pgx/pgx.json", "systems": []}
+              "unit": "份", "kind": "descriptive", "method": "nutrigenetic-variant-panel", "source": "work/pgx/pgx.json",
+              "systems": ["genetics_pgx"]}
              for x in doc.get("nutrigenetic", []) if x.get("copies") is not None]
     return rows
