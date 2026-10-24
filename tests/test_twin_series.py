@@ -227,7 +227,7 @@ def test_undated_file_in_a_dated_workspace_without_sample_date_is_asked(tmp_path
 # ------------------------------------------------------------ WS-B.2 retest judgeability
 @pytest.mark.parametrize("what,targets,weeks,judgeable,warn", [
     ("空腹血糖", [], 12, True, None),
-    ("同型半胱氨酸", [], 12, False, "no within-person noise model"),
+    ("握力", [], 12, False, "no within-person noise model"),
     ("低密度脂蛋白胆固醇", [], 2, True, "sooner"),
     ("{{r:x|label}}", ["低密度脂蛋白胆固醇(LDL-C)"], 12, True, None),
     ("甲基化时钟", ["epiage.dnam_hannum"], 52, False, "no within-person noise model"),

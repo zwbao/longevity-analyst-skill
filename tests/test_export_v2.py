@@ -116,7 +116,7 @@ def _chain_to_intervene(ws: Path, capsys, monkeypatch):
     for i in (1, 2, 3):
         ok("board", "skip", str(ws), "--id", f"Q{i}", "--reason", "offline test")
     plan = {"items": [
-        {"id": "I1", "category": "diet", "action_zh": "在营养师指导下尝试适度热量限制", "targets": ["epiage.dnam_hannum"],
+        {"id": "I1", "category": "diet", "action_zh": "在营养师指导下尝试适度热量限制", "targets": ["epiage.dnam_phenoage"],
          "evidence": [{"type": "effects", "ref": "calerie-cr-dunedinpace"}], "evidence_grade": "human_rct",
          "executor": "nutritionist", "retest": {"what": "甲基化时钟", "after_weeks": 52}},
         {"id": "I2", "category": "diet", "action_zh": "工作日晚饭少放盐", "targets": ["收缩压"],
@@ -245,7 +245,7 @@ def test_chain_export_v2_series_exposures_and_privacy(tmp_path, capsys, monkeypa
     assert rts["I2"]["id"] == "I2" and rts["I2"]["marker"] == "收缩压" and rts["SV1"]["marker"] == "空腹血糖"
     assert ex["concordance"][0]["transition"] == {"from": "latent", "to": "concordant_adverse", "observed_at": "2026-09-10",
                                                   "kind": "tendency_expressed"}
-    assert {x["source_item"]: x["targets"] for x in ex["plan"]["items"]} == {"I1": ["epiage.dnam_hannum"], "I2": ["收缩压"]}
+    assert {x["source_item"]: x["targets"] for x in ex["plan"]["items"]} == {"I1": ["epiage.dnam_phenoage"], "I2": ["收缩压"]}
     assert rts["SV1"]["reason"] == "genetic" and rts["SV1"]["judgeable"] is True and "SV2" not in rts
     capsys.readouterr()
     ok("export", str(ws))

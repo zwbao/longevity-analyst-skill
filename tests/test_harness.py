@@ -643,12 +643,13 @@ def test_twin_compare_judges_labs_not_readouts_and_alerts_on_genotype_change(tmp
     res = _twins(tmp_path,
                  [{"marker": "白蛋白", "value": "40", "unit": "g/L"}, {"marker": "C反应蛋白", "value": "<0.5", "unit": "mg/L"}],
                  [{"marker": "白蛋白", "value": "45", "unit": "g/L"}, {"marker": "C反应蛋白", "value": "3", "unit": "mg/L"}],
-                 [{"id": "native.apoe.genotype", "label_zh": "APOE", "value": "ε3/ε3"}, {"id": "epiage.dnam_hannum", "label_zh": "H", "value": 60}],
-                 [{"id": "native.apoe.genotype", "label_zh": "APOE", "value": "ε4/ε4"}, {"id": "epiage.dnam_hannum", "label_zh": "H", "value": 58}])
+                 [{"id": "native.apoe.genotype", "label_zh": "APOE", "value": "ε3/ε3"}, {"id": "epiage.dnam_hannum", "label_zh": "H", "value": 60}, {"id": "epiage.dnam_phenoage", "label_zh": "P", "value": 61}],
+                 [{"id": "native.apoe.genotype", "label_zh": "APOE", "value": "ε4/ε4"}, {"id": "epiage.dnam_hannum", "label_zh": "H", "value": 58}, {"id": "epiage.dnam_phenoage", "label_zh": "P", "value": 57}])
     rows = {r.get("marker") or r.get("readout"): r for r in res["rows"]}
     assert rows["白蛋白"]["verdict"] == "increase_beyond_noise"
     assert rows["C反应蛋白"]["verdict"] == "not_judged"                 # censored baseline
-    assert rows["epiage.dnam_hannum"]["verdict"] == "not_judged"
+    assert rows["epiage.dnam_hannum"]["verdict"] == "within_noise"           # readout_noise.json: |Δ| 2 < 1.96·√2·1.18
+    assert rows["epiage.dnam_phenoage"]["verdict"] == "not_judged"           # no technical-replicate noise in the library
     assert rows["native.apoe.genotype"]["verdict"] == "identity_alert" and res["alerts"]
 
 
