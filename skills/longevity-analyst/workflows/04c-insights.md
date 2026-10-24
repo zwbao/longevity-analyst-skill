@@ -30,6 +30,21 @@ risk factor would plausibly help him, and a board of questions investigated one 
    - `carrier_only: true` is a heterozygous finding in a recessive gene: the member is a carrier; it does not explain
      their lab value. `possible_compound_het` needs phasing before anyone calls it a cause.
    - `low_quality_not_counted` hits need orthogonal confirmation (Sanger) before they are mentioned as findings.
+   The same command writes `work/insights/concordance.json` (la-concordance/1) and registers one
+   `genetic_concordance` readout per classified lab: the genetic band (toward the unfavourable side, cut-offs in
+   `trait_map.json` `score_rules`) crossed with the lab flag gives one of four classes with fixed wordings, each
+   preceded by 「基因分值只能解释这一项差异的一部分。」. Never reword them; a ClinVar P/LP finding replaces the class with
+   「需要临床确认和遗传咨询」; `near_band_edge` means the class is unstable. It also writes
+   `work/insights/fingerprint.json` (quality-passing germline calls and their hash, for the identity check between
+   snapshots; it never leaves the workspace).
+   Medicines and diet genes: `$LA insights pgx <ws>` (needs `genetic_disclosure=yes`; the member's current medicines
+   come from `la.py member <ws> medications="…"`). It reads the member's VCF at the sites of the library skills
+   `cpic-pharmacogenomics` and `nutrigenetic-variant-panel` with the same quality rules (it reuses a recorded
+   `--absent-as-ref` judgment), writes `work/pgx/genotype.txt` (stays in the workspace), runs both skills and writes
+   `work/pgx/pgx.json`. A GRCh37 VCF, no VCF or no consent gives `not_run` with the reason, which the report shows.
+   CPIC lines are kept as the skill prints them, each with its guideline link; do not paraphrase them anywhere.
+   Diet-gene results are descriptive; an MTHFR 677TT result also feeds the homocysteine concordance item, with the
+   panel's ACMG reminder.
 2. Position: `$LA insights position <ws>` → `work/insights/positions.json` (lab percentiles in the NHANES same-sex,
    same-age-band population; GMHI against healthy, East Asian healthy and non-healthy metagenomes; the several ages
    side by side).
@@ -64,14 +79,27 @@ risk factor would plausibly help him, and a board of questions investigated one 
    a researcher.
    The plan (workflow 05) may then target insight readouts and cite `{"type": "proj", "ref": "<projection ref>"}` or
    `{"type": "board", "ref": "Q<n>"}`.
+8. Surveillance plan, after `intervene register` (workflow 05) and before `twin build`: fetch the source of every
+   rule in `data/surveillance_rules.json` that applies (`$LA evidence fetch <ws> --url <rule source url>`; the
+   command names any that are missing), then `$LA surveillance plan <ws> [--history <earlier twin.json> ...]`. It
+   writes `work/surveillance/plan.json`: guideline rules (for example Lp(a): measure once in adulthood; once measured,
+   now or in an earlier snapshot passed with `--history`, it leaves the retest list), the germline genotype (measured
+   once), and the plan's retests, merged per marker (shorter interval wins, both reasons kept). Physician items go on
+   the ask-your-doctor list. Re-run it whenever the plan is registered again; `la.py validate` checks the sources were
+   fetched and the plan is current. Where no guideline gives an interval (APOE ε4, for example) there is no rule: it
+   stays a question for the physician.
 
 ## Output Format
-1. Genes vs labs: per abnormal lab, the genetic percentile with coverage and any ClinVar P/LP finding.
+1. Genes vs labs: per abnormal lab, the genetic percentile with coverage and any ClinVar P/LP finding; the concordance
+   class in its fixed wording; the pharmacogenomic genes with their CPIC lines (or why pgx did not run).
 2. Position: the percentiles that matter and the age comparison, with which reference they come from.
 3. Projections: exposure → outcome, current → target, baseline → projected risk.
 4. The board: question, verdict, confidence, next step.
 
 ## Guardrails
+- A concordance class is a reading of tendency and lab together, not a diagnosis; never write 「注定」「一定会」.
+- A CPIC line is shown verbatim with its 【CPIC】 label and guideline link; starting, stopping or changing a medicine is
+  for the prescriber.
 - A genetic percentile is a tendency, not a diagnosis; say that a common-variant score explains part of a trait at
   most. A ClinVar P/LP finding is reported as "needs clinical confirmation and genetic counselling", never as a
   diagnosis, and only when the member agreed to genetic results.
