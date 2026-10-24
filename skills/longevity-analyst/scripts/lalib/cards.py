@@ -21,7 +21,7 @@ CHAT = {"id": "a1", "label_zh": "去聊聊", "type": "open_chat"}
 DOCTOR = {"id": "a2", "label_zh": "加入问医生的单子", "type": "add_to_doctor_list"}
 TREND_ZH = {"rising_beyond_noise": "缓慢上升", "falling_beyond_noise": "缓慢下降"}
 CHANGE_ZH = {"increase_beyond_noise": "升高，超出个人正常波动", "decrease_beyond_noise": "下降，超出个人正常波动"}
-CLASS_ZH = {"concordant_adverse": "基因倾向已经表达", "latent": "有基因倾向，化验尚在范围内", "acquired_adverse": "化验异常，主要不是基因倾向",
+CLASS_ZH = {"concordant_adverse": "先天倾向已经表现出来", "latent": "有基因倾向，化验尚在范围内", "acquired_adverse": "化验异常，主要不是基因倾向",
             "concordant_typical": "基因倾向和化验都在常见范围", "protective_discordant": "化验异常，基因倾向反而有利"}
 FILES = {"predictions": ("work/predict/predictions.json", "items"), "diagnoses": ("work/clinical/diagnoses.json", "items"),
          "medications": ("work/clinical/medications.json", "items"), "concordance": ("work/insights/concordance.json", "items"),
@@ -107,7 +107,8 @@ def build(ws: Path, export_path: Path) -> List[Dict[str, Any]]:
         else:
             nums = [_num(f"{ref}.evidence[{i}].value", e.get("value"), e.get("unit", ""), "测量")
                     for i, e in enumerate(d.get("evidence") or []) if isinstance(e.get("value"), (int, float))]
-        card(f"dx-{d.get('id')}", "diagnosis", str(d.get("label_zh")), str(d.get("conclusion_zh")), nums, lab, [CHAT, DOCTOR])
+        card(f"dx-{d.get('id')}", "diagnosis", str(d.get("label_zh")),
+             str(d.get("conclusion_zh")) + "".join(d.get("caveats_zh") or []), nums, lab, [CHAT, DOCTOR])   # caveats as in the report
 
     for ref, m in _section(export, ws, "medications"):
         lab = m.get("label") or {}

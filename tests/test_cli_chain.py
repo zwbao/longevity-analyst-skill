@@ -490,6 +490,10 @@ def test_full_chain_case_c(tmp_path, capsys, case_c_net):
     assert p3["p_detect_favorable"] == pytest.approx(0.49, abs=0.02) and p3["label"]["basis_kind"] == "statistical_model"
     assert p4["p_detect_favorable"] == pytest.approx(0.76, abs=0.02) and p4["p_true_favorable"] > 0.99
     assert any(s["type"] == "personal_experiment" for s in p4["label"]["sources"])
+    reps = {p["plan_item"]: p["design"]["repeats_each_side"] for p in _load(v4, "predict", "predictions.json")["items"]}
+    assert reps["I3"] == 14 and reps["I1"] == reps["I2"] == reps["I4"] == 1      # blood tests: one draw each side
+    dcard = next(c for c in json.loads((v4 / "deliver" / "cards.json").read_text()) if c["kind"] == "diagnosis")
+    assert "一次测量" in dcard["summary_zh"] and "不符合" in dcard["summary_zh"]
     # diagnostic conclusion for fasting glucose 5.6: ADA impaired fasting glucose yes, China no; the guideline is named
     cn = json.loads((tmp_path / "2026-09-dx-runs.json").read_text())["cn"]
     assert not cn["met"] and "DX-ifg-cn" in cn["not_met"]

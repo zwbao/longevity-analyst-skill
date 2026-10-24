@@ -282,7 +282,9 @@ def run(st: Dict[str, Any], ws: Path, *, repeats: Optional[int] = None, planned_
             if not base:
                 why = "没有你本人这项指标的基线值"
                 continue
-            k = repeats or int(m.get("average_days") or 1)
+            # repeated readings per side only where the member measures at home (markers with average_days, e.g.
+            # blood pressure); a blood test is one draw before and one after, whatever --repeats says
+            k = (repeats or int(m["average_days"])) if m.get("average_days") else 1
             pers = personal_experiments(ws, bv, m, it, row)
             pi, det = predict_item(it, row, m, base, k, z, exps.get(it["id"]), pers, planned_per_week, today, f"P{len(items) + 1}")
             items.append(pi)
