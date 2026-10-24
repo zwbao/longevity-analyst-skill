@@ -405,14 +405,18 @@ def _cpic_items(st: Dict[str, Any], ws: Path, start: int) -> Tuple[List[Dict[str
             src = {"type": "cpic", "ref": x.get("guideline") or x.get("guideline_url") or "CPIC", "quote": rec}
             if x.get("guideline_url"):
                 src["url"] = x["guideline_url"]
-            lab = L.make_label("cpic", [src, {"type": "lab", "ref": f"{res.get('gene')} {res.get('phenotype')}"}])
-            out.append({"id": f"RX{start + len(out) + 1}", "kind": "cpic", "gene": res.get("gene"), "phenotype": res.get("phenotype"),
+            lk = x.get("lookup") or {}
+            basis = "；".join(f"{g} {v}" for g, v in lk.items()) if len(lk) > 1 else f"{res.get('gene')} {res.get('phenotype')}"
+            lab = L.make_label("cpic", [src, {"type": "lab", "ref": f"基因检测 {basis}"}])
+            gene, pheno = (("、".join(lk), "；".join(f"{g} {v}" for g, v in lk.items())) if len(lk) > 1
+                           else (res.get("gene"), res.get("phenotype")))
+            out.append({"id": f"RX{start + len(out) + 1}", "kind": "cpic", "gene": gene, "phenotype": pheno,
                         "drug_or_class_zh": dz or x.get("drug"), "drug": x.get("drug"),
                         "action": _cpic_action(rec, taking, x.get("category")), "cpic_category": x.get("category"),
                         "currently_taking": taking,
                         **({"caveats_zh": [f"{'、'.join(x['untested_genes'])} 没有检测结果，这条推荐没有考虑它；"
                                            f"用这个药之前，请医生确认{'、'.join(x['untested_genes'])}。"]} if x.get("untested_genes") else {}),
-                        "label_zh": f"{res.get('gene')} 与 {dz or x.get('drug')}",
+                        "label_zh": f"{gene} 与 {dz or x.get('drug')}",
                         "text_zh": rec, **({"dose_text_zh": x["dose_text"]} if x.get("dose_text") else {}),
                         "strength": x.get("strength"), "executor": list(EXECUTOR), "label": lab})
     return out, None

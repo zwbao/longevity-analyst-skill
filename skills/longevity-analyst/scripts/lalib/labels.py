@@ -119,7 +119,7 @@ def render_sources(label: Dict[str, Any]) -> str:
     parts = []
     for s in label.get("sources") or []:
         t, ref = s.get("type"), str(s.get("ref"))
-        if t in ("guideline", "url"):
+        if t in ("guideline", "url") or (t == "lab" and ref.startswith("基因检测")):   # a genotype is not a lab test
             parts.append(ref)
         else:
             parts.append(f"{SOURCE_ZH.get(t, t)} {ref}")

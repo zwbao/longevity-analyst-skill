@@ -194,6 +194,8 @@ def doctor_list(ws: Path, ser: Dict[str, Any]) -> List[str]:
     for m in ser.get("markers") or []:
         if ask_doctor(m):
             out.append(f"{m['marker']}：{wording(m)}")
+        elif m.get("summary_verdict") == "trend_beyond_noise" and (m.get("better"), _direction(m)) in (("lower", UP), ("higher", DOWN)):
+            out.append(f"{m['marker']}：{wording(m)}最近一次还在参考范围内，下次体检请复查")      # unfavourable slow drift
     if any(m.get("marker_key") in ("sbp", "dbp") and len(m.get("points") or []) > 1 for m in ser.get("markers") or []):
         out.append(BP_DOCTOR_ZH)                      # no blood-pressure diagnostic rule is checked here: say so, every time
     sp = ws / "state.json"

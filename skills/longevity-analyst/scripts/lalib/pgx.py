@@ -246,21 +246,26 @@ def run(st: Dict[str, Any], ws: Path, absent_as_ref: Optional[str] = None) -> Di
     discuss = {d.strip() for d in str(_val(outs.get("drugs_to_discuss")) or "").split(",") if d.strip()}
     med_drugs = {d for d, bl in blocks.items() if any("→" in b[0] for b in bl)}
     text_rows = _cpic_text_rows(c["result"])
+    placed: set = set()                    # a CPIC row that depends on two genes is shown once, under the first, naming both
     for gene in [k[:-len("_phenotype")].upper() for k in outs if k.endswith("_phenotype")]:
         ph = _val(outs.get(gene.lower() + "_phenotype"))
         if not ph:
             continue
         drugs = []
         for drug, e in sorted(cp["drugs"].items()):
-            if gene not in e.get("genes", []) or not (drug in discuss or drug in med_drugs):
+            if gene not in e.get("genes", []) or not (drug in discuss or drug in med_drugs) or drug in placed:
                 continue
             rows = [r for r in text_rows if r.get("drug") == drug]
+            lookup = {g: v for r in rows for g, v in (r.get("lookup") or {}).items() if str(v).strip().lower() not in ("no result", "")}
+            if len(lookup) > 1:
+                placed.add(drug)
             sev = {"avoid": 3, "caution": 2, "standard": 1}
             cats = [r.get("category") for r in rows if r.get("category")]
             text = [str(r.get("recommendation") or r.get("recommendation_text") or "") for r in rows]
             if len(rows) > 1:                      # one CPIC row per population: each once, with its population as CPIC names it
                 text = [f"[{r.get('population') or '—'}] {t}" for r, t in zip(rows, text)]
             drugs.append({"drug": drug, "drug_zh": next((r.get("drug_zh") for r in rows if r.get("drug_zh")), None),
+                          "lookup": lookup or None,
                           "category": max(cats, key=lambda c: sev.get(c, 0)) if cats else None,
                           "untested_genes": sorted({g for r in rows for g, v in (r.get("lookup") or {}).items()
                                                     if str(v).strip().lower() in ("no result", "")}),

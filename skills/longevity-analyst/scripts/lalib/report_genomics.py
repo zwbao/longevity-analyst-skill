@@ -108,6 +108,8 @@ def pgx_section(doc: Dict[str, Any]) -> List[str]:
                 ut = "、".join(d.get("untested_genes") or [])
                 miss = f"{ut} 没有检测结果，这条推荐没有考虑它；用这个药之前，请医生确认{ut}。" if ut else ""
                 name = f"{_cell(d['drug_zh'])}（{_cell(d['drug'])}）" if d.get("drug_zh") else _cell(d["drug"])
+                if len(d.get("lookup") or {}) > 1:
+                    name += "（这条推荐同时按 " + "、".join(f"{_cell(g)} {_cell(v)}" for g, v in d["lookup"].items()) + " 给出）"
                 L.append(f"- {CPIC_TAG}{name}{mine}：{_cell(d['recommendation_text'])}（CPIC 原文{strength}）。{miss}{link}")
             else:
                 head = (d.get("skill_text_zh") or [f"- {d['drug']}"])[0].lstrip("- ").strip()
