@@ -165,10 +165,14 @@ def item_text(kind: str, it: Dict[str, Any]) -> str:
         d = it.get("design") or {}
         lo, hi = it["interval_80_pct"]
         own = any(s.get("type") == "personal_experiment" for s in it["label"].get("sources") or [])
-        return (f"{head}：按前后各测 {d.get('repeats_each_side')} 次的设计，下次实验能测出有利变化的概率{_about(it['p_detect_favorable'])}，"
-                f"真实效应方向有利的概率{_about(it['p_true_favorable'])}，预计变化的 80% 区间 {_pct(lo)} 到 {_pct(hi)}。"
-                + (PERSONAL_ZH + next((a + "。" for a in it["label"].get("assumptions") or [] if a.startswith("只按研究结果")), "")
-                   if own else ""))
+        prior = next((a for a in it["label"].get("assumptions") or [] if a.startswith("只按研究结果")), None)
+        body = (f"下次实验能测出有利变化的概率{_about(it['p_detect_favorable'])}，"
+                f"真实效应方向有利的概率{_about(it['p_true_favorable'])}，预计变化的 80% 区间 {_pct(lo)} 到 {_pct(hi)}。")
+        if own and prior:
+            # the trials alone first; the figure that also counts the member's uncontrolled before/after comes second
+            return (f"{head}：按前后各测 {d.get('repeats_each_side')} 次的设计，{prior}。"
+                    f"如果把你自己那次没有对照的前后对比也算进去：{body}{PERSONAL_ZH}")
+        return f"{head}：按前后各测 {d.get('repeats_each_side')} 次的设计，{body}" + (PERSONAL_ZH if own else "")
     if kind == "dx":
         g = it["label"].get("guideline_zh")
         c = it["conclusion_zh"]

@@ -193,6 +193,21 @@ def doctor_list(ws: Path, ser: Dict[str, Any]) -> List[str]:
     for m in ser.get("markers") or []:
         if ask_doctor(m):
             out.append(f"{m['marker']}：{wording(m)}")
+    sp = ws / "state.json"
+    if sp.exists():                                   # any confirmed lab of this visit outside its printed range
+        from .genomics import _ref_bounds
+        from .labnames import usable_rows
+        named = " ".join(out)
+        for r in usable_rows(load_json(sp)):
+            try:
+                v = float(str(r.get("value")).strip())
+            except ValueError:
+                continue
+            lo, hi = _ref_bounds(r.get("ref_range", ""))
+            side = "高于" if hi is not None and v > hi else "低于" if lo is not None and v < lo else None
+            base = re.split(r"[(（]", str(r["marker"]))[0]
+            if side and base not in named:
+                out.append(f"{r['marker']}：这次结果{side}参考范围")
     for name, kind in (("diagnoses.json", "dx"), ("medications.json", "rx")):
         p = ws / "work" / "clinical" / name
         for x in (load_json(p).get("items") or []) if p.exists() else []:

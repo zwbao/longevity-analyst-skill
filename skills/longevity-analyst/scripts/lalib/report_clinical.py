@@ -89,7 +89,8 @@ def diagnoses(ws: Path) -> List[str]:
             out.append(f"| {_cell(x['conclusion_zh'])}{note} | {vals or '—'} | {L.render_label(x['label'])} | {_cell(g.get('quote'))}（{_cell(g.get('ref'))}） |")
         out.append("")
     else:
-        out += ["按所用指南的标准，本次数据没有符合任何一条诊断标准。", ""]
+        out += ["下面列出的几条标准，本次都没有达到。只核对了这几条：没有列出的项目（例如尿酸、血压）没有按诊断标准核对，"
+                "不代表正常，请看「复测对比与趋势」和「问医生的单子」，并请医生判断。", ""]
     nm = [e for e in d.get("evaluated", []) if e["result"] == "not_met"]
     if nm:
         out += ["已核对、未达到标准：" + "；".join(f"{_cell(e['label_zh'])}（《{_cell(e['guideline_zh'])}》）" for e in nm) + "。", ""]
