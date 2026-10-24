@@ -24,12 +24,21 @@ def _cell(x: Any) -> str:
     return c(x)
 
 
+def _own(x: Dict[str, Any]) -> bool:
+    return any(s.get("type") == "personal_experiment" for s in x["label"].get("sources") or [])
+
+
+def _prior(x: Dict[str, Any], what: str) -> str:
+    """A trials-only figure from the label's 只按研究结果 assumption (predict writes it with the personal one)."""
+    prior = next((a for a in x["label"].get("assumptions") or [] if a.startswith("只按研究结果")), "")
+    m = re.search(what + r"(约 \d+%|超过 99%|不到 1%)", prior)
+    return m.group(1) if m else "—"
+
+
 def _true_cell(x: Dict[str, Any]) -> str:
     """With an uncontrolled personal before/after in the model, the 'true effect' figure is the trials-only one."""
-    if any(s.get("type") == "personal_experiment" for s in x["label"].get("sources") or []):
-        prior = next((a for a in x["label"].get("assumptions") or [] if a.startswith("只按研究结果")), "")
-        m = re.search(r"真实效应方向有利的概率(约 \d+%|超过 99%|不到 1%)", prior)
-        return f"{m.group(1)}（只按研究结果）" if m else "—（见下方说明）"
+    if _own(x):
+        return f"{_prior(x, '真实效应方向有利的概率')}（只按研究结果）"
     return L._about(x["p_true_favorable"])
 
 
@@ -60,9 +69,15 @@ def predictions(ws: Path) -> List[str]:
                 "|---|---|---|---|---|---|---|---|"]
         for x in stat:
             lo, hi = x["interval_80_pct"]
+            n = x['design']['repeats_each_side']
+            if _own(x):                     # trials only in front; the personal-comparison figures only as a stated assumption
+                det = (f"{_prior(x, '下次实验能测出有利变化的概率')}（只按研究结果，前后各测 {n} 次）；"
+                       f"假定你那次没有对照的前后对比全部来自这项干预时 {L._about(x['p_detect_favorable'])}")
+                iv = f"假定同上时 {lo:.1f}% 到 {hi:.1f}%"
+            else:
+                det, iv = f"{L._about(x['p_detect_favorable'])}（前后各测 {n} 次）", f"{lo:.1f}% 到 {hi:.1f}%"
             out.append(f"| {_cell(x.get('plan_item'))} | {_cell(x['intervention_zh'])} | {_cell(x['marker'])} | "
-                       f"{L._about(x['p_detect_favorable'])}（前后各测 {x['design']['repeats_each_side']} 次） | {_true_cell(x)} | "
-                       f"{lo:.1f}% 到 {hi:.1f}% | {L.render_label(x['label'])} | {_src(x['label'])} |")
+                       f"{det} | {_true_cell(x)} | {iv} | {L.render_label(x['label'])} | {_src(x['label'])} |")
         out.append("")
         assum = []
         for x in stat:
