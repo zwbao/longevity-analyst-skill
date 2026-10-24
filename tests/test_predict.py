@@ -82,7 +82,7 @@ def test_adherence_scaling_and_site_without_checkins():
 def test_adherence_from_exposures_scales_prior(tmp_path):
     ws, st = make_ws(tmp_path, labs=[("收缩压", 138, "mmHg")])
     write_plan(ws, [SALT_ITEM])
-    today = C.now_iso()[:10]
+    today = st["member"]["sample_date"]                     # adherence is counted up to the visit, not the run date
     import datetime as dt
     start = (dt.date.fromisoformat(today) - dt.timedelta(weeks=6)).isoformat()
     exp = {"schema": "la-exposures/1", "member": "synthetic", "source": "coach_member_file", "generated_at": today + "T09:00:00+08:00",

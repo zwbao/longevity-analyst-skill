@@ -255,7 +255,8 @@ def run(st: Dict[str, Any], ws: Path, absent_as_ref: Optional[str] = None) -> Di
             if gene not in e.get("genes", []) or not (drug in discuss or drug in med_drugs):
                 continue
             rows = [r for r in text_rows if r.get("drug") == drug]
-            drugs.append({"drug": drug,
+            drugs.append({"drug": drug, "drug_zh": next((r.get("drug_zh") for r in rows if r.get("drug_zh")), None),
+                          "category": next((r.get("category") for r in rows if r.get("category")), None),
                           "recommendation_text": "\n".join(str(r.get("recommendation") or r.get("recommendation_text") or "") for r in rows) or None,
                           "dose_text": next((r.get("dose_text") for r in rows if r.get("dose_text")), None),
                           "strength": next((r.get("classification") or r.get("strength") for r in rows if r.get("classification") or r.get("strength")), None),
@@ -264,7 +265,9 @@ def run(st: Dict[str, Any], ws: Path, absent_as_ref: Optional[str] = None) -> Di
                           "skill_text_zh": next((b for b in blocks.get(drug, []) if "→" not in b[0]), (blocks.get(drug) or [[]])[0]),
                           "cpic_source": {"api": cp["source"].get("api"), "release": cp["source"].get("cpic_data_release"),
                                           "accessed": cp["source"].get("accessed"), "license": cp["source"].get("license"),
-                                          "row_ids": [r.get("id") for r in rows if r.get("id") is not None]}})
+                                          "row_ids": [r.get("recommendation_id", r.get("id")) for r in rows
+                                                      if r.get("recommendation_id", r.get("id")) is not None],
+                                          "versions": sorted({r["version"] for r in rows if r.get("version") is not None})}})
         dip, ph_zh = gene_rows.get(gene, (None, None))
         doc["results"].append({"gene": gene, "diplotype_or_genotype": dip, "phenotype": ph, "phenotype_zh": ph_zh, "drugs": drugs})
     if c["exit"] != 0:

@@ -1,7 +1,7 @@
 # Contract: clinical estimator subagent (AI judgements for diagnoses and medications)
 
 **Scope (fixed):** one member. Input: `work/readouts.json`, `work/organs/organ_readouts.json`, the member's confirmed
-labs and answers in `state.json` (`member.answers.current_medications` lists the drugs they take),
+labs and answers in `state.json` (`member.answers.medications` lists the drugs they take; `current_medications` is read too),
 `work/clinical/diagnoses.json` (the guideline conclusions already made), `work/clinical/medications.json` and
 `work/pgx/pgx.json` if present. Output: one or two files, `work/clinical/ai_dx.json` (diagnoses) and
 `work/clinical/ai_rx.json` (medications). You may run `la.py evidence local|pubmed`. You may not edit other files.

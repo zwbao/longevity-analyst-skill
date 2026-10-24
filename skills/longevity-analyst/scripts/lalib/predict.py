@@ -246,7 +246,7 @@ def run(st: Dict[str, Any], ws: Path, *, repeats: Optional[int] = None, planned_
     """Predict every plan item that has an effects row and a judgeable target; list the rest for the AI estimator."""
     effects, bv = _library()
     z = float(bv.get("z", 1.96))
-    today = now_iso()[:10]
+    today = str(st["member"].get("sample_date") or now_iso())[:10]     # adherence up to this visit, not up to the run date
     if exposures_file:
         d = load_json(exposures_file)
         if d.get("schema") != "la-exposures/1":

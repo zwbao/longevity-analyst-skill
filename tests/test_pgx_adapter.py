@@ -130,8 +130,18 @@ def test_adapter_equals_skill_on_equivalent_23andme_file(tmp_path):
     assert sim["member_takes"] and sim["guideline_url"].startswith("https://") and sim["skill_text_zh"]
     if doc["cpic_text"] == "gap":                                                # the skill cannot print CPIC text yet
         assert sim["recommendation_text"] is None and doc["cpic_text_gap_zh"]
-    else:
-        assert sim["recommendation_text"]
+    else:                                                                        # CPIC's own words, verbatim (--include-cpic-text)
+        rows = {r["drug"]: r for r in adapted["cpic_recommendations"]}
+        assert sim["recommendation_text"] == rows["simvastatin"]["recommendation"]
+        assert sim["strength"] == rows["simvastatin"]["classification"] and sim["drug_zh"] == rows["simvastatin"]["drug_zh"]
+        assert sim["cpic_source"]["row_ids"] == [rows["simvastatin"]["recommendation_id"]]
+        from lalib import clinical
+        clinical.rx(st, ws)
+        meds = json.loads((ws / "work" / "clinical" / "medications.json").read_text())["items"]
+        cp = {x["drug"]: x for x in meds if x["kind"] == "cpic"}
+        assert cp["simvastatin"]["label"]["basis_kind"] == "cpic" and cp["simvastatin"]["text_zh"] == sim["recommendation_text"]
+        assert cp["simvastatin"]["currently_taking"] and cp["simvastatin"]["action"] == "consider_switch"
+        assert cp["simvastatin"]["label"]["sources"][0]["quote"] == sim["recommendation_text"]
     assert "rs4149056" not in json.dumps(doc)                                    # pgx.json carries no rsid+genotype pairs
     ng = {x["key"]: x for x in doc["nutrigenetic"]}
     assert set(ng) == {"aldh2", "mthfr", "lct"} and all(x["copies"] is None and x["kind"] == "descriptive" for x in ng.values())

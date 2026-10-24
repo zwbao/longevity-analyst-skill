@@ -181,7 +181,8 @@ def record(st: Dict[str, Any], ws: Path, kind: str, inputs_digest: str) -> Dict[
     rec = {"path": str(item_path(ws, kind)), "sha256": sha256_file(item_path(ws, kind), limit=None),
            "inputs": inputs_digest, "at": now_iso()}
     if sub:
-        st.setdefault(key, {})[sub] = dict(st[key].get(sub) or {}, **rec)
+        box = st.setdefault(key, {})             # (the right-hand side is evaluated first: never index st[key] there)
+        box[sub] = dict(box.get(sub) or {}, **rec)
     else:
         st[key] = dict(st.get(key) or {}, **rec)
     return rec

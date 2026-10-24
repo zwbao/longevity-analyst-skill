@@ -338,7 +338,8 @@ def _ai_dx(st: Dict[str, Any], ws: Path, ai_file: Path, start: int) -> List[Dict
 
 # ------------------------------------------------------------ clinical rx
 def current_medications(st: Dict[str, Any]) -> List[str]:
-    v = ((st["member"].get("answers") or {}).get("current_medications") or "")
+    a = st["member"].get("answers") or {}
+    v = a.get("medications") or a.get("current_medications") or ""      # `la.py member <ws> medications=…` (the key pgx reads)
     return [x.strip() for x in re.split(r"[,，、;；/]+", str(v)) if x.strip() and x.strip() not in ("无", "none", "no")]
 
 
