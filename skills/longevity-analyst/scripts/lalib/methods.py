@@ -25,6 +25,8 @@ from .common import (EXIT_BLOCKED, EXIT_INPUT, LAError, data, load_json, longevi
 
 CPG_KEY = re.compile(r"^cg\d{8}$")
 AUTO_TIERS = {"A", "tool"}
+# Tier-B skills that run only through the VCF -> 23andMe adapter (lalib/pgx.py, `la.py insights pgx`), never via plan/run.
+GENOTYPE_ADAPTER_SKILLS = {"cpic-pharmacogenomics", "nutrigenetic-variant-panel"}
 COVERAGE_ROW = re.compile(r"`([a-z0-9_]+)`[）)]?\s*\|[^|]*\|[^|]*\|\s*([\d.]+)%（缺\s*(\d+)/(\d+)）")
 
 
@@ -172,7 +174,7 @@ def plan(st: Dict[str, Any], ws_root: Path) -> Dict[str, Any]:
 
     for s in cat["skills"]:
         name = s["name"]
-        if not s.get("has_script") or s["tier"] not in AUTO_TIERS:
+        if not s.get("has_script") or s["tier"] not in AUTO_TIERS or name in GENOTYPE_ADAPTER_SKILLS:
             continue
         intents_data = {d for i in cat["intents"] if i["id"] in s.get("intents", []) for d in i["data"]}
         inputs = s.get("inputs") or []
@@ -315,6 +317,18 @@ def plan(st: Dict[str, Any], ws_root: Path) -> Dict[str, Any]:
                           "run": {"kind": "native", "fn": "apoe", "path": variants["path"], "assembly": variants["provenance"].get("assembly")}})
         items.append({"method": "native.vcf_summary", "tier": "native", "status": "ready", "reasons": [],
                       "run": {"kind": "native", "fn": "vcf_summary", "path": variants["path"]}})
+    elif _reused_apoe(ws_root):
+        # germline does not change (WS-I.1): an earlier visit's APOE call, hash-checked, stands in when no VCF came this time
+        consent = (member.get("answers") or {}).get("genetic_disclosure")
+        if consent not in ("yes", "no"):
+            items.append({"method": "native.apoe", "tier": "native", "status": "needs_answers", "needs": ["genetic_disclosure"],
+                          "reasons": ["reused APOE result from an earlier visit: ask whether the member wants it in the report: "
+                                      "`la.py member <ws> genetic_disclosure=yes|no --source \"<quote>\"`"]})
+        elif consent == "no":
+            items.append({"method": "native.apoe", "tier": "native", "status": "declined", "reasons": ["member declined APOE results"]})
+        else:
+            items.append({"method": "native.apoe", "tier": "native", "status": "ready", "reasons": ["reused from an earlier visit (no new VCF)"],
+                          "run": {"kind": "native", "fn": "apoe_reused"}})
     if gut:
         items.append({"method": "native.gut_diversity", "tier": "native", "status": "ready", "reasons": [], "uncertain": bool(gut.get("provenance_uncertain")),
                       "run": {"kind": "native", "fn": "gut_diversity", "path": gut["path"]}})
@@ -392,7 +406,7 @@ def _run_skill(home: Path, it: Dict[str, Any], member: Dict[str, Any], out: Path
         cmd += [entry.get("measurements_flag", "--measurements"), str(mpath)]
     flags_done = set()
     for flag, v in (run.get("args") or {}).items():
-        cmd += [flag, v]
+        cmd += [flag] if v is True else [flag, v]          # True: a switch without a value
         flags_done.add(flag)
     if entry.get("age_flag") and member.get("age") and entry["age_flag"] not in flags_done:
         cmd += [entry["age_flag"], str(member["age"])]
@@ -405,6 +419,7 @@ def _run_skill(home: Path, it: Dict[str, Any], member: Dict[str, Any], out: Path
     rj = out / "result.json"
     if p.returncode == 0 and rj.exists():
         res["readouts"] = _readouts_from(name, manifest, load_json(rj))
+        _missing_inputs_rule(res)
         if name == "epiage":
             cov = _epiage_coverage(out / "report.md")
             allowed = {f"dnam_{c}" for c in run["clocks"]}
@@ -428,9 +443,52 @@ def _run_skill(home: Path, it: Dict[str, Any], member: Dict[str, Any], out: Path
                 kept.append(ro)
             res["readouts"] = kept
     elif (out / "problems.json").exists():
-        res["problems"] = load_json(out / "problems.json")
+        pr = load_json(out / "problems.json")
+        res["problems"] = pr.get("problems", []) if isinstance(pr, dict) else pr     # longevity-problems/1 wraps the list
     res["report_md"] = str(out / "report.md") if (out / "report.md").exists() else None
     return res
+
+
+def _reused_apoe(ws_root: Path) -> Optional[Path]:
+    from .genomics import reused_germline
+    return reused_germline(ws_root, "apoe.json")
+
+
+def _apoe_reused(ws_root: Path) -> Dict[str, Any]:
+    p = _reused_apoe(ws_root)
+    if not p:
+        raise LAError("the reused APOE file is missing or changed since init (work/reuse/germline/apoe.json)", EXIT_INPUT)
+    src = load_json(ws_root / "work" / "reuse" / "germline.json").get("from")
+    ro = [{k: v for k, v in r.items() if k not in ("method", "tier", "systems", "source")} for r in load_json(p)["readouts"]
+          if str(r.get("id", "")).startswith("native.apoe")]
+    for r in ro:
+        r["reused_from"] = src
+    return {"readouts": ro, "notes": ["沿用之前一次检测的 APOE 结果（胚系 DNA 不会改变）"]}
+
+
+MISSING_WEIGHT_MAX_YEARS = 5.0
+
+
+def _missing_inputs_rule(res: Dict[str, Any]) -> None:
+    """A model that fills absent inputs with 0 and reports the error that adds (LinAge: `missing_weight_years`, the
+    sum of the missing parameters' weights, which the paper gives as the error each brings): at 5 years or more the
+    age is not a measurement of this person and nothing of the run is reported (the clocks' coverage rule); below
+    that the two counts are QC, not health findings."""
+    by = {r["id"].split(".", 1)[1]: r for r in res.get("readouts") or []}
+    mw = (by.get("missing_weight_years") or {}).get("value")
+    if not isinstance(mw, (int, float)):
+        return
+    if mw >= MISSING_WEIGHT_MAX_YEARS:
+        n = (by.get("missing_count") or {}).get("value")
+        res["readouts"] = []
+        res["notes"] = [f"inputs missing{f' ({n:.0f})' if isinstance(n, (int, float)) else ''}: their weights add up to "
+                        f"{mw:.1f} years of possible error (limit {MISSING_WEIGHT_MAX_YEARS:g}); not reported"]
+        res["reason_zh"] = (f"需要的化验缺了{f' {n:.0f} 项' if isinstance(n, (int, float)) else '很多项'}，"
+                            f"缺项带来的误差可能有 {mw:.0f} 岁，结果不报告")
+        return
+    for k in ("missing_count", "missing_weight_years"):
+        if k in by:
+            by[k]["kind"] = "descriptive"
 
 
 def _readouts_from(name: str, manifest: Dict[str, Any], result: Dict[str, Any]) -> List[Dict[str, Any]]:
@@ -488,6 +546,8 @@ def run(st: Dict[str, Any], ws_root: Path, only: Optional[List[str]] = None,
                     res = _organs.compute_indices(st)
                 elif r["fn"] == "apoe":
                     res = fn(Path(r["path"]), r.get("assembly"))
+                elif r["fn"] == "apoe_reused":
+                    res = _apoe_reused(ws_root)
                 elif r["fn"] == "proteomics_describe":
                     res = fn(Path(r["path"]), r.get("platform"))
                 else:

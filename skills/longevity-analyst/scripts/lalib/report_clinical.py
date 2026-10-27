@@ -1,0 +1,170 @@
+"""Report sections for labelled items: 个人反应预测, 诊断性结论, 用药建议.
+
+Each section prints the category tag and the sources of every row; AI judgements are in their own table, like the
+organ table's AI column. Called by report.py's section hook: sections(ws_root, ctx) -> [(heading, markdown)].
+"""
+from __future__ import annotations
+
+import re
+from pathlib import Path
+from typing import Any, Dict, List, Tuple
+
+from . import labels as L
+from .common import load_json
+
+EMERGENCY = "出现急症（胸痛、呼吸困难、一侧肢体无力、意识不清等）时，先拨打 120，不要等报告或复诊。"
+REVIEW = "下面的内容由医生复核后才执行；是否用药、怎么用，由你的医生决定。"
+ACTION_ZH = {"consider_start": "考虑开始", "consider_stop": "考虑停用", "consider_switch": "考虑换药", "adjust": "调整剂量",
+             "avoid": "避免使用", "monitor": "监测"}
+SET_ZH = {"cn": "中国指南", "ada": "美国糖尿病协会（ADA）标准"}
+
+
+def _cell(x: Any) -> str:
+    from .report import _cell as c
+    return c(x)
+
+
+def _own(x: Dict[str, Any]) -> bool:
+    return any(s.get("type") == "personal_experiment" for s in x["label"].get("sources") or [])
+
+
+def _prior(x: Dict[str, Any], what: str) -> str:
+    """A trials-only figure from the label's 只按研究结果 assumption (predict writes it with the personal one)."""
+    prior = next((a for a in x["label"].get("assumptions") or [] if a.startswith("只按研究结果")), "")
+    m = re.search(what + r"(约 \d+%|超过 99%|不到 1%)", prior)
+    return m.group(1) if m else "—"
+
+
+def _true_cell(x: Dict[str, Any]) -> str:
+    """With an uncontrolled personal before/after in the model, the 'true effect' figure is the trials-only one."""
+    if _own(x):
+        return f"{_prior(x, '真实效应方向有利的概率')}（只按研究结果）"
+    return L._about(x["p_true_favorable"])
+
+
+def _p(x: Any) -> str:
+    return L._p(x)
+
+
+def _load(ws: Path, kind: str) -> Dict[str, Any]:
+    p = L.item_path(ws, kind)
+    return load_json(p) if p.exists() else {}
+
+
+def _src(lab: Dict[str, Any]) -> str:
+    return _cell(L.render_sources(lab)[3:])
+
+
+def predictions(ws: Path) -> List[str]:
+    d = _load(ws, "p")
+    items = d.get("items") or []
+    if not items:
+        return []
+    stat = [x for x in items if x["label"]["basis_kind"] == "statistical_model"]
+    ai = [x for x in items if x["label"]["basis_kind"] == "ai_estimate"]
+    out = ["> 预测的是「这件事对你有没有用、下次复测能不能看出来」。「统计模型估计」用试验平均效应、人和人之间的差异、"
+           "你本人做过的实验和你的测量波动算出；「AI 判断」是没有可用试验数据时由模型参照文献给出的区间，不是计算结果。", ""]
+    if stat:
+        out += ["| 方案项 | 做什么 | 指标 | 下次能测出有利变化 | 真实效应有利 | 预计变化（80% 区间） | 类别 | 来源 |",
+                "|---|---|---|---|---|---|---|---|"]
+        for x in stat:
+            lo, hi = x["interval_80_pct"]
+            n = x['design']['repeats_each_side']
+            if _own(x):                     # trials only in front; the personal-comparison figures only as a stated assumption
+                det = (f"{_prior(x, '下次实验能测出有利变化的概率')}（只按研究结果，前后各测 {n} 次）；"
+                       f"假定你那次没有对照的前后对比全部来自这项干预时 {L._about(x['p_detect_favorable'])}")
+                iv = f"假定同上时 {lo:.1f}% 到 {hi:.1f}%"
+            else:
+                det, iv = f"{L._about(x['p_detect_favorable'])}（前后各测 {n} 次）", f"{lo:.1f}% 到 {hi:.1f}%"
+            out.append(f"| {_cell(x.get('plan_item'))} | {_cell(x['intervention_zh'])} | {_cell(x['marker'])} | "
+                       f"{det} | {_true_cell(x)} | {iv} | {L.render_label(x['label'])} | {_src(x['label'])} |")
+        out.append("")
+        assum = []
+        for x in stat:
+            assum += [a for a in x["label"].get("assumptions", []) if a not in assum]
+        out += ["**模型假设**", ""] + [f"- {_cell(a)}" for a in assum] + [""]
+    if ai:
+        out += ["**AI 判断（单独列出，不是计算结果）**", "", "| 方案项 | 做什么 | 指标 | 能测出有利变化（区间） | 真实效应有利（区间） | 置信度 | 依据 | 来源 |",
+                "|---|---|---|---|---|---|---|---|"]
+        for x in ai:
+            out.append(f"| {_cell(x.get('plan_item'))} | {_cell(x['intervention_zh'])} | {_cell(x['marker'])} | "
+                       f"{_p(x['p_detect_favorable']) if x.get('p_detect_favorable') else '—'} | {_p(x['p_true_favorable']) if x.get('p_true_favorable') else '—'} | "
+                       f"{L.LEVEL_ZH[x['label']['confidence']['level']]} | {_cell('；'.join(x['label'].get('assumptions', [])))} | {_src(x['label'])} |")
+        out.append("")
+    return out
+
+
+def diagnoses(ws: Path) -> List[str]:
+    d = _load(ws, "dx")
+    if not d:
+        return []
+    items = d.get("items") or []
+    gl = [x for x in items if x["kind"] == "guideline_criteria"]
+    ai = [x for x in items if x["kind"] == "ai_estimate"]
+    ev = d.get("evaluated") or []
+    checked = sorted({e["guideline_zh"] for e in ev if e.get("result") in ("met", "not_met") and e.get("guideline_zh")})
+    nodata = sorted({e["guideline_zh"] for e in ev if e.get("guideline_zh")} - set(checked))
+    used = "、".join(f"《{g}》" for g in checked) or "无"
+    miss = ("缺少数据、没有核对的指南：" + "、".join(f"《{_cell(g)}》" for g in nodata) + "。") if nodata else ""
+    out = [f"> {EMERGENCY}", "", f"糖尿病相关条目所用的指南集：{SET_ZH.get(d.get('guideline_set'), d.get('guideline_set'))}。"
+                                   f"本次实际核对的指南：{_cell(used)}。{miss}{REVIEW}", ""]
+    if gl:
+        out += ["| 结论 | 你的数值 | 类别 | 指南原文 |", "|---|---|---|---|"]
+        for x in gl:
+            vals = "；".join(f"{_cell(e['ref'])} {e['value']:g} {_cell(e.get('unit', ''))}（{e.get('t', '')}）" if isinstance(e.get("value"), (int, float))
+                            else f"{_cell(e['ref'])} {_cell(e.get('value'))}" for e in x.get("evidence", []))
+            g = next(s for s in x["label"]["sources"] if s["type"] == "guideline")
+            note = (f"（{_cell(x['note_zh'])}）" if x.get("note_zh") else "") + "".join(_cell(c) for c in x.get("caveats_zh") or [])
+            out.append(f"| {_cell(x['conclusion_zh'])}{note} | {vals or '—'} | {L.render_label(x['label'])} | {_cell(g.get('quote'))}（{_cell(g.get('ref'))}） |")
+        out.append("")
+    else:
+        out += ["下面列出的几条标准，本次都没有达到。只核对了这几条：没有列出的项目（例如尿酸、血压）没有按诊断标准核对，"
+                "不代表正常，请看「复测对比与趋势」和「问医生的单子」，并请医生判断。", ""]
+    nm = [e for e in d.get("evaluated", []) if e["result"] == "not_met"]
+    if nm:
+        out += ["已核对、未达到标准：" + "；".join(f"{_cell(e['label_zh'])}（《{_cell(e['guideline_zh'])}》）" for e in nm) + "。", ""]
+    if ai:
+        out += ["**AI 判断（单独列出，不是指南标准）**", "", "| AI 判断 | 概率区间 | 置信度 | 来源 |", "|---|---|---|---|"]
+        for x in ai:
+            out.append(f"| {_cell(x['conclusion_zh'])} | {_p(x['probability_range'])} | {L.LEVEL_ZH[x['label']['confidence']['level']]} | {_src(x['label'])} |")
+        out.append("")
+    return out
+
+
+def medications(ws: Path) -> List[str]:
+    d = _load(ws, "rx")
+    if not d:
+        return []
+    items = d.get("items") or []
+    main = [x for x in items if x["kind"] in ("guideline_recommendation", "cpic")]
+    ai = [x for x in items if x["kind"] == "ai_estimate"]
+    out = [f"> {EMERGENCY}", "", REVIEW, ""]
+    if main:
+        out += ["| 药物 | 建议 | 原文推荐 | 剂量（原文） | 类别 | 来源 |", "|---|---|---|---|---|---|"]
+        for x in main:
+            taking = "（你正在用）" if x.get("currently_taking") else ""
+            who = f"{_cell(x.get('gene'))} {_cell(x.get('phenotype'))}：" if x["kind"] == "cpic" else ""
+            cav = "".join(_cell(c) for c in x.get("caveats_zh") or [])
+            out.append(f"| {_cell(x['drug_or_class_zh'])}{taking} | {ACTION_ZH[x['action']]} | {who}{_cell(x['text_zh'])}{'；' + cav if cav else ''} | "
+                       f"{_cell(x.get('dose_text_zh') or '—')} | {L.render_label(x['label'])} | {_src(x['label'])} |")
+        out.append("")
+    elif not ai:
+        out += ["本次没有按指南或用药基因得出的用药建议。" + (f"（用药基因：{_cell(d['cpic_not_used'])}）" if d.get("cpic_not_used") else ""), ""]
+    if ai:
+        out += ["**AI 判断（单独列出，不是指南或 CPIC 推荐；剂量也是 AI 判断）**", "", "| 药物 | 建议 | 说明 | 剂量（AI 判断） | 置信度 | 来源 |",
+                "|---|---|---|---|---|---|"]
+        for x in ai:
+            taking = "（你正在用）" if x.get("currently_taking") else ""
+            out.append(f"| {_cell(x['drug_or_class_zh'])}{taking} | {ACTION_ZH[x['action']]} | {_cell(x['text_zh'])} | {_cell(x.get('dose_text_zh') or '—')} | "
+                       f"{L.LEVEL_ZH[x['label']['confidence']['level']]} | {_src(x['label'])} |")
+        out.append("")
+    return out
+
+
+def sections(ws_root: Path, ctx: Dict[str, Any]) -> List[Tuple[str, str]]:
+    out = []
+    for head, fn in (("个人反应预测", predictions), ("诊断性结论", diagnoses), ("用药建议", medications)):
+        body = fn(ws_root)
+        if body:
+            out.append((head, "\n".join(body).strip()))
+    return out

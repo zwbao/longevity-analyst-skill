@@ -1,0 +1,4 @@
+# 23andMe-format file written for the test from Ensembl REST /variation/human/rs4149056?genotypes=1 (retrieved 2026-10-24):
+# sample 1000GENOMES:phase_3:NA18526 genotype C|T. Position is the GRCh38 mapping Ensembl returned (12:21178615); the skill matches by rsID only.
+# rsid	chromosome	position	genotype
+rs4149056	12	21178615	CT

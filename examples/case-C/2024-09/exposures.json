@@ -1,0 +1,21 @@
+{
+ "schema": "la-exposures/1",
+ "member": "caseC",
+ "source": "coach_member_file",
+ "generated_at": "2024-09-08T20:00:00+08:00",
+ "items": [
+  {
+   "plan_item": "I1",
+   "origin_snapshot": "2023-09-04",
+   "label_zh": "早餐用燕麦代替精米白面",
+   "category": "diet",
+   "targets": [
+    "空腹血糖(GLU)"
+   ],
+   "status": "proposed",
+   "adopted_at": null,
+   "status_since": null,
+   "cumulative": null
+  }
+ ]
+}

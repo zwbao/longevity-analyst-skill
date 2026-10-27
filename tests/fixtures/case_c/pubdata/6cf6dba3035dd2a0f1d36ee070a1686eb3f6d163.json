@@ -1,0 +1,4575 @@
+{
+  "source": "gwas",
+  "query": "trait:EFO_0006925:5e-08",
+  "url": "https://www.ebi.ac.uk/gwas/rest/api/v2/associations?efo_id=EFO_0006925&size=100&sort=p_value&direction=asc",
+  "retrieved_at": "2026-10-24T16:04:12+08:00",
+  "records": [
+    {
+      "ref": "gwas:GCST011087:rs10455872-G",
+      "rsid": "rs10455872",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "1.7 ln nmol/L increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST011087",
+      "pubmed_id": "33115273",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST012232:rs10455872-A",
+      "rsid": "rs10455872",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "1.02095 nmol/l decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST012232",
+      "pubmed_id": "33730874",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs74617384-T",
+      "rsid": "rs74617384",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "1.4083 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs73596816-A",
+      "rsid": "rs73596816",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "0.7478 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs6919346-C",
+      "rsid": "rs6919346",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "0.3606 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs117446263-A",
+      "rsid": "rs117446263",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "0.7704 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs3127573-G",
+      "rsid": "rs3127573",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.3249 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SLC22A2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs3918291-C",
+      "rsid": "rs3918291",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "1.1669 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs6926458-G",
+      "rsid": "rs6926458",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.2198 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs41272078-T",
+      "rsid": "rs41272078",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.3565 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs77009508-G",
+      "rsid": "rs77009508",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.2526 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST012232:rs1065853-G",
+      "rsid": "rs1065853",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.134919 nmol/l increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST012232",
+      "pubmed_id": "33730874",
+      "mapped_genes": [
+        "APOC1",
+        "APOE"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs12207188-T",
+      "rsid": "rs12207188",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.2736 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "MAS1"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs61735260-A",
+      "rsid": "rs61735260",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "0.5752 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "AGPAT4"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs624249-A",
+      "rsid": "rs624249",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "0.1247 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SLC22A2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs3798220-C",
+      "rsid": "rs3798220",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "0.6843 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs41272114-T",
+      "rsid": "rs41272114",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.3692 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs118133674-A",
+      "rsid": "rs118133674",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "0.4121 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LPAL2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs112376176-T",
+      "rsid": "rs112376176",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.2862 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LPAL2",
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST004398:rs118039278-A",
+      "rsid": "rs118039278",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "32.43 mg/dL increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs3798164-A",
+      "rsid": "rs3798164",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "0.113 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SLC22A1"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs4708871-T",
+      "rsid": "rs4708871",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.3392 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs41267809-G",
+      "rsid": "rs41267809",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.4032 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs572889-G",
+      "rsid": "rs572889",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.3196 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SLC22A2",
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs117901488-T",
+      "rsid": "rs117901488",
+      "effect_allele": "T",
+      "p_value": 1e-314,
+      "beta_text": "0.2368 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SLC22A2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs201627538-C",
+      "rsid": "rs201627538",
+      "effect_allele": "C",
+      "p_value": 2e-297,
+      "beta_text": "1.0313904 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs151292106-T",
+      "rsid": "rs151292106",
+      "effect_allele": "T",
+      "p_value": 3e-289,
+      "beta_text": "0.24159032 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA",
+        "LPAL2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs146534110-T",
+      "rsid": "rs146534110",
+      "effect_allele": "T",
+      "p_value": 2e-285,
+      "beta_text": "0.4336 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SLC22A1"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST004398:rs56393506-T",
+      "rsid": "rs56393506",
+      "effect_allele": "T",
+      "p_value": 8e-285,
+      "beta_text": "13.6 mg/dL increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPA",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs14224-C",
+      "rsid": "rs14224",
+      "effect_allele": "C",
+      "p_value": 1e-277,
+      "beta_text": "0.0956 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs4252152-G",
+      "rsid": "rs4252152",
+      "effect_allele": "G",
+      "p_value": 6e-271,
+      "beta_text": "0.3862 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs79213545-A",
+      "rsid": "rs79213545",
+      "effect_allele": "A",
+      "p_value": 8e-263,
+      "beta_text": "0.2431 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "AGPAT4"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs62440365-A",
+      "rsid": "rs62440365",
+      "effect_allele": "A",
+      "p_value": 1e-258,
+      "beta_text": "0.21264565 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "SLC22A2",
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs783184-T",
+      "rsid": "rs783184",
+      "effect_allele": "T",
+      "p_value": 1e-256,
+      "beta_text": "0.20512158 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs557900380-A",
+      "rsid": "rs557900380",
+      "effect_allele": "A",
+      "p_value": 1e-255,
+      "beta_text": "0.6529272 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs561110147-C",
+      "rsid": "rs561110147",
+      "effect_allele": "C",
+      "p_value": 1.0000000000000001e-254,
+      "beta_text": "0.37393162 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs192519670-C",
+      "rsid": "rs192519670",
+      "effect_allele": "C",
+      "p_value": 4.0000000000000004e-254,
+      "beta_text": "0.6448843 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs4252166-C",
+      "rsid": "rs4252166",
+      "effect_allele": "C",
+      "p_value": 8e-243,
+      "beta_text": "0.1189 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs80145669-A",
+      "rsid": "rs80145669",
+      "effect_allele": "A",
+      "p_value": 3e-241,
+      "beta_text": "0.21865937 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST004398:rs186696265-T",
+      "rsid": "rs186696265",
+      "effect_allele": "T",
+      "p_value": 4e-231,
+      "beta_text": "64.74 mg/dL increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPA",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs3798945-T",
+      "rsid": "rs3798945",
+      "effect_allele": "T",
+      "p_value": 4.9999999999999997e-231,
+      "beta_text": "0.07296687 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "AGPAT4"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs190381942-T",
+      "rsid": "rs190381942",
+      "effect_allele": "T",
+      "p_value": 7e-226,
+      "beta_text": "0.934849 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs78207873-A",
+      "rsid": "rs78207873",
+      "effect_allele": "A",
+      "p_value": 1e-217,
+      "beta_text": "0.12052913 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "AGPAT4"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST004399:rs75692336-A",
+      "rsid": "rs75692336",
+      "effect_allele": "A",
+      "p_value": 3e-216,
+      "beta_text": "9.67 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST004399",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein(a) levels adjusted for apolipoprotein(a) isoforms"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs476235-A",
+      "rsid": "rs476235",
+      "effect_allele": "A",
+      "p_value": 4e-211,
+      "beta_text": "0.086 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SLC22A2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST004398:rs4252185-C",
+      "rsid": "rs4252185",
+      "effect_allele": "C",
+      "p_value": 5e-211,
+      "beta_text": "23.93 mg/dL increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs78893353-A",
+      "rsid": "rs78893353",
+      "effect_allele": "A",
+      "p_value": 2e-210,
+      "beta_text": "0.39805195 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST004399:rs140570886-C",
+      "rsid": "rs140570886",
+      "effect_allele": "C",
+      "p_value": 2e-210,
+      "beta_text": "43.43 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004399",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein(a) levels adjusted for apolipoprotein(a) isoforms"
+    },
+    {
+      "ref": "gwas:GCST004399:rs186696265-T",
+      "rsid": "rs186696265",
+      "effect_allele": "T",
+      "p_value": 2e-207,
+      "beta_text": "49.06 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004399",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPA",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein(a) levels adjusted for apolipoprotein(a) isoforms"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs2504959-C",
+      "rsid": "rs2504959",
+      "effect_allele": "C",
+      "p_value": 5e-204,
+      "beta_text": "0.0997 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SLC22A2",
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs193113935-C",
+      "rsid": "rs193113935",
+      "effect_allele": "C",
+      "p_value": 7e-197,
+      "beta_text": "0.8939413 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs150425701-T",
+      "rsid": "rs150425701",
+      "effect_allele": "T",
+      "p_value": 2e-196,
+      "beta_text": "0.46579576 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs73020718-G",
+      "rsid": "rs73020718",
+      "effect_allele": "G",
+      "p_value": 9.999999999999999e-196,
+      "beta_text": "0.2537 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "RPL21P69",
+        "SOD2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs79135559-A",
+      "rsid": "rs79135559",
+      "effect_allele": "A",
+      "p_value": 6e-195,
+      "beta_text": "0.2833 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs35509017-C",
+      "rsid": "rs35509017",
+      "effect_allele": "C",
+      "p_value": 9.999999999999999e-193,
+      "beta_text": "0.3587 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs117560596-A",
+      "rsid": "rs117560596",
+      "effect_allele": "A",
+      "p_value": 6.9999999999999995e-192,
+      "beta_text": "0.18301639 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPAL2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs13213129-T",
+      "rsid": "rs13213129",
+      "effect_allele": "T",
+      "p_value": 2e-188,
+      "beta_text": "0.1902 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LPAL2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs541889309-T",
+      "rsid": "rs541889309",
+      "effect_allele": "T",
+      "p_value": 5e-185,
+      "beta_text": "0.914389 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs529913906-A",
+      "rsid": "rs529913906",
+      "effect_allele": "A",
+      "p_value": 1e-183,
+      "beta_text": "1.0800799 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs191344155-G",
+      "rsid": "rs191344155",
+      "effect_allele": "G",
+      "p_value": 5e-181,
+      "beta_text": "0.513854 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs11961006-G",
+      "rsid": "rs11961006",
+      "effect_allele": "G",
+      "p_value": 4e-180,
+      "beta_text": "0.0902 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST004399:rs7769879-C",
+      "rsid": "rs7769879",
+      "effect_allele": "C",
+      "p_value": 4e-168,
+      "beta_text": "6.74 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004399",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein(a) levels adjusted for apolipoprotein(a) isoforms"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs77798339-A",
+      "rsid": "rs77798339",
+      "effect_allele": "A",
+      "p_value": 7e-165,
+      "beta_text": "0.3531 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SLC22A2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST004399:rs55730499-T",
+      "rsid": "rs55730499",
+      "effect_allele": "T",
+      "p_value": 4e-163,
+      "beta_text": "16.77 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004399",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein(a) levels adjusted for apolipoprotein(a) isoforms"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs58364041-A",
+      "rsid": "rs58364041",
+      "effect_allele": "A",
+      "p_value": 8e-163,
+      "beta_text": "0.2628 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LPAL2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs182980975-T",
+      "rsid": "rs182980975",
+      "effect_allele": "T",
+      "p_value": 3e-160,
+      "beta_text": "0.4037 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LPAL2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST004398:rs1510224-C",
+      "rsid": "rs1510224",
+      "effect_allele": "C",
+      "p_value": 4e-160,
+      "beta_text": "45.84 mg/dL increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPAL2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs3798939-A",
+      "rsid": "rs3798939",
+      "effect_allele": "A",
+      "p_value": 8.999999999999999e-160,
+      "beta_text": "0.0841 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "AGPAT4"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs16891266-A",
+      "rsid": "rs16891266",
+      "effect_allele": "A",
+      "p_value": 8.999999999999999e-160,
+      "beta_text": "0.2445 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SLC22A2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs140306630-T",
+      "rsid": "rs140306630",
+      "effect_allele": "T",
+      "p_value": 3e-159,
+      "beta_text": "0.2908 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs4252193-T",
+      "rsid": "rs4252193",
+      "effect_allele": "T",
+      "p_value": 2e-155,
+      "beta_text": "0.3192 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs571962116-T",
+      "rsid": "rs571962116",
+      "effect_allele": "T",
+      "p_value": 6e-150,
+      "beta_text": "0.5983645 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPAL2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs531873011-T",
+      "rsid": "rs531873011",
+      "effect_allele": "T",
+      "p_value": 1e-147,
+      "beta_text": "0.67623013 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPAL2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs76144756-A",
+      "rsid": "rs76144756",
+      "effect_allele": "A",
+      "p_value": 1e-144,
+      "beta_text": "0.417 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs4252159-A",
+      "rsid": "rs4252159",
+      "effect_allele": "A",
+      "p_value": 1e-139,
+      "beta_text": "0.1261 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs1065853-T",
+      "rsid": "rs1065853",
+      "effect_allele": "T",
+      "p_value": 2e-139,
+      "beta_text": "0.090845555 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "APOC1",
+        "APOE"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs2282143-T",
+      "rsid": "rs2282143",
+      "effect_allele": "T",
+      "p_value": 1e-138,
+      "beta_text": "0.3049 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SLC22A1"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs41267805-A",
+      "rsid": "rs41267805",
+      "effect_allele": "A",
+      "p_value": 1e-134,
+      "beta_text": "0.1705 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LPAL2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs79692178-C",
+      "rsid": "rs79692178",
+      "effect_allele": "C",
+      "p_value": 2e-133,
+      "beta_text": "0.2651 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs13217003-A",
+      "rsid": "rs13217003",
+      "effect_allele": "A",
+      "p_value": 3e-133,
+      "beta_text": "0.17397286 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "MAS1"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs117727234-A",
+      "rsid": "rs117727234",
+      "effect_allele": "A",
+      "p_value": 3e-125,
+      "beta_text": "0.2371 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "IGF2R"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs62441895-A",
+      "rsid": "rs62441895",
+      "effect_allele": "A",
+      "p_value": 2e-123,
+      "beta_text": "0.278 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs1247347-A",
+      "rsid": "rs1247347",
+      "effect_allele": "A",
+      "p_value": 4e-121,
+      "beta_text": "0.0528679 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs62441715-C",
+      "rsid": "rs62441715",
+      "effect_allele": "C",
+      "p_value": 9e-121,
+      "beta_text": "0.13300776 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST004398:rs6938647-A",
+      "rsid": "rs6938647",
+      "effect_allele": "A",
+      "p_value": 7e-119,
+      "beta_text": "5.47 mg/dL decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs1247359-G",
+      "rsid": "rs1247359",
+      "effect_allele": "G",
+      "p_value": 9e-115,
+      "beta_text": "0.06155819 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST004399:rs188974863-A",
+      "rsid": "rs188974863",
+      "effect_allele": "A",
+      "p_value": 2e-107,
+      "beta_text": "9.13 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST004399",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein(a) levels adjusted for apolipoprotein(a) isoforms"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs184091076-A",
+      "rsid": "rs184091076",
+      "effect_allele": "A",
+      "p_value": 3e-107,
+      "beta_text": "0.6673095 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "SLC22A2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST004399:rs56393506-T",
+      "rsid": "rs56393506",
+      "effect_allele": "T",
+      "p_value": 3e-105,
+      "beta_text": "7.07 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004399",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPA",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein(a) levels adjusted for apolipoprotein(a) isoforms"
+    },
+    {
+      "ref": "gwas:GCST004398:rs4252109-G",
+      "rsid": "rs4252109",
+      "effect_allele": "G",
+      "p_value": 5e-105,
+      "beta_text": "4.91 mg/dL decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs535853985-T",
+      "rsid": "rs535853985",
+      "effect_allele": "T",
+      "p_value": 6e-105,
+      "beta_text": "0.7223295 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs116881261-A",
+      "rsid": "rs116881261",
+      "effect_allele": "A",
+      "p_value": 1e-102,
+      "beta_text": "0.1916 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs3798158-G",
+      "rsid": "rs3798158",
+      "effect_allele": "G",
+      "p_value": 1e-101,
+      "beta_text": "0.125 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SLC22A2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs529632404-C",
+      "rsid": "rs529632404",
+      "effect_allele": "C",
+      "p_value": 2e-101,
+      "beta_text": "0.42268497 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs73015965-G",
+      "rsid": "rs73015965",
+      "effect_allele": "G",
+      "p_value": 9.000000000000001e-101,
+      "beta_text": "0.312037 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs41267799-G",
+      "rsid": "rs41267799",
+      "effect_allele": "G",
+      "p_value": 7e-100,
+      "beta_text": "0.8137942 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs8191725-G",
+      "rsid": "rs8191725",
+      "effect_allele": "G",
+      "p_value": 3e-98,
+      "beta_text": "0.1573 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "IGF2R"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs3918291-C",
+      "rsid": "rs3918291",
+      "effect_allele": "C",
+      "p_value": 6.999999999999999e-98,
+      "beta_text": "0.60934776 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST004399:rs75234242-A",
+      "rsid": "rs75234242",
+      "effect_allele": "A",
+      "p_value": 4e-97,
+      "beta_text": "13.59 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST004399",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein(a) levels adjusted for apolipoprotein(a) isoforms"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs651164-G",
+      "rsid": "rs651164",
+      "effect_allele": "G",
+      "p_value": 5.000000000000001e-97,
+      "beta_text": "0.0612 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SLC22A1",
+        "SLC22A2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs534452768-C",
+      "rsid": "rs534452768",
+      "effect_allele": "C",
+      "p_value": 4.999999999999999e-96,
+      "beta_text": "0.7549562 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 4e-95,
+      "beta_text": "0.1086 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs374255-A",
+      "rsid": "rs374255",
+      "effect_allele": "A",
+      "p_value": 4e-95,
+      "beta_text": "0.0552 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "AGPAT4",
+        "PRKN"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST012232:rs141117870-C",
+      "rsid": "rs141117870",
+      "effect_allele": "C",
+      "p_value": 1e-93,
+      "beta_text": "0.11811 nmol/l decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST012232",
+      "pubmed_id": "33730874",
+      "mapped_genes": [
+        "LINC02529",
+        "RPL21P69"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs2293285-T",
+      "rsid": "rs2293285",
+      "effect_allele": "T",
+      "p_value": 5.9999999999999996e-92,
+      "beta_text": "0.1372 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "AGPAT4",
+        "MAP3K4"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs191731233-T",
+      "rsid": "rs191731233",
+      "effect_allele": "T",
+      "p_value": 2e-89,
+      "beta_text": "0.5385608 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs74797747-A",
+      "rsid": "rs74797747",
+      "effect_allele": "A",
+      "p_value": 1e-88,
+      "beta_text": "0.1096 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "AGPAT4"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs3912160-A",
+      "rsid": "rs3912160",
+      "effect_allele": "A",
+      "p_value": 2e-88,
+      "beta_text": "0.25738838 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "SLC22A2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs8191754-G",
+      "rsid": "rs8191754",
+      "effect_allele": "G",
+      "p_value": 2e-88,
+      "beta_text": "0.0767 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "IGF2R"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs187044063-G",
+      "rsid": "rs187044063",
+      "effect_allele": "G",
+      "p_value": 6e-88,
+      "beta_text": "0.62630165 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST004399:rs6938647-A",
+      "rsid": "rs6938647",
+      "effect_allele": "A",
+      "p_value": 2e-87,
+      "beta_text": "5.48 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST004399",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein(a) levels adjusted for apolipoprotein(a) isoforms"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs183072338-G",
+      "rsid": "rs183072338",
+      "effect_allele": "G",
+      "p_value": 8e-87,
+      "beta_text": "0.32749942 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "AGPAT4",
+        "PRKN"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST004398:rs41272114-T",
+      "rsid": "rs41272114",
+      "effect_allele": "T",
+      "p_value": 5.0000000000000006e-86,
+      "beta_text": "8.63 mg/dL decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST004398:rs4252198-G",
+      "rsid": "rs4252198",
+      "effect_allele": "G",
+      "p_value": 3e-84,
+      "beta_text": "27.97 mg/dL increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs41259144-T",
+      "rsid": "rs41259144",
+      "effect_allele": "T",
+      "p_value": 1e-82,
+      "beta_text": "0.51409227 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs11752957-T",
+      "rsid": "rs11752957",
+      "effect_allele": "T",
+      "p_value": 4e-81,
+      "beta_text": "0.0849 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs73023847-G",
+      "rsid": "rs73023847",
+      "effect_allele": "G",
+      "p_value": 1e-79,
+      "beta_text": "0.0961 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs11756060-T",
+      "rsid": "rs11756060",
+      "effect_allele": "T",
+      "p_value": 9e-79,
+      "beta_text": "0.1834 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SLC22A2",
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs139947401-T",
+      "rsid": "rs139947401",
+      "effect_allele": "T",
+      "p_value": 6e-78,
+      "beta_text": "0.18032387 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "MAP3K4"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs189795087-A",
+      "rsid": "rs189795087",
+      "effect_allele": "A",
+      "p_value": 9e-78,
+      "beta_text": "0.2883266 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs150740982-T",
+      "rsid": "rs150740982",
+      "effect_allele": "T",
+      "p_value": 2e-75,
+      "beta_text": "0.39090002 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs117332585-T",
+      "rsid": "rs117332585",
+      "effect_allele": "T",
+      "p_value": 9e-75,
+      "beta_text": "0.1651 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LINC02529",
+        "RPL21P69"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs186343904-T",
+      "rsid": "rs186343904",
+      "effect_allele": "T",
+      "p_value": 1e-74,
+      "beta_text": "0.36851355 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs35589108-G",
+      "rsid": "rs35589108",
+      "effect_allele": "G",
+      "p_value": 4e-74,
+      "beta_text": "0.1939 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "TCP1"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs142231215-A",
+      "rsid": "rs142231215",
+      "effect_allele": "A",
+      "p_value": 2e-73,
+      "beta_text": "0.76721835 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs3963973-C",
+      "rsid": "rs3963973",
+      "effect_allele": "C",
+      "p_value": 2e-70,
+      "beta_text": "0.38509724 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "SLC22A1",
+        "SLC22A2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs117935574-T",
+      "rsid": "rs117935574",
+      "effect_allele": "T",
+      "p_value": 3e-69,
+      "beta_text": "0.1536 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs141622900-A",
+      "rsid": "rs141622900",
+      "effect_allele": "A",
+      "p_value": 4.999999999999999e-69,
+      "beta_text": "0.1108 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "APOC1",
+        "APOC1P1"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST004398:rs12529361-C",
+      "rsid": "rs12529361",
+      "effect_allele": "C",
+      "p_value": 6e-69,
+      "beta_text": "4.97 mg/dL increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs372635730-A",
+      "rsid": "rs372635730",
+      "effect_allele": "A",
+      "p_value": 5.0000000000000005e-68,
+      "beta_text": "0.6749319 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs116850263-C",
+      "rsid": "rs116850263",
+      "effect_allele": "C",
+      "p_value": 2.9999999999999997e-67,
+      "beta_text": "0.32486343 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs768312655-T",
+      "rsid": "rs768312655",
+      "effect_allele": "T",
+      "p_value": 5.999999999999999e-67,
+      "beta_text": "0.10419428 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "IGF2R"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs117053814-C",
+      "rsid": "rs117053814",
+      "effect_allele": "C",
+      "p_value": 1e-66,
+      "beta_text": "0.1056 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs189484447-T",
+      "rsid": "rs189484447",
+      "effect_allele": "T",
+      "p_value": 3e-66,
+      "beta_text": "0.5276197 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs112496830-A",
+      "rsid": "rs112496830",
+      "effect_allele": "A",
+      "p_value": 4e-66,
+      "beta_text": "0.1043 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "MAP3K4"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST004398:rs2457574-A",
+      "rsid": "rs2457574",
+      "effect_allele": "A",
+      "p_value": 3.0000000000000003e-63,
+      "beta_text": "4.75 mg/dL decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs791185-C",
+      "rsid": "rs791185",
+      "effect_allele": "C",
+      "p_value": 8e-63,
+      "beta_text": "0.0788 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SLC22A2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST003127:rs115848955-T",
+      "rsid": "rs115848955",
+      "effect_allele": "T",
+      "p_value": 1e-62,
+      "beta_text": "0.79 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST003127",
+      "pubmed_id": "26377243",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90029128:rs115739169-A",
+      "rsid": "rs115739169",
+      "effect_allele": "A",
+      "p_value": 6e-62,
+      "beta_text": "1.22 nmol/L increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90029128",
+      "pubmed_id": "34376796",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs571962116-T",
+      "rsid": "rs571962116",
+      "effect_allele": "T",
+      "p_value": 2e-61,
+      "beta_text": "0.9337579 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPAL2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs3757020-T",
+      "rsid": "rs3757020",
+      "effect_allele": "T",
+      "p_value": 4e-61,
+      "beta_text": "0.1361 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "MAP3K4"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs78423775-A",
+      "rsid": "rs78423775",
+      "effect_allele": "A",
+      "p_value": 6e-61,
+      "beta_text": "0.0861 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "IGF2R"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs75803286-T",
+      "rsid": "rs75803286",
+      "effect_allele": "T",
+      "p_value": 1e-60,
+      "beta_text": "0.1169 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "MAP3K4"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs116926922-T",
+      "rsid": "rs116926922",
+      "effect_allele": "T",
+      "p_value": 2e-60,
+      "beta_text": "0.1127 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "IGF2R",
+        "MAS1"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs76779653-A",
+      "rsid": "rs76779653",
+      "effect_allele": "A",
+      "p_value": 2.9999999999999996e-60,
+      "beta_text": "0.0787 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "AGPAT4"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs41272112-T",
+      "rsid": "rs41272112",
+      "effect_allele": "T",
+      "p_value": 8e-60,
+      "beta_text": "0.3669 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs71565801-C",
+      "rsid": "rs71565801",
+      "effect_allele": "C",
+      "p_value": 3e-58,
+      "beta_text": "0.1105 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "AGPAT4",
+        "PRKN"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs34130495-A",
+      "rsid": "rs34130495",
+      "effect_allele": "A",
+      "p_value": 7e-58,
+      "beta_text": "0.1315 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SLC22A1"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST004398:rs151181359-C",
+      "rsid": "rs151181359",
+      "effect_allele": "C",
+      "p_value": 2e-57,
+      "beta_text": "39.56 mg/dL increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPAL2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST004399:rs142126734-A",
+      "rsid": "rs142126734",
+      "effect_allele": "A",
+      "p_value": 3e-57,
+      "beta_text": "7.77 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004399",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPA",
+        "LPAL2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein(a) levels adjusted for apolipoprotein(a) isoforms"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs143947027-C",
+      "rsid": "rs143947027",
+      "effect_allele": "C",
+      "p_value": 6e-57,
+      "beta_text": "0.3838919 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs74552265-T",
+      "rsid": "rs74552265",
+      "effect_allele": "T",
+      "p_value": 8e-57,
+      "beta_text": "0.17116219 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "PRKN"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs529191541-T",
+      "rsid": "rs529191541",
+      "effect_allele": "T",
+      "p_value": 1e-56,
+      "beta_text": "0.5437972 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs1247343-C",
+      "rsid": "rs1247343",
+      "effect_allele": "C",
+      "p_value": 1e-56,
+      "beta_text": "0.123446204 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs56203233-A",
+      "rsid": "rs56203233",
+      "effect_allele": "A",
+      "p_value": 1e-56,
+      "beta_text": "0.08487426 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "AGPAT4",
+        "PRKN"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs142720914-A",
+      "rsid": "rs142720914",
+      "effect_allele": "A",
+      "p_value": 2e-56,
+      "beta_text": "1.0379 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs188247154-A",
+      "rsid": "rs188247154",
+      "effect_allele": "A",
+      "p_value": 2e-56,
+      "beta_text": "0.23836568 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPAL2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST012232:rs1801689-A",
+      "rsid": "rs1801689",
+      "effect_allele": "A",
+      "p_value": 5e-56,
+      "beta_text": "0.06707 nmol/l decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST012232",
+      "pubmed_id": "33730874",
+      "mapped_genes": [
+        "APOH"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST004398:rs41269133-C",
+      "rsid": "rs41269133",
+      "effect_allele": "C",
+      "p_value": 5e-55,
+      "beta_text": "5.72 mg/dL decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPA",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs181548067-T",
+      "rsid": "rs181548067",
+      "effect_allele": "T",
+      "p_value": 1e-54,
+      "beta_text": "0.3886357 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs188435346-T",
+      "rsid": "rs188435346",
+      "effect_allele": "T",
+      "p_value": 1e-53,
+      "beta_text": "0.23528568 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "SLC22A2",
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs78771139-C",
+      "rsid": "rs78771139",
+      "effect_allele": "C",
+      "p_value": 3e-53,
+      "beta_text": "0.1169 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "AGPAT4"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs76077281-C",
+      "rsid": "rs76077281",
+      "effect_allele": "C",
+      "p_value": 4e-53,
+      "beta_text": "0.1233 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "MAS1",
+        "PNLDC1"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs79246098-C",
+      "rsid": "rs79246098",
+      "effect_allele": "C",
+      "p_value": 3e-52,
+      "beta_text": "0.19297558 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs79907881-T",
+      "rsid": "rs79907881",
+      "effect_allele": "T",
+      "p_value": 6e-52,
+      "beta_text": "0.1331 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs1265312-G",
+      "rsid": "rs1265312",
+      "effect_allele": "G",
+      "p_value": 2e-51,
+      "beta_text": "0.033677377 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "AGPAT4",
+        "PRKN"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST004398:rs12204009-C",
+      "rsid": "rs12204009",
+      "effect_allele": "C",
+      "p_value": 3e-51,
+      "beta_text": "32.86 mg/dL increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs184465278-C",
+      "rsid": "rs184465278",
+      "effect_allele": "C",
+      "p_value": 1e-50,
+      "beta_text": "0.2446486 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs7254892-A",
+      "rsid": "rs7254892",
+      "effect_allele": "A",
+      "p_value": 5e-50,
+      "beta_text": "0.1108 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LNCOB1",
+        "NECTIN2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST004398:rs142126734-A",
+      "rsid": "rs142126734",
+      "effect_allele": "A",
+      "p_value": 9e-48,
+      "beta_text": "6.58 mg/dL increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPA",
+        "LPAL2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST004398:rs78439586-A",
+      "rsid": "rs78439586",
+      "effect_allele": "A",
+      "p_value": 1e-47,
+      "beta_text": "6.68 mg/dL decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs62435486-A",
+      "rsid": "rs62435486",
+      "effect_allele": "A",
+      "p_value": 1e-46,
+      "beta_text": "0.1074 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "MAP3K4"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs142255303-T",
+      "rsid": "rs142255303",
+      "effect_allele": "T",
+      "p_value": 1e-46,
+      "beta_text": "0.40468284 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST012232:rs247616-C",
+      "rsid": "rs247616",
+      "effect_allele": "C",
+      "p_value": 1e-46,
+      "beta_text": "0.024858 nmol/l increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST012232",
+      "pubmed_id": "33730874",
+      "mapped_genes": [
+        "CETP",
+        "HERPUD1"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs112599924-A",
+      "rsid": "rs112599924",
+      "effect_allele": "A",
+      "p_value": 2e-46,
+      "beta_text": "0.34084785 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs112527025-C",
+      "rsid": "rs112527025",
+      "effect_allele": "C",
+      "p_value": 2e-46,
+      "beta_text": "0.1266 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SOD2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs149530067-G",
+      "rsid": "rs149530067",
+      "effect_allele": "G",
+      "p_value": 3.0000000000000003e-46,
+      "beta_text": "0.83989865 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs142121731-A",
+      "rsid": "rs142121731",
+      "effect_allele": "A",
+      "p_value": 6.0000000000000005e-46,
+      "beta_text": "0.3741433 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "SLC22A2",
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs483082-T",
+      "rsid": "rs483082",
+      "effect_allele": "T",
+      "p_value": 6.0000000000000005e-46,
+      "beta_text": "0.0473 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "APOC1",
+        "APOE"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs7764927-C",
+      "rsid": "rs7764927",
+      "effect_allele": "C",
+      "p_value": 7e-46,
+      "beta_text": "0.11690184 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "SLC22A1"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs55978942-A",
+      "rsid": "rs55978942",
+      "effect_allele": "A",
+      "p_value": 2e-45,
+      "beta_text": "0.1785 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "AGPAT4"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST003127:rs3798221-G",
+      "rsid": "rs3798221",
+      "effect_allele": "G",
+      "p_value": 3e-45,
+      "beta_text": "0.86 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST003127",
+      "pubmed_id": "26377243",
+      "mapped_genes": [
+        "LPA",
+        "LPA",
+        "LPA",
+        "LPA",
+        "LPA",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST003127:rs6415084-T",
+      "rsid": "rs6415084",
+      "effect_allele": "T",
+      "p_value": 3e-45,
+      "beta_text": "0.86 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST003127",
+      "pubmed_id": "26377243",
+      "mapped_genes": [
+        "LPA",
+        "LPA",
+        "LPA",
+        "LPA",
+        "LPA",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST003127:rs9457986-T",
+      "rsid": "rs9457986",
+      "effect_allele": "T",
+      "p_value": 3e-45,
+      "beta_text": "0.86 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST003127",
+      "pubmed_id": "26377243",
+      "mapped_genes": [
+        "LPA",
+        "LPA",
+        "LPA",
+        "LPA",
+        "LPA",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST003127:rs1367211-T",
+      "rsid": "rs1367211",
+      "effect_allele": "T",
+      "p_value": 3e-45,
+      "beta_text": "0.86 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST003127",
+      "pubmed_id": "26377243",
+      "mapped_genes": [
+        "LPA",
+        "LPA",
+        "LPA",
+        "LPA",
+        "LPA",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST003127:rs1406888-T",
+      "rsid": "rs1406888",
+      "effect_allele": "T",
+      "p_value": 3e-45,
+      "beta_text": "0.86 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST003127",
+      "pubmed_id": "26377243",
+      "mapped_genes": [
+        "LPA",
+        "LPA",
+        "LPA",
+        "LPA",
+        "LPA",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST004398:rs6903649-C",
+      "rsid": "rs6903649",
+      "effect_allele": "C",
+      "p_value": 4e-45,
+      "beta_text": "2.6 mg/dL decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST004398:rs7770628-C",
+      "rsid": "rs7770628",
+      "effect_allele": "C",
+      "p_value": 5e-45,
+      "beta_text": "4.73 mg/dL increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs564376466-T",
+      "rsid": "rs564376466",
+      "effect_allele": "T",
+      "p_value": 7e-45,
+      "beta_text": "0.24335723 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "ACAT2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs539095603-A",
+      "rsid": "rs539095603",
+      "effect_allele": "A",
+      "p_value": 8e-45,
+      "beta_text": "0.41619417 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST004398:rs141550222-G",
+      "rsid": "rs141550222",
+      "effect_allele": "G",
+      "p_value": 7e-44,
+      "beta_text": "6.71 mg/dL decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs189132280-G",
+      "rsid": "rs189132280",
+      "effect_allele": "G",
+      "p_value": 3.0000000000000004e-43,
+      "beta_text": "0.23854011 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs4282384-T",
+      "rsid": "rs4282384",
+      "effect_allele": "T",
+      "p_value": 4e-43,
+      "beta_text": "0.07594332 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "PRKN"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs78550031-C",
+      "rsid": "rs78550031",
+      "effect_allele": "C",
+      "p_value": 2e-42,
+      "beta_text": "0.0837 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SOD2",
+        "WTAP"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs1065853-T",
+      "rsid": "rs1065853",
+      "effect_allele": "T",
+      "p_value": 2e-42,
+      "beta_text": "0.11921419 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "APOC1",
+        "APOE"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs182255883-C",
+      "rsid": "rs182255883",
+      "effect_allele": "C",
+      "p_value": 4e-42,
+      "beta_text": "0.16230464 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "MAS1"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs151135411-A",
+      "rsid": "rs151135411",
+      "effect_allele": "A",
+      "p_value": 5e-42,
+      "beta_text": "1.0383 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs55704622-A",
+      "rsid": "rs55704622",
+      "effect_allele": "A",
+      "p_value": 1e-41,
+      "beta_text": "0.1787 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "MAP3K4"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs143431368-C",
+      "rsid": "rs143431368",
+      "effect_allele": "C",
+      "p_value": 1e-41,
+      "beta_text": "0.4156 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs755615196-T",
+      "rsid": "rs755615196",
+      "effect_allele": "T",
+      "p_value": 1e-41,
+      "beta_text": "0.823755 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs35722436-T",
+      "rsid": "rs35722436",
+      "effect_allele": "T",
+      "p_value": 2e-41,
+      "beta_text": "0.282802 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "MAP3K4"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST004398:rs143665477-C",
+      "rsid": "rs143665477",
+      "effect_allele": "C",
+      "p_value": 3e-41,
+      "beta_text": "39.71 mg/dL increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs78893353-A",
+      "rsid": "rs78893353",
+      "effect_allele": "A",
+      "p_value": 5e-41,
+      "beta_text": "0.43215233 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs75234242-A",
+      "rsid": "rs75234242",
+      "effect_allele": "A",
+      "p_value": 2e-40,
+      "beta_text": "0.0994 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST003127:rs185414370-C",
+      "rsid": "rs185414370",
+      "effect_allele": "C",
+      "p_value": 2.9999999999999998e-40,
+      "beta_text": "0.82 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST003127",
+      "pubmed_id": "26377243",
+      "mapped_genes": [
+        "LPAL2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs62438071-G",
+      "rsid": "rs62438071",
+      "effect_allele": "G",
+      "p_value": 4e-40,
+      "beta_text": "0.0904 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "MAP3K4"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs75234242-A",
+      "rsid": "rs75234242",
+      "effect_allele": "A",
+      "p_value": 5e-40,
+      "beta_text": "0.08628392 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs151198444-T",
+      "rsid": "rs151198444",
+      "effect_allele": "T",
+      "p_value": 5e-40,
+      "beta_text": "0.72919774 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "SLC22A2",
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs542675237-A",
+      "rsid": "rs542675237",
+      "effect_allele": "A",
+      "p_value": 6.9999999999999995e-40,
+      "beta_text": "0.43011442 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "MAP3K4"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs75108267-T",
+      "rsid": "rs75108267",
+      "effect_allele": "T",
+      "p_value": 2e-39,
+      "beta_text": "0.1179 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs117536381-A",
+      "rsid": "rs117536381",
+      "effect_allele": "A",
+      "p_value": 2.9999999999999996e-39,
+      "beta_text": "0.0905 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs112476023-T",
+      "rsid": "rs112476023",
+      "effect_allele": "T",
+      "p_value": 5e-39,
+      "beta_text": "0.196 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SLC22A1"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90429152:rs73596816-A",
+      "rsid": "rs73596816",
+      "effect_allele": "A",
+      "p_value": 5e-39,
+      "beta_text": "1.08269 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90429152",
+      "pubmed_id": "38626723",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST001218:rs10455872-G",
+      "rsid": "rs10455872",
+      "effect_allele": "G",
+      "p_value": 5e-39,
+      "beta_text": "1.28 mg/dL increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST001218",
+      "pubmed_id": "21900290",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lp (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs191235317-G",
+      "rsid": "rs191235317",
+      "effect_allele": "G",
+      "p_value": 7e-39,
+      "beta_text": "0.36047792 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "IGF2R"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST004399:rs4252198-G",
+      "rsid": "rs4252198",
+      "effect_allele": "G",
+      "p_value": 4e-38,
+      "beta_text": "14.9 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004399",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein(a) levels adjusted for apolipoprotein(a) isoforms"
+    },
+    {
+      "ref": "gwas:GCST004399:rs12207325-A",
+      "rsid": "rs12207325",
+      "effect_allele": "A",
+      "p_value": 3e-37,
+      "beta_text": "14.8 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST004399",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPAL2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein(a) levels adjusted for apolipoprotein(a) isoforms"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs185226914-T",
+      "rsid": "rs185226914",
+      "effect_allele": "T",
+      "p_value": 6e-37,
+      "beta_text": "0.6226121 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs146888147-T",
+      "rsid": "rs146888147",
+      "effect_allele": "T",
+      "p_value": 1e-36,
+      "beta_text": "0.5318 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "MRPL18"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs78619850-G",
+      "rsid": "rs78619850",
+      "effect_allele": "G",
+      "p_value": 2e-36,
+      "beta_text": "0.08731897 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "PRKN"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs577392387-C",
+      "rsid": "rs577392387",
+      "effect_allele": "C",
+      "p_value": 4e-36,
+      "beta_text": "0.2766089 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs5746081-A",
+      "rsid": "rs5746081",
+      "effect_allele": "A",
+      "p_value": 5.9999999999999996e-36,
+      "beta_text": "0.0879 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SOD2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs75553997-T",
+      "rsid": "rs75553997",
+      "effect_allele": "T",
+      "p_value": 8e-36,
+      "beta_text": "0.3335273 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "AGPAT4"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs71565752-A",
+      "rsid": "rs71565752",
+      "effect_allele": "A",
+      "p_value": 4e-35,
+      "beta_text": "0.1048 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "ACAT2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs77632648-G",
+      "rsid": "rs77632648",
+      "effect_allele": "G",
+      "p_value": 6e-35,
+      "beta_text": "0.0849 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "PNLDC1"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs117798791-A",
+      "rsid": "rs117798791",
+      "effect_allele": "A",
+      "p_value": 9e-35,
+      "beta_text": "0.1344155 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST003127:rs149565105-A",
+      "rsid": "rs149565105",
+      "effect_allele": "A",
+      "p_value": 2e-34,
+      "beta_text": "0.78 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST003127",
+      "pubmed_id": "26377243",
+      "mapped_genes": [
+        "LPAL2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs145274579-T",
+      "rsid": "rs145274579",
+      "effect_allele": "T",
+      "p_value": 2e-34,
+      "beta_text": "0.9102034 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs35694841-C",
+      "rsid": "rs35694841",
+      "effect_allele": "C",
+      "p_value": 8.999999999999999e-34,
+      "beta_text": "0.0422 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "PNLDC1"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST004398:rs184278183-T",
+      "rsid": "rs184278183",
+      "effect_allele": "T",
+      "p_value": 8.999999999999999e-34,
+      "beta_text": "26.25 mg/dL increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST004399:rs145470851-A",
+      "rsid": "rs145470851",
+      "effect_allele": "A",
+      "p_value": 8.999999999999999e-34,
+      "beta_text": "15.97 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST004399",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein(a) levels adjusted for apolipoprotein(a) isoforms"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs189208401-T",
+      "rsid": "rs189208401",
+      "effect_allele": "T",
+      "p_value": 1e-33,
+      "beta_text": "0.16139325 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "RPL21P69",
+        "SOD2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs145330860-C",
+      "rsid": "rs145330860",
+      "effect_allele": "C",
+      "p_value": 2e-33,
+      "beta_text": "0.20284733 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "AGPAT4"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST004398:rs62441903-G",
+      "rsid": "rs62441903",
+      "effect_allele": "G",
+      "p_value": 5e-33,
+      "beta_text": "14.36 mg/dL decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs13201283-G",
+      "rsid": "rs13201283",
+      "effect_allele": "G",
+      "p_value": 7e-33,
+      "beta_text": "0.1004 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "AGPAT4"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs555689053-C",
+      "rsid": "rs555689053",
+      "effect_allele": "C",
+      "p_value": 7e-33,
+      "beta_text": "0.27104017 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs143461353-T",
+      "rsid": "rs143461353",
+      "effect_allele": "T",
+      "p_value": 1e-32,
+      "beta_text": "0.35711005 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST004398:rs2489940-T",
+      "rsid": "rs2489940",
+      "effect_allele": "T",
+      "p_value": 2e-32,
+      "beta_text": "8.69 mg/dL decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs543570485-G",
+      "rsid": "rs543570485",
+      "effect_allele": "G",
+      "p_value": 2e-32,
+      "beta_text": "0.24741158 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "IGF2R"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs73017414-T",
+      "rsid": "rs73017414",
+      "effect_allele": "T",
+      "p_value": 2e-32,
+      "beta_text": "0.27402818 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "AGPAT4"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs139194808-T",
+      "rsid": "rs139194808",
+      "effect_allele": "T",
+      "p_value": 5e-32,
+      "beta_text": "0.5073553 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs148789273-T",
+      "rsid": "rs148789273",
+      "effect_allele": "T",
+      "p_value": 8e-32,
+      "beta_text": "0.15235436 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "AGPAT4"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs75374960-C",
+      "rsid": "rs75374960",
+      "effect_allele": "C",
+      "p_value": 8e-32,
+      "beta_text": "0.0816 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SOD2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs73017544-A",
+      "rsid": "rs73017544",
+      "effect_allele": "A",
+      "p_value": 8e-32,
+      "beta_text": "0.07309942 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "IGF2R",
+        "MAS1"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST004398:rs147402310-G",
+      "rsid": "rs147402310",
+      "effect_allele": "G",
+      "p_value": 9e-32,
+      "beta_text": "7.19 mg/dL decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs543074810-C",
+      "rsid": "rs543074810",
+      "effect_allele": "C",
+      "p_value": 9e-32,
+      "beta_text": "0.33637947 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs561110147-C",
+      "rsid": "rs561110147",
+      "effect_allele": "C",
+      "p_value": 2e-31,
+      "beta_text": "0.32128656 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs527883892-A",
+      "rsid": "rs527883892",
+      "effect_allele": "A",
+      "p_value": 3.0000000000000003e-31,
+      "beta_text": "0.3191864 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST004399:rs9365169-G",
+      "rsid": "rs9365169",
+      "effect_allele": "G",
+      "p_value": 4e-31,
+      "beta_text": "2.05 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST004399",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein(a) levels adjusted for apolipoprotein(a) isoforms"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs8191743-A",
+      "rsid": "rs8191743",
+      "effect_allele": "A",
+      "p_value": 4e-31,
+      "beta_text": "0.21907271 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "IGF2R"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs138491411-G",
+      "rsid": "rs138491411",
+      "effect_allele": "G",
+      "p_value": 5e-31,
+      "beta_text": "0.30566582 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST012232:rs1047891-C",
+      "rsid": "rs1047891",
+      "effect_allele": "C",
+      "p_value": 8e-31,
+      "beta_text": "0.018906 nmol/l increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST012232",
+      "pubmed_id": "33730874",
+      "mapped_genes": [
+        "CPS1"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs192102370-T",
+      "rsid": "rs192102370",
+      "effect_allele": "T",
+      "p_value": 1e-30,
+      "beta_text": "0.29010716 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LINC02529",
+        "RPL21P69"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST008433:rs7770628-C",
+      "rsid": "rs7770628",
+      "effect_allele": "C",
+      "p_value": 2e-30,
+      "beta_text": "0.73 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST008433",
+      "pubmed_id": "31186284",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels in coronary artery disease (percutaneous coronary intervention)"
+    },
+    {
+      "ref": "gwas:GCST003127:rs144788267-A",
+      "rsid": "rs144788267",
+      "effect_allele": "A",
+      "p_value": 5.0000000000000004e-30,
+      "beta_text": "0.83 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST003127",
+      "pubmed_id": "26377243",
+      "mapped_genes": [
+        "MAP3K4-AS1",
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs187631026-G",
+      "rsid": "rs187631026",
+      "effect_allele": "G",
+      "p_value": 8e-30,
+      "beta_text": "0.33835733 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs150425701-T",
+      "rsid": "rs150425701",
+      "effect_allele": "T",
+      "p_value": 8e-30,
+      "beta_text": "0.4340792 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST004399:rs78439586-A",
+      "rsid": "rs78439586",
+      "effect_allele": "A",
+      "p_value": 2.9999999999999997e-29,
+      "beta_text": "5.91 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST004399",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein(a) levels adjusted for apolipoprotein(a) isoforms"
+    },
+    {
+      "ref": "gwas:GCST004398:rs520829-G",
+      "rsid": "rs520829",
+      "effect_allele": "G",
+      "p_value": 2.9999999999999997e-29,
+      "beta_text": "3.58 mg/dL decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "SLC22A2",
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST004398:rs6902316-G",
+      "rsid": "rs6902316",
+      "effect_allele": "G",
+      "p_value": 4e-29,
+      "beta_text": "19.15 mg/dL increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004398",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPAL2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs2341786-A",
+      "rsid": "rs2341786",
+      "effect_allele": "A",
+      "p_value": 5e-29,
+      "beta_text": "0.038611095 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "LINC02529",
+        "RPL21P69"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs4646283-C",
+      "rsid": "rs4646283",
+      "effect_allele": "C",
+      "p_value": 8e-29,
+      "beta_text": "0.042 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SLC22A1",
+        "SLC22A2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs3907238-A",
+      "rsid": "rs3907238",
+      "effect_allele": "A",
+      "p_value": 1e-28,
+      "beta_text": "0.35311112 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "SLC22A2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs4252128-T",
+      "rsid": "rs4252128",
+      "effect_allele": "T",
+      "p_value": 2e-28,
+      "beta_text": "0.3211 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs73015965-G",
+      "rsid": "rs73015965",
+      "effect_allele": "G",
+      "p_value": 3e-28,
+      "beta_text": "0.41803864 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST004399:rs117026595-T",
+      "rsid": "rs117026595",
+      "effect_allele": "T",
+      "p_value": 3e-28,
+      "beta_text": "13.81 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST004399",
+      "pubmed_id": "28512139",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein(a) levels adjusted for apolipoprotein(a) isoforms"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs4252193-T",
+      "rsid": "rs4252193",
+      "effect_allele": "T",
+      "p_value": 3e-28,
+      "beta_text": "0.25980562 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "PLG"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST012232:rs139097404-T",
+      "rsid": "rs139097404",
+      "effect_allele": "T",
+      "p_value": 4e-28,
+      "beta_text": "0.053097 nmol/l increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST012232",
+      "pubmed_id": "33730874",
+      "mapped_genes": [
+        "CATSPER2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs4709347-T",
+      "rsid": "rs4709347",
+      "effect_allele": "T",
+      "p_value": 6e-28,
+      "beta_text": "0.0361 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "RPL21P69",
+        "SOD2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs62442661-G",
+      "rsid": "rs62442661",
+      "effect_allele": "G",
+      "p_value": 8e-28,
+      "beta_text": "0.0768 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "IGF2R",
+        "MAS1"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs576887840-A",
+      "rsid": "rs576887840",
+      "effect_allele": "A",
+      "p_value": 9e-28,
+      "beta_text": "0.39926845 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "IGF2R"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs616036-A",
+      "rsid": "rs616036",
+      "effect_allele": "A",
+      "p_value": 2e-27,
+      "beta_text": "0.22194625 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "FNDC1"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs75786741-T",
+      "rsid": "rs75786741",
+      "effect_allele": "T",
+      "p_value": 3e-27,
+      "beta_text": "0.0894 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "PRKN"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs73017450-T",
+      "rsid": "rs73017450",
+      "effect_allele": "T",
+      "p_value": 6e-27,
+      "beta_text": "0.0451 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LINC02529",
+        "RPL21P69"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90469786:rs681401-C",
+      "rsid": "rs681401",
+      "effect_allele": "C",
+      "p_value": 1e-26,
+      "beta_text": "0.17454605 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90469786",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "IGF2R"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "LPA protein levels"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs188184257-A",
+      "rsid": "rs188184257",
+      "effect_allele": "A",
+      "p_value": 2e-26,
+      "beta_text": "0.282323 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "SLC22A2",
+        "SLC22A3"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90468081:rs117085031-A",
+      "rsid": "rs117085031",
+      "effect_allele": "A",
+      "p_value": 2e-26,
+      "beta_text": "0.30688617 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90468081",
+      "pubmed_id": "39789286",
+      "mapped_genes": [
+        "FNDC1-AS1",
+        "TAGAP"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein A levels (UKB data field 30790)"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs12194934-C",
+      "rsid": "rs12194934",
+      "effect_allele": "C",
+      "p_value": 2e-26,
+      "beta_text": "0.0284 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "AGPAT4",
+        "PRKN"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    },
+    {
+      "ref": "gwas:GCST90019513:rs12200363-C",
+      "rsid": "rs12200363",
+      "effect_allele": "C",
+      "p_value": 2e-26,
+      "beta_text": "0.0798 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019513",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "SLC22A1",
+        "SLC22A2"
+      ],
+      "efo": "EFO_0006925",
+      "reported_trait": "Lipoprotein (a) levels"
+    }
+  ]
+}

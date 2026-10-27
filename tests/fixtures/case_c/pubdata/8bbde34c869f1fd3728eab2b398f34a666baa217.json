@@ -1,0 +1,628 @@
+{
+ "source": "clinvar",
+ "query": "clinvar:gene:SLC22A12",
+ "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi (SLC22A12[gene] AND (clinsig_pathogenic[prop] OR clinsig_likely_pathogenic[prop] OR clinsig_has_conflicts[prop]))",
+ "retrieved_at": "2026-10-24T16:15:53+08:00",
+ "records": [
+  {
+   "ref": "clinvar:VCV005019640",
+   "gene": "SLC22A12",
+   "title": "NM_144585.4(SLC22A12):c.151del (p.Ala51fs)",
+   "spdi": "NC_000011.10:64591704:GGG:GG",
+   "deleted": "GGG",
+   "inserted": "GG",
+   "loc": {
+    "GRCh38": {
+     "chr": "11",
+     "start": 64591705,
+     "stop": 64591705
+    },
+    "GRCh37": {
+     "chr": "11",
+     "start": 64359177,
+     "stop": 64359177
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Dalmatian hypouricemia"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV004277583",
+   "gene": "SLC22A12",
+   "title": "NM_144585.4(SLC22A12):c.693del (p.Leu232fs)",
+   "spdi": "NC_000011.10:64593663:CCC:CC",
+   "deleted": "CCC",
+   "inserted": "CC",
+   "loc": {
+    "GRCh38": {
+     "chr": "11",
+     "start": 64593664,
+     "stop": 64593664
+    },
+    "GRCh37": {
+     "chr": "11",
+     "start": 64361136,
+     "stop": 64361136
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Dalmatian hypouricemia"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV003615385",
+   "gene": "SLC22A12",
+   "title": "NM_144585.4(SLC22A12):c.258_259delinsTT (p.Gln87Ter)",
+   "spdi": "NC_000011.10:64591813:CC:TT",
+   "deleted": "CC",
+   "inserted": "TT",
+   "loc": {
+    "GRCh38": {
+     "chr": "11",
+     "start": 64591814,
+     "stop": 64591815
+    },
+    "GRCh37": {
+     "chr": "11",
+     "start": 64359286,
+     "stop": 64359287
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV003599974",
+   "gene": "SLC22A12",
+   "title": "NM_144585.4(SLC22A12):c.667G>T (p.Glu223Ter)",
+   "spdi": "NC_000011.10:64593639:G:T",
+   "deleted": "G",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "11",
+     "start": 64593640,
+     "stop": 64593640
+    },
+    "GRCh37": {
+     "chr": "11",
+     "start": 64361112,
+     "stop": 64361112
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Dalmatian hypouricemia"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV003599969",
+   "gene": "SLC22A12",
+   "title": "NM_144585.4(SLC22A12):c.536del (p.Ser179fs)",
+   "spdi": "NC_000011.10:64593433:G:",
+   "deleted": "G",
+   "inserted": "",
+   "loc": {
+    "GRCh38": {
+     "chr": "11",
+     "start": 64593434,
+     "stop": 64593434
+    },
+    "GRCh37": {
+     "chr": "11",
+     "start": 64360906,
+     "stop": 64360906
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Dalmatian hypouricemia"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV003599964",
+   "gene": "SLC22A12",
+   "title": "NM_144585.4(SLC22A12):c.506+1G>A",
+   "spdi": "NC_000011.10:64592882:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "11",
+     "start": 64592883,
+     "stop": 64592883
+    },
+    "GRCh37": {
+     "chr": "11",
+     "start": 64360355,
+     "stop": 64360355
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Dalmatian hypouricemia",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV003599960",
+   "gene": "SLC22A12",
+   "title": "NM_144585.4(SLC22A12):c.312G>A (p.Thr104=)",
+   "spdi": "NC_000011.10:64591867:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "11",
+     "start": 64591868,
+     "stop": 64591868
+    },
+    "GRCh37": {
+     "chr": "11",
+     "start": 64359340,
+     "stop": 64359340
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Dalmatian hypouricemia",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV003599958",
+   "gene": "SLC22A12",
+   "title": "NM_144585.4(SLC22A12):c.259C>T (p.Gln87Ter)",
+   "spdi": "NC_000011.10:64591814:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "11",
+     "start": 64591815,
+     "stop": 64591815
+    },
+    "GRCh37": {
+     "chr": "11",
+     "start": 64359287,
+     "stop": 64359287
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Dalmatian hypouricemia"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002137126",
+   "gene": "SLC22A12",
+   "title": "NM_144585.4(SLC22A12):c.412G>A (p.Val138Met)",
+   "spdi": "NC_000011.10:64592787:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "11",
+     "start": 64592788,
+     "stop": 64592788
+    },
+    "GRCh37": {
+     "chr": "11",
+     "start": 64360260,
+     "stop": 64360260
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "SLC22A12-related disorder",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001983955",
+   "gene": "SLC22A12",
+   "title": "NM_144585.4(SLC22A12):c.371G>A (p.Arg124His)",
+   "spdi": "NC_000011.10:64591926:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "11",
+     "start": 64591927,
+     "stop": 64591927
+    },
+    "GRCh37": {
+     "chr": "11",
+     "start": 64359399,
+     "stop": 64359399
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Dalmatian hypouricemia",
+    "Inborn genetic diseases",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001515855",
+   "gene": "SLC22A12",
+   "title": "NM_144585.4(SLC22A12):c.507-8_511del",
+   "spdi": "NC_000011.10:64593390:GGTTTGTGCCGCAGGTTTG:GGTTTG",
+   "deleted": "GGTTTGTGCCGCAGGTTTG",
+   "inserted": "GGTTTG",
+   "loc": {
+    "GRCh38": {
+     "chr": "11",
+     "start": 64593391,
+     "stop": 64593403
+    },
+    "GRCh37": {
+     "chr": "11",
+     "start": 64360863,
+     "stop": 64360875
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Dalmatian hypouricemia",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001356316",
+   "gene": "SLC22A12",
+   "title": "NM_144585.4(SLC22A12):c.743del (p.Thr248fs)",
+   "spdi": "NC_000011.10:64593715:C:",
+   "deleted": "C",
+   "inserted": "",
+   "loc": {
+    "GRCh38": {
+     "chr": "11",
+     "start": 64593716,
+     "stop": 64593716
+    },
+    "GRCh37": {
+     "chr": "11",
+     "start": 64361188,
+     "stop": 64361188
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001177307",
+   "gene": "SLC22A12",
+   "title": "NM_144585.4(SLC22A12):c.502G>A (p.Asp168Asn)",
+   "spdi": "NC_000011.10:64592877:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "11",
+     "start": 64592878,
+     "stop": 64592878
+    },
+    "GRCh37": {
+     "chr": "11",
+     "start": 64360350,
+     "stop": 64360350
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "no assertion criteria provided",
+   "conditions": [
+    "Dalmatian hypouricemia"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001086256",
+   "gene": "SLC22A12",
+   "title": "NM_144585.4(SLC22A12):c.679G>A (p.Ala227Thr)",
+   "spdi": "NC_000011.10:64593651:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "11",
+     "start": 64593652,
+     "stop": 64593652
+    },
+    "GRCh37": {
+     "chr": "11",
+     "start": 64361124,
+     "stop": 64361124
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Dalmatian hypouricemia",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000877260",
+   "gene": "SLC22A12",
+   "title": "NM_144585.4(SLC22A12):c.798G>A (p.Ser266=)",
+   "spdi": "NC_000011.10:64593770:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "11",
+     "start": 64593771,
+     "stop": 64593771
+    },
+    "GRCh37": {
+     "chr": "11",
+     "start": 64361243,
+     "stop": 64361243
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Dalmatian hypouricemia",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000631663",
+   "gene": "SLC22A12",
+   "title": "NM_144585.4(SLC22A12):c.661+1G>A",
+   "spdi": "NC_000011.10:64593559:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "11",
+     "start": 64593560,
+     "stop": 64593560
+    },
+    "GRCh37": {
+     "chr": "11",
+     "start": 64361032,
+     "stop": 64361032
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000493093",
+   "gene": "SLC22A12",
+   "title": "NM_144585.4(SLC22A12):c.103_104del (p.Ser35fs)",
+   "spdi": "NC_000011.10:64591656:AGAG:AG",
+   "deleted": "AGAG",
+   "inserted": "AG",
+   "loc": {
+    "GRCh38": {
+     "chr": "11",
+     "start": 64591657,
+     "stop": 64591658
+    },
+    "GRCh37": {
+     "chr": "11",
+     "start": 64359129,
+     "stop": 64359130
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000305235",
+   "gene": "SLC22A12",
+   "title": "NM_144585.4(SLC22A12):c.570T>C (p.Ala190=)",
+   "spdi": "NC_000011.10:64593467:T:C",
+   "deleted": "T",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "11",
+     "start": 64593468,
+     "stop": 64593468
+    },
+    "GRCh37": {
+     "chr": "11",
+     "start": 64360940,
+     "stop": 64360940
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Dalmatian hypouricemia",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000305234",
+   "gene": "SLC22A12",
+   "title": "NM_144585.4(SLC22A12):c.564G>A (p.Thr188=)",
+   "spdi": "NC_000011.10:64593461:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "11",
+     "start": 64593462,
+     "stop": 64593462
+    },
+    "GRCh37": {
+     "chr": "11",
+     "start": 64360934,
+     "stop": 64360934
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Dalmatian hypouricemia",
+    "SLC22A12-related disorder",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000305231",
+   "gene": "SLC22A12",
+   "title": "NM_144585.4(SLC22A12):c.327C>T (p.Ser109=)",
+   "spdi": "NC_000011.10:64591882:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "11",
+     "start": 64591883,
+     "stop": 64591883
+    },
+    "GRCh37": {
+     "chr": "11",
+     "start": 64359355,
+     "stop": 64359355
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Dalmatian hypouricemia",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000305228",
+   "gene": "SLC22A12",
+   "title": "NM_144585.4(SLC22A12):c.-10A>C",
+   "spdi": "NC_000011.10:64591546:A:C",
+   "deleted": "A",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "11",
+     "start": 64591547,
+     "stop": 64591547
+    },
+    "GRCh37": {
+     "chr": "11",
+     "start": 64359019,
+     "stop": 64359019
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Dalmatian hypouricemia",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000003516",
+   "gene": "SLC22A12",
+   "title": "NM_144585.4(SLC22A12):c.269G>A (p.Arg90His)",
+   "spdi": "NC_000011.10:64591824:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "11",
+     "start": 64591825,
+     "stop": 64591825
+    },
+    "GRCh37": {
+     "chr": "11",
+     "start": 64359297,
+     "stop": 64359297
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Dalmatian hypouricemia",
+    "Familial renal hypouricemia",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000003513",
+   "gene": "SLC22A12",
+   "title": "NM_144585.4(SLC22A12):c.650C>T (p.Thr217Met)",
+   "spdi": "NC_000011.10:64593547:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "11",
+     "start": 64593548,
+     "stop": 64593548
+    },
+    "GRCh37": {
+     "chr": "11",
+     "start": 64361020,
+     "stop": 64361020
+    }
+   },
+   "classification": "Pathogenic/Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Dalmatian hypouricemia",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000003512",
+   "gene": "SLC22A12",
+   "title": "NM_144585.4(SLC22A12):c.774G>A (p.Trp258Ter)",
+   "spdi": "NC_000011.10:64593746:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "11",
+     "start": 64593747,
+     "stop": 64593747
+    },
+    "GRCh37": {
+     "chr": "11",
+     "start": 64361219,
+     "stop": 64361219
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Dalmatian hypouricemia",
+    "SLC22A12-related disorder",
+    "not provided"
+   ]
+  }
+ ],
+ "oversized_skipped": [],
+ "filtered_for_fixture": "records within 2000 bp of a case-C VCF record, of 49 retrieved"
+}

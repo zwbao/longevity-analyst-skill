@@ -1,0 +1,543 @@
+{
+  "source": "gwas",
+  "query": "trait:EFO_0004578:5e-08",
+  "url": "https://www.ebi.ac.uk/gwas/rest/api/v2/associations?efo_id=EFO_0004578&size=100&sort=p_value&direction=asc",
+  "retrieved_at": "2026-10-24T16:06:27+08:00",
+  "records": [
+    {
+      "ref": "gwas:GCST90090974:rs1801133-T",
+      "rsid": "rs1801133",
+      "effect_allele": "T",
+      "p_value": 1e-120,
+      "beta_text": "0.45 μmol/l increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90090974",
+      "pubmed_id": "34707639",
+      "mapped_genes": [
+        "MTHFR"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST002087:rs1801133-A",
+      "rsid": "rs1801133",
+      "effect_allele": "A",
+      "p_value": 4e-104,
+      "beta_text": "0.1583 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST002087",
+      "pubmed_id": "23824729",
+      "mapped_genes": [
+        "MTHFR"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST90319530:rs1801133-A",
+      "rsid": "rs1801133",
+      "effect_allele": "A",
+      "p_value": 6e-69,
+      "beta_text": "0.26 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90319530",
+      "pubmed_id": "37479695",
+      "mapped_genes": [
+        "MTHFR"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST002391:rs9296404-T",
+      "rsid": "rs9296404",
+      "effect_allele": "T",
+      "p_value": 2e-63,
+      "beta_text": "0.356 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST002391",
+      "pubmed_id": "24651765",
+      "mapped_genes": [
+        "PEX6",
+        "RPL24P4"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Plasma homocysteine levels (post-methionine load test)"
+    },
+    {
+      "ref": "gwas:GCST002087:rs154657-A",
+      "rsid": "rs154657",
+      "effect_allele": "A",
+      "p_value": 2e-43,
+      "beta_text": "0.0963 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST002087",
+      "pubmed_id": "23824729",
+      "mapped_genes": [
+        "CHMP1A"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST000367:rs1801133-A",
+      "rsid": "rs1801133",
+      "effect_allele": "A",
+      "p_value": 8e-35,
+      "beta_text": "0.05 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST000367",
+      "pubmed_id": "20031578",
+      "mapped_genes": [
+        "MTHFR"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST002087:rs7422339-A",
+      "rsid": "rs7422339",
+      "effect_allele": "A",
+      "p_value": 5e-27,
+      "beta_text": "0.0864 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST002087",
+      "pubmed_id": "23824729",
+      "mapped_genes": [
+        "CPS1"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST002391:rs234714-T",
+      "rsid": "rs234714",
+      "effect_allele": "T",
+      "p_value": 3e-26,
+      "beta_text": "0.404 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST002391",
+      "pubmed_id": "24651765",
+      "mapped_genes": [
+        "CBS"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Plasma homocysteine levels (post-methionine load test)"
+    },
+    {
+      "ref": "gwas:GCST002087:rs234709-T",
+      "rsid": "rs234709",
+      "effect_allele": "T",
+      "p_value": 4e-24,
+      "beta_text": "0.0718 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST002087",
+      "pubmed_id": "23824729",
+      "mapped_genes": [
+        "CBS"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST90429184:rs1801133-A",
+      "rsid": "rs1801133",
+      "effect_allele": "A",
+      "p_value": 2e-21,
+      "beta_text": "0.296488 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90429184",
+      "pubmed_id": "38626723",
+      "mapped_genes": [
+        "MTHFR"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST002087:rs12134663-A",
+      "rsid": "rs12134663",
+      "effect_allele": "A",
+      "p_value": 2.9999999999999995e-21,
+      "beta_text": "0.101 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST002087",
+      "pubmed_id": "23824729",
+      "mapped_genes": [
+        "C1orf167",
+        "C1orf167-AS1"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST002087:rs7130284-T",
+      "rsid": "rs7130284",
+      "effect_allele": "T",
+      "p_value": 2e-20,
+      "beta_text": "0.1242 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST002087",
+      "pubmed_id": "23824729",
+      "mapped_genes": [
+        "NOX4"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST002391:rs10934753-A",
+      "rsid": "rs10934753",
+      "effect_allele": "A",
+      "p_value": 7e-13,
+      "beta_text": "0.193 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST002391",
+      "pubmed_id": "24651765",
+      "mapped_genes": [
+        "ALDH1L1",
+        "ALDH1L1-AS2"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Plasma homocysteine levels (post-methionine load test)"
+    },
+    {
+      "ref": "gwas:GCST002391:rs1047891-A",
+      "rsid": "rs1047891",
+      "effect_allele": "A",
+      "p_value": 9e-13,
+      "beta_text": "0.191 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST002391",
+      "pubmed_id": "24651765",
+      "mapped_genes": [
+        "CPS1"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Plasma homocysteine levels (post-methionine load test)"
+    },
+    {
+      "ref": "gwas:GCST002087:rs2251468-A",
+      "rsid": "rs2251468",
+      "effect_allele": "A",
+      "p_value": 1e-12,
+      "beta_text": "0.0512 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST002087",
+      "pubmed_id": "23824729",
+      "mapped_genes": [
+        "HNF1A-AS1"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST002087:rs2851391-T",
+      "rsid": "rs2851391",
+      "effect_allele": "T",
+      "p_value": 2e-12,
+      "beta_text": "0.056 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST002087",
+      "pubmed_id": "23824729",
+      "mapped_genes": [
+        "CBS"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST90013346:rs147242481-A",
+      "rsid": "rs147242481",
+      "effect_allele": "A",
+      "p_value": 2e-11,
+      "beta_text": "0.52 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90013346",
+      "pubmed_id": "33623009",
+      "mapped_genes": [
+        "CSTB",
+        "PDXK"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST002087:rs12921383-T",
+      "rsid": "rs12921383",
+      "effect_allele": "T",
+      "p_value": 8e-11,
+      "beta_text": "0.09 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST002087",
+      "pubmed_id": "23824729",
+      "mapped_genes": [
+        "FANCA"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST002087:rs2275565-T",
+      "rsid": "rs2275565",
+      "effect_allele": "T",
+      "p_value": 2e-10,
+      "beta_text": "0.0542 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST002087",
+      "pubmed_id": "23824729",
+      "mapped_genes": [
+        "MTR"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST002087:rs9369898-A",
+      "rsid": "rs9369898",
+      "effect_allele": "A",
+      "p_value": 2e-10,
+      "beta_text": "0.0449 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST002087",
+      "pubmed_id": "23824729",
+      "mapped_genes": [
+        "EEF1A1P42",
+        "MMUT"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST002087:rs1801222-A",
+      "rsid": "rs1801222",
+      "effect_allele": "A",
+      "p_value": 8e-10,
+      "beta_text": "0.0453 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST002087",
+      "pubmed_id": "23824729",
+      "mapped_genes": [
+        "CUBN"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST002087:rs12780845-A",
+      "rsid": "rs12780845",
+      "effect_allele": "A",
+      "p_value": 8e-10,
+      "beta_text": "0.0529 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST002087",
+      "pubmed_id": "23824729",
+      "mapped_genes": [
+        "TRDMT1"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST002087:rs4660306-T",
+      "rsid": "rs4660306",
+      "effect_allele": "T",
+      "p_value": 2e-09,
+      "beta_text": "0.0435 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST002087",
+      "pubmed_id": "23824729",
+      "mapped_genes": [
+        "MMACHC",
+        "PRDX1"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST90013346:rs187169250-T",
+      "rsid": "rs187169250",
+      "effect_allele": "T",
+      "p_value": 3.0000000000000004e-09,
+      "beta_text": "0.21 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90013346",
+      "pubmed_id": "33623009",
+      "mapped_genes": [
+        "NOX4"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST000594:rs7422339-A",
+      "rsid": "rs7422339",
+      "effect_allele": "A",
+      "p_value": 5e-09,
+      "beta_text": "0.05 log(Hcy) increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST000594",
+      "pubmed_id": "20154341",
+      "mapped_genes": [
+        "CPS1"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST90319530:rs142550463-G",
+      "rsid": "rs142550463",
+      "effect_allele": "G",
+      "p_value": 5e-09,
+      "beta_text": "0.34 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90319530",
+      "pubmed_id": "37479695",
+      "mapped_genes": [
+        "LINC01668",
+        "WDR4"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST002087:rs838133-A",
+      "rsid": "rs838133",
+      "effect_allele": "A",
+      "p_value": 7.000000000000001e-09,
+      "beta_text": "0.0422 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST002087",
+      "pubmed_id": "23824729",
+      "mapped_genes": [
+        "FGF21"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST002087:rs548987-C",
+      "rsid": "rs548987",
+      "effect_allele": "C",
+      "p_value": 1e-08,
+      "beta_text": "0.0597 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST002087",
+      "pubmed_id": "23824729",
+      "mapped_genes": [
+        "SLC17A3"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST90013346:rs71469261-T",
+      "rsid": "rs71469261",
+      "effect_allele": "T",
+      "p_value": 2e-08,
+      "beta_text": "0.22 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90013346",
+      "pubmed_id": "33623009",
+      "mapped_genes": [
+        "NOX4"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST002087:rs42648-A",
+      "rsid": "rs42648",
+      "effect_allele": "A",
+      "p_value": 2e-08,
+      "beta_text": "0.0395 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST002087",
+      "pubmed_id": "23824729",
+      "mapped_genes": [
+        "GTPBP10"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST002087:rs957140-A",
+      "rsid": "rs957140",
+      "effect_allele": "A",
+      "p_value": 2e-08,
+      "beta_text": "0.045 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST002087",
+      "pubmed_id": "23824729",
+      "mapped_genes": [
+        "NOX4"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST003157:rs6940729-T",
+      "rsid": "rs6940729",
+      "effect_allele": "T",
+      "p_value": 5e-08,
+      "beta_text": "0.027 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST003157",
+      "pubmed_id": "26519441",
+      "mapped_genes": [
+        "CD2AP"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Plasma homocysteine levels"
+    },
+    {
+      "ref": "gwas:GCST009318:rs35976024-A",
+      "rsid": "rs35976024",
+      "effect_allele": "A",
+      "p_value": 5e-08,
+      "beta_text": "0.1 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST009318",
+      "pubmed_id": "31502714",
+      "mapped_genes": [
+        "ATOH8"
+      ],
+      "efo": "EFO_0004578",
+      "reported_trait": "Blood metabolite levels"
+    }
+  ]
+}

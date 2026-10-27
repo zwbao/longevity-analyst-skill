@@ -1,0 +1,16 @@
+{
+  "source": "ensembl",
+  "query": "gene:GRCh38:LPA",
+  "url": "https://rest.ensembl.org/lookup/symbol/homo_sapiens/LPA?content-type=application/json",
+  "retrieved_at": "2026-10-24T16:04:16+08:00",
+  "records": [
+    {
+      "ref": "ensembl:ENSG00000198670",
+      "symbol": "LPA",
+      "chrom": "6",
+      "start": 160531482,
+      "end": 160664276,
+      "assembly": "GRCh38"
+    }
+  ]
+}

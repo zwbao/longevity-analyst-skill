@@ -18,7 +18,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from lalib import board, causal, genomics, reference, wearable
+from lalib import board, causal, genomics, pgx, reference, surveillance, wearable
 from lalib import common as C  # noqa: E402
 from lalib import evidence, integrate, intake, methods, organs, pipelines, preflight, report, twin  # noqa: E402
 
@@ -75,9 +75,14 @@ def cmd_init(a):
     st = C.new_state(member, raw)
     st["workspace"] = str(ws.root)
     st["longevity_skills_home"] = str(Path(lib).resolve())
-    ws.log(st, "init", mode=a.mode)
+    out = {"workspace": str(ws.root), "member": member}
+    if a.reuse_germline_from:
+        rec = intake.reuse_germline(st, ws.root, Path(a.reuse_germline_from), raw)
+        out["reuse_germline"] = {k: rec.get(k) for k in ("reused", "from", "fingerprint_check", "reason", "skipped") if rec.get(k)}
+        out["reuse_germline"]["files"] = sorted(rec["files"])
+    ws.log(st, "init", mode=a.mode, reuse_germline_from=a.reuse_germline_from)
     ws.save(st)
-    C.emit({"workspace": str(ws.root), "member": member})
+    C.emit(out)
 
 
 def cmd_member_set(a):
@@ -103,7 +108,11 @@ def cmd_member_set(a):
                 raise C.LAError("genetic_disclosure must be yes or no", C.EXIT_USAGE)
             st["member"].setdefault("answers", {})[k] = v
     C.validate_member(st["member"])
-    known = {"genetic_disclosure"} | {i["key"] for sk in C.load_json(C.longevity_skills_home() / "catalog.json")["skills"]
+    if any(kv.split("=", 1)[0] == "sample_date" for kv in a.pairs):
+        from lalib import labnames
+        labnames.stamp_dates(st)                       # rows dated by the workspace follow the new date
+        _intake_done(st)
+    known = {"genetic_disclosure", "medications", "residence"} | {i["key"] for sk in C.load_json(C.longevity_skills_home() / "catalog.json")["skills"]
                                       for i in (sk.get("inputs") or []) if i.get("from") in ("argument", "profile")}
     unknown = [kv.split("=", 1)[0] for kv in a.pairs if kv.split("=", 1)[0] not in known | {"age", "sex", "sample_date"}]
     C.invalidate_after(st, "pipelines", f"member facts changed: {a.pairs}")      # answers feed methods, not intake
@@ -203,10 +212,11 @@ def cmd_labs(a):
         ws, st = _open(a, lock=False)
         from lalib import labnames
         C.emit({"pending": labnames.pending(st),
-                "how": "every numeric row needs an answer. yes = the row is from THIS visit (the sample date) and is what its name "
-                       "says, measured the standard way (serum/plasma for blood chemistry, venous blood for blood counts, fasting "
-                       "where the candidate says so); no = an earlier or later visit, urine, post-meal, OGTT, random or capillary "
-                       "values, another analyte, or you cannot tell. "
+                "how": "every numeric row needs an answer. yes = the row is what its name says, measured the standard way (serum/plasma "
+                       "for blood chemistry, venous blood for blood counts, fasting where the candidate says so); no = urine, "
+                       "post-meal, OGTT, random or capillary values, another analyte, or you cannot tell. A row from another "
+                       "visit is answered the same way: `collected_at` is its sampling date, and only rows of this visit "
+                       "(the sample date) reach methods and estimators; earlier rows reach the twin's trend only. "
                        "`candidates` is what the harness would match the row to (empty: the harness does not recognise the name; "
                        "answer from what the row really is). "
                        "Answer with `la.py labs confirm <ws> --answers <json> --reason <why>`: "
@@ -245,6 +255,10 @@ def cmd_labs(a):
         if not a.csv or not a.file:
             raise C.LAError("labs add needs --csv and --file", C.EXIT_USAGE)
         res = {"added": intake.add_labs(st, Path(a.csv), a.file, a.reason), "labs_total": len(st["labs"])}
+    elif a.action == "date":
+        if not a.file or not a.date:
+            raise C.LAError("labs date needs --file F00x --date YYYY-MM-DD --source \"<quote>\" --reason", C.EXIT_USAGE)
+        res = intake.set_file_date(st, a.file, a.date, a.source or "", a.reason)
     elif a.action == "map":
         if not a.marker or not a.to:
             raise C.LAError("labs map needs --marker and --to", C.EXIT_USAGE)
@@ -444,6 +458,19 @@ def cmd_insights(a):
         else:
             (st.get("insights") or {}).pop("absent_as_ref", None)
         _insight_readouts(st, ws, "genomics", res.pop("readouts"))
+        conc, rows = genomics.write_concordance(ws.root)
+        _insight_readouts(st, ws, "concordance", rows)
+        res["concordance"] = {x["analyte"]: x["class"] for x in conc["items"]}
+    elif a.action == "pgx":
+        doc = pgx.run(st, ws.root, absent_as_ref=a.absent_as_ref)
+        _insight_readouts(st, ws, "pgx", pgx.readouts(doc))
+        if (ws.root / "work" / "insights" / "genotype_phenotype.json").exists():
+            _, rows = genomics.write_concordance(ws.root)      # MTHFR feeds the homocysteine item
+            _insight_readouts(st, ws, "concordance", rows)
+        res = {"status": doc["status"], "reason_zh": doc.get("reason_zh"), "cpic_text": doc.get("cpic_text"),
+               "genes": {r["gene"]: r["phenotype"] for r in doc["results"]},
+               "drugs": sorted({d["drug"] for r in doc["results"] for d in r["drugs"]}),
+               "nutrigenetic": {x["key"]: x["copies"] for x in doc["nutrigenetic"]}}
     elif a.action == "skip-genomics":
         if not (a.reason or "").strip():
             raise C.LAError("skip-genomics needs --reason (e.g. no VCF, member declined genetic results)", C.EXIT_USAGE)
@@ -474,6 +501,10 @@ def cmd_insights(a):
     if written:                                      # bound to its bytes: trace refuses an edited copy
         fp = ws.root / "work" / "insights" / written
         st.setdefault("insights", {}).setdefault("files", {})[written] = C.sha256_file(fp, limit=None)
+    for extra in ({"genomics": ["concordance.json", "fingerprint.json"], "pgx": ["concordance.json", "../pgx/pgx.json"]}.get(a.action) or []):
+        fp = ws.root / "work" / "insights" / extra
+        if fp.exists():
+            st.setdefault("insights", {}).setdefault("files", {})[extra.split("/")[-1]] = C.sha256_file(fp, limit=None)
     C.invalidate_after(st, "insights", f"insights {a.action}")
     _insights_stage(st)
     ws.log(st, f"insights_{a.action}")
@@ -520,9 +551,85 @@ def cmd_intervene(a):
         raise
     C.invalidate_after(st, "intervene", "plan registered")
     st["stages"]["intervene"] = "done"
+    rts = twin.plan_retests(ws.root, C.load_json(Path(res["plan"])))      # warnings, never a refusal
+    res = dict(res)
+    res["retests"] = [{k: r[k] for k in ("item", "what", "after_weeks", "judgeable")} for r in rts]
+    st["intervene"]["retests"] = list(res["retests"])
+    warn = [f"{r['item']}: {w}" for r in rts for w in r["warnings"]]
+    if warn:
+        res["warnings"] = warn
     ws.log(st, "intervene_register", items=res["items"])
+    from lalib import predict                    # every item with an effects row and a judgeable target gets a prediction
+    try:
+        pr = predict.run(st, ws.root, **_predict_opts(st))
+        res = dict(res, predictions={k: pr[k] for k in ("statistical", "ai")},
+                   ai_requests=[x["plan_item"] for x in pr["ai_requests"]])
+    except C.LAError as e:
+        res = dict(res, predictions={"error": str(e)})
     ws.save(st)
     C.emit(res)
+
+
+def _predict_opts(st):
+    o = (st.get("predict") or {}).get("opts") or {}
+    return {"repeats": o.get("repeats"), "planned_per_week": o.get("planned_per_week")}
+
+
+def _labelled_changed(st):
+    """A labelled file changed: the trace, review and report made before it no longer hold."""
+    for s in ("review", "report"):
+        if st["stages"].get(s) == "done":
+            st["stages"][s] = "todo"
+
+
+def cmd_predict(a):
+    from lalib import predict
+    ws, st = _open(a)
+    C.require(st, "intervene")
+    opts = _predict_opts(st)
+    if a.repeats:
+        opts["repeats"] = a.repeats
+    if a.planned_per_week:
+        opts["planned_per_week"] = a.planned_per_week
+    res = predict.run(st, ws.root, ai_file=Path(a.ai) if a.ai else None,
+                      exposures_file=Path(a.exposures) if a.exposures else None, **opts)
+    _labelled_changed(st)
+    ws.log(st, "predict_response", statistical=res["statistical"], ai=res["ai"])
+    ws.save(st)
+    C.emit(res)
+
+
+def cmd_clinical(a):
+    from lalib import clinical
+    ws, st = _open(a)
+    C.require(st, "organs", "insights")
+    ai = Path(a.ai) if a.ai else None
+    if a.action == "dx":
+        res = clinical.dx(st, ws.root, a.guideline_set, ai_file=ai)
+        print(f"guideline set: {res['guideline_set']} ({'、'.join(res['guidelines_used_zh'])})", file=sys.stderr)
+    else:
+        res = clinical.rx(st, ws.root, ai_file=ai)
+    _labelled_changed(st)
+    ws.log(st, f"clinical_{a.action}")
+    ws.save(st)
+    C.emit(res)
+
+
+def cmd_surveillance(a):
+    ws, st = _open(a)
+    C.require(st, "intervene")
+    doc = surveillance.plan(st, ws.root, [Path(p) for p in (a.history or [])])
+    pp = ws.root / "work" / "intervene" / "plan.json"
+    st["surveillance"] = {"path": str(ws.root / "work" / "surveillance" / "plan.json"), "at": C.now_iso(),
+                          "sha256": C.sha256_file(ws.root / "work" / "surveillance" / "plan.json", limit=None),
+                          "intervene_plan_sha256": C.sha256_file(pp, limit=None) if pp.exists() else None,
+                          "rule_ids": sorted({r for x in doc["items"] for r in x["rule_ids"]})}
+    C.invalidate_after(st, "intervene", "surveillance plan")
+    ws.log(st, "surveillance_plan", items=len(doc["items"]))
+    ws.save(st)
+    C.emit({"path": st["surveillance"]["path"], "items": [{k: x[k] for k in ("id", "marker", "interval_weeks", "once", "done", "reasons")}
+                                                          for x in doc["items"]],
+            "retests": len(surveillance.retests(doc))})
 
 
 def cmd_twin(a):
@@ -531,13 +638,48 @@ def cmd_twin(a):
             raise C.LAError("twin compare needs --prev and --cur", C.EXIT_USAGE)
         C.emit(twin.compare(Path(a.prev), Path(a.cur)))
         return
+    if a.action == "series":
+        return _twin_series(a)
     ws, st = _open(a)
     C.require(st, "intervene")
-    res = twin.build(st, ws.root)
+    res = twin.build(st, ws.root, Path(a.exposures) if a.exposures else None)
+    ws.p("work", "twin", "series.json").unlink(missing_ok=True)      # computed from the old snapshot
+    (st.get("twin") or {}).pop("series", None)
     C.invalidate_after(st, "twin", "twin rebuilt")
     st["stages"]["twin"] = "done"
-    ws.log(st, "twin_build")
+    ws.log(st, "twin_build", exposures=bool(a.exposures))
     ws.save(st)
+    C.emit(res)
+
+
+def _twin_series(a):
+    from lalib import series
+    paths = [Path(p) for p in (a.snapshots or [])]
+    snaps = [series.load_snapshot(p) for p in paths]
+    names = [str(p) for p in paths]
+    ws = st = None
+    if a.ws:
+        ws, st = _open(argparse.Namespace(workspace=a.ws))
+        own = ws.p("work", "twin", "twin.json")
+        if st["stages"].get("twin") == "done" and own.exists():
+            if own.resolve() not in {p.resolve() for p in paths}:
+                snaps.append(series.load_snapshot(own))
+                names.append(str(own))
+        else:
+            snaps.append(twin.provisional(st, ws.root))
+            names.append(f"{ws.root} (provisional: confirmed lab rows, twin not built yet)")
+    if not snaps:
+        raise C.LAError("twin series needs --snapshots <a.json> <b.json> ... and/or --ws <workspace>", C.EXIT_USAGE)
+    res = series.run(snaps, names, max_mismatch=a.identity_max_mismatch)
+    if ws is not None and st["stages"].get("twin") == "done":
+        out = ws.p("work", "twin", "series.json")
+        C.write_json(out, res)
+        C.invalidate_after(st, "twin", "twin series written")
+        st["twin"]["series"] = {"path": str(out), "sha256": C.sha256_file(out, limit=None), "at": C.now_iso(),
+                                "snapshots": names}
+        ws.log(st, "twin_series", snapshots=len(names))
+        ws.save(st)
+        res = {**res, "written": str(out)}
     C.emit(res)
 
 
@@ -592,9 +734,26 @@ def cmd_export(a):
     want = ((st.get("report") or {}).get("deliver_sha256") or {}).get("la-export.json")
     if not p.exists() or C.sha256_file(p, limit=None) != want:
         raise C.LAError("deliver/la-export.json is missing or changed since `la.py report`; run la.py report again", C.EXIT_BLOCKED)
+    from lalib import export as X
+    leaked = [q.name for q in ws.p("deliver").rglob("*") if q.name == "genotype.txt" or q.suffix in (".vcf", ".gz")]
+    if leaked:
+        raise C.LAError(f"deliver/ holds genotype files ({leaked}); they never leave the workspace", C.EXIT_BLOCKED)
     d = C.load_json(p)
-    C.emit({"path": str(p), "schema": d["schema"], "report": d["report"]["html"], "readouts": len(d["readouts"]),
-            "organs": len(d["organs"]), "board": len(d["board"]), "plan_items": len(d["plan"]["items"]), "retests": len(d["retests"])})
+    bad = X.privacy_problems(d)
+    if bad:
+        raise C.LAError("la-export refused (privacy): " + "; ".join(bad[:5]), C.EXIT_INPUT)
+    if a.schema == X.SCHEMA_V1 and d["schema"] != X.SCHEMA_V1:
+        d = X.as_v1(d)
+        p = Path(a.out) if a.out else ws.p("work", "export", "la-export-1.json")
+        C.write_json(p, d)
+    elif a.out:
+        raise C.LAError("--out is only for --schema la-export/1; the /2 file is deliver/la-export.json", C.EXIT_USAGE)
+    res = {"path": str(p), "schema": d["schema"], "report": d["report"]["html"], "readouts": len(d["readouts"]),
+           "organs": len(d["organs"]), "board": len(d["board"]), "plan_items": len(d["plan"]["items"]), "retests": len(d["retests"])}
+    if d["schema"] != X.SCHEMA_V1:
+        res.update({k: len(d.get(k) or []) for k in ("trends", "concordance", "surveillance", "predictions", "diagnoses", "medications")})
+        res["retests_not_judgeable"] = sum(1 for r in d["retests"] if r.get("judgeable") is False)
+    C.emit(res)
 
 
 NEXT = {
@@ -604,9 +763,9 @@ NEXT = {
     "methods": "la.py methods plan / run (workflows/03-methods.md)",
     "integrate": "bundle, dispatch one analyst per system, register (workflows/04-integrate.md)",
     "organs": "organ bundle, one estimator per organ, organ register (workflows/04b-organs.md)",
-    "insights": "insights genomics / position / wearable, then the question board with one researcher per question (workflows/04c-insights.md)",
+    "insights": "insights genomics / pgx / position / wearable, then the question board with one researcher per question (workflows/04c-insights.md)",
     "intervene": "evidence lookups, write plan.json, register (workflows/05-intervene.md)",
-    "twin": "la.py twin build (workflows/06-twin-report.md)",
+    "twin": "la.py surveillance plan, then la.py twin build (workflows/04c-insights.md, 06-twin-report.md)",
     "review": "summary.md, trace, independent reviewer, record (workflows/06-twin-report.md)",
     "report": "la.py report (workflows/06-twin-report.md)",
 }
@@ -630,8 +789,37 @@ def cmd_observe(a):
         "pipelines": [{k: p.get(k) for k in ("run_id", "pipeline", "tier", "status", "optional")} for p in st["pipelines"]],
         "methods": (st.get("methods") or {}).get("counts"),
         "review": {k: (v.get("ok") if k == "trace" else v.get("verdict")) for k, v in (st.get("review") or {}).items()},
+        "timing": _durations(st),
+        **({"fast_route": FAST_ROUTE} if _fast_route(st) else {}),
         "next": f"{nxt}: {NEXT[nxt]}" if nxt else "all stages done; deliver/report.html is ready",
     })
+
+
+FAST_ROUTE = ("labs-only retest with reused germline results: skip every pipeline (`pipeline skip` with the reason); run "
+              "`la.py twin series --snapshots <earlier twin.json ...> --ws <ws>` now (it reads the confirmed lab rows "
+              "before the twin is built) and redo organ AI estimates and board questions only for the systems of markers "
+              "whose summary_verdict is trend_beyond_noise or change_beyond_noise (\"systems with change\" means exactly "
+              "this: series verdicts beyond noise, not values outside the reference range); `organ skip` the others with "
+              "the reason \"no change beyond noise since <date>\". See workflows/06-twin-report.md.")
+
+
+def _fast_route(st) -> bool:
+    if not (st.get("reuse_germline") or {}).get("reused"):
+        return False
+    live = [f for f in st["files"] if not f.get("excluded")]
+    return bool(live) and not any(f.get("kind") in intake.OMICS_KINDS for f in live)
+
+
+def _durations(st):
+    import datetime as _d
+    out = {}
+    for s, t in (st.get("timing") or {}).items():
+        if t.get("started_at") and t.get("ended_at"):
+            sec = (_d.datetime.fromisoformat(t["ended_at"]) - _d.datetime.fromisoformat(t["started_at"])).total_seconds()
+            out[s] = f"{int(sec // 60)}m{int(sec % 60):02d}s"
+        elif t.get("started_at"):
+            out[s] = "running since " + t["started_at"]
+    return out
 
 
 def cmd_validate(a):
@@ -680,6 +868,21 @@ def cmd_validate(a):
         p = Path(f["path"])
         if not f.get("excluded") and f.get("sha256") not in (None, "unreadable") and p.exists() and C.sha256_file(p) != f["sha256"]:
             problems.append(f"{f['id']} content changed since intake")
+    problems += [f"surveillance rules: {p}" for p in surveillance.check_rules(surveillance.rules())]
+    sv = st.get("surveillance")
+    if sv:
+        sp = Path(sv["path"])
+        if not sp.exists() or C.sha256_file(sp, limit=None) != sv["sha256"]:
+            problems.append("work/surveillance/plan.json changed after `la.py surveillance plan`; run it again")
+        else:
+            used = sorted({r for x in C.load_json(sp)["items"] for r in x["rule_ids"]})
+            rs = [r for r in surveillance.rules() if r["id"] in used]
+            problems += [f"surveillance rule {r}: its source was not fetched in this workspace (`la.py evidence fetch`)"
+                         for r in surveillance.unfetched(ws.root, rs)]
+            problems += [f"surveillance rule {r} no longer exists in data/surveillance_rules.json" for r in used if r not in {x['id'] for x in rs}]
+        pp = ws.p("work", "intervene", "plan.json")
+        if (C.sha256_file(pp, limit=None) if pp.exists() else None) != sv.get("intervene_plan_sha256"):
+            problems.append("the intervention plan changed after `la.py surveillance plan`; run it again")
     C.emit({"ok": not problems, "problems": problems})
     return C.EXIT_OK if not problems else C.EXIT_INPUT
 
@@ -698,6 +901,9 @@ def build_parser():
     s.add_argument("--mode", choices=["commercial", "research"], default="commercial")
     s.add_argument("--longevity-skills", help="path to the longevity-skills clone (stored in the workspace)")
     s.add_argument("--force", action="store_true", help="move an existing workspace aside and start fresh")
+    s.add_argument("--reuse-germline-from", help="earlier workspace of the same member: copy its germline results (APOE, "
+                                                 "fingerprint, PGx, gene-vs-lab while the trait map is unchanged) when "
+                                                 "the new folder has the same VCF or none")
     s.set_defaults(fn=cmd_init)
 
     s = sub.add_parser("member", help="record facts the user told you (age, sex, questionnaire answers)")
@@ -723,7 +929,7 @@ def build_parser():
     s.set_defaults(fn=cmd_assign)
 
     s = sub.add_parser("labs", help="add transcribed rows, map a name to a method input, fix or drop a row")
-    s.add_argument("action", choices=["add", "map", "fix", "drop", "candidates", "confirm"])
+    s.add_argument("action", choices=["add", "map", "fix", "drop", "candidates", "confirm", "date"])
     s.add_argument("workspace")
     s.add_argument("--answers", help="for confirm: JSON {answers: [{row_key, answer: yes|no, why}]}")
     s.add_argument("--csv")
@@ -733,6 +939,8 @@ def build_parser():
     s.add_argument("--value")
     s.add_argument("--unit")
     s.add_argument("--row", type=int, help="for fix/drop: which of several rows with this name (1-based, in file order)")
+    s.add_argument("--date", help="for date: the sampling date of every row in --file that has no date of its own")
+    s.add_argument("--source", help="for date: the words the date was read from (report header, file metadata, the user), quoted")
     s.add_argument("--reason")
     s.set_defaults(fn=cmd_labs)
 
@@ -781,7 +989,7 @@ def build_parser():
     s.set_defaults(fn=cmd_organ)
 
     s = sub.add_parser("insights", help="genotype-phenotype, population position, wearables, MR projections")
-    s.add_argument("action", choices=["genomics", "skip-genomics", "position", "wearable", "mr", "project"])
+    s.add_argument("action", choices=["genomics", "skip-genomics", "pgx", "position", "wearable", "mr", "project"])
     s.add_argument("workspace")
     s.add_argument("--reason")
     s.add_argument("--file")
@@ -793,7 +1001,7 @@ def build_parser():
     s.add_argument("--target", type=float)
     s.add_argument("--baseline")
     s.add_argument("--exposure-match", help="project: why an MR exposure with another name measures the same quantity as --analyte")
-    s.add_argument("--absent-as-ref", help="genomics: judgment that sites absent from a variant-only VCF are reference, with the reason")
+    s.add_argument("--absent-as-ref", help="genomics/pgx: judgment that sites absent from a variant-only VCF are reference, with the reason (pgx reuses the one genomics recorded)")
     s.set_defaults(fn=cmd_insights)
 
     s = sub.add_parser("board", help="question board: register questions, researcher findings, skips")
@@ -811,8 +1019,11 @@ def build_parser():
     s.add_argument("--days", type=int, default=120)
     s.set_defaults(fn=cmd_mirobody)
 
-    s = sub.add_parser("export", help="the la-export/1 file a host app (longpi) imports; written by `report`")
+    s = sub.add_parser("export", help="check the la-export/2 file a host app (longpi) imports (written by `report`); "
+                                      "--schema la-export/1 writes the older shape for a host that does not read /2 yet")
     s.add_argument("workspace")
+    s.add_argument("--schema", choices=["la-export/2", "la-export/1"], default="la-export/2")
+    s.add_argument("--out", help="with --schema la-export/1: where to write it (default <ws>/work/export/la-export-1.json)")
     s.set_defaults(fn=cmd_export)
 
     s = sub.add_parser("intervene")
@@ -821,11 +1032,39 @@ def build_parser():
     s.add_argument("--plan", required=True)
     s.set_defaults(fn=cmd_intervene)
 
+    s = sub.add_parser("predict", help="personal response predictions for plan items (statistical model; AI judgements via --ai)")
+    s.add_argument("action", choices=["response"])
+    s.add_argument("workspace")
+    s.add_argument("--repeats", type=int, help="home measurements on each side of the next experiment, for markers measured at home such as blood pressure "
+                        "(default: the marker's averaging days); blood tests are always one draw on each side")
+    s.add_argument("--planned-per-week", type=float, help="planned check-ins per week for the adherence ratio when a plan item has no per_week (default: none, adherence not scaled)")
+    s.add_argument("--exposures", help="la-exposures/1 file from the host, when twin.json carries none")
+    s.add_argument("--ai", help="the response-estimator's answers for the items listed in work/predict/ai_requests.json")
+    s.set_defaults(fn=cmd_predict)
+
+    s = sub.add_parser("clinical", help="diagnostic conclusions (dx) and medication suggestions (rx), each a labelled item")
+    s.add_argument("action", choices=["dx", "rx"])
+    s.add_argument("workspace")
+    s.add_argument("--guideline-set", default="cn", help="dx: cn (default) or ada")
+    s.add_argument("--ai", help="the clinical-estimator's answers (references/clinical-estimator.md)")
+    s.set_defaults(fn=cmd_clinical)
+
+    s = sub.add_parser("surveillance", help="guideline surveillance rules merged with the plan's retests (after intervene register)")
+    s.add_argument("action", choices=["plan"])
+    s.add_argument("workspace")
+    s.add_argument("--history", nargs="*", help="earlier twin.json snapshots: a once-only marker measured there counts as done")
+    s.set_defaults(fn=cmd_surveillance)
+
     s = sub.add_parser("twin")
-    s.add_argument("action", choices=["build", "compare"])
+    s.add_argument("action", choices=["build", "compare", "series"])
     s.add_argument("workspace", nargs="?")
     s.add_argument("--prev")
     s.add_argument("--cur")
+    s.add_argument("--exposures", help="build: la-exposures/1 file the host wrote (adoption, check-ins)")
+    s.add_argument("--snapshots", nargs="+", help="series: twin snapshots (twin.json) of earlier visits, any order")
+    s.add_argument("--ws", help="series: this workspace; its twin is added and work/twin/series.json is written")
+    s.add_argument("--identity-max-mismatch", type=int, default=2,
+                   help="series: germline fingerprint sites that may disagree before a snapshot is set aside (default 2)")
     s.set_defaults(fn=cmd_twin)
 
     s = sub.add_parser("review")

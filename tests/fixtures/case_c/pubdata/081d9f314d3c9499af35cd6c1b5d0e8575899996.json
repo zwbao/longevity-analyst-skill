@@ -1,0 +1,16 @@
+{
+  "source": "ensembl",
+  "query": "gene:GRCh38:LDLRAP1",
+  "url": "https://rest.ensembl.org/lookup/symbol/homo_sapiens/LDLRAP1?content-type=application/json",
+  "retrieved_at": "2026-10-24T16:05:16+08:00",
+  "records": [
+    {
+      "ref": "ensembl:ENSG00000157978",
+      "symbol": "LDLRAP1",
+      "chrom": "1",
+      "start": 25543550,
+      "end": 25591296,
+      "assembly": "GRCh38"
+    }
+  ]
+}

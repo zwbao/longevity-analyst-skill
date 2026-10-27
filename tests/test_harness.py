@@ -272,21 +272,50 @@ def _prot_state(tmp, platform, scale):
     return st
 
 
+PROT_SKILLS = ("plasma-proteomics-brain-immune", "plasma-proteomic-cellular-aging", "organ-aging-plasma-proteome")
+
+
 @needs_lib
-def test_ms_proteomics_blocked_from_affinity_clocks(tmp_path):
-    by = {i["method"]: i for i in methods.plan(_prot_state(tmp_path, "ms_dia", "log2_intensity"), tmp_path)["items"]}
-    assert by["plasma-proteomics-brain-immune"]["status"] == "blocked_platform"
+def test_no_proteomics_method_runs_on_a_matrix_with_the_current_library(tmp_path):
+    # the current library has no auto-run (tier A/tool) protein clock: nothing but the native description is ready
+    for platform, scale in (("ms_dia", "log2_intensity"), ("olink", "npx"), ("somascan", "cohort_z")):
+        d = tmp_path / platform
+        d.mkdir()
+        ready = [i["method"] for i in methods.plan(_prot_state(d, platform, scale), d)["items"] if i["status"] == "ready"]
+        assert ready == ["native.proteomics_describe"], (platform, ready)
+
+
+@pytest.fixture
+def every_tier(monkeypatch):
+    """Plan B/C skills too, as a library that promotes a protein clock to tier A would: the gate has to hold for them."""
+    monkeypatch.setattr(methods, "AUTO_TIERS", {"A", "B", "C", "tool"})
+
+
+@needs_lib
+def test_ms_proteomics_blocked_from_affinity_clocks(tmp_path, every_tier):
+    items = methods.plan(_prot_state(tmp_path, "ms_dia", "log2_intensity"), tmp_path)["items"]
+    by = {i["method"]: i for i in items}
+    assert all(by[m]["status"] == "blocked_platform" for m in PROT_SKILLS)
+    assert [i["method"] for i in items if i["status"] not in ("blocked_platform", "blocked_license")] == ["native.proteomics_describe"]
     # newer libraries take ProtAge as a reported value, so the clock may not be planned on a matrix at all
     assert by.get("proteomic-aging-clock", {"status": "blocked_platform"})["status"] == "blocked_platform"
 
 
 @needs_lib
-def test_olink_raw_npx_still_blocked_where_cohort_z_is_required(tmp_path):
+def test_olink_raw_npx_still_blocked_where_cohort_z_is_required(tmp_path, every_tier):
     by = {i["method"]: i for i in methods.plan(_prot_state(tmp_path, "olink", "npx"), tmp_path)["items"]}
     assert by["plasma-proteomics-brain-immune"]["status"] == "blocked_platform"      # needs cohort z-scores
     if "proteomic-aging-clock" in by:                                                  # declared for NPX when planned on a matrix
         assert by["proteomic-aging-clock"]["status"] != "blocked_platform"
     assert by["plasma-proteomic-cellular-aging"]["status"] == "blocked_platform"     # SomaScan-only
+
+
+@needs_lib
+def test_somascan_cohort_z_passes_the_gate_only_for_somascan_methods(tmp_path, every_tier):
+    by = {i["method"]: i for i in methods.plan(_prot_state(tmp_path, "somascan", "cohort_z"), tmp_path)["items"]}
+    assert by["organ-aging-plasma-proteome"]["status"] != "blocked_platform"
+    assert by["plasma-proteomic-cellular-aging"]["status"] != "blocked_platform"
+    assert by["plasma-proteomics-brain-immune"]["status"] == "blocked_platform"      # Olink-only
 
 
 REAL_BETAS = ROOT / "examples" / "case-A" / "raw" / "methylation_450k_betas.csv.gz"
@@ -643,12 +672,13 @@ def test_twin_compare_judges_labs_not_readouts_and_alerts_on_genotype_change(tmp
     res = _twins(tmp_path,
                  [{"marker": "白蛋白", "value": "40", "unit": "g/L"}, {"marker": "C反应蛋白", "value": "<0.5", "unit": "mg/L"}],
                  [{"marker": "白蛋白", "value": "45", "unit": "g/L"}, {"marker": "C反应蛋白", "value": "3", "unit": "mg/L"}],
-                 [{"id": "native.apoe.genotype", "label_zh": "APOE", "value": "ε3/ε3"}, {"id": "epiage.dnam_hannum", "label_zh": "H", "value": 60}],
-                 [{"id": "native.apoe.genotype", "label_zh": "APOE", "value": "ε4/ε4"}, {"id": "epiage.dnam_hannum", "label_zh": "H", "value": 58}])
+                 [{"id": "native.apoe.genotype", "label_zh": "APOE", "value": "ε3/ε3"}, {"id": "epiage.dnam_hannum", "label_zh": "H", "value": 60}, {"id": "epiage.dnam_phenoage", "label_zh": "P", "value": 61}],
+                 [{"id": "native.apoe.genotype", "label_zh": "APOE", "value": "ε4/ε4"}, {"id": "epiage.dnam_hannum", "label_zh": "H", "value": 58}, {"id": "epiage.dnam_phenoage", "label_zh": "P", "value": 57}])
     rows = {r.get("marker") or r.get("readout"): r for r in res["rows"]}
     assert rows["白蛋白"]["verdict"] == "increase_beyond_noise"
     assert rows["C反应蛋白"]["verdict"] == "not_judged"                 # censored baseline
-    assert rows["epiage.dnam_hannum"]["verdict"] == "not_judged"
+    assert rows["epiage.dnam_hannum"]["verdict"] == "within_noise"           # readout_noise.json: |Δ| 2 < 1.96·√2·1.18
+    assert rows["epiage.dnam_phenoage"]["verdict"] == "not_judged"           # no technical-replicate noise in the library
     assert rows["native.apoe.genotype"]["verdict"] == "identity_alert" and res["alerts"]
 
 

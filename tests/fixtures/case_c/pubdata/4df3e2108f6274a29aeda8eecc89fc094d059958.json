@@ -1,0 +1,2274 @@
+{
+ "source": "clinvar",
+ "query": "clinvar:gene:HNF1A",
+ "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi (HNF1A[gene] AND (clinsig_pathogenic[prop] OR clinsig_likely_pathogenic[prop] OR clinsig_has_conflicts[prop]))",
+ "retrieved_at": "2026-10-24T16:19:29+08:00",
+ "records": [
+  {
+   "ref": "clinvar:VCV004997360",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.246_247del (p.Pro83fs)",
+   "spdi": "NC_000012.12:120979012:CGC:C",
+   "deleted": "CGC",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120979013,
+     "stop": 120979014
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416816,
+     "stop": 121416817
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "HNF1A-related disorder"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV004975038",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.-3_25dup (p.Gln9delinsArgHisGlyPheTer)",
+   "spdi": "NC_000012.12:120978765:GCCATGGTTTCTAAACTGAGCCAGCTGC:GCCATGGTTTCTAAACTGAGCCAGCTGCGCCATGGTTTCTAAACTGAGCCAGCTGC",
+   "deleted": "GCCATGGTTTCTAAACTGAGCCAGCTGC",
+   "inserted": "GCCATGGTTTCTAAACTGAGCCAGCTGCGCCATGGTTTCTAAACTGAGCCAGCTGC",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978765,
+     "stop": 120978766
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416568,
+     "stop": 121416569
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV004918864",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.4_22dup (p.Leu8delinsArgPheTer)",
+   "spdi": "NC_000012.12:120978771:GTTTCTAAACTGAGCCAGC:GTTTCTAAACTGAGCCAGCGTTTCTAAACTGAGCCAGC",
+   "deleted": "GTTTCTAAACTGAGCCAGC",
+   "inserted": "GTTTCTAAACTGAGCCAGCGTTTCTAAACTGAGCCAGC",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978771,
+     "stop": 120978772
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416574,
+     "stop": 121416575
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "HNF1A-related disorders"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV004533244",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.278del (p.Ser93fs)",
+   "spdi": "NC_000012.12:120979045:G:",
+   "deleted": "G",
+   "inserted": "",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120979046,
+     "stop": 120979046
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416849,
+     "stop": 121416849
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Maturity-onset diabetes of the young type 3"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV004532379",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.326+2T>C",
+   "spdi": "NC_000012.12:120979095:T:C",
+   "deleted": "T",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120979096,
+     "stop": 120979096
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416899,
+     "stop": 121416899
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV004282437",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.197dup (p.Thr67fs)",
+   "spdi": "NC_000012.12:120978964:A:AA",
+   "deleted": "A",
+   "inserted": "AA",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978964,
+     "stop": 120978965
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416767,
+     "stop": 121416768
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV003858203",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.108C>A (p.Tyr36Ter)",
+   "spdi": "NC_000012.12:120978875:C:A",
+   "deleted": "C",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978876,
+     "stop": 120978876
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416679,
+     "stop": 121416679
+    }
+   },
+   "classification": "Pathogenic/Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Maturity-onset diabetes of the young",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV003764909",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.142G>T (p.Glu48Ter)",
+   "spdi": "NC_000012.12:120978909:G:T",
+   "deleted": "G",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978910,
+     "stop": 120978910
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416713,
+     "stop": 121416713
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "HNF1A-related disorders"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV003658364",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.252del (p.Ile85fs)",
+   "spdi": "NC_000012.12:120979017:CCC:CC",
+   "deleted": "CCC",
+   "inserted": "CC",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120979018,
+     "stop": 120979018
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416821,
+     "stop": 121416821
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV003574278",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.3G>A (p.Met1Ile)",
+   "spdi": "NC_000012.12:120978770:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978771,
+     "stop": 120978771
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416574,
+     "stop": 121416574
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Diabetes mellitus type 1",
+    "Hepatic adenomas, familial",
+    "Maturity-onset diabetes of the young type 3",
+    "Nonpapillary renal cell carcinoma",
+    "Type 1 diabetes mellitus 20"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV003574277",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.-64_-55delinsGC",
+   "spdi": "NC_000012.12:120978704:CACGCGGTGG:GC",
+   "deleted": "CACGCGGTGG",
+   "inserted": "GC",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978705,
+     "stop": 120978714
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416508,
+     "stop": 121416517
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Diabetes mellitus type 1",
+    "Hepatic adenomas, familial",
+    "Maturity-onset diabetes of the young type 3",
+    "Nonpapillary renal cell carcinoma",
+    "Type 1 diabetes mellitus 20"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV003573483",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.130dup (p.Leu44fs)",
+   "spdi": "NC_000012.12:120978893:CCCCC:CCCCCC",
+   "deleted": "CCCCC",
+   "inserted": "CCCCCC",
+   "loc": {
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416696,
+     "stop": 121416697
+    },
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978893,
+     "stop": 120978894
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "HNF1A-related disorders",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV003383342",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.298C>T (p.Gln100Ter)",
+   "spdi": "NC_000012.12:120979065:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120979066,
+     "stop": 120979066
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416869,
+     "stop": 121416869
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Maturity-onset diabetes of the young type 3"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV003338658",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.68_69del (p.Lys23fs)",
+   "spdi": "NC_000012.12:120978834:AAA:A",
+   "deleted": "AAA",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978835,
+     "stop": 120978836
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416638,
+     "stop": 121416639
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV003024563",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.319C>G (p.Leu107Val)",
+   "spdi": "NC_000012.12:120979086:C:G",
+   "deleted": "C",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120979087,
+     "stop": 120979087
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416890,
+     "stop": 121416890
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002865059",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.166G>T (p.Glu56Ter)",
+   "spdi": "NC_000012.12:120978933:G:T",
+   "deleted": "G",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978934,
+     "stop": 120978934
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416737,
+     "stop": 121416737
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002735982",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.244_245insGA (p.Thr82fs)",
+   "spdi": "NC_000012.12:120979011:A:AGA",
+   "deleted": "A",
+   "inserted": "AGA",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120979011,
+     "stop": 120979012
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416814,
+     "stop": 121416815
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002735981",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.142dup (p.Glu48fs)",
+   "spdi": "NC_000012.12:120978905:GGGGG:GGGGGG",
+   "deleted": "GGGGG",
+   "inserted": "GGGGGG",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978905,
+     "stop": 120978906
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416708,
+     "stop": 121416709
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002707891",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.174dup (p.Glu59Ter)",
+   "spdi": "NC_000012.12:120978941:T:TT",
+   "deleted": "T",
+   "inserted": "TT",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978941,
+     "stop": 120978942
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416744,
+     "stop": 121416745
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002086630",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.211G>T (p.Glu71Ter)",
+   "spdi": "NC_000012.12:120978978:G:T",
+   "deleted": "G",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978979,
+     "stop": 120978979
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416782,
+     "stop": 121416782
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV002035581",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.262G>T (p.Glu88Ter)",
+   "spdi": "NC_000012.12:120979029:G:T",
+   "deleted": "G",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120979030,
+     "stop": 120979030
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416833,
+     "stop": 121416833
+    }
+   },
+   "classification": "Pathogenic/Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "HNF1A-related disorder",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001802525",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.160C>G (p.Arg54Gly)",
+   "spdi": "NC_000012.12:120978927:C:G",
+   "deleted": "C",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978928,
+     "stop": 120978928
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416731,
+     "stop": 121416731
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Maturity-onset diabetes of the young"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001774157",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.150C>A (p.Cys50Ter)",
+   "spdi": "NC_000012.12:120978917:C:A",
+   "deleted": "C",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978918,
+     "stop": 120978918
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416721,
+     "stop": 121416721
+    }
+   },
+   "classification": "Pathogenic/Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Maturity-onset diabetes of the young",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001727231",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.152G>A (p.Gly51Asp)",
+   "spdi": "NC_000012.12:120978919:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978920,
+     "stop": 120978920
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416723,
+     "stop": 121416723
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Maturity-onset diabetes of the young",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001693223",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.326+1G>A",
+   "spdi": "NC_000012.12:120979094:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120979095,
+     "stop": 120979095
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416898,
+     "stop": 121416898
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001693222",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.326+1G>C",
+   "spdi": "NC_000012.12:120979094:G:C",
+   "deleted": "G",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120979095,
+     "stop": 120979095
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416898,
+     "stop": 121416898
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001687081",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.129_130delinsA (p.Leu44fs)",
+   "spdi": "NC_000012.12:120978896:CC:A",
+   "deleted": "CC",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978897,
+     "stop": 120978898
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416700,
+     "stop": 121416701
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001679550",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.26A>T (p.Gln9Leu)",
+   "spdi": "NC_000012.12:120978793:A:T",
+   "deleted": "A",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978794,
+     "stop": 120978794
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416597,
+     "stop": 121416597
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Maturity-onset diabetes of the young type 3"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001677814",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.-124G>A",
+   "spdi": "NC_000012.12:120978644:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978645,
+     "stop": 120978645
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416448,
+     "stop": 121416448
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001677040",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.139_155del (p.Gly47fs)",
+   "spdi": "NC_000012.12:120978905:GGGGGAGTCCTGCGGCGG:G",
+   "deleted": "GGGGGAGTCCTGCGGCGG",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978906,
+     "stop": 120978922
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416709,
+     "stop": 121416725
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "Maturity-onset diabetes of the young"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001676712",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.121G>T (p.Glu41Ter)",
+   "spdi": "NC_000012.12:120978888:G:T",
+   "deleted": "G",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978889,
+     "stop": 120978889
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416692,
+     "stop": 121416692
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001676707",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.98C>T (p.Pro33Leu)",
+   "spdi": "NC_000012.12:120978865:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978866,
+     "stop": 120978866
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416669,
+     "stop": 121416669
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001676705",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.94G>T (p.Glu32Ter)",
+   "spdi": "NC_000012.12:120978861:G:T",
+   "deleted": "G",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978862,
+     "stop": 120978862
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416665,
+     "stop": 121416665
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001676696",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.282dup (p.Glu95Ter)",
+   "spdi": "NC_000012.12:120979049:T:TT",
+   "deleted": "T",
+   "inserted": "TT",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120979049,
+     "stop": 120979050
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416852,
+     "stop": 121416853
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001676695",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.259A>T (p.Lys87Ter)",
+   "spdi": "NC_000012.12:120979026:A:T",
+   "deleted": "A",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120979027,
+     "stop": 120979027
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416830,
+     "stop": 121416830
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001676694",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.217G>T (p.Glu73Ter)",
+   "spdi": "NC_000012.12:120978984:G:T",
+   "deleted": "G",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978985,
+     "stop": 120978985
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416788,
+     "stop": 121416788
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001676691",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.206del (p.Gly69fs)",
+   "spdi": "NC_000012.12:120978970:GGGG:GGG",
+   "deleted": "GGGG",
+   "inserted": "GGG",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978971,
+     "stop": 120978971
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416774,
+     "stop": 121416774
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001676689",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.196dup (p.Glu66fs)",
+   "spdi": "NC_000012.12:120978959:GGGGG:GGGGGG",
+   "deleted": "GGGGG",
+   "inserted": "GGGGGG",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978959,
+     "stop": 120978960
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416762,
+     "stop": 121416763
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001676687",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.186del (p.Asn62fs)",
+   "spdi": "NC_000012.12:120978953:T:",
+   "deleted": "T",
+   "inserted": "",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978954,
+     "stop": 120978954
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416757,
+     "stop": 121416757
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001676686",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.185del (p.Asn62fs)",
+   "spdi": "NC_000012.12:120978951:AA:A",
+   "deleted": "AA",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978952,
+     "stop": 120978952
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416755,
+     "stop": 121416755
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001676685",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.164_168del (p.Gly55fs)",
+   "spdi": "NC_000012.12:120978928:GAGGGGAG:GAG",
+   "deleted": "GAGGGGAG",
+   "inserted": "GAG",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978929,
+     "stop": 120978933
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416732,
+     "stop": 121416736
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001676683",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.77T>C (p.Leu26Pro)",
+   "spdi": "NC_000012.12:120978844:T:C",
+   "deleted": "T",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978845,
+     "stop": 120978845
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416648,
+     "stop": 121416648
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001675063",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.34C>T (p.Leu12Phe)",
+   "spdi": "NC_000012.12:120978801:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978802,
+     "stop": 120978802
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416605,
+     "stop": 121416605
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001675062",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.34C>G (p.Leu12Val)",
+   "spdi": "NC_000012.12:120978801:C:G",
+   "deleted": "C",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978802,
+     "stop": 120978802
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416605,
+     "stop": 121416605
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001675061",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.28A>C (p.Thr10Pro)",
+   "spdi": "NC_000012.12:120978795:A:C",
+   "deleted": "A",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978796,
+     "stop": 120978796
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416599,
+     "stop": 121416599
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001675060",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.25C>T (p.Gln9Ter)",
+   "spdi": "NC_000012.12:120978792:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978793,
+     "stop": 120978793
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416596,
+     "stop": 121416596
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001675058",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.71_72del (p.Glu24fs)",
+   "spdi": "NC_000012.12:120978836:AGAG:AG",
+   "deleted": "AGAG",
+   "inserted": "AG",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978837,
+     "stop": 120978838
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416640,
+     "stop": 121416641
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001675053",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.42_51delinsTG (p.Ala15fs)",
+   "spdi": "NC_000012.12:120978809:GGCCCTGCTC:TG",
+   "deleted": "GGCCCTGCTC",
+   "inserted": "TG",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978810,
+     "stop": 120978819
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416613,
+     "stop": 121416622
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001675051",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.35T>G (p.Leu12Arg)",
+   "spdi": "NC_000012.12:120978802:T:G",
+   "deleted": "T",
+   "inserted": "G",
+   "loc": {
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416606,
+     "stop": 121416606
+    },
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978803,
+     "stop": 120978803
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001342952",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.82C>T (p.Gln28Ter)",
+   "spdi": "NC_000012.12:120978849:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978850,
+     "stop": 120978850
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416653,
+     "stop": 121416653
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001342951",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.17G>A (p.Ser6Asn)",
+   "spdi": "NC_000012.12:120978784:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978785,
+     "stop": 120978785
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416588,
+     "stop": 121416588
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001342950",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.16A>T (p.Ser6Cys)",
+   "spdi": "NC_000012.12:120978783:A:T",
+   "deleted": "A",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978784,
+     "stop": 120978784
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416587,
+     "stop": 121416587
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001342949",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.2T>C (p.Met1Thr)",
+   "spdi": "NC_000012.12:120978769:T:C",
+   "deleted": "T",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978770,
+     "stop": 120978770
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416573,
+     "stop": 121416573
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001342948",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.1A>C (p.Met1Leu)",
+   "spdi": "NC_000012.12:120978768:A:C",
+   "deleted": "A",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978769,
+     "stop": 120978769
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416572,
+     "stop": 121416572
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001338520",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.326+1G>T",
+   "spdi": "NC_000012.12:120979094:G:T",
+   "deleted": "G",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120979095,
+     "stop": 120979095
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416898,
+     "stop": 121416898
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001338508",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.107_117del (p.Tyr36fs)",
+   "spdi": "NC_000012.12:120978872:CTACCTCCTGGCT:CT",
+   "deleted": "CTACCTCCTGGCT",
+   "inserted": "CT",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978873,
+     "stop": 120978883
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416676,
+     "stop": 121416686
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001338407",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.24_35dup (p.Gln9_Leu12dup)",
+   "spdi": "NC_000012.12:120978787:AGCTGCAGACGGAGCT:AGCTGCAGACGGAGCTGCAGACGGAGCT",
+   "deleted": "AGCTGCAGACGGAGCT",
+   "inserted": "AGCTGCAGACGGAGCTGCAGACGGAGCT",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978787,
+     "stop": 120978788
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416590,
+     "stop": 121416591
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001337740",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.146C>A (p.Ser49Tyr)",
+   "spdi": "NC_000012.12:120978913:C:A",
+   "deleted": "C",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978914,
+     "stop": 120978914
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416717,
+     "stop": 121416717
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "criteria provided, single submitter",
+   "conditions": [
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001337730",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.309G>T (p.Val103=)",
+   "spdi": "NC_000012.12:120979076:G:T",
+   "deleted": "G",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120979077,
+     "stop": 120979077
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416880,
+     "stop": 121416880
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Maturity-onset diabetes of the young",
+    "not provided",
+    "not specified"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001334149",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.320T>C (p.Leu107Pro)",
+   "spdi": "NC_000012.12:120979087:T:C",
+   "deleted": "T",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120979088,
+     "stop": 120979088
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416891,
+     "stop": 121416891
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001334148",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.320T>G (p.Leu107Arg)",
+   "spdi": "NC_000012.12:120979087:T:G",
+   "deleted": "T",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120979088,
+     "stop": 120979088
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416891,
+     "stop": 121416891
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001327599",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.58G>C (p.Gly20Arg)",
+   "spdi": "NC_000012.12:120978825:G:C",
+   "deleted": "G",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978826,
+     "stop": 120978826
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416629,
+     "stop": 121416629
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001327598",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.59G>A (p.Gly20Glu)",
+   "spdi": "NC_000012.12:120978826:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978827,
+     "stop": 120978827
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416630,
+     "stop": 121416630
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001327597",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.59G>C (p.Gly20Ala)",
+   "spdi": "NC_000012.12:120978826:G:C",
+   "deleted": "G",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978827,
+     "stop": 120978827
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416630,
+     "stop": 121416630
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001327593",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.319C>A (p.Leu107Ile)",
+   "spdi": "NC_000012.12:120979086:C:A",
+   "deleted": "C",
+   "inserted": "A",
+   "loc": {
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416890,
+     "stop": 121416890
+    },
+    "GRCh38": {
+     "chr": "12",
+     "start": 120979087,
+     "stop": 120979087
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001320426",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.-124G>C",
+   "spdi": "NC_000012.12:120978644:G:C",
+   "deleted": "G",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978645,
+     "stop": 120978645
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416448,
+     "stop": 121416448
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "not provided",
+    "not specified"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001204628",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.-96T>G",
+   "spdi": "NC_000012.12:120978672:T:G",
+   "deleted": "T",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978673,
+     "stop": 120978673
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416476,
+     "stop": 121416476
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "not provided",
+    "not specified"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001203907",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.-89T>C",
+   "spdi": "NC_000012.12:120978679:T:C",
+   "deleted": "T",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978680,
+     "stop": 120978680
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416483,
+     "stop": 121416483
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "not provided",
+    "not specified"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV001033090",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.58G>A (p.Gly20Arg)",
+   "spdi": "NC_000012.12:120978825:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978826,
+     "stop": 120978826
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416629,
+     "stop": 121416629
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000929078",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.52G>T (p.Glu18Ter)",
+   "spdi": "NC_000012.12:120978819:G:T",
+   "deleted": "G",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978820,
+     "stop": 120978820
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416623,
+     "stop": 121416623
+    }
+   },
+   "classification": "Pathogenic/Likely pathogenic",
+   "review_status": "criteria provided, multiple submitters, no conflicts",
+   "conditions": [
+    "Maturity-onset diabetes of the young",
+    "Maturity-onset diabetes of the young type 3",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000915441",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.43G>T (p.Ala15Ser)",
+   "spdi": "NC_000012.12:120978810:G:T",
+   "deleted": "G",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978811,
+     "stop": 120978811
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416614,
+     "stop": 121416614
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Type 2 diabetes mellitus",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000882462",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.216C>T (p.Asp72=)",
+   "spdi": "NC_000012.12:120978983:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978984,
+     "stop": 120978984
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416787,
+     "stop": 121416787
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Maturity-onset diabetes of the young",
+    "Maturity-onset diabetes of the young type 3",
+    "not provided",
+    "not specified"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000805632",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.160C>T (p.Arg54Ter)",
+   "spdi": "NC_000012.12:120978927:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978928,
+     "stop": 120978928
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416731,
+     "stop": 121416731
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000695687",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.99G>A (p.Pro33=)",
+   "spdi": "NC_000012.12:120978866:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978867,
+     "stop": 120978867
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416670,
+     "stop": 121416670
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Maturity-onset diabetes of the young",
+    "Maturity-onset diabetes of the young type 3",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000562372",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.19C>T (p.Gln7Ter)",
+   "spdi": "NC_000012.12:120978786:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978787,
+     "stop": 120978787
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416590,
+     "stop": 121416590
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000502525",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.1A>T (p.Met1Leu)",
+   "spdi": "NC_000012.12:120978768:A:T",
+   "deleted": "A",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978769,
+     "stop": 120978769
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416572,
+     "stop": 121416572
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000500712",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.283G>A (p.Glu95Lys)",
+   "spdi": "NC_000012.12:120979050:G:A",
+   "deleted": "G",
+   "inserted": "A",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120979051,
+     "stop": 120979051
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416854,
+     "stop": 121416854
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Diabetes mellitus type 1",
+    "Hepatic adenomas, familial",
+    "Maturity-onset diabetes of the young",
+    "Maturity-onset diabetes of the young type 3",
+    "Nonpapillary renal cell carcinoma"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000449034",
+   "gene": "HNF1A",
+   "title": "NC_000012.12:g.120978302C>T",
+   "spdi": "NC_000012.12:120978301:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978302,
+     "stop": 120978302
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416105,
+     "stop": 121416105
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Maturity-onset diabetes of the young",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000447493",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.4del (p.Val2fs)",
+   "spdi": "NC_000012.12:120978770:GG:G",
+   "deleted": "GG",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978771,
+     "stop": 120978771
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416574,
+     "stop": 121416574
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000447492",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.-4A>G",
+   "spdi": "NC_000012.12:120978764:A:G",
+   "deleted": "A",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978765,
+     "stop": 120978765
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416568,
+     "stop": 121416568
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Maturity-onset diabetes of the young",
+    "Maturity-onset diabetes of the young type 3",
+    "Nonpapillary renal cell carcinoma",
+    "not provided",
+    "not specified"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000447486",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.326+2T>G",
+   "spdi": "NC_000012.12:120979095:T:G",
+   "deleted": "T",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120979096,
+     "stop": 120979096
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416899,
+     "stop": 121416899
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000129234",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.51C>G (p.Leu17=)",
+   "spdi": "NC_000012.12:120978818:C:G",
+   "deleted": "C",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978819,
+     "stop": 120978819
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416622,
+     "stop": 121416622
+    }
+   },
+   "classification": "Conflicting classifications of pathogenicity",
+   "review_status": "criteria provided, conflicting classifications",
+   "conditions": [
+    "Maturity-onset diabetes of the young",
+    "Maturity-onset diabetes of the young type 3",
+    "Nonpapillary renal cell carcinoma",
+    "Type 2 diabetes mellitus",
+    "not provided"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000036817",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.313dup (p.Glu105fs)",
+   "spdi": "NC_000012.12:120979079:GG:GGG",
+   "deleted": "GG",
+   "inserted": "GGG",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120979079,
+     "stop": 120979080
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416882,
+     "stop": 121416883
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000036816",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.281C>T (p.Pro94Leu)",
+   "spdi": "NC_000012.12:120979048:C:T",
+   "deleted": "C",
+   "inserted": "T",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120979049,
+     "stop": 120979049
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416852,
+     "stop": 121416852
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000036814",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.1A>G (p.Met1Val)",
+   "spdi": "NC_000012.12:120978768:A:G",
+   "deleted": "A",
+   "inserted": "G",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978769,
+     "stop": 120978769
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416572,
+     "stop": 121416572
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000036809",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.169del (p.Leu57fs)",
+   "spdi": "NC_000012.12:120978936:C:",
+   "deleted": "C",
+   "inserted": "",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978937,
+     "stop": 120978937
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416740,
+     "stop": 121416740
+    }
+   },
+   "classification": "Likely pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000036798",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.130del (p.Leu44fs)",
+   "spdi": "NC_000012.12:120978893:CCCCC:CCCC",
+   "deleted": "CCCCC",
+   "inserted": "CCCC",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978894,
+     "stop": 120978894
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416697,
+     "stop": 121416697
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000014938",
+   "gene": "HNF1A",
+   "title": "NM_000545.8(HNF1A):c.142del (p.Glu48fs)",
+   "spdi": "NC_000012.12:120978905:GGGGG:GGGG",
+   "deleted": "GGGGG",
+   "inserted": "GGGG",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978906,
+     "stop": 120978906
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416709,
+     "stop": 121416709
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  },
+  {
+   "ref": "clinvar:VCV000014933",
+   "gene": "HNF1A",
+   "title": "NG_011731.2:g.4741A>C",
+   "spdi": "NC_000012.12:120978485:A:C",
+   "deleted": "A",
+   "inserted": "C",
+   "loc": {
+    "GRCh38": {
+     "chr": "12",
+     "start": 120978486,
+     "stop": 120978486
+    },
+    "GRCh37": {
+     "chr": "12",
+     "start": 121416289,
+     "stop": 121416289
+    }
+   },
+   "classification": "Pathogenic",
+   "review_status": "reviewed by expert panel",
+   "conditions": [
+    "Monogenic diabetes"
+   ]
+  }
+ ],
+ "oversized_skipped": [],
+ "filtered_for_fixture": "records within 2000 bp of a case-C VCF record, of 483 retrieved"
+}

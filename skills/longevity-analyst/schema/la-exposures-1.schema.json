@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "la-exposures/1",
+  "title": "Intervention exposures written by a host (LongPi site, coach member file) for twin build --exposures",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "member", "source", "generated_at", "items"],
+  "properties": {
+    "schema": {"const": "la-exposures/1"},
+    "member": {"type": "string", "minLength": 1},
+    "source": {"enum": ["longpi", "longpi_site", "coach_member_file"]},
+    "generated_at": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}(:\\d{2})?([+-]\\d{2}:\\d{2}|Z)$"},
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["plan_item", "label_zh", "category", "targets", "status"],
+        "properties": {
+          "plan_item": {"type": "string", "minLength": 1},
+          "origin_snapshot": {"type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+          "label_zh": {"type": "string", "minLength": 1, "maxLength": 40},
+          "category": {"type": "string"},
+          "targets": {"type": "array", "items": {"type": "string"}},
+          "status": {"enum": ["proposed", "adopted", "paused", "graduated", "dropped"]},
+          "adopted_at": {"type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+          "status_since": {"type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+          "weekly_checkins": {
+            "description": "Weeks without a record are left out, never written as zero.",
+            "type": "array",
+            "items": {"type": "object", "additionalProperties": false, "required": ["week_start", "count"],
+                      "properties": {"week_start": {"type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$"}, "count": {"type": "integer", "minimum": 0}}}
+          },
+          "cumulative": {"type": ["integer", "null"], "minimum": 0, "description": "null when the host does not record check-ins (the LongPi site records adoption status only)."}
+        }
+      }
+    }
+  }
+}

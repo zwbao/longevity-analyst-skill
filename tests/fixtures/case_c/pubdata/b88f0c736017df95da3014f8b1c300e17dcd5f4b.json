@@ -1,0 +1,16 @@
+{
+  "source": "ensembl",
+  "query": "gene:GRCh38:MTRR",
+  "url": "https://rest.ensembl.org/lookup/symbol/homo_sapiens/MTRR?content-type=application/json",
+  "retrieved_at": "2026-10-24T16:07:30+08:00",
+  "records": [
+    {
+      "ref": "ensembl:ENSG00000124275",
+      "symbol": "MTRR",
+      "chrom": "5",
+      "start": 7851186,
+      "end": 7906025,
+      "assembly": "GRCh38"
+    }
+  ]
+}

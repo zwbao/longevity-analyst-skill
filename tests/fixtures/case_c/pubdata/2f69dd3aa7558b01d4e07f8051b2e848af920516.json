@@ -1,0 +1,1070 @@
+{
+  "source": "myvariant",
+  "query": "rsids:hg38:6008b4fe0e5148edcea61aef9e09d4a8adee7156",
+  "url": "https://myvariant.info/v1/query",
+  "retrieved_at": "2026-10-24T16:35:55+08:00",
+  "records": [
+    {
+      "ref": "myvariant:chr6:g.160589086A>G",
+      "rsid": "rs10455872",
+      "chrom": "6",
+      "pos": 160589086,
+      "ref_allele": "A",
+      "alt_allele": "G",
+      "af_eas": 0.000967492,
+      "clinvar_significance": [
+        "Benign"
+      ],
+      "clinvar_rcv": [
+        "RCV001251438"
+      ],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44909976G>A",
+      "rsid": "rs1065853",
+      "chrom": "19",
+      "pos": 44909976,
+      "ref_allele": "G",
+      "alt_allele": "A",
+      "af_eas": 0.000193498,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44909976G>C",
+      "rsid": "rs1065853",
+      "chrom": "19",
+      "pos": 44909976,
+      "ref_allele": "G",
+      "alt_allele": "C",
+      "af_eas": 0.0,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44909976G>T",
+      "rsid": "rs1065853",
+      "chrom": "19",
+      "pos": 44909976,
+      "ref_allele": "G",
+      "alt_allele": "T",
+      "af_eas": 0.0811072,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr15:g.58431280T>A",
+      "rsid": "rs1077834",
+      "chrom": "15",
+      "pos": 58431280,
+      "ref_allele": "T",
+      "alt_allele": "A",
+      "af_eas": null,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr15:g.58431280T>C",
+      "rsid": "rs1077834",
+      "chrom": "15",
+      "pos": 58431280,
+      "ref_allele": "T",
+      "alt_allele": "C",
+      "af_eas": 0.417665,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr15:g.58431280T>G",
+      "rsid": "rs1077834",
+      "chrom": "15",
+      "pos": 58431280,
+      "ref_allele": "T",
+      "alt_allele": "G",
+      "af_eas": null,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr5:g.75299369A>G",
+      "rsid": "rs10942734",
+      "chrom": "5",
+      "pos": 75299369,
+      "ref_allele": "A",
+      "alt_allele": "G",
+      "af_eas": null,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr5:g.75299369A>C",
+      "rsid": "rs10942734",
+      "chrom": "5",
+      "pos": 75299369,
+      "ref_allele": "A",
+      "alt_allele": "C",
+      "af_eas": 0.558687,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr1:g.55039974G>T",
+      "rsid": "rs11591147",
+      "chrom": "1",
+      "pos": 55039974,
+      "ref_allele": "G",
+      "alt_allele": "T",
+      "af_eas": 0.0,
+      "clinvar_significance": [
+        "Benign",
+        "Benign/Likely benign",
+        "Pathogenic",
+        "association"
+      ],
+      "clinvar_rcv": [
+        "RCV000203182",
+        "RCV000256313",
+        "RCV000003012",
+        "RCV000508774",
+        "RCV000605465"
+      ],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr1:g.55039974G>A",
+      "rsid": "rs11591147",
+      "chrom": "1",
+      "pos": 55039974,
+      "ref_allele": "G",
+      "alt_allele": "A",
+      "af_eas": null,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44895376G>C",
+      "rsid": "rs11668327",
+      "chrom": "19",
+      "pos": 44895376,
+      "ref_allele": "G",
+      "alt_allele": "C",
+      "af_eas": 0.0017321,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44895376G>A",
+      "rsid": "rs11668327",
+      "chrom": "19",
+      "pos": 44895376,
+      "ref_allele": "G",
+      "alt_allele": "A",
+      "af_eas": null,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44816374G>A",
+      "rsid": "rs118147862",
+      "chrom": "19",
+      "pos": 44816374,
+      "ref_allele": "G",
+      "alt_allele": "A",
+      "af_eas": 0.0,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44943964G>A",
+      "rsid": "rs12721109",
+      "chrom": "19",
+      "pos": 44943964,
+      "ref_allele": "G",
+      "alt_allele": "A",
+      "af_eas": 0.0,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr1:g.109274968G>T",
+      "rsid": "rs12740374",
+      "chrom": "1",
+      "pos": 109274968,
+      "ref_allele": "G",
+      "alt_allele": "T",
+      "af_eas": 0.0622583,
+      "clinvar_significance": [
+        "association"
+      ],
+      "clinvar_rcv": [
+        "RCV000007497"
+      ],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr5:g.75360714T>A",
+      "rsid": "rs12916",
+      "chrom": "5",
+      "pos": 75360714,
+      "ref_allele": "T",
+      "alt_allele": "A",
+      "af_eas": null,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr5:g.75360714T>C",
+      "rsid": "rs12916",
+      "chrom": "5",
+      "pos": 75360714,
+      "ref_allele": "T",
+      "alt_allele": "C",
+      "af_eas": 0.533166,
+      "clinvar_significance": [
+        "drug response"
+      ],
+      "clinvar_rcv": [
+        "RCV002463819"
+      ],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr5:g.75360714T>G",
+      "rsid": "rs12916",
+      "chrom": "5",
+      "pos": 75360714,
+      "ref_allele": "T",
+      "alt_allele": "G",
+      "af_eas": null,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44918393G>A",
+      "rsid": "rs140480140",
+      "chrom": "19",
+      "pos": 44918393,
+      "ref_allele": "G",
+      "alt_allele": "A",
+      "af_eas": 0.00104603,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44923535G>A",
+      "rsid": "rs141622900",
+      "chrom": "19",
+      "pos": 44923535,
+      "ref_allele": "G",
+      "alt_allele": "A",
+      "af_eas": 0.0841049,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.11076648C>T",
+      "rsid": "rs143020224",
+      "chrom": "19",
+      "pos": 11076648,
+      "ref_allele": "C",
+      "alt_allele": "T",
+      "af_eas": 0.000196773,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.11076648C>G",
+      "rsid": "rs143020224",
+      "chrom": "19",
+      "pos": 11076648,
+      "ref_allele": "C",
+      "alt_allele": "G",
+      "af_eas": 0.0102322,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.11076682T>G",
+      "rsid": "rs144826254",
+      "chrom": "19",
+      "pos": 11076682,
+      "ref_allele": "T",
+      "alt_allele": "G",
+      "af_eas": 0.00990676,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44728555G>A",
+      "rsid": "rs1551891",
+      "chrom": "19",
+      "pos": 44728555,
+      "ref_allele": "G",
+      "alt_allele": "A",
+      "af_eas": 0.156069,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr15:g.58379566G>T",
+      "rsid": "rs1601935",
+      "chrom": "15",
+      "pos": 58379566,
+      "ref_allele": "G",
+      "alt_allele": "T",
+      "af_eas": 0.685085,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.11096053T>G",
+      "rsid": "rs17242381",
+      "chrom": "19",
+      "pos": 11096053,
+      "ref_allele": "T",
+      "alt_allele": "G",
+      "af_eas": null,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.11096053T>C",
+      "rsid": "rs17242381",
+      "chrom": "19",
+      "pos": 11096053,
+      "ref_allele": "T",
+      "alt_allele": "C",
+      "af_eas": 0.00869061,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr16:g.56957451C>T",
+      "rsid": "rs183130",
+      "chrom": "16",
+      "pos": 56957451,
+      "ref_allele": "C",
+      "alt_allele": "T",
+      "af_eas": 0.164474,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr15:g.58431740G>T",
+      "rsid": "rs2070895",
+      "chrom": "15",
+      "pos": 58431740,
+      "ref_allele": "G",
+      "alt_allele": "T",
+      "af_eas": null,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr15:g.58431740G>A",
+      "rsid": "rs2070895",
+      "chrom": "15",
+      "pos": 58431740,
+      "ref_allele": "G",
+      "alt_allele": "A",
+      "af_eas": 0.418308,
+      "clinvar_significance": [
+        "Benign",
+        "association",
+        "risk factor"
+      ],
+      "clinvar_rcv": [
+        "RCV000015539",
+        "RCV000015540",
+        "RCV001723570"
+      ],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr5:g.75307654G>A",
+      "rsid": "rs2335418",
+      "chrom": "5",
+      "pos": 75307654,
+      "ref_allele": "G",
+      "alt_allele": "A",
+      "af_eas": 0.56466,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr5:g.75307654G>C",
+      "rsid": "rs2335418",
+      "chrom": "5",
+      "pos": 75307654,
+      "ref_allele": "G",
+      "alt_allele": "C",
+      "af_eas": null,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr15:g.58435126A>G",
+      "rsid": "rs261332",
+      "chrom": "15",
+      "pos": 58435126,
+      "ref_allele": "A",
+      "alt_allele": "G",
+      "af_eas": 0.834553,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr1:g.55063542C>A",
+      "rsid": "rs28362286",
+      "chrom": "1",
+      "pos": 55063542,
+      "ref_allele": "C",
+      "alt_allele": "A",
+      "af_eas": 0.0,
+      "clinvar_significance": [
+        "Benign",
+        "Conflicting interpretations of pathogenicity",
+        "Pathogenic",
+        "Uncertain significance",
+        "association"
+      ],
+      "clinvar_rcv": [
+        "RCV000003011",
+        "RCV000508694",
+        "RCV000531428",
+        "RCV000771132",
+        "RCV001508868"
+      ],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr1:g.55063542C>T",
+      "rsid": "rs28362286",
+      "chrom": "1",
+      "pos": 55063542,
+      "ref_allele": "C",
+      "alt_allele": "T",
+      "af_eas": null,
+      "clinvar_significance": [
+        "Likely benign"
+      ],
+      "clinvar_rcv": [
+        "RCV003606599"
+      ],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44820881G>A",
+      "rsid": "rs28399637",
+      "chrom": "19",
+      "pos": 44820881,
+      "ref_allele": "G",
+      "alt_allele": "A",
+      "af_eas": 0.060717,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44813331G>A",
+      "rsid": "rs28399654",
+      "chrom": "19",
+      "pos": 44813331,
+      "ref_allele": "G",
+      "alt_allele": "A",
+      "af_eas": 0.000192234,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44813331G>T",
+      "rsid": "rs28399654",
+      "chrom": "19",
+      "pos": 44813331,
+      "ref_allele": "G",
+      "alt_allele": "T",
+      "af_eas": null,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr8:g.125487789C>G",
+      "rsid": "rs28601761",
+      "chrom": "8",
+      "pos": 125487789,
+      "ref_allele": "C",
+      "alt_allele": "G",
+      "af_eas": 0.138803,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr2:g.21152474G>T",
+      "rsid": "rs312976",
+      "chrom": "2",
+      "pos": 21152474,
+      "ref_allele": "G",
+      "alt_allele": "T",
+      "af_eas": null,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr2:g.21152474G>A",
+      "rsid": "rs312976",
+      "chrom": "2",
+      "pos": 21152474,
+      "ref_allele": "G",
+      "alt_allele": "A",
+      "af_eas": 0.851737,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr2:g.21152474G>C",
+      "rsid": "rs312976",
+      "chrom": "2",
+      "pos": 21152474,
+      "ref_allele": "G",
+      "alt_allele": "C",
+      "af_eas": null,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44892587G>A",
+      "rsid": "rs34095326",
+      "chrom": "19",
+      "pos": 44892587,
+      "ref_allele": "G",
+      "alt_allele": "A",
+      "af_eas": 0.000385505,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr1:g.109233663T>C",
+      "rsid": "rs35271870",
+      "chrom": "1",
+      "pos": 109233663,
+      "ref_allele": "T",
+      "alt_allele": "C",
+      "af_eas": 0.000769231,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr15:g.58430393dup",
+      "rsid": "rs35980001",
+      "chrom": "15",
+      "pos": null,
+      "ref_allele": "",
+      "alt_allele": "",
+      "af_eas": null,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44858389A>G",
+      "rsid": "rs365653",
+      "chrom": "19",
+      "pos": 44858389,
+      "ref_allele": "A",
+      "alt_allele": "G",
+      "af_eas": 0.18629,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44879418G>T",
+      "rsid": "rs41290120",
+      "chrom": "19",
+      "pos": 44879418,
+      "ref_allele": "G",
+      "alt_allele": "T",
+      "af_eas": null,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44879418G>A",
+      "rsid": "rs41290120",
+      "chrom": "19",
+      "pos": 44879418,
+      "ref_allele": "G",
+      "alt_allele": "A",
+      "af_eas": 0.000193723,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44908684T>C",
+      "rsid": "rs429358",
+      "chrom": "19",
+      "pos": 44908684,
+      "ref_allele": "T",
+      "alt_allele": "C",
+      "af_eas": 0.0974806,
+      "clinvar_significance": [
+        "Conflicting interpretations of pathogenicity; other; risk factor",
+        "Likely pathogenic",
+        "Pathogenic",
+        "Pathogenic/Established risk allele",
+        "Uncertain significance",
+        "association",
+        "drug response",
+        "not provided",
+        "risk factor"
+      ],
+      "clinvar_rcv": [
+        "RCV000019458",
+        "RCV000019456",
+        "RCV000019455",
+        "RCV000019448",
+        "RCV000019438"
+      ],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr2:g.43845437G>T",
+      "rsid": "rs4299376",
+      "chrom": "2",
+      "pos": 43845437,
+      "ref_allele": "G",
+      "alt_allele": "T",
+      "af_eas": 0.99383,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr2:g.43845437G>C",
+      "rsid": "rs4299376",
+      "chrom": "2",
+      "pos": 43845437,
+      "ref_allele": "G",
+      "alt_allele": "C",
+      "af_eas": null,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44919689A>G",
+      "rsid": "rs4420638",
+      "chrom": "19",
+      "pos": 44919689,
+      "ref_allele": "A",
+      "alt_allele": "G",
+      "af_eas": 0.113109,
+      "clinvar_significance": [
+        "not provided"
+      ],
+      "clinvar_rcv": [
+        "RCV000190314"
+      ],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44844654C>A",
+      "rsid": "rs4452060",
+      "chrom": "19",
+      "pos": 44844654,
+      "ref_allele": "C",
+      "alt_allele": "A",
+      "af_eas": 0.187041,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr1:g.109272258C>T",
+      "rsid": "rs4970834",
+      "chrom": "1",
+      "pos": 109272258,
+      "ref_allele": "C",
+      "alt_allele": "T",
+      "af_eas": 0.0484988,
+      "clinvar_significance": [
+        "Benign"
+      ],
+      "clinvar_rcv": [
+        "RCV002136832"
+      ],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr1:g.109279544G>C",
+      "rsid": "rs599839",
+      "chrom": "1",
+      "pos": 109279544,
+      "ref_allele": "G",
+      "alt_allele": "C",
+      "af_eas": 0.0,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr1:g.109279544G>A",
+      "rsid": "rs599839",
+      "chrom": "1",
+      "pos": 109279544,
+      "ref_allele": "G",
+      "alt_allele": "A",
+      "af_eas": 0.922248,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr1:g.109279544G>T",
+      "rsid": "rs599839",
+      "chrom": "1",
+      "pos": 109279544,
+      "ref_allele": "G",
+      "alt_allele": "T",
+      "af_eas": null,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr1:g.109272630A>C",
+      "rsid": "rs611917",
+      "chrom": "1",
+      "pos": 109272630,
+      "ref_allele": "A",
+      "alt_allele": "C",
+      "af_eas": null,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr1:g.109272630A>G",
+      "rsid": "rs611917",
+      "chrom": "1",
+      "pos": 109272630,
+      "ref_allele": "A",
+      "alt_allele": "G",
+      "af_eas": 0.0641618,
+      "clinvar_significance": [
+        "Benign"
+      ],
+      "clinvar_rcv": [
+        "RCV002099447",
+        "RCV003978479"
+      ],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44728895G>T",
+      "rsid": "rs62117160",
+      "chrom": "19",
+      "pos": 44728895,
+      "ref_allele": "G",
+      "alt_allele": "T",
+      "af_eas": null,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44728895G>A",
+      "rsid": "rs62117160",
+      "chrom": "19",
+      "pos": 44728895,
+      "ref_allele": "G",
+      "alt_allele": "A",
+      "af_eas": 0.000192901,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr2:g.21062839C>A",
+      "rsid": "rs62122514",
+      "chrom": "2",
+      "pos": 21062839,
+      "ref_allele": "C",
+      "alt_allele": "A",
+      "af_eas": 0.122334,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr2:g.21062839C>T",
+      "rsid": "rs62122514",
+      "chrom": "2",
+      "pos": 21062839,
+      "ref_allele": "C",
+      "alt_allele": "T",
+      "af_eas": null,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.11091630G>T",
+      "rsid": "rs6511720",
+      "chrom": "19",
+      "pos": 11091630,
+      "ref_allele": "G",
+      "alt_allele": "T",
+      "af_eas": 0.00769231,
+      "clinvar_significance": [
+        "Benign"
+      ],
+      "clinvar_rcv": [
+        "RCV000238585",
+        "RCV001512649"
+      ],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44888997C>T",
+      "rsid": "rs6857",
+      "chrom": "19",
+      "pos": 44888997,
+      "ref_allele": "C",
+      "alt_allele": "T",
+      "af_eas": 0.10553,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44878777A>G",
+      "rsid": "rs6859",
+      "chrom": "19",
+      "pos": 44878777,
+      "ref_allele": "A",
+      "alt_allele": "G",
+      "af_eas": 0.678976,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44878777A>T",
+      "rsid": "rs6859",
+      "chrom": "19",
+      "pos": 44878777,
+      "ref_allele": "A",
+      "alt_allele": "T",
+      "af_eas": null,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44886339G>C",
+      "rsid": "rs7254892",
+      "chrom": "19",
+      "pos": 44886339,
+      "ref_allele": "G",
+      "alt_allele": "C",
+      "af_eas": null,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44886339G>A",
+      "rsid": "rs7254892",
+      "chrom": "19",
+      "pos": 44886339,
+      "ref_allele": "G",
+      "alt_allele": "A",
+      "af_eas": 0.0706857,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44929300G>C",
+      "rsid": "rs7259004",
+      "chrom": "19",
+      "pos": 44929300,
+      "ref_allele": "G",
+      "alt_allele": "C",
+      "af_eas": 0.251947,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44929300G>T",
+      "rsid": "rs7259004",
+      "chrom": "19",
+      "pos": 44929300,
+      "ref_allele": "G",
+      "alt_allele": "T",
+      "af_eas": 0.0,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.11086922G>T",
+      "rsid": "rs73015024",
+      "chrom": "19",
+      "pos": 11086922,
+      "ref_allele": "G",
+      "alt_allele": "T",
+      "af_eas": 0.00833995,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44908822C>T",
+      "rsid": "rs7412",
+      "chrom": "19",
+      "pos": 44908822,
+      "ref_allele": "C",
+      "alt_allele": "T",
+      "af_eas": 0.0802779,
+      "clinvar_significance": [
+        "Benign",
+        "Likely benign; other; risk factor",
+        "Pathogenic",
+        "Uncertain significance",
+        "drug response",
+        "no classifications from unflagged records"
+      ],
+      "clinvar_rcv": [
+        "RCV000019452",
+        "RCV000019439",
+        "RCV000019428",
+        "RCV000211178",
+        "RCV000346955"
+      ],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr1:g.109274570A>G",
+      "rsid": "rs7528419",
+      "chrom": "1",
+      "pos": 109274570,
+      "ref_allele": "A",
+      "alt_allele": "G",
+      "af_eas": 0.0633475,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr19:g.44906745G>A",
+      "rsid": "rs769449",
+      "chrom": "19",
+      "pos": 44906745,
+      "ref_allele": "G",
+      "alt_allele": "A",
+      "af_eas": 0.0842044,
+      "clinvar_significance": [
+        "Benign"
+      ],
+      "clinvar_rcv": [
+        "RCV001677714"
+      ],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr2:g.27518238A>C",
+      "rsid": "rs780095",
+      "chrom": "2",
+      "pos": 27518238,
+      "ref_allele": "A",
+      "alt_allele": "C",
+      "af_eas": null,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr2:g.27518238A>G",
+      "rsid": "rs780095",
+      "chrom": "2",
+      "pos": 27518238,
+      "ref_allele": "A",
+      "alt_allele": "G",
+      "af_eas": 0.498839,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr2:g.21044589G>A",
+      "rsid": "rs934197",
+      "chrom": "2",
+      "pos": 21044589,
+      "ref_allele": "G",
+      "alt_allele": "A",
+      "af_eas": 0.120596,
+      "clinvar_significance": [
+        "Benign"
+      ],
+      "clinvar_rcv": [
+        "RCV004585228"
+      ],
+      "assembly": "hg38"
+    },
+    {
+      "ref": "myvariant:chr11:g.116778201G>C",
+      "rsid": "rs964184",
+      "chrom": "11",
+      "pos": 116778201,
+      "ref_allele": "G",
+      "alt_allele": "C",
+      "af_eas": 0.767616,
+      "clinvar_significance": [],
+      "clinvar_rcv": [],
+      "assembly": "hg38"
+    }
+  ]
+}

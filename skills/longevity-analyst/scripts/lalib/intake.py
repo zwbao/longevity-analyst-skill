@@ -22,6 +22,7 @@ import zlib
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 
+from .labnames import DATE_COLUMNS, parse_date, stamp_dates
 from .common import (EXIT_INPUT, EXIT_USAGE, LAError, add_judgment, file_by_id, now_iso,
                      resolve_judgment, sha256_file)
 
@@ -590,6 +591,7 @@ def run_intake(st: Dict[str, Any], raw_dir: Path) -> Dict[str, Any]:
                      "transcribe, and file headers with the member record. Files from another person or marked synthetic "
                      "must be excluded (`--files`) and disclosed in the report.",
                      ["consistent", "inconsistent", "cannot_tell"], hints=hints)
+    stamp_dates(st)
     return {"added": added, "files": len(st["files"])}
 
 
@@ -699,14 +701,18 @@ def parse_lab_table(f: Dict[str, Any]) -> List[Dict[str, Any]]:
     val_c = next(i for i, h in enumerate(header) if h in VALUE_COLUMNS)
     unit_c = next((i for i, h in enumerate(header) if h in UNIT_COLUMNS), None)
     ref_c = next((i for i, h in enumerate(header) if h in REF_COLUMNS), None)
+    date_c = next((i for c in DATE_COLUMNS for i, h in enumerate(header) if h == c), None)
     out = []
     for line in lines[hi + 1:]:
         r = _split(line, sep)
         if len(r) <= max(name_c, val_c) or not r[name_c] or not r[val_c]:
             continue
-        out.append({"marker": r[name_c], "value": r[val_c],
-                    "unit": (r[unit_c] if unit_c is not None and len(r) > unit_c else ""),
-                    "ref_range": (r[ref_c] if ref_c is not None and len(r) > ref_c else "")})
+        row = {"marker": r[name_c], "value": r[val_c],
+               "unit": (r[unit_c] if unit_c is not None and len(r) > unit_c else ""),
+               "ref_range": (r[ref_c] if ref_c is not None and len(r) > ref_c else "")}
+        if date_c is not None and len(r) > date_c and r[date_c].strip():
+            row["date_raw"] = r[date_c].strip()          # the row's own sampling date, as printed
+        out.append(row)
     return out
 
 
@@ -817,14 +823,19 @@ def add_labs(st: Dict[str, Any], csv_path: Path, fid: str, reason: str) -> int:
     if bad:
         raise LAError(f"rows {bad[:10]} have an empty marker or value; transcribe exactly or drop the row", EXIT_INPUT)
     for r in rows:
-        st["labs"].append({"marker": r["marker"].strip(), "value": r["value"].strip(),
-                           "unit": (r.get("unit") or "").strip(), "page": r.get("page", ""),
-                           "ref_range": (r.get("ref_range") or r.get("reference") or "").strip(),
-                           "source_file": fid, "source": "transcription", "transcribed_by": "agent"})
+        row = {"marker": r["marker"].strip(), "value": r["value"].strip(),
+               "unit": (r.get("unit") or "").strip(), "page": r.get("page", ""),
+               "ref_range": (r.get("ref_range") or r.get("reference") or "").strip(),
+               "source_file": fid, "source": "transcription", "transcribed_by": "agent"}
+        d = (r.get("collected_at") or r.get("date") or "").strip()
+        if d:
+            row["date_raw"] = d                          # the sampling date printed for this row
+        st["labs"].append(row)
     if any(j["kind"] == "transcribe" and j["target"] == fid and j["status"] == "pending" for j in st["judgments"]):
         resolve_judgment(st, "transcribe", fid, "transcribed", reason)
     f["status"] = "ready"
     f["lab_rows"] = f.get("lab_rows", 0) + len(rows)
+    stamp_dates(st)
     return len(rows)
 
 
@@ -856,7 +867,28 @@ def fix_lab(st: Dict[str, Any], marker: str, action: str, value: Optional[str], 
     if action == "drop":
         st["labs"] = [r for r in st["labs"] if not r.get("dropped")]
         st.setdefault("dropped_labs", []).extend(hit)
+    stamp_dates(st)
     return len(hit)
+
+
+def set_file_date(st: Dict[str, Any], fid: str, date: str, source: str, reason: str) -> Dict[str, Any]:
+    """The sampling date of a whole file, read by the agent from the document (report header, file metadata) or
+    told by the user, with the quote. Rows with their own date keep it."""
+    f = file_by_id(st, fid)
+    d = parse_date(date)
+    if not d or d != date.strip():
+        raise LAError("--date must be YYYY-MM-DD", EXIT_USAGE)
+    if not (source or "").strip() or not (reason or "").strip():
+        raise LAError("labs date needs --source (the words you read the date from, quoted) and --reason", EXIT_USAGE)
+    if not any(r.get("source_file") == fid for r in st["labs"]):
+        raise LAError(f"{fid} has no lab rows", EXIT_USAGE)
+    f["collected_at"] = {"date": d, "source": source, "reason": reason, "at": now_iso()}
+    if any(j["kind"] == "collected_at" and j["target"] == fid and j["status"] == "pending" for j in st["judgments"]):
+        resolve_judgment(st, "collected_at", fid, d, reason)
+    stamp_dates(st)
+    own = sum(1 for r in st["labs"] if r.get("source_file") == fid and r.get("collected_at_source") == "row")
+    return {"file": fid, "date": d, "rows_with_own_date": own,
+            "rows_dated_by_file": sum(1 for r in st["labs"] if r.get("source_file") == fid and r.get("collected_at_source") == "file")}
 
 
 def exclude_files(st: Dict[str, Any], fids: List[str], reason: str) -> List[str]:
@@ -897,3 +929,79 @@ def mark_uncertain(st: Dict[str, Any], fids: List[str], reason: str) -> None:
         for x in lst:
             if set(x.get("source_file_ids") or []) & set(fids):
                 x["provenance_uncertain"] = True
+
+
+# ------------------------------------------------------------ germline reuse (WS-I.1)
+OMICS_KINDS = {"variants_vcf", "methylation_beta", "methylation_idat", "reads_fastq", "alignment", "protein_matrix",
+               "olink_long", "metaphlan_profile", "somascan_adat", "amplicon_table", "single_cell_matrix", "ms_raw"}
+
+
+def trait_map_version() -> str:
+    from .common import DATA_DIR
+    return "la-traits/1@" + sha256_file(DATA_DIR / "trait_map.json", limit=None)[:12]
+
+
+def reuse_germline(st: Dict[str, Any], ws_root: Path, prev_ws: Path, raw_dir: Path) -> Dict[str, Any]:
+    """Germline DNA does not change: copy the previous visit's germline results into work/reuse/germline/ when the
+    new folder brings the same VCF (sha256) or no genotype file at all. Gene-vs-lab results are copied only while
+    the trait map is unchanged; APOE, the fingerprint and PGx always. Source workspace and date are recorded."""
+    import shutil
+    from .common import load_json, write_json
+    prev = Path(prev_ws).expanduser().resolve()
+    if not (prev / "state.json").exists():
+        raise LAError(f"--reuse-germline-from: no workspace at {prev}", EXIT_USAGE)
+    ps = load_json(prev / "state.json")
+    if (ps.get("member") or {}).get("id") != st["member"]["id"]:
+        raise LAError("--reuse-germline-from points at another member's workspace; germline results are never shared", EXIT_USAGE)
+    prev_vcf = {f["sha256"]: f["name"] for f in ps.get("files", []) if f.get("kind") == "variants_vcf" and not f.get("excluded")}
+    rec: Dict[str, Any] = {"from": str(prev), "at": now_iso(), "reused": False, "trait_map_version": trait_map_version(), "files": {}}
+    pr = ps.get("reuse_germline") or {}
+    if not prev_vcf and pr.get("reused") and pr.get("vcf_sha256"):
+        # a labs-only visit after a labs-only visit: the germline results it reused stand for the original VCF
+        prev_vcf = {sha: f"(reused by {prev.name} from {pr.get('from')})" for sha in pr["vcf_sha256"]}
+        rec["chain"] = [pr.get("from")] + list(pr.get("chain") or [])
+    if not prev_vcf:
+        rec["reason"] = "the previous workspace has no member VCF"
+        st["reuse_germline"] = rec
+        return rec
+    new_vcf = {}
+    for p in sorted(raw_dir.rglob("*")):
+        if p.is_file() and not any(x.startswith(".") for x in p.relative_to(raw_dir).parts) and \
+                (p.name.endswith(".vcf") or p.name.endswith(".vcf.gz")):
+            new_vcf[sha256_file(p)] = p.name
+    if new_vcf and not set(new_vcf) & set(prev_vcf):
+        rec["reason"] = ("the new folder brings a different VCF: genomics runs again on it, and `twin series` checks its "
+                         "germline fingerprint against the earlier visits")
+        st["reuse_germline"] = rec
+        return rec
+    rec["fingerprint_check"] = "identical_vcf_sha256" if new_vcf else "no_new_genotype_data"
+    rec["vcf_sha256"] = sorted(set(new_vcf) & set(prev_vcf)) or sorted(prev_vcf)
+    dst = ws_root / "work" / "reuse" / "germline"
+    dst.mkdir(parents=True, exist_ok=True)
+    conc = prev / "work" / "insights" / "concordance.json"
+    tm_prev = (load_json(conc).get("trait_map_version") if conc.exists() else None) or \
+        ((ps.get("reuse_germline") or {}).get("trait_map_version") if (ps.get("reuse_germline") or {}).get("reused") else None)
+    same_map = tm_prev == rec["trait_map_version"]
+    wanted = {"fingerprint.json": prev / "work" / "insights" / "fingerprint.json", "pgx.json": prev / "work" / "pgx" / "pgx.json"}
+    if same_map:
+        wanted.update({"genotype_phenotype.json": prev / "work" / "insights" / "genotype_phenotype.json", "concordance.json": conc})
+    else:
+        rec["skipped"] = {"genotype_phenotype.json": f"trait map changed ({tm_prev} → {rec['trait_map_version']})",
+                          "concordance.json": "trait map changed"}
+    for name, src in wanted.items():
+        if not src.exists():                               # also the previous workspace's own reused copy
+            src = prev / "work" / "reuse" / "germline" / name
+        if src.exists():
+            shutil.copyfile(src, dst / name)
+            rec["files"][name] = sha256_file(dst / name, limit=None)
+    rp = prev / "work" / "readouts.json"
+    apoe = [r for r in (load_json(rp)["readouts"] if rp.exists() else []) if str(r.get("id", "")).startswith("native.apoe")]
+    if not apoe and (prev / "work" / "reuse" / "germline" / "apoe.json").exists():
+        apoe = load_json(prev / "work" / "reuse" / "germline" / "apoe.json")["readouts"]
+    if apoe:
+        write_json(dst / "apoe.json", {"readouts": apoe})
+        rec["files"]["apoe.json"] = sha256_file(dst / "apoe.json", limit=None)
+    rec["reused"] = bool(rec["files"])
+    write_json(ws_root / "work" / "reuse" / "germline.json", rec)
+    st["reuse_germline"] = rec
+    return rec

@@ -18,7 +18,7 @@ import re
 import subprocess
 import unicodedata
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 from .common import (EXIT_BLOCKED, EXIT_INPUT, LAError, data, load_json, longevity_skills_home,
                      now_iso, sha256_file, write_json)
@@ -31,8 +31,9 @@ KIND_ZH = {"computed": "为你计算", "computed_low_coverage": "为你计算（
            "population_position": "人群位置（参照人群见说明）",
            "computed_coverage_unknown": "为你计算（覆盖率未知）", "descriptive": "数据描述", "lookup": "论文名单查表"}
 SEX_ZH = {"male": "男", "female": "女"}
-BOUNDARY = ("本报告由模型和已发表方法根据你交来的数据计算，是研究性估计，不是诊断，也不是治疗或用药建议。"
-            "生物年龄类读数有测量误差，单次结果不足以下结论；是否干预、如何用药由你的医生决定。")
+BOUNDARY = ("本报告由模型和已发表方法根据你交来的数据计算，是研究性估计。诊断性结论、用药建议和个人反应预测都标明了类别和来源，"
+            "其中「AI 判断」不是测量，也不是指南结论；它们供你和医生参考，不是处方。"
+            "生物年龄类读数有测量误差，单次结果不足以下结论；是否干预、如何用药由你的医生决定。出现急症时先拨打 120。")
 
 # Authored prose may carry digits ONLY inside placeholders:
 #   {{r:<readout id>[|label|value|unit|own words]}}  a member readout (bound to readouts.json)
@@ -94,6 +95,9 @@ def _readouts(ws: Path) -> Dict[str, Dict[str, Any]]:
     ip = ws / "work" / "insights" / "insight_readouts.json"
     if ip.exists():
         ro.update({r["id"]: r for r in load_json(ip)["readouts"]})
+    from .labels import Bound, registry                 # labelled items ({{p:}} {{dx:}} {{rx:}}) travel with the readouts
+    ro = Bound(ro)
+    ro.labelled = registry(ws)
     return ro
 
 
@@ -122,6 +126,8 @@ def substitute(text: str, ro: Dict[str, Dict[str, Any]]) -> str:
             return f"{_fmt(r['value'])} 岁（AI 估计，区间 {_fmt(r.get('low'))}–{_fmt(r.get('high'))} 岁）"
         u = {"a": " 岁", "1": ""}.get(u, f" {u}" if u else "")
         return f"{_fmt(r['value'])}{u}"
+    from .labels import substitute_items
+    text = substitute_items(text, getattr(ro, "labelled", {}))   # tag + registered sentence + sources
     text = PLACEHOLDER.sub(rep, text)
     text = LITERAL.sub(lambda m: m.group(1), text)
     return PMID_PH.sub(lambda m: f"[PMID {m.group(1)}](https://pubmed.ncbi.nlm.nih.gov/{m.group(1)}/)", text)
@@ -138,7 +144,9 @@ def normalise(text: str) -> str:
 
 
 def trace_text(text: str, allowed_values: List[str] = None) -> List[str]:
-    """Violations: any digit, numeral run or URL outside the three placeholder kinds."""
+    """Violations: any digit, numeral run or URL outside the placeholder kinds."""
+    from .labels import ITEM_PH
+    text = ITEM_PH.sub(" ", text)             # a labelled item renders its own registered numbers (checked in labels.check)
     t = PLACEHOLDER.sub(lambda m: f" {m.group(2)} " if m.group(2) and m.group(2).strip() not in MODES else " ", text)
     t = LITERAL.sub(" ", t)
     t = PMID_PH.sub(" ", t)
@@ -225,7 +233,9 @@ def registered_analyses(ws: Path, st: Dict[str, Any] = None) -> List[Path]:
     return [Path(v["path"]) for k, v in sorted(reg.items()) if Path(v["path"]).exists()]
 
 
-VOLATILE = ("events", "updated_at", "review", "report", "review_history", "stages", "review_blocks")
+HANDOVER = ("insights/concordance.json", "insights/fingerprint.json", "surveillance/plan.json", "pgx/pgx.json",
+            "predict/predictions.json", "clinical/diagnoses.json", "clinical/medications.json")
+VOLATILE = ("events", "updated_at", "review", "report", "review_history", "stages", "review_blocks", "timing")
 
 
 def state_digest(st: Dict[str, Any]) -> str:
@@ -269,13 +279,16 @@ def _authored(ws: Path, st: Dict[str, Any] = None) -> List[Tuple[str, str]]:
             rt = i.get("retest") or {}
             fields += [i.get("action_zh", ""), i.get("rationale_zh", ""), str(rt.get("what", ""))]
         out.append((str(pl), "\n".join(fields)))
-    return out
+    from .labels import authored
+    return out + authored(ws)
 
 
 def bound_files(ws: Path, st: Dict[str, Any] = None) -> List[Path]:
     """Everything the rendered report is made from; any change after trace/review voids them."""
     files = [ws / "work" / "readouts.json", ws / "work" / "report" / "summary.md", ws / "work" / "intervene" / "plan.json",
-             ws / "work" / "twin" / "twin.json", ws / "work" / "organs" / "organ_readouts.json"]
+             ws / "work" / "twin" / "twin.json", ws / "work" / "organs" / "organ_readouts.json",
+             ws / "work" / "twin" / "exposures.json", ws / "work" / "twin" / "series.json"]
+    files += [ws / "work" / x for x in HANDOVER]                    # read by the export and the section modules
     files += sorted((ws / "work" / "organs" / "estimates").glob("*.json"))
     files += [ws / "work" / "insights" / n for n in ("insight_readouts.json", "genotype_phenotype.json", "positions.json", "projections.json")]
     bq = ws / "work" / "insights" / "board" / "questions.json"
@@ -283,6 +296,8 @@ def bound_files(ws: Path, st: Dict[str, Any] = None) -> List[Path]:
         from .board import registered_findings
         files += [bq] + sorted(registered_findings(ws, st).values())
     files += registered_analyses(ws, st)
+    from .labels import bound_files as labelled_files
+    files += labelled_files(ws)
     return [f for f in files if f.exists()]
 
 
@@ -320,7 +335,8 @@ def trace(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
     if ip.exists() and (not iw or sha256_file(ip, limit=None) != iw):
         raise LAError("insight_readouts.json does not match what `la.py insights` wrote; run it again", EXIT_BLOCKED)
     from .board import integrity
-    bad_files = insight_file_problems(ws, st)
+    from .twin import series_problems
+    bad_files = insight_file_problems(ws, st) + series_problems(ws, st)
     if bad_files:
         raise LAError("; ".join(bad_files), EXIT_BLOCKED)
     bad_board = integrity(ws, st)
@@ -331,6 +347,7 @@ def trace(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
     missing_ids = {}
     lits: Dict[str, List[str]] = {}
     declined = (st["member"].get("answers") or {}).get("genetic_disclosure") == "no"
+    from . import labels
     for path, text in _authored(ws, st):
         bad = trace_text(text, allowed)
         if declined and apoe_mentioned(LITERAL.sub(lambda m: m.group(1), text)):
@@ -339,7 +356,8 @@ def trace(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
             findings[path] = bad
         if literals(text):
             lits[path] = literals(text)
-        miss = sorted({m.group(1) for m in PLACEHOLDER.finditer(text) if m.group(1) not in ro})
+        miss = sorted({m.group(1) for m in PLACEHOLDER.finditer(text) if m.group(1) not in ro}
+                      | {f"{k}:{i}" for k, i in labels.cited(text) if i not in ro.labelled.get(k, {})})
         if miss:
             missing_ids[path] = miss
     cited = sorted({m.group(1) for _, text in _authored(ws, st) for m in PMID_PH.finditer(text)})
@@ -349,6 +367,9 @@ def trace(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
         dead = [p for p in cited if p not in live]
         if dead:
             findings["citations"] = [f"PMID {p} does not exist or is retracted" for p in dead]
+    lab_bad = labels.check(st, ws)
+    if lab_bad:
+        findings["labelled items"] = lab_bad
     ok = not findings and not missing_ids
     hashes = _hashes(ws, st) if ok else {}
     trace_id = C_sha(json.dumps(hashes, sort_keys=True))[:16] if ok else None
@@ -510,14 +531,16 @@ def render(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
         L += ["## 本期读数总表", "", "类型说明：「为你计算」= 用你的数据按论文公式算出；「数据描述」= 质控或计数，不是健康判断。", ""]
         by_sys: Dict[str, List[Dict[str, Any]]] = {}
         for r in ro.values():
-            if r.get("kind") in ("llm_estimate", "genetic_score", "genetic_finding", "population_position", "member_answer"):
-                continue                              # shown in their own sections (organ table, genes vs labs, position)
+            if r.get("kind") in ("llm_estimate", "genetic_score", "genetic_finding", "genetic_concordance", "pgx",
+                                 "population_position", "member_answer") or r.get("method") == "nutrigenetic-variant-panel":
+                continue                              # shown in their own sections (organ table, genes vs labs, pgx, position)
             by_sys.setdefault((r.get("systems") or ["overall_aging"])[0], []).append(r)
         for s, rs in sorted(by_sys.items(), key=lambda kv: list(sysdef).index(kv[0]) if kv[0] in sysdef else 99):
             L += [f"### {sysdef.get(s, {}).get('label_zh', s)}", "", "| 读数 | 值 | 单位 | 类型 | 方法 |", "|---|---|---|---|---|"]
             for r in rs:
                 cov = f"（CpG 覆盖 {r['coverage_pct']:.0f}%）" if r.get("coverage_pct") is not None else ""
-                unc = "（数据来源未确认属于本人）" if r.get("provenance_uncertain") else ""
+                unc = ("（数据来源未确认属于本人）" if r.get("provenance_uncertain") else "") + \
+                    ("（沿用之前一次检测的胚系结果）" if r.get("reused_from") else "")
                 unit = {"a": "岁"}.get(r.get("unit", ""), r.get("unit", ""))
                 L.append(f"| {_cell(r['label_zh'])} | {_cell(_fmt(r['value']))} | {_cell(unit)} | {KIND_ZH.get(r.get('kind'), r.get('kind'))}{cov}{unc} | {_cell(r.get('method'))} |")
             L.append("")
@@ -533,13 +556,22 @@ def render(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
     if pl.exists():
         cats = {c["id"]: c["label_zh"] for c in data("intervention_menu.json")["categories"]}
         L += ["## 干预方案（营养师审核后生效）", "", "| # | 类别 | 做什么 | 针对 | 执行人 | 证据 | 复测 |", "|---|---|---|---|---|---|---|"]
+        tw = ws / "work" / "twin" / "twin.json"
+        status = {x["id"]: x for x in (load_json(tw).get("interventions") or [])} if tw.exists() else {}
         for i in load_json(pl)["items"]:
             tg = "、".join(ro[t]["label_zh"] if t in ro else t for t in i["targets"])
             ev = "；".join(_ev_link(e) for e in i.get("evidence", [])) or "—"
+            if i.get("evidence_grade") in GRADE_ZH:
+                ev = f"{GRADE_ZH[i['evidence_grade']]}：{ev}"
+            sx = status.get(i["id"]) or {}
+            if sx.get("status") in STATUS_ZH:
+                i = dict(i, action_zh=i["action_zh"] + f"（{STATUS_ZH[sx['status']]}" + (f"，自 {sx['since']}" if sx.get("since") else "") + "）")
             rt = i.get("retest") or {}
             what = substitute(str(rt.get("what") or ""), ro)
             rtxt = f"{_cell(what)}，{int(rt['after_weeks'])} 周后" if rt.get("after_weeks") else (_cell(what) if what else "—")
-            L.append(f"| {_cell(i['id'])} | {cats.get(i['category'], _cell(i['category']))} | {_cell(substitute(i['action_zh'], ro))} | {_cell(tg)} | {_cell(i['executor'])} | {ev} | {rtxt} |")
+            why = f"。理由：{_cell(substitute(i['rationale_zh'], ro))}" if i.get("rationale_zh") else ""
+            L.append(f"| {_cell(i['id'])} | {cats.get(i['category'], _cell(i['category']))} | {_cell(substitute(i['action_zh'], ro))}{why} | {_cell(tg)} | "
+                     f"{EXECUTOR_ZH.get(i['executor'], _cell(i['executor']))} | {ev} | {rtxt} |")
         L.append("")
     notes = [(it["method"], n) for it in (st.get("methods") or {}).get("items", []) if it.get("status") == "done"
              for n in (it.get("result") or {}).get("notes", [])]
@@ -554,9 +586,14 @@ def render(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
         if it["status"] == "manual":
             manual.append(it["method"])
         elif it["status"] not in ("done",):
-            L.append(f"| {_cell(it['method'])} | {METHOD_STATUS_ZH.get(it['status'], '未计算')} |")
+            L.append(f"| {_cell(it['method'])} | {_cell((it.get('result') or {}).get('reason_zh') or METHOD_STATUS_ZH.get(it['status'], '未计算'))} |")
     if manual:
         L.append(f"| 其他 {len(manual)} 个已收录方法 | {METHOD_STATUS_ZH['manual']}：{_cell('、'.join(manual))} |")
+    skipped = sorted((st.get("organs") or {}).get("skipped") or {})
+    if skipped:
+        spec = data("organs.json")["organs"]
+        names = "、".join(_cell((spec.get(o) or {}).get("label_zh", o)) for o in skipped)
+        L.append(f"| 器官 AI 估计：{names} | 本期没有做器官 AI 估计 |")
     for f in st["files"]:
         if f.get("status") in FILE_STATUS_ZH:
             L.append(f"| 文件 {_cell(f['name'])} | {FILE_STATUS_ZH[f['status']]} |")
@@ -571,8 +608,11 @@ def render(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
               f"本期快照记录了 {len(t['observations'])} 项化验、{len(t['readouts'])} 个读数、{len(t['interventions'])} 条拟执行事项。"
               "下次复测后对比：化验项按个体内生物学变异判断变化是否超出正常波动；没有噪声模型的读数只并列展示，不判好坏。", ""]
         if t["retest_plan"]:
-            L += ["| 事项 | 复测什么 | 多久后 |", "|---|---|---|"] + [
-                f"| {_cell(r['intervention'])} | {_cell(substitute(str(r.get('what') or ''), ro))} | {int(r['after_weeks']) if r.get('after_weeks') else '—'} 周 |" for r in t["retest_plan"]] + [""]
+            from .twin import JUDGEABLE_FALSE_ZH
+            note = {True: "复测时按你个人正常波动判断是否真的变化", False: JUDGEABLE_FALSE_ZH}
+            L += ["| 事项 | 复测什么 | 多久后 | 复测时能否判断 |", "|---|---|---|---|"] + [
+                f"| {_cell(r['intervention'])} | {_cell(substitute(str(r.get('what') or ''), ro))} | {int(r['after_weeks']) if r.get('after_weeks') else '—'} 周 | {note.get(r.get('judgeable'), '—')} |"
+                for r in t["retest_plan"]] + [""]
     L += ["## 数据来源与版本", "", "| 文件 | 类型 | 状态 | 校验 |", "|---|---|---|---|"]
     for f in st["files"]:
         L.append(f"| {_cell(f['name'])} | {_cell(f.get('kind'))} | {_cell(f.get('status'))} | {str(f.get('sha256', ''))[:18]} |")
@@ -580,6 +620,7 @@ def render(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
     lic = data("license_policy.json")["modes"][m.get("mode", "commercial")]["excluded"]
     if lic:
         L += ["因商用授权未确认而未使用：" + "；".join(_cell(e["component"]) for e in lic), ""]
+    L += extra_sections(ws, {"st": st, "ro": ro})
     L += ["## 边界", "", BOUNDARY, ""]
     md = "\n".join(L)
     if "{{" in md or "}}" in md:                      # a placeholder that was not substituted never reaches the member
@@ -594,15 +635,40 @@ def render(st: Dict[str, Any], ws: Path) -> Dict[str, Any]:
     (out / "report.html").write_text(_html(md, str(m.get("id"))), encoding="utf-8")
     written = ["report.md", "report.html"]
     if tw.exists():
-        (out / "twin.json").write_text(tw.read_text(encoding="utf-8"), encoding="utf-8")
+        tdoc = json.loads(tw.read_text(encoding="utf-8"))
+        if isinstance(tdoc.get("genotype_fingerprint"), dict):     # germline calls stay in the workspace (WS-K)
+            tdoc["genotype_fingerprint"] = {k: v for k, v in tdoc["genotype_fingerprint"].items() if k != "calls"}
+        write_json(out / "twin.json", tdoc)
         written.append("twin.json")
     from .export import build as build_export              # what a host app (longpi) imports: same data as the report
     write_json(out / "la-export.json", build_export(st, ws, out / "report.html"))
     written.append("la-export.json")
+    from .cards import build as build_cards                # health-page cards: numbers taken from that same export
+    write_json(out / "cards.json", build_cards(ws, out / "la-export.json"))
+    written.append("cards.json")
     st["report"] = {"md": str(out / "report.md"), "html": str(out / "report.html"), "at": now_iso(),
                     "hashes": st["review"]["reviewer"]["hashes"],
                     "deliver_sha256": {n: sha256_file(out / n, limit=None) for n in written}}
     return st["report"]
+
+
+SECTION_MODULES = ("report_trends", "report_genomics", "report_clinical")
+
+
+def extra_sections(ws: Path, ctx: Dict[str, Any]) -> List[str]:
+    """Sections other modules render from their own files, in this order; a module that is not there prints nothing."""
+    import importlib
+    L: List[str] = []
+    for name in SECTION_MODULES:
+        try:
+            mod = importlib.import_module(f"{__package__}.{name}")
+        except ModuleNotFoundError as e:
+            if e.name and e.name.endswith(name):
+                continue
+            raise
+        for head, body in mod.sections(ws, ctx) or []:
+            L += [f"## {head}", "", body.strip(), ""]
+    return L
 
 
 def _pct(x: Any) -> str:
@@ -689,6 +755,9 @@ def insight_sections(ws: Path, ro: Dict[str, Dict[str, Any]]) -> List[str]:
                 if clean and ms["genes"]:
                     parts.insert(0, "已扫描，未发现")
                 plp_s = "；".join(parts) or "—"
+                called = [x for x in a.get("loci") or [] if x.get("member_risk_alleles") is not None]
+                if called and all(x.get("call_status") == "quality_unverified" for x in called) and a.get("pct_eas") is not None:
+                    pct += "（原始数据缺少质量字段，未核对）"
                 L.append(f"| {_cell(a['label_zh'])} | {_cell(_fmt(lab['value']))} {_cell(lab['unit'])} | {flag} | {pct} | "
                          f"{a['loci_called']}/{a.get('loci_informative', a['loci_tested'])} | {plp_s} |")
             meta = load_json(gp)
@@ -699,15 +768,26 @@ def insight_sections(ws: Path, ro: Dict[str, Dict[str, Any]]) -> List[str]:
     if pp.exists():
         pos = load_json(pp)
         if pos["labs"] or pos["gmhi"] or pos["ages"]:
-            L += ["## 你在同龄人群中的位置", "",
-                  "> 化验参照：美国 NHANES 2005–2010 同性别、同年龄段人群（加权百分位）；中国人群分布尚未接入，美国人群的分布可能与中国人不同，只作方向参考。", ""]
+            refs = {x.get("reference") for x in pos["labs"]}
+            cn_label = next((x.get("reference_label_zh") for x in pos["labs"] if x.get("reference") == "cn"), None)
+            us = "美国 NHANES 2005–2010 同性别、同年龄段人群（加权百分位）"
+            if "cn" in refs:
+                head = (f"> 化验参照：标「中国」的行用{_cell(cn_label)}" + (f"；标「美国」的行用{us}，这几项还没有可用的中国人群分布，"
+                        "美国人群的分布可能与中国人不同，只作方向参考。" if refs - {"cn"} else "。"))
+            else:
+                fb = any("回退" in str(x.get("reference_label_zh")) for x in pos["labs"])
+                head = f"> 化验参照：{us}；" + ("还没有可用的中国人群分布，" if fb else "") + "美国人群的分布可能与中国人不同，只作方向参考。"
+            L += ["## 你在同龄人群中的位置", "", head, ""]
             if pos["labs"]:
                 L += ["| 指标 | 你的结果 | 参照人群 | 百分位 | 该人群中位数 |", "|---|---|---|---|---|"]
                 for x in pos["labs"]:
                     pct = ("低于第 1 百分位" if x["bound"] == "below" else "高于第 99 百分位" if x["bound"] == "above" else
                            f"第 {_fmt(x['pct_low'])}–{_fmt(x['pct_high'])} 百分位（该人群很多人与你同值，多为检测下限）" if x["bound"] == "tie"
                            else f"第 {_fmt(x['pct'])} 百分位")
-                    L.append(f"| {_cell(x['label_zh'])} | {_cell(_fmt(x['value']))} {_cell(x['unit'])} | {_cell(x['stratum'])}（{x['n']} 人） | {pct} | {_cell(_fmt(x['median']))} |")
+                    # Hoisted so the f-string has no nested same-type quotes (Python < 3.12 cannot parse them).
+                    ref = "中国 " if x.get("reference") == "cn" else "美国 " if "cn" in refs else ""
+                    n = f"（{x['n']} 人）" if x.get("n") else ""
+                    L.append(f"| {_cell(x['label_zh'])} | {_cell(_fmt(x['value']))} {_cell(x['unit'])} | {ref}{_cell(_stratum_zh(x['stratum']))}{n} | {pct} | {_cell(_fmt(x['median']))} |")
                 L.append("")
             if pos["gmhi"]:
                 gm = pos["gmhi"]
@@ -723,6 +803,8 @@ def insight_sections(ws: Path, ro: Dict[str, Dict[str, Any]]) -> List[str]:
                     diff = "—" if x.get("minus_age") is None else f"{x['minus_age']:+.1f} 岁"
                     L.append(f"| {_cell(x['label_zh'])} | {_cell(_fmt(x['value']))} 岁{rng} | {diff} |")
                 L.append("")
+            if pos.get("phenoage_note_zh"):
+                L += [f"> 表型年龄：{_cell(pos['phenoage_note_zh'])}", ""]
     prj = ws / "work" / "insights" / "projections.json"
     if prj.exists():
         L += ["## 干预的因果推算（孟德尔随机化）", "",
@@ -763,8 +845,38 @@ def insight_sections(ws: Path, ro: Dict[str, Dict[str, Any]]) -> List[str]:
     return L
 
 
+EXECUTOR_ZH = {"member": "你自己", "nutritionist": "营养师", "physician": "医生"}
+GRADE_ZH = {"human_rct": "人体随机对照试验", "human_cohort": "人群队列研究", "animal_or_cell": "动物或细胞研究", "guideline": "指南"}
+STATUS_ZH = {"adopted": "已在执行", "paused": "暂停中", "graduated": "已养成习惯", "dropped": "已放弃"}
+DESIGN_ZH = {"meta-analysis": "荟萃分析", "rct": "随机对照试验", "RCT": "随机对照试验"}
+_EFFECTS: Dict[str, Dict[str, Any]] = {}
+
+
+def _effect_row(ref: str) -> Optional[Dict[str, Any]]:
+    if not _EFFECTS:
+        from .common import longevity_skills_home
+        p = longevity_skills_home(required=False)
+        if p and (p / "data" / "effects.jsonl").exists():
+            for line in open(p / "data" / "effects.jsonl", encoding="utf-8"):
+                if line.strip():
+                    r = json.loads(line)
+                    _EFFECTS[r["id"]] = r
+    return _EFFECTS.get(ref)
+
+
+def _stratum_zh(t: Any) -> str:
+    """'male 50-54' -> '男 50–54 岁'."""
+    m = re.fullmatch(r"(male|female)\s+(\d+)\s*-\s*(\d+)", str(t).strip())
+    return f"{'男' if m.group(1) == 'male' else '女'} {m.group(2)}–{m.group(3)} 岁" if m else str(t)
+
+
 def _ev_link(e: Dict[str, Any]) -> str:
     t, r = e.get("type"), str(e.get("ref"))
+    if t == "effects" and _effect_row(r):
+        x = _effect_row(r)
+        what = f"{DESIGN_ZH.get(x.get('design'), x.get('design') or '研究')}，人群：{x.get('population') or '未注明'}"
+        lim = f"；研究的局限：{_cell(x['note_zh'])}" if x.get("note_zh") else ""
+        return (f"[{_cell(x.get('intervention_zh') or r)}（{_cell(what)}）](https://doi.org/{x['doi']})" if x.get("doi") else _cell(what)) + lim
     if t == "pubmed" and r.isdigit():
         return f"[PMID {r}](https://pubmed.ncbi.nlm.nih.gov/{r}/)"
     if t == "guideline" and re.match(r"^https?://[^\s)?#]+$", r):

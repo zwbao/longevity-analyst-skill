@@ -1,0 +1,47 @@
+{
+ "items": [
+  {
+   "id": "I1",
+   "category": "diet",
+   "action_zh": "早餐用燕麦代替精米白面",
+   "targets": [
+    "空腹血糖(GLU)"
+   ],
+   "evidence": [
+    {
+     "type": "effects",
+     "ref": "oat-glucose"
+    }
+   ],
+   "evidence_grade": "human_rct",
+   "executor": "nutritionist",
+   "retest": {
+    "what": "空腹血糖",
+    "after_weeks": 52
+   },
+   "rationale_zh": "燕麦的研究人群多为血脂或体重偏高的成年人，平均效果不大；早餐容易坚持。"
+  },
+  {
+   "id": "I2",
+   "category": "exercise",
+   "action_zh": "每周安排几次中等强度运动，如快走、骑车",
+   "targets": [
+    "谷丙转氨酶(ALT)"
+   ],
+   "evidence": [
+    {
+     "type": "effects",
+     "ref": "exercise-nafld-alt"
+    }
+   ],
+   "evidence_grade": "human_rct",
+   "executor": "member",
+   "retest": {
+    "what": "谷丙转氨酶",
+    "after_weeks": 26
+   },
+   "rationale_zh": "研究人群是脂肪肝患者；你的资料里没有肝脏影像或脂肪肝的评估，所以不知道这个效果对你有多大。",
+   "per_week": 3
+  }
+ ]
+}

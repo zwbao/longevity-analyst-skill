@@ -1,0 +1,3917 @@
+{
+  "source": "gwas",
+  "query": "trait:OBA_VT0000188:5e-08",
+  "url": "https://www.ebi.ac.uk/gwas/rest/api/v2/associations?efo_id=OBA_VT0000188&size=100&sort=p_value&direction=asc",
+  "retrieved_at": "2026-10-24T16:08:07+08:00",
+  "records": [
+    {
+      "ref": "gwas:GCST90662896:rs34177044-A",
+      "rsid": "rs34177044",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "0.0761 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "SPC25"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs2075066-A",
+      "rsid": "rs2075066",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "0.088 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "CAMK2B"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs13266634-T",
+      "rsid": "rs13266634",
+      "effect_allele": "T",
+      "p_value": 1e-287,
+      "beta_text": "0.0575 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "SLC30A8"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs12712928-C",
+      "rsid": "rs12712928",
+      "effect_allele": "C",
+      "p_value": 7e-247,
+      "beta_text": "0.0578 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "KRTCAP2P1",
+        "SIX3"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs4331050-T",
+      "rsid": "rs4331050",
+      "effect_allele": "T",
+      "p_value": 9e-247,
+      "beta_text": "0.116863 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "MTNR1B",
+        "SNRPGP16"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs1260326-T",
+      "rsid": "rs1260326",
+      "effect_allele": "T",
+      "p_value": 1e-241,
+      "beta_text": "0.0512 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "GCKR"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST000568:rs560887-C",
+      "rsid": "rs560887",
+      "effect_allele": "C",
+      "p_value": 9.000000000000001e-218,
+      "beta_text": "0.075 mmol/L increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST000568",
+      "pubmed_id": "20081858",
+      "mapped_genes": [
+        "G6PC2",
+        "SPC25"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs1974620-T",
+      "rsid": "rs1974620",
+      "effect_allele": "T",
+      "p_value": 7.000000000000001e-216,
+      "beta_text": "0.0502 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "AGMO",
+        "GTF3AP5"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST012078:rs10830963-C",
+      "rsid": "rs10830963",
+      "effect_allele": "C",
+      "p_value": 1e-211,
+      "beta_text": "0.076802 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST012078",
+      "pubmed_id": "33402679",
+      "mapped_genes": [
+        "MTNR1B"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs10811661-T",
+      "rsid": "rs10811661",
+      "effect_allele": "T",
+      "p_value": 2e-209,
+      "beta_text": "0.0518 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "CDKN2B-AS1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90838681:rs560887-C",
+      "rsid": "rs560887",
+      "effect_allele": "C",
+      "p_value": 3e-194,
+      "beta_text": "0.0876927 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90838681",
+      "pubmed_id": "42173832",
+      "mapped_genes": [
+        "G6PC2",
+        "SPC25"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Glucose levels (adjusted for time of day)"
+    },
+    {
+      "ref": "gwas:GCST012078:rs560887-C",
+      "rsid": "rs560887",
+      "effect_allele": "C",
+      "p_value": 7e-190,
+      "beta_text": "0.068941 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST012078",
+      "pubmed_id": "33402679",
+      "mapped_genes": [
+        "G6PC2",
+        "SPC25"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST000568:rs10830963-G",
+      "rsid": "rs10830963",
+      "effect_allele": "G",
+      "p_value": 6e-175,
+      "beta_text": "0.067 mmol/L increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST000568",
+      "pubmed_id": "20081858",
+      "mapped_genes": [
+        "MTNR1B"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs7766070-A",
+      "rsid": "rs7766070",
+      "effect_allele": "A",
+      "p_value": 1e-167,
+      "beta_text": "0.0445 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "CDKAL1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs3833331-A",
+      "rsid": "rs3833331",
+      "effect_allele": "A",
+      "p_value": 7e-162,
+      "beta_text": "0.0824 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "FOXA2"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs9873618-A",
+      "rsid": "rs9873618",
+      "effect_allele": "A",
+      "p_value": 2e-156,
+      "beta_text": "0.0486 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "SLC2A2"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs2237897-T",
+      "rsid": "rs2237897",
+      "effect_allele": "T",
+      "p_value": 5.0000000000000005e-138,
+      "beta_text": "0.0517 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "KCNQ1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs2971670-T",
+      "rsid": "rs2971670",
+      "effect_allele": "T",
+      "p_value": 1e-126,
+      "beta_text": "0.106492 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "GCK"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90244003:rs71676177-A",
+      "rsid": "rs71676177",
+      "effect_allele": "A",
+      "p_value": 2e-114,
+      "beta_text": "0.1016 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90244003",
+      "pubmed_id": "36333282",
+      "mapped_genes": [
+        "ABCB11"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST001527:rs560887-T",
+      "rsid": "rs560887",
+      "effect_allele": "T",
+      "p_value": 2e-113,
+      "beta_text": "1.0E-4 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST001527",
+      "pubmed_id": "22581228",
+      "mapped_genes": [
+        "G6PC2",
+        "SPC25"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose (BMI interaction)"
+    },
+    {
+      "ref": "gwas:GCST90244003:rs12712928-C",
+      "rsid": "rs12712928",
+      "effect_allele": "C",
+      "p_value": 5e-111,
+      "beta_text": "0.0735 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90244003",
+      "pubmed_id": "36333282",
+      "mapped_genes": [
+        "KRTCAP2P1",
+        "SIX3"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90838681:rs34872471-C",
+      "rsid": "rs34872471",
+      "effect_allele": "C",
+      "p_value": 2.9999999999999997e-109,
+      "beta_text": "0.0660455 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90838681",
+      "pubmed_id": "42173832",
+      "mapped_genes": [
+        "TCF7L2"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Glucose levels (adjusted for time of day)"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs67057596-A",
+      "rsid": "rs67057596",
+      "effect_allele": "A",
+      "p_value": 4e-108,
+      "beta_text": "0.0527 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "RAPGEF4-AS1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs1260326-C",
+      "rsid": "rs1260326",
+      "effect_allele": "C",
+      "p_value": 4e-106,
+      "beta_text": "0.0759531 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "GCKR"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs34872471-T",
+      "rsid": "rs34872471",
+      "effect_allele": "T",
+      "p_value": 1e-105,
+      "beta_text": "0.0531 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "TCF7L2"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST001527:rs10830963-C",
+      "rsid": "rs10830963",
+      "effect_allele": "C",
+      "p_value": 4e-105,
+      "beta_text": "0.0014 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST001527",
+      "pubmed_id": "22581228",
+      "mapped_genes": [
+        "MTNR1B"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose (BMI interaction)"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs71676177-A",
+      "rsid": "rs71676177",
+      "effect_allele": "A",
+      "p_value": 2e-102,
+      "beta_text": "0.0773431 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "ABCB11"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST005186:rs10830963-C",
+      "rsid": "rs10830963",
+      "effect_allele": "C",
+      "p_value": 2e-100,
+      "beta_text": "0.0794 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST005186",
+      "pubmed_id": "22581228",
+      "mapped_genes": [
+        "MTNR1B"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST012077:rs10830963-C",
+      "rsid": "rs10830963",
+      "effect_allele": "C",
+      "p_value": 4e-100,
+      "beta_text": "0.078396 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST012077",
+      "pubmed_id": "33402679",
+      "mapped_genes": [
+        "MTNR1B"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST005186:rs560887-T",
+      "rsid": "rs560887",
+      "effect_allele": "T",
+      "p_value": 3e-99,
+      "beta_text": "0.0715 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST005186",
+      "pubmed_id": "22581228",
+      "mapped_genes": [
+        "G6PC2",
+        "SPC25"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST012076:rs10830963-C",
+      "rsid": "rs10830963",
+      "effect_allele": "C",
+      "p_value": 1e-98,
+      "beta_text": "0.074236 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST012076",
+      "pubmed_id": "33402679",
+      "mapped_genes": [
+        "MTNR1B"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs10811662-A",
+      "rsid": "rs10811662",
+      "effect_allele": "A",
+      "p_value": 4e-98,
+      "beta_text": "0.0731929 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "CDKN2B-AS1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST012078:rs4607517-G",
+      "rsid": "rs4607517",
+      "effect_allele": "G",
+      "p_value": 4e-97,
+      "beta_text": "0.059017 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST012078",
+      "pubmed_id": "33402679",
+      "mapped_genes": [
+        "GCK"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs67818839-A",
+      "rsid": "rs67818839",
+      "effect_allele": "A",
+      "p_value": 3e-95,
+      "beta_text": "0.0497 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "C2CD4B",
+        "NPM1P47"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST000568:rs4607517-A",
+      "rsid": "rs4607517",
+      "effect_allele": "A",
+      "p_value": 7e-92,
+      "beta_text": "0.062 mmol/L increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST000568",
+      "pubmed_id": "20081858",
+      "mapped_genes": [
+        "GCK"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST012076:rs560887-C",
+      "rsid": "rs560887",
+      "effect_allele": "C",
+      "p_value": 8e-92,
+      "beta_text": "0.067414 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST012076",
+      "pubmed_id": "33402679",
+      "mapped_genes": [
+        "G6PC2",
+        "SPC25"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs671-A",
+      "rsid": "rs671",
+      "effect_allele": "A",
+      "p_value": 1e-91,
+      "beta_text": "0.117074 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "ALDH2"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs4237150-C",
+      "rsid": "rs4237150",
+      "effect_allele": "C",
+      "p_value": 7e-91,
+      "beta_text": "0.0313 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "GLIS3"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs16922302-C",
+      "rsid": "rs16922302",
+      "effect_allele": "C",
+      "p_value": 1e-90,
+      "beta_text": "0.0599 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "KANK1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST007899:rs10830963-G",
+      "rsid": "rs10830963",
+      "effect_allele": "G",
+      "p_value": 5.0000000000000004e-89,
+      "beta_text": "0.07237465 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST007899",
+      "pubmed_id": "25631608",
+      "mapped_genes": [
+        "MTNR1B"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs13266634-T",
+      "rsid": "rs13266634",
+      "effect_allele": "T",
+      "p_value": 1e-87,
+      "beta_text": "0.0700424 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "SLC30A8"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST007899:rs560887-A",
+      "rsid": "rs560887",
+      "effect_allele": "A",
+      "p_value": 4e-87,
+      "beta_text": "0.079494834 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST007899",
+      "pubmed_id": "25631608",
+      "mapped_genes": [
+        "G6PC2",
+        "SPC25"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90838681:rs1985469-T",
+      "rsid": "rs1985469",
+      "effect_allele": "T",
+      "p_value": 3e-86,
+      "beta_text": "0.0693754 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90838681",
+      "pubmed_id": "42173832",
+      "mapped_genes": [
+        "GCK",
+        "YKT6"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Glucose levels (adjusted for time of day)"
+    },
+    {
+      "ref": "gwas:GCST90244003:rs3840674-C",
+      "rsid": "rs3840674",
+      "effect_allele": "C",
+      "p_value": 8e-85,
+      "beta_text": "0.1013 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90244003",
+      "pubmed_id": "36333282",
+      "mapped_genes": [
+        "CAMK2B",
+        "YKT6"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs4771189-A",
+      "rsid": "rs4771189",
+      "effect_allele": "A",
+      "p_value": 2e-83,
+      "beta_text": "0.0358 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "PLUT"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST012077:rs560887-C",
+      "rsid": "rs560887",
+      "effect_allele": "C",
+      "p_value": 4e-81,
+      "beta_text": "0.068552 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST012077",
+      "pubmed_id": "33402679",
+      "mapped_genes": [
+        "G6PC2",
+        "SPC25"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST011587:rs2232326-C",
+      "rsid": "rs2232326",
+      "effect_allele": "C",
+      "p_value": 4e-77,
+      "beta_text": "0.457 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST011587",
+      "pubmed_id": "33842983",
+      "mapped_genes": [
+        "G6PC2",
+        "SPC25"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs10440833-A",
+      "rsid": "rs10440833",
+      "effect_allele": "A",
+      "p_value": 4e-76,
+      "beta_text": "0.0639186 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "CDKAL1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs11066132-T",
+      "rsid": "rs11066132",
+      "effect_allele": "T",
+      "p_value": 5e-76,
+      "beta_text": "0.0499 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "NAA25"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST004206:rs560887-C",
+      "rsid": "rs560887",
+      "effect_allele": "C",
+      "p_value": 2e-75,
+      "beta_text": "0.24374136 mmol/L increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004206",
+      "pubmed_id": "28270201",
+      "mapped_genes": [
+        "G6PC2",
+        "SPC25"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs11708067-A",
+      "rsid": "rs11708067",
+      "effect_allele": "A",
+      "p_value": 7e-75,
+      "beta_text": "0.0524 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "ADCY5"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs2191349-G",
+      "rsid": "rs2191349",
+      "effect_allele": "G",
+      "p_value": 4e-73,
+      "beta_text": "0.0666497 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "AGMO",
+        "GTF3AP5"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs2858980-A",
+      "rsid": "rs2858980",
+      "effect_allele": "A",
+      "p_value": 3e-70,
+      "beta_text": "0.0363 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "KL",
+        "TOMM22P3"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST004206:rs560887-C",
+      "rsid": "rs560887",
+      "effect_allele": "C",
+      "p_value": 6e-68,
+      "beta_text": "0.22435525 mmol/L increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004206",
+      "pubmed_id": "28270201",
+      "mapped_genes": [
+        "G6PC2",
+        "SPC25"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs3765467-A",
+      "rsid": "rs3765467",
+      "effect_allele": "A",
+      "p_value": 5e-67,
+      "beta_text": "0.0495 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "GLP1R"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs11257655-T",
+      "rsid": "rs11257655",
+      "effect_allele": "T",
+      "p_value": 2.9999999999999996e-65,
+      "beta_text": "0.0281 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "CDC123",
+        "RN7SL198P"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90244003:rs10965248-C",
+      "rsid": "rs10965248",
+      "effect_allele": "C",
+      "p_value": 4.9999999999999997e-64,
+      "beta_text": "0.0559 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90244003",
+      "pubmed_id": "36333282",
+      "mapped_genes": [
+        "CDKN2B-AS1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90244003:rs13266634-T",
+      "rsid": "rs13266634",
+      "effect_allele": "T",
+      "p_value": 6e-64,
+      "beta_text": "0.0539 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90244003",
+      "pubmed_id": "36333282",
+      "mapped_genes": [
+        "SLC30A8"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90244003:rs373060500-A",
+      "rsid": "rs373060500",
+      "effect_allele": "A",
+      "p_value": 2e-62,
+      "beta_text": "0.0714 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90244003",
+      "pubmed_id": "36333282",
+      "mapped_genes": [
+        "GCKR"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90244003:rs60808706-A",
+      "rsid": "rs60808706",
+      "effect_allele": "A",
+      "p_value": 3e-62,
+      "beta_text": "0.0546 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90244003",
+      "pubmed_id": "36333282",
+      "mapped_genes": [
+        "KCNQ1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs35824917-A",
+      "rsid": "rs35824917",
+      "effect_allele": "A",
+      "p_value": 6e-61,
+      "beta_text": "0.0504 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "ADRA2A",
+        "BTBD7P2"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs12712928-C",
+      "rsid": "rs12712928",
+      "effect_allele": "C",
+      "p_value": 1e-59,
+      "beta_text": "0.058052 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "KRTCAP2P1",
+        "SIX3"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs77706112-T",
+      "rsid": "rs77706112",
+      "effect_allele": "T",
+      "p_value": 1e-59,
+      "beta_text": "0.0565102 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "RAPGEF4-AS1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90244003:rs671-A",
+      "rsid": "rs671",
+      "effect_allele": "A",
+      "p_value": 2e-59,
+      "beta_text": "0.0953 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90244003",
+      "pubmed_id": "36333282",
+      "mapped_genes": [
+        "ALDH2"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90566420:rs2908282-A",
+      "rsid": "rs2908282",
+      "effect_allele": "A",
+      "p_value": 8e-58,
+      "beta_text": "0.186 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90566420",
+      "pubmed_id": "40325049",
+      "mapped_genes": [
+        "YKT6"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST000276:rs560887-C",
+      "rsid": "rs560887",
+      "effect_allele": "C",
+      "p_value": 1e-57,
+      "beta_text": "0.06 mmol/l increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST000276",
+      "pubmed_id": "19060907",
+      "mapped_genes": [
+        "G6PC2",
+        "SPC25"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs2237897-T",
+      "rsid": "rs2237897",
+      "effect_allele": "T",
+      "p_value": 1e-56,
+      "beta_text": "0.0560643 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "KCNQ1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90566420:rs10830962-C",
+      "rsid": "rs10830962",
+      "effect_allele": "C",
+      "p_value": 1e-56,
+      "beta_text": "0.158 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90566420",
+      "pubmed_id": "40325049",
+      "mapped_genes": [
+        "MTNR1B",
+        "SNRPGP16"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90566420:rs36115340-A",
+      "rsid": "rs36115340",
+      "effect_allele": "A",
+      "p_value": 3.0000000000000003e-56,
+      "beta_text": "0.109 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90566420",
+      "pubmed_id": "40325049",
+      "mapped_genes": [
+        "CAST"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST001527:rs4607517-A",
+      "rsid": "rs4607517",
+      "effect_allele": "A",
+      "p_value": 8e-56,
+      "beta_text": "7.07E-6 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST001527",
+      "pubmed_id": "22581228",
+      "mapped_genes": [
+        "GCK"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose (BMI interaction)"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs2882298-A",
+      "rsid": "rs2882298",
+      "effect_allele": "A",
+      "p_value": 2e-54,
+      "beta_text": "0.0291 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "CAST",
+        "PCSK1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90837241:rs10830962-G",
+      "rsid": "rs10830962",
+      "effect_allele": "G",
+      "p_value": 2e-53,
+      "beta_text": "0.136 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90837241",
+      "pubmed_id": "42509370",
+      "mapped_genes": [
+        "MTNR1B",
+        "SNRPGP16"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose in pregnancy"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs550057-T",
+      "rsid": "rs550057",
+      "effect_allele": "T",
+      "p_value": 2e-52,
+      "beta_text": "0.0268 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "ABO"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs7178572-A",
+      "rsid": "rs7178572",
+      "effect_allele": "A",
+      "p_value": 3e-52,
+      "beta_text": "0.0244 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "HMG20A"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST005186:rs4607517-A",
+      "rsid": "rs4607517",
+      "effect_allele": "A",
+      "p_value": 6e-52,
+      "beta_text": "0.0641 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST005186",
+      "pubmed_id": "22581228",
+      "mapped_genes": [
+        "GCK"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs2233580-T",
+      "rsid": "rs2233580",
+      "effect_allele": "T",
+      "p_value": 1e-51,
+      "beta_text": "0.0525 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "PAX4"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs2075423-T",
+      "rsid": "rs2075423",
+      "effect_allele": "T",
+      "p_value": 2e-51,
+      "beta_text": "0.0282 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "PROX1-AS1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST007899:rs4607517-A",
+      "rsid": "rs4607517",
+      "effect_allele": "A",
+      "p_value": 1e-50,
+      "beta_text": "0.06261599 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST007899",
+      "pubmed_id": "25631608",
+      "mapped_genes": [
+        "GCK"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90566420:rs74870851-A",
+      "rsid": "rs74870851",
+      "effect_allele": "A",
+      "p_value": 2e-50,
+      "beta_text": "0.158 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90566420",
+      "pubmed_id": "40325049",
+      "mapped_genes": [
+        "ABCB11"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST000276:rs10830963-G",
+      "rsid": "rs10830963",
+      "effect_allele": "G",
+      "p_value": 3e-50,
+      "beta_text": "0.07 mmol/l increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST000276",
+      "pubmed_id": "19060907",
+      "mapped_genes": [
+        "MTNR1B"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST012078:rs780094-C",
+      "rsid": "rs780094",
+      "effect_allele": "C",
+      "p_value": 1e-49,
+      "beta_text": "0.030764 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST012078",
+      "pubmed_id": "33402679",
+      "mapped_genes": [
+        "GCKR"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST90256408:rs1260326-C",
+      "rsid": "rs1260326",
+      "effect_allele": "C",
+      "p_value": 6e-48,
+      "beta_text": "0.029 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90256408",
+      "pubmed_id": "39280063",
+      "mapped_genes": [
+        "GCKR"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST90244003:rs4721401-G",
+      "rsid": "rs4721401",
+      "effect_allele": "G",
+      "p_value": 6e-48,
+      "beta_text": "0.066 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90244003",
+      "pubmed_id": "36333282",
+      "mapped_genes": [
+        "AGMO",
+        "GTF3AP5"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs35889227-T",
+      "rsid": "rs35889227",
+      "effect_allele": "T",
+      "p_value": 1e-46,
+      "beta_text": "0.0285 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "FOXN3"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs35889227-T",
+      "rsid": "rs35889227",
+      "effect_allele": "T",
+      "p_value": 1e-46,
+      "beta_text": "0.0285 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "FOXN3"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90256408:rs13266634-T",
+      "rsid": "rs13266634",
+      "effect_allele": "T",
+      "p_value": 2e-46,
+      "beta_text": "0.029 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90256408",
+      "pubmed_id": "39280063",
+      "mapped_genes": [
+        "SLC30A8"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST012076:rs4607517-G",
+      "rsid": "rs4607517",
+      "effect_allele": "G",
+      "p_value": 3.0000000000000003e-46,
+      "beta_text": "0.057621 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST012076",
+      "pubmed_id": "33402679",
+      "mapped_genes": [
+        "GCK"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST90245986:rs10830963-G",
+      "rsid": "rs10830963",
+      "effect_allele": "G",
+      "p_value": 9e-46,
+      "beta_text": "0.07 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90245986",
+      "pubmed_id": "35902682",
+      "mapped_genes": [
+        "MTNR1B"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST90244003:rs5836390-T",
+      "rsid": "rs5836390",
+      "effect_allele": "T",
+      "p_value": 3e-45,
+      "beta_text": "0.0608 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90244003",
+      "pubmed_id": "36333282",
+      "mapped_genes": [
+        "RAPGEF4-AS1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs72501962-A",
+      "rsid": "rs72501962",
+      "effect_allele": "A",
+      "p_value": 3e-45,
+      "beta_text": "0.0281 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "CTBP1-DT"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs58845489-G",
+      "rsid": "rs58845489",
+      "effect_allele": "G",
+      "p_value": 1e-44,
+      "beta_text": "0.0635291 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "KANK1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs28838032-T",
+      "rsid": "rs28838032",
+      "effect_allele": "T",
+      "p_value": 2e-44,
+      "beta_text": "0.0281 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "MYO3A"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST000568:rs2191349-T",
+      "rsid": "rs2191349",
+      "effect_allele": "T",
+      "p_value": 2.9999999999999997e-44,
+      "beta_text": "0.03 mmol/L increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST000568",
+      "pubmed_id": "20081858",
+      "mapped_genes": [
+        "AGMO",
+        "GTF3AP5"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST012077:rs4607517-G",
+      "rsid": "rs4607517",
+      "effect_allele": "G",
+      "p_value": 7e-44,
+      "beta_text": "0.059183 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST012077",
+      "pubmed_id": "33402679",
+      "mapped_genes": [
+        "GCK"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs883541-A",
+      "rsid": "rs883541",
+      "effect_allele": "A",
+      "p_value": 9e-44,
+      "beta_text": "0.0225 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "WIPI1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs7129793-T",
+      "rsid": "rs7129793",
+      "effect_allele": "T",
+      "p_value": 2e-43,
+      "beta_text": "0.0369 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "ARAP1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90244003:rs10440833-A",
+      "rsid": "rs10440833",
+      "effect_allele": "A",
+      "p_value": 6.000000000000001e-43,
+      "beta_text": "0.0442 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90244003",
+      "pubmed_id": "36333282",
+      "mapped_genes": [
+        "CDKAL1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90837241:rs74870851-G",
+      "rsid": "rs74870851",
+      "effect_allele": "G",
+      "p_value": 1e-42,
+      "beta_text": "0.1193 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90837241",
+      "pubmed_id": "42509370",
+      "mapped_genes": [
+        "ABCB11"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose in pregnancy"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs2168101-A",
+      "rsid": "rs2168101",
+      "effect_allele": "A",
+      "p_value": 2e-42,
+      "beta_text": "0.0241 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "LMO1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90838681:rs3802177-A",
+      "rsid": "rs3802177",
+      "effect_allele": "A",
+      "p_value": 5e-42,
+      "beta_text": "0.0396739 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90838681",
+      "pubmed_id": "42173832",
+      "mapped_genes": [
+        "SLC30A8"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Glucose levels (adjusted for time of day)"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs1574285-G",
+      "rsid": "rs1574285",
+      "effect_allele": "G",
+      "p_value": 5e-42,
+      "beta_text": "0.0474556 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "GLIS3"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs6780171-A",
+      "rsid": "rs6780171",
+      "effect_allele": "A",
+      "p_value": 1e-40,
+      "beta_text": "0.0225 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "IGF2BP2"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90838681:rs11708067-G",
+      "rsid": "rs11708067",
+      "effect_allele": "G",
+      "p_value": 1e-40,
+      "beta_text": "0.0419807 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90838681",
+      "pubmed_id": "42173832",
+      "mapped_genes": [
+        "ADCY5"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Glucose levels (adjusted for time of day)"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs10501320-C",
+      "rsid": "rs10501320",
+      "effect_allele": "C",
+      "p_value": 2.9999999999999998e-40,
+      "beta_text": "0.037 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "MADD"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs7163757-T",
+      "rsid": "rs7163757",
+      "effect_allele": "T",
+      "p_value": 2.9999999999999998e-40,
+      "beta_text": "0.0459844 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "C2CD4B",
+        "NPM1P47"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST012078:rs2191349-G",
+      "rsid": "rs2191349",
+      "effect_allele": "G",
+      "p_value": 4e-40,
+      "beta_text": "0.026933 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST012078",
+      "pubmed_id": "33402679",
+      "mapped_genes": [
+        "AGMO",
+        "GTF3AP5"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs9987289-A",
+      "rsid": "rs9987289",
+      "effect_allele": "A",
+      "p_value": 1e-39,
+      "beta_text": "0.0529 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "PPP1R3B-DT"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90566420:rs1337919-T",
+      "rsid": "rs1337919",
+      "effect_allele": "T",
+      "p_value": 1e-39,
+      "beta_text": "0.123 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90566420",
+      "pubmed_id": "40325049",
+      "mapped_genes": [
+        "LNCNEF"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90838681:rs9273363-A",
+      "rsid": "rs9273363",
+      "effect_allele": "A",
+      "p_value": 2e-38,
+      "beta_text": "0.0381936 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90838681",
+      "pubmed_id": "42173832",
+      "mapped_genes": [
+        "HLA-DQA1",
+        "HLA-DQB1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Glucose levels (adjusted for time of day)"
+    },
+    {
+      "ref": "gwas:GCST90838681:rs7786873-G",
+      "rsid": "rs7786873",
+      "effect_allele": "G",
+      "p_value": 4e-38,
+      "beta_text": "0.0350005 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90838681",
+      "pubmed_id": "42173832",
+      "mapped_genes": [
+        "AGMO",
+        "GTF3AP5"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Glucose levels (adjusted for time of day)"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs9581588-C",
+      "rsid": "rs9581588",
+      "effect_allele": "C",
+      "p_value": 4.999999999999999e-38,
+      "beta_text": "0.0237 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "RNF6"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs28642213-A",
+      "rsid": "rs28642213",
+      "effect_allele": "A",
+      "p_value": 6e-38,
+      "beta_text": "0.0299 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "GPSM1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST000568:rs780094-C",
+      "rsid": "rs780094",
+      "effect_allele": "C",
+      "p_value": 6e-38,
+      "beta_text": "0.029 mmol/L increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST000568",
+      "pubmed_id": "20081858",
+      "mapped_genes": [
+        "GCKR"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs9379084-A",
+      "rsid": "rs9379084",
+      "effect_allele": "A",
+      "p_value": 1e-37,
+      "beta_text": "0.0278 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "RREB1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90837241:rs2908282-A",
+      "rsid": "rs2908282",
+      "effect_allele": "A",
+      "p_value": 2e-37,
+      "beta_text": "0.1322 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90837241",
+      "pubmed_id": "42509370",
+      "mapped_genes": [
+        "YKT6"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose in pregnancy"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs1406985-T",
+      "rsid": "rs1406985",
+      "effect_allele": "T",
+      "p_value": 3e-37,
+      "beta_text": "0.0215 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "RFX6",
+        "RPS29P13"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90244003:rs67818839-A",
+      "rsid": "rs67818839",
+      "effect_allele": "A",
+      "p_value": 4e-37,
+      "beta_text": "0.0545 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90244003",
+      "pubmed_id": "36333282",
+      "mapped_genes": [
+        "C2CD4B",
+        "NPM1P47"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90245986:rs560887-C",
+      "rsid": "rs560887",
+      "effect_allele": "C",
+      "p_value": 7e-37,
+      "beta_text": "0.07 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90245986",
+      "pubmed_id": "35902682",
+      "mapped_genes": [
+        "G6PC2",
+        "SPC25"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST90244003:rs59757115-G",
+      "rsid": "rs59757115",
+      "effect_allele": "G",
+      "p_value": 1e-36,
+      "beta_text": "0.0774 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90244003",
+      "pubmed_id": "36333282",
+      "mapped_genes": [
+        "KANK1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST000291:rs1387153-T",
+      "rsid": "rs1387153",
+      "effect_allele": "T",
+      "p_value": 2e-36,
+      "beta_text": "0.07 mmol/l increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST000291",
+      "pubmed_id": "19060909",
+      "mapped_genes": [
+        "MTNR1B",
+        "SNRPGP16"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs76895963-T",
+      "rsid": "rs76895963",
+      "effect_allele": "T",
+      "p_value": 4e-36,
+      "beta_text": "0.1194 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "CCND2",
+        "CCND2-AS1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST012078:rs11558471-A",
+      "rsid": "rs11558471",
+      "effect_allele": "A",
+      "p_value": 5e-35,
+      "beta_text": "0.027144 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST012078",
+      "pubmed_id": "33402679",
+      "mapped_genes": [
+        "SLC30A8"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST90837241:rs7713317-G",
+      "rsid": "rs7713317",
+      "effect_allele": "G",
+      "p_value": 5e-35,
+      "beta_text": "0.0943 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90837241",
+      "pubmed_id": "42509370",
+      "mapped_genes": [
+        "CAST"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose in pregnancy"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs320368-A",
+      "rsid": "rs320368",
+      "effect_allele": "A",
+      "p_value": 7e-35,
+      "beta_text": "0.0237 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "TENT5C-DT"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90838681:rs780093-C",
+      "rsid": "rs780093",
+      "effect_allele": "C",
+      "p_value": 3e-33,
+      "beta_text": "0.0333748 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90838681",
+      "pubmed_id": "42173832",
+      "mapped_genes": [
+        "GCKR"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Glucose levels (adjusted for time of day)"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs9788833-T",
+      "rsid": "rs9788833",
+      "effect_allele": "T",
+      "p_value": 9.000000000000001e-33,
+      "beta_text": "0.0188 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "FAM234A"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs77773608-A",
+      "rsid": "rs77773608",
+      "effect_allele": "A",
+      "p_value": 2e-32,
+      "beta_text": "0.0249 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "FBRSL1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs243018-C",
+      "rsid": "rs243018",
+      "effect_allele": "C",
+      "p_value": 2e-31,
+      "beta_text": "0.0188 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "MIR4432HG"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs348330-A",
+      "rsid": "rs348330",
+      "effect_allele": "A",
+      "p_value": 1e-30,
+      "beta_text": "0.0192 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "ABCB10"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST011587:rs560887-C",
+      "rsid": "rs560887",
+      "effect_allele": "C",
+      "p_value": 1e-30,
+      "beta_text": "0.319 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST011587",
+      "pubmed_id": "33842983",
+      "mapped_genes": [
+        "G6PC2",
+        "SPC25"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs73122790-A",
+      "rsid": "rs73122790",
+      "effect_allele": "A",
+      "p_value": 1e-30,
+      "beta_text": "0.0377 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "GRB10"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs11651755-T",
+      "rsid": "rs11651755",
+      "effect_allele": "T",
+      "p_value": 1e-30,
+      "beta_text": "0.0185 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "HNF1B"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90566420:rs12341226-A",
+      "rsid": "rs12341226",
+      "effect_allele": "A",
+      "p_value": 1e-30,
+      "beta_text": "0.083 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90566420",
+      "pubmed_id": "40325049",
+      "mapped_genes": [
+        "KANK1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs9394574-G",
+      "rsid": "rs9394574",
+      "effect_allele": "G",
+      "p_value": 2e-30,
+      "beta_text": "0.0489853 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "GLP1R"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs10771370-A",
+      "rsid": "rs10771370",
+      "effect_allele": "A",
+      "p_value": 2e-30,
+      "beta_text": "0.0199 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "PTHLH",
+        "RN7SKP15"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs9873341-T",
+      "rsid": "rs9873341",
+      "effect_allele": "T",
+      "p_value": 2e-30,
+      "beta_text": "0.0194 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "ATP5MGP5",
+        "MBNL1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90837241:rs139014876-A",
+      "rsid": "rs139014876",
+      "effect_allele": "A",
+      "p_value": 2e-30,
+      "beta_text": "0.5713 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90837241",
+      "pubmed_id": "42509370",
+      "mapped_genes": [],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose in pregnancy"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs71306836-T",
+      "rsid": "rs71306836",
+      "effect_allele": "T",
+      "p_value": 2e-30,
+      "beta_text": "0.0285 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "KIF11"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs6878122-A",
+      "rsid": "rs6878122",
+      "effect_allele": "A",
+      "p_value": 2e-29,
+      "beta_text": "0.027 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "PDE8B",
+        "ZBED3-AS1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90244003:rs34494309-A",
+      "rsid": "rs34494309",
+      "effect_allele": "A",
+      "p_value": 9e-29,
+      "beta_text": "0.0488 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90244003",
+      "pubmed_id": "36333282",
+      "mapped_genes": [
+        "GLIS3"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90256408:rs2232323-C",
+      "rsid": "rs2232323",
+      "effect_allele": "C",
+      "p_value": 1e-28,
+      "beta_text": "0.129 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90256408",
+      "pubmed_id": "39280063",
+      "mapped_genes": [
+        "G6PC2",
+        "SPC25"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST90837241:rs1974-A",
+      "rsid": "rs1974",
+      "effect_allele": "A",
+      "p_value": 1e-28,
+      "beta_text": "0.1129 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90837241",
+      "pubmed_id": "42509370",
+      "mapped_genes": [
+        "FOXA2"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose in pregnancy"
+    },
+    {
+      "ref": "gwas:GCST004206:rs917793-T",
+      "rsid": "rs917793",
+      "effect_allele": "T",
+      "p_value": 1e-28,
+      "beta_text": "0.17493051 mmol/L increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004206",
+      "pubmed_id": "28270201",
+      "mapped_genes": [
+        "YKT6"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs39283-A",
+      "rsid": "rs39283",
+      "effect_allele": "A",
+      "p_value": 2e-28,
+      "beta_text": "0.0189 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "STEAP1",
+        "STEAP2-AS1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs3733127-T",
+      "rsid": "rs3733127",
+      "effect_allele": "T",
+      "p_value": 2e-28,
+      "beta_text": "0.0196 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "ATXN7"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90244003:rs3812861-T",
+      "rsid": "rs3812861",
+      "effect_allele": "T",
+      "p_value": 4e-28,
+      "beta_text": "0.0348 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90244003",
+      "pubmed_id": "36333282",
+      "mapped_genes": [
+        "PDX1",
+        "PLUT"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90245986:rs1799884-T",
+      "rsid": "rs1799884",
+      "effect_allele": "T",
+      "p_value": 4e-28,
+      "beta_text": "0.06 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90245986",
+      "pubmed_id": "35902682",
+      "mapped_genes": [
+        "GCK"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs147834269-A",
+      "rsid": "rs147834269",
+      "effect_allele": "A",
+      "p_value": 5e-28,
+      "beta_text": "0.0675 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "WFS1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90244003:rs3765467-A",
+      "rsid": "rs3765467",
+      "effect_allele": "A",
+      "p_value": 1e-27,
+      "beta_text": "0.043 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90244003",
+      "pubmed_id": "36333282",
+      "mapped_genes": [
+        "GLP1R"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs256903-A",
+      "rsid": "rs256903",
+      "effect_allele": "A",
+      "p_value": 4e-27,
+      "beta_text": "0.0196 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "C5orf67"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST011587:rs1799884-T",
+      "rsid": "rs1799884",
+      "effect_allele": "T",
+      "p_value": 8e-27,
+      "beta_text": "0.136 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST011587",
+      "pubmed_id": "33842983",
+      "mapped_genes": [
+        "GCK"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST011587:rs540524-G",
+      "rsid": "rs540524",
+      "effect_allele": "G",
+      "p_value": 9e-27,
+      "beta_text": "0.113 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST011587",
+      "pubmed_id": "33842983",
+      "mapped_genes": [
+        "SPC25"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST012078:rs11605924-A",
+      "rsid": "rs11605924",
+      "effect_allele": "A",
+      "p_value": 1e-26,
+      "beta_text": "0.022972 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST012078",
+      "pubmed_id": "33402679",
+      "mapped_genes": [
+        "CRY2"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs80323638-A",
+      "rsid": "rs80323638",
+      "effect_allele": "A",
+      "p_value": 1e-26,
+      "beta_text": "0.0442 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "THADA"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs8037137-T",
+      "rsid": "rs8037137",
+      "effect_allele": "T",
+      "p_value": 2e-26,
+      "beta_text": "0.0185 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "RCCD1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs2233580-T",
+      "rsid": "rs2233580",
+      "effect_allele": "T",
+      "p_value": 2e-26,
+      "beta_text": "0.071278 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "PAX4"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90838681:rs76895963-G",
+      "rsid": "rs76895963",
+      "effect_allele": "G",
+      "p_value": 2e-26,
+      "beta_text": "0.111563 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90838681",
+      "pubmed_id": "42173832",
+      "mapped_genes": [
+        "CCND2",
+        "CCND2-AS1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Glucose levels (adjusted for time of day)"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs8614-A",
+      "rsid": "rs8614",
+      "effect_allele": "A",
+      "p_value": 3e-26,
+      "beta_text": "0.0179 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "NUFIP2"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST012076:rs780094-C",
+      "rsid": "rs780094",
+      "effect_allele": "C",
+      "p_value": 3e-26,
+      "beta_text": "0.031277 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST012076",
+      "pubmed_id": "33402679",
+      "mapped_genes": [
+        "GCKR"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST90838681:rs7766070-A",
+      "rsid": "rs7766070",
+      "effect_allele": "A",
+      "p_value": 4e-26,
+      "beta_text": "0.0323588 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90838681",
+      "pubmed_id": "42173832",
+      "mapped_genes": [
+        "CDKAL1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Glucose levels (adjusted for time of day)"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs9371676-A",
+      "rsid": "rs9371676",
+      "effect_allele": "A",
+      "p_value": 6e-26,
+      "beta_text": "0.017 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "RGS17"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs1320164-A",
+      "rsid": "rs1320164",
+      "effect_allele": "A",
+      "p_value": 6e-26,
+      "beta_text": "0.017 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "NDUFAF6",
+        "TP53INP1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs11619319-G",
+      "rsid": "rs11619319",
+      "effect_allele": "G",
+      "p_value": 6e-26,
+      "beta_text": "0.0363505 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "PLUT"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST011587:rs10830963-G",
+      "rsid": "rs10830963",
+      "effect_allele": "G",
+      "p_value": 7.000000000000001e-26,
+      "beta_text": "0.105 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST011587",
+      "pubmed_id": "33842983",
+      "mapped_genes": [
+        "MTNR1B"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST000276:rs4607517-A",
+      "rsid": "rs4607517",
+      "effect_allele": "A",
+      "p_value": 1e-25,
+      "beta_text": "0.06 mmol/l increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST000276",
+      "pubmed_id": "19060907",
+      "mapped_genes": [
+        "GCK"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs4923864-A",
+      "rsid": "rs4923864",
+      "effect_allele": "A",
+      "p_value": 1e-25,
+      "beta_text": "0.0199 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "CCDC9B",
+        "PHGR1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90256408:rs10305492-A",
+      "rsid": "rs10305492",
+      "effect_allele": "A",
+      "p_value": 2e-25,
+      "beta_text": "0.08 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90256408",
+      "pubmed_id": "39280063",
+      "mapped_genes": [
+        "GLP1R"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST011587:rs895636-T",
+      "rsid": "rs895636",
+      "effect_allele": "T",
+      "p_value": 7e-25,
+      "beta_text": "0.11 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST011587",
+      "pubmed_id": "33842983",
+      "mapped_genes": [
+        "KRTCAP2P1",
+        "SIX3"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST012077:rs2191349-G",
+      "rsid": "rs2191349",
+      "effect_allele": "G",
+      "p_value": 8e-25,
+      "beta_text": "0.031637 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST012077",
+      "pubmed_id": "33402679",
+      "mapped_genes": [
+        "AGMO",
+        "GTF3AP5"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST012076:rs11558471-A",
+      "rsid": "rs11558471",
+      "effect_allele": "A",
+      "p_value": 1e-24,
+      "beta_text": "0.031927 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST012076",
+      "pubmed_id": "33402679",
+      "mapped_genes": [
+        "SLC30A8"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs11210771-T",
+      "rsid": "rs11210771",
+      "effect_allele": "T",
+      "p_value": 2e-24,
+      "beta_text": "0.0166 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "SLC2A1-DT"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90838681:rs10811660-A",
+      "rsid": "rs10811660",
+      "effect_allele": "A",
+      "p_value": 2e-24,
+      "beta_text": "0.0363692 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90838681",
+      "pubmed_id": "42173832",
+      "mapped_genes": [
+        "CDKN2B-AS1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Glucose levels (adjusted for time of day)"
+    },
+    {
+      "ref": "gwas:GCST005186:rs780094-T",
+      "rsid": "rs780094",
+      "effect_allele": "T",
+      "p_value": 2.9999999999999996e-24,
+      "beta_text": "0.0318 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST005186",
+      "pubmed_id": "22581228",
+      "mapped_genes": [
+        "GCKR"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90244003:rs174538-A",
+      "rsid": "rs174538",
+      "effect_allele": "A",
+      "p_value": 2.9999999999999996e-24,
+      "beta_text": "0.0352 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90244003",
+      "pubmed_id": "36333282",
+      "mapped_genes": [
+        "TMEM258"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST004206:rs917793-T",
+      "rsid": "rs917793",
+      "effect_allele": "T",
+      "p_value": 2.9999999999999996e-24,
+      "beta_text": "0.15565135 mmol/L increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST004206",
+      "pubmed_id": "28270201",
+      "mapped_genes": [
+        "YKT6"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST012078:rs7944584-A",
+      "rsid": "rs7944584",
+      "effect_allele": "A",
+      "p_value": 2.9999999999999996e-24,
+      "beta_text": "0.024236 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST012078",
+      "pubmed_id": "33402679",
+      "mapped_genes": [
+        "MADD"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST001527:rs780094-T",
+      "rsid": "rs780094",
+      "effect_allele": "T",
+      "p_value": 4e-24,
+      "beta_text": "0.001 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST001527",
+      "pubmed_id": "22581228",
+      "mapped_genes": [
+        "GCKR"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose (BMI interaction)"
+    },
+    {
+      "ref": "gwas:GCST007899:rs11558471-G",
+      "rsid": "rs11558471",
+      "effect_allele": "G",
+      "p_value": 5e-24,
+      "beta_text": "0.03468724 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST007899",
+      "pubmed_id": "25631608",
+      "mapped_genes": [
+        "SLC30A8"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs13268508-T",
+      "rsid": "rs13268508",
+      "effect_allele": "T",
+      "p_value": 7e-24,
+      "beta_text": "0.0161 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "HSF1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST012078:rs4506565-A",
+      "rsid": "rs4506565",
+      "effect_allele": "A",
+      "p_value": 8e-24,
+      "beta_text": "0.021991 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST012078",
+      "pubmed_id": "33402679",
+      "mapped_genes": [
+        "TCF7L2"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST90256408:rs6235-G",
+      "rsid": "rs6235",
+      "effect_allele": "G",
+      "p_value": 9e-24,
+      "beta_text": "0.022 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90256408",
+      "pubmed_id": "39280063",
+      "mapped_genes": [
+        "CAST",
+        "PCSK1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST90566420:rs780093-T",
+      "rsid": "rs780093",
+      "effect_allele": "T",
+      "p_value": 9e-24,
+      "beta_text": "0.075 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90566420",
+      "pubmed_id": "40325049",
+      "mapped_genes": [
+        "GCKR"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs221798-C",
+      "rsid": "rs221798",
+      "effect_allele": "C",
+      "p_value": 1e-23,
+      "beta_text": "0.0324 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "GIGYF1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST000205:rs560887-A",
+      "rsid": "rs560887",
+      "effect_allele": "A",
+      "p_value": 4e-23,
+      "beta_text": "0.06 mmol/l decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST000205",
+      "pubmed_id": "18451265",
+      "mapped_genes": [
+        "G6PC2",
+        "SPC25"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs4679370-T",
+      "rsid": "rs4679370",
+      "effect_allele": "T",
+      "p_value": 4.9999999999999997e-23,
+      "beta_text": "0.0154 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "SLC12A8"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs830575-T",
+      "rsid": "rs830575",
+      "effect_allele": "T",
+      "p_value": 6e-23,
+      "beta_text": "0.0203 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "NFX1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs4886511-C",
+      "rsid": "rs4886511",
+      "effect_allele": "C",
+      "p_value": 6e-23,
+      "beta_text": "0.0345598 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "PEAK1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs28536554-A",
+      "rsid": "rs28536554",
+      "effect_allele": "A",
+      "p_value": 6e-23,
+      "beta_text": "0.0185 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "RASGRP1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST007899:rs780094-A",
+      "rsid": "rs780094",
+      "effect_allele": "A",
+      "p_value": 9e-23,
+      "beta_text": "0.03156466 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST007899",
+      "pubmed_id": "25631608",
+      "mapped_genes": [
+        "GCKR"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs1964272-A",
+      "rsid": "rs1964272",
+      "effect_allele": "A",
+      "p_value": 3e-22,
+      "beta_text": "0.017 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "GIPR",
+        "SNRPD2"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90244003:rs9873618-A",
+      "rsid": "rs9873618",
+      "effect_allele": "A",
+      "p_value": 3e-22,
+      "beta_text": "0.0384 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90244003",
+      "pubmed_id": "36333282",
+      "mapped_genes": [
+        "SLC2A2"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs8073398-T",
+      "rsid": "rs8073398",
+      "effect_allele": "T",
+      "p_value": 3e-22,
+      "beta_text": "0.017 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "RPL13P12",
+        "TSEN15P1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs4716673-T",
+      "rsid": "rs4716673",
+      "effect_allele": "T",
+      "p_value": 4e-22,
+      "beta_text": "0.0269 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "MNX1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST012077:rs780094-C",
+      "rsid": "rs780094",
+      "effect_allele": "C",
+      "p_value": 4e-22,
+      "beta_text": "0.030446 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST012077",
+      "pubmed_id": "33402679",
+      "mapped_genes": [
+        "GCKR"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST012078:rs11708067-A",
+      "rsid": "rs11708067",
+      "effect_allele": "A",
+      "p_value": 5.0000000000000005e-22,
+      "beta_text": "0.022815 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST012078",
+      "pubmed_id": "33402679",
+      "mapped_genes": [
+        "ADCY5"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs11839569-G",
+      "rsid": "rs11839569",
+      "effect_allele": "G",
+      "p_value": 5.0000000000000005e-22,
+      "beta_text": "0.0450507 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "KL",
+        "TOMM22P3"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs57123201-A",
+      "rsid": "rs57123201",
+      "effect_allele": "A",
+      "p_value": 6e-22,
+      "beta_text": "0.0194 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "EPHA4",
+        "MIR4268"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST000568:rs11708067-A",
+      "rsid": "rs11708067",
+      "effect_allele": "A",
+      "p_value": 7e-22,
+      "beta_text": "0.027 mmol/L increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST000568",
+      "pubmed_id": "20081858",
+      "mapped_genes": [
+        "ADCY5"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs147834269-A",
+      "rsid": "rs147834269",
+      "effect_allele": "A",
+      "p_value": 1e-21,
+      "beta_text": "0.093048 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "WFS1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST012078:rs983309-G",
+      "rsid": "rs983309",
+      "effect_allele": "G",
+      "p_value": 2e-21,
+      "beta_text": "0.029338 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST012078",
+      "pubmed_id": "33402679",
+      "mapped_genes": [
+        "PPP1R3B-DT"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs6020369-T",
+      "rsid": "rs6020369",
+      "effect_allele": "T",
+      "p_value": 2e-21,
+      "beta_text": "0.0146 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "CEBPB",
+        "PELATON"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST001527:rs2191349-T",
+      "rsid": "rs2191349",
+      "effect_allele": "T",
+      "p_value": 2.9999999999999995e-21,
+      "beta_text": "2.0E-4 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST001527",
+      "pubmed_id": "22581228",
+      "mapped_genes": [
+        "AGMO",
+        "GTF3AP5"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose (BMI interaction)"
+    },
+    {
+      "ref": "gwas:GCST90838681:rs340874-C",
+      "rsid": "rs340874",
+      "effect_allele": "C",
+      "p_value": 5e-21,
+      "beta_text": "0.0256236 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90838681",
+      "pubmed_id": "42173832",
+      "mapped_genes": [
+        "PROX1",
+        "PROX1-AS1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Glucose levels (adjusted for time of day)"
+    },
+    {
+      "ref": "gwas:GCST90245986:rs1260326-C",
+      "rsid": "rs1260326",
+      "effect_allele": "C",
+      "p_value": 5.999999999999999e-21,
+      "beta_text": "0.04 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90245986",
+      "pubmed_id": "35902682",
+      "mapped_genes": [
+        "GCKR"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs243018-C",
+      "rsid": "rs243018",
+      "effect_allele": "C",
+      "p_value": 6.999999999999999e-21,
+      "beta_text": "0.0340749 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "MIR4432HG"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs72629024-C",
+      "rsid": "rs72629024",
+      "effect_allele": "C",
+      "p_value": 9e-21,
+      "beta_text": "0.0183 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "PPDPF"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs11936062-T",
+      "rsid": "rs11936062",
+      "effect_allele": "T",
+      "p_value": 9e-21,
+      "beta_text": "0.0202 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "ACSL1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs1121980-A",
+      "rsid": "rs1121980",
+      "effect_allele": "A",
+      "p_value": 1e-20,
+      "beta_text": "0.0164 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "FTO"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs10142340-T",
+      "rsid": "rs10142340",
+      "effect_allele": "T",
+      "p_value": 1e-20,
+      "beta_text": "0.0194 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "WARS1",
+        "WARS1-AS1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs7099761-A",
+      "rsid": "rs7099761",
+      "effect_allele": "A",
+      "p_value": 1e-20,
+      "beta_text": "0.0346701 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "KIF11"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST005186:rs2191349-T",
+      "rsid": "rs2191349",
+      "effect_allele": "T",
+      "p_value": 2e-20,
+      "beta_text": "0.0284 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST005186",
+      "pubmed_id": "22581228",
+      "mapped_genes": [
+        "AGMO",
+        "GTF3AP5"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs8072100-A",
+      "rsid": "rs8072100",
+      "effect_allele": "A",
+      "p_value": 2e-20,
+      "beta_text": "0.0164 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "KPNB1-DT",
+        "NPEPPS"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs1579238-A",
+      "rsid": "rs1579238",
+      "effect_allele": "A",
+      "p_value": 2e-20,
+      "beta_text": "0.015 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "RMST"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs1359790-A",
+      "rsid": "rs1359790",
+      "effect_allele": "A",
+      "p_value": 2.9999999999999997e-20,
+      "beta_text": "0.0155 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "LINC01080"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs73174306-A",
+      "rsid": "rs73174306",
+      "effect_allele": "A",
+      "p_value": 2.9999999999999997e-20,
+      "beta_text": "0.0565 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "MECOM",
+        "MECOM-AS1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST001527:rs11558471-A",
+      "rsid": "rs11558471",
+      "effect_allele": "A",
+      "p_value": 2.9999999999999997e-20,
+      "beta_text": "4.942E-6 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST001527",
+      "pubmed_id": "22581228",
+      "mapped_genes": [
+        "SLC30A8"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose (BMI interaction)"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs5855073-C",
+      "rsid": "rs5855073",
+      "effect_allele": "C",
+      "p_value": 5e-20,
+      "beta_text": "0.0345751 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "IGF2BP2"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs35103294-T",
+      "rsid": "rs35103294",
+      "effect_allele": "T",
+      "p_value": 5e-20,
+      "beta_text": "0.0143 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "UNK"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90838681:rs2237895-C",
+      "rsid": "rs2237895",
+      "effect_allele": "C",
+      "p_value": 8e-20,
+      "beta_text": "0.0249048 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90838681",
+      "pubmed_id": "42173832",
+      "mapped_genes": [
+        "KCNQ1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Glucose levels (adjusted for time of day)"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs7132351-A",
+      "rsid": "rs7132351",
+      "effect_allele": "A",
+      "p_value": 1e-19,
+      "beta_text": "0.0181 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "KSR2",
+        "RFC5"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90838681:rs185774696-T",
+      "rsid": "rs185774696",
+      "effect_allele": "T",
+      "p_value": 1e-19,
+      "beta_text": "0.0312569 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90838681",
+      "pubmed_id": "42173832",
+      "mapped_genes": [
+        "HLA-DQA1",
+        "HLA-DQB1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Glucose levels (adjusted for time of day)"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs58795848-A",
+      "rsid": "rs58795848",
+      "effect_allele": "A",
+      "p_value": 1e-19,
+      "beta_text": "0.0236 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "FAF1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST001233:rs1799884-A",
+      "rsid": "rs1799884",
+      "effect_allele": "A",
+      "p_value": 2e-19,
+      "beta_text": "0.0619 mg/dL increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST001233",
+      "pubmed_id": "21909109",
+      "mapped_genes": [
+        "GCK"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Metabolite levels"
+    },
+    {
+      "ref": "gwas:GCST90566420:rs10487796-A",
+      "rsid": "rs10487796",
+      "effect_allele": "A",
+      "p_value": 3e-19,
+      "beta_text": "0.075 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90566420",
+      "pubmed_id": "40325049",
+      "mapped_genes": [
+        "AGMO",
+        "GTF3AP5"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90838681:rs11257655-T",
+      "rsid": "rs11257655",
+      "effect_allele": "T",
+      "p_value": 4e-19,
+      "beta_text": "0.0296905 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90838681",
+      "pubmed_id": "42173832",
+      "mapped_genes": [
+        "CDC123",
+        "RN7SL198P"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Glucose levels (adjusted for time of day)"
+    },
+    {
+      "ref": "gwas:GCST90566420:rs2237490-C",
+      "rsid": "rs2237490",
+      "effect_allele": "C",
+      "p_value": 4e-19,
+      "beta_text": "0.066 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90566420",
+      "pubmed_id": "40325049",
+      "mapped_genes": [
+        "GRB10"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs1849554-T",
+      "rsid": "rs1849554",
+      "effect_allele": "T",
+      "p_value": 6e-19,
+      "beta_text": "0.0158 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "IGF1R"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs6567160-T",
+      "rsid": "rs6567160",
+      "effect_allele": "T",
+      "p_value": 6e-19,
+      "beta_text": "0.0163 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "LINC03111",
+        "RNU4-17P"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs10512573-A",
+      "rsid": "rs10512573",
+      "effect_allele": "A",
+      "p_value": 6e-19,
+      "beta_text": "0.0188 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "MAP2K6"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662860:rs77773608-A",
+      "rsid": "rs77773608",
+      "effect_allele": "A",
+      "p_value": 6.999999999999999e-19,
+      "beta_text": "0.0428561 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662860",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "FBRSL1"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs3810291-A",
+      "rsid": "rs3810291",
+      "effect_allele": "A",
+      "p_value": 1e-18,
+      "beta_text": "0.0168 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "ZC3H4"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST012078:rs11920090-T",
+      "rsid": "rs11920090",
+      "effect_allele": "T",
+      "p_value": 2e-18,
+      "beta_text": "0.026626 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST012078",
+      "pubmed_id": "33402679",
+      "mapped_genes": [
+        "SLC2A2"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST000568:rs7944584-A",
+      "rsid": "rs7944584",
+      "effect_allele": "A",
+      "p_value": 2e-18,
+      "beta_text": "0.021 mmol/L increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST000568",
+      "pubmed_id": "20081858",
+      "mapped_genes": [
+        "MADD"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST012076:rs2191349-G",
+      "rsid": "rs2191349",
+      "effect_allele": "G",
+      "p_value": 2e-18,
+      "beta_text": "0.025152 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST012076",
+      "pubmed_id": "33402679",
+      "mapped_genes": [
+        "AGMO",
+        "GTF3AP5"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs2287326-T",
+      "rsid": "rs2287326",
+      "effect_allele": "T",
+      "p_value": 4e-18,
+      "beta_text": "0.014 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "ZNF638"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90566420:rs3907022-T",
+      "rsid": "rs3907022",
+      "effect_allele": "T",
+      "p_value": 4e-18,
+      "beta_text": "0.065 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90566420",
+      "pubmed_id": "40325049",
+      "mapped_genes": [
+        "GSDMA",
+        "PSMD3"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting plasma glucose"
+    },
+    {
+      "ref": "gwas:GCST007858:rs1260326-T",
+      "rsid": "rs1260326",
+      "effect_allele": "T",
+      "p_value": 5e-18,
+      "beta_text": "0.031 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST007858",
+      "pubmed_id": "25625282",
+      "mapped_genes": [
+        "GCKR"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose adjusted for BMI"
+    },
+    {
+      "ref": "gwas:GCST005186:rs11558471-A",
+      "rsid": "rs11558471",
+      "effect_allele": "A",
+      "p_value": 7e-18,
+      "beta_text": "0.0295 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST005186",
+      "pubmed_id": "22581228",
+      "mapped_genes": [
+        "SLC30A8"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST90662896:rs11767259-T",
+      "rsid": "rs11767259",
+      "effect_allele": "T",
+      "p_value": 7e-18,
+      "beta_text": "0.0269 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662896",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "SRRM3"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting blood glucose"
+    },
+    {
+      "ref": "gwas:GCST012078:rs10885122-G",
+      "rsid": "rs10885122",
+      "effect_allele": "G",
+      "p_value": 7e-18,
+      "beta_text": "0.027256 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST012078",
+      "pubmed_id": "33402679",
+      "mapped_genes": [
+        "ADRA2A",
+        "BTBD7P2"
+      ],
+      "efo": "OBA_VT0000188",
+      "reported_trait": "Fasting glucose"
+    }
+  ]
+}

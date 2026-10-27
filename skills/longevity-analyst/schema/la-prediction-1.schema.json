@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "la-prediction/1",
+  "title": "Personal response prediction (PLAN WS-L.2, appendix B.7)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "id", "intervention_zh", "marker", "label"],
+  "properties": {
+    "schema": {"const": "la-prediction/1"},
+    "id": {"type": "string", "pattern": "^P[0-9]+$"},
+    "plan_item": {"type": ["string", "null"]},
+    "intervention_zh": {"type": "string"},
+    "marker": {"type": "string"},
+    "design": {"type": "object", "additionalProperties": false, "properties": {"repeats_each_side": {"type": "integer", "minimum": 1}, "weeks": {"type": ["integer", "null"]}, "adherence": {"type": "number", "minimum": 0, "maximum": 1}}},
+    "p_detect_favorable": {"type": ["number", "array"], "description": "A number for statistical_model; a [low, high] interval for ai_estimate."},
+    "p_true_favorable": {"type": ["number", "array"]},
+    "expected_change_pct": {"type": "number"},
+    "interval_80_pct": {"type": "array", "items": {"type": "number"}, "minItems": 2, "maxItems": 2},
+    "label": {"$ref": "la-label-1.schema.json"}
+  }
+}

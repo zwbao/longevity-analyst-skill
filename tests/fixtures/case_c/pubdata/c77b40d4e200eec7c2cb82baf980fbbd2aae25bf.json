@@ -1,0 +1,16 @@
+{
+  "source": "ensembl",
+  "query": "gene:GRCh38:HNF4A",
+  "url": "https://rest.ensembl.org/lookup/symbol/homo_sapiens/HNF4A?content-type=application/json",
+  "retrieved_at": "2026-10-24T16:08:21+08:00",
+  "records": [
+    {
+      "ref": "ensembl:ENSG00000101076",
+      "symbol": "HNF4A",
+      "chrom": "20",
+      "start": 44355439,
+      "end": 44432845,
+      "assembly": "GRCh38"
+    }
+  ]
+}

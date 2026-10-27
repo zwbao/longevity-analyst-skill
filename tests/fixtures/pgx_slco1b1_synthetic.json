@@ -1,0 +1,73 @@
+{
+  "schema": "la-pgx/1",
+  "synthetic": "SYNTHETIC test fixture (no real member). CPIC recommendation rows copied verbatim from the CPIC API (CC0), retrieved 2026-10-24; phenotype chosen as SLCO1B1 *1/*5 Decreased Function (CPIC diplotype table), the reading of an rs4149056 T/C carrier with no other CPIC-defined variant.",
+  "status": "ran",
+  "reason_zh": "",
+  "assembly": "GRCh38",
+  "results": [
+    {
+      "gene": "SLCO1B1",
+      "diplotype_or_genotype": "*1/*5",
+      "phenotype": "Decreased Function",
+      "drugs": [
+        {
+          "drug": "simvastatin",
+          "recommendation_text": "Prescribe an alternative statin depending on the desired potency (see Figure 1 of PMID: 35152405 for recommendations for alternative statins). If simvastatin therapy is warranted, limit dose to <20mg/day.",
+          "dose_text": null,
+          "strength": "Strong",
+          "guideline": "SLCO1B1, ABCG2, CYP2C9, and Statins",
+          "guideline_url": "https://www.clinpgx.org/guideline/PA166264281",
+          "cpic_source": {
+            "api": "https://api.cpicpgx.org/v1/recommendation",
+            "id": 8481447,
+            "implications": {
+              "SLCO1B1": "Increased simvastatin acid exposure as compared to normal function; increased risk of myopathy"
+            },
+            "lookupkey": {
+              "SLCO1B1": "Decreased Function"
+            }
+          }
+        },
+        {
+          "drug": "atorvastatin",
+          "recommendation_text": "Prescribe ≤40mg as a starting dose and adjust doses of atorvastatin based on disease-specific guidelines. Prescriber should be aware of possible increased risk for myopathy especially for 40mg dose. If dose >40mg needed for desired efficacy, consider combination therapy (i.e., atorvastatin plus non-statin guideline directed medical therapy) (PMID: 30423391).",
+          "dose_text": null,
+          "strength": "Moderate",
+          "guideline": "SLCO1B1, ABCG2, CYP2C9, and Statins",
+          "guideline_url": "https://www.clinpgx.org/guideline/PA166264281",
+          "cpic_source": {
+            "api": "https://api.cpicpgx.org/v1/recommendation",
+            "id": 8480050,
+            "implications": {
+              "SLCO1B1": "Increased atorvastatin exposure as compared to normal function which may translate to increased myopathy risk"
+            },
+            "lookupkey": {
+              "SLCO1B1": "Decreased Function"
+            }
+          }
+        },
+        {
+          "drug": "rosuvastatin",
+          "recommendation_text": "Prescribe desired starting dose and adjust doses of rosuvastatin based on disease-specific and specific population guidelines. Prescriber should be aware of possible increased risk for myopathy especially for doses >20mg.",
+          "dose_text": null,
+          "strength": "Strong",
+          "guideline": "SLCO1B1, ABCG2, CYP2C9, and Statins",
+          "guideline_url": "https://www.clinpgx.org/guideline/PA166264281",
+          "cpic_source": {
+            "api": "https://api.cpicpgx.org/v1/recommendation",
+            "id": 8481368,
+            "implications": {
+              "ABCG2": "Typical myopathy risk and rosuvastatin exposure",
+              "SLCO1B1": "Increased rosuvastatin exposure as compared to normal function; Typical myopathy risk with doses ≤20 mg."
+            },
+            "lookupkey": {
+              "ABCG2": "Normal Function",
+              "SLCO1B1": "Decreased Function"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "nutrigenetic": []
+}

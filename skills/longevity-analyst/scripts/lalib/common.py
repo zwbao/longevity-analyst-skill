@@ -252,10 +252,28 @@ class Workspace:
         st = load_json(self.state_path)
         if st.get("schema") != SCHEMA:
             raise LAError(f"state schema {st.get('schema')} != {SCHEMA}", EXIT_INPUT)
+        self._loaded_at = now_iso()
+        self._stages_at_load = dict(st.get("stages") or {})
         return st
+
+    def _timing(self, st: Dict[str, Any]) -> None:
+        """Stage clock for cost calibration: a stage starts with the first command that works on it while it is the
+        next stage, and ends each time it becomes done (a voided stage keeps its first start)."""
+        before = getattr(self, "_stages_at_load", None)
+        if before is None:
+            return
+        tm = st.setdefault("timing", {})
+        nxt = next((s for s in STAGES if before.get(s) != "done"), None)
+        if nxt:
+            tm.setdefault(nxt, {}).setdefault("started_at", self._loaded_at)
+        for s in STAGES:
+            if st["stages"].get(s) == "done" and before.get(s) != "done":
+                tm.setdefault(s, {}).setdefault("started_at", self._loaded_at)
+                tm[s]["ended_at"] = now_iso()
 
     def save(self, st: Dict[str, Any]) -> None:
         st["updated_at"] = now_iso()
+        self._timing(st)
         d = self.root / "deliver"
         if st.get("stages", {}).get("report") != "done" and d.exists():
             # a report that is no longer current is removed: it may hold data later excluded or declined

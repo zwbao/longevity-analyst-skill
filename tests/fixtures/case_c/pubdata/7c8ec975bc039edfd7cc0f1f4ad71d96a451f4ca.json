@@ -1,0 +1,2464 @@
+{
+  "source": "gwas",
+  "query": "trait:EFO_0004611:5e-08",
+  "url": "https://www.ebi.ac.uk/gwas/rest/api/v2/associations?efo_id=EFO_0004611&size=100&sort=p_value&direction=asc",
+  "retrieved_at": "2026-10-24T16:05:03+08:00",
+  "records": [
+    {
+      "ref": "gwas:GCST90239658:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.515782 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90239658",
+      "pubmed_id": "34887591",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90019512:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.6015 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019512",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90018961:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.477 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018961",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "LDL cholesterol"
+    },
+    {
+      "ref": "gwas:GCST90501104:rs1065853-T",
+      "rsid": "rs1065853",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.4 mmol/L decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90501104",
+      "pubmed_id": "41044249",
+      "mapped_genes": [
+        "APOC1",
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Clinical LDL cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90019512:rs141622900-A",
+      "rsid": "rs141622900",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "0.5573 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019512",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "APOC1",
+        "APOC1P1"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90239658:rs73015024-T",
+      "rsid": "rs73015024",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.214907 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90239658",
+      "pubmed_id": "34887591",
+      "mapped_genes": [
+        "LDLR",
+        "SMARCA4"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90302008:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.6481 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90302008",
+      "pubmed_id": "38448586",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Total cholesterol to total lipids ratio in large LDL"
+    },
+    {
+      "ref": "gwas:GCST90501177:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.31 mmol/L decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90501177",
+      "pubmed_id": "41044249",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Concentration of LDL particles"
+    },
+    {
+      "ref": "gwas:GCST90302092:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.6288 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90302092",
+      "pubmed_id": "38448586",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Total cholesterol to total lipids ratio in small LDL"
+    },
+    {
+      "ref": "gwas:GCST90302093:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.6298 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90302093",
+      "pubmed_id": "38448586",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Cholesterol esters in small LDL"
+    },
+    {
+      "ref": "gwas:GCST90019512:rs7254892-A",
+      "rsid": "rs7254892",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "0.5153 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019512",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LNCOB1",
+        "NECTIN2"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90302044:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.6186 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90302044",
+      "pubmed_id": "38448586",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Total cholesterol to total lipids ratio in medium LDL"
+    },
+    {
+      "ref": "gwas:GCST90301991:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.6132 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90301991",
+      "pubmed_id": "38448586",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Total cholesterol levels in LDL"
+    },
+    {
+      "ref": "gwas:GCST90302100:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.5892 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90302100",
+      "pubmed_id": "38448586",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Phospholipids to total lipids ratio in small LDL"
+    },
+    {
+      "ref": "gwas:GCST90239658:rs12740374-T",
+      "rsid": "rs12740374",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.148228 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90239658",
+      "pubmed_id": "34887591",
+      "mapped_genes": [
+        "CELSR2"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90302010:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.605 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90302010",
+      "pubmed_id": "38448586",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Cholesteryl esters to total lipids ratio in large LDL"
+    },
+    {
+      "ref": "gwas:GCST90302052:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.5826 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90302052",
+      "pubmed_id": "38448586",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Phospholipids to total lipids ratio in medium LDL"
+    },
+    {
+      "ref": "gwas:GCST90302046:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.6024 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90302046",
+      "pubmed_id": "38448586",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Cholesteryl esters to total lipids ratio in medium LDL"
+    },
+    {
+      "ref": "gwas:GCST90244006:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.5247 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90244006",
+      "pubmed_id": "36333282",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "LDL cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90302049:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.5862 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90302049",
+      "pubmed_id": "38448586",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Total lipid levels in medium LDL"
+    },
+    {
+      "ref": "gwas:GCST90019512:rs4420638-G",
+      "rsid": "rs4420638",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.223 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019512",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "APOC1"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90302016:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.5559 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90302016",
+      "pubmed_id": "38448586",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Phospholipids to total lipids ratio in large LDL"
+    },
+    {
+      "ref": "gwas:GCST90302050:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.5759 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90302050",
+      "pubmed_id": "38448586",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Concentration of medium LDL particles"
+    },
+    {
+      "ref": "gwas:GCST90302098:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.5666 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90302098",
+      "pubmed_id": "38448586",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Concentration of small LDL particles"
+    },
+    {
+      "ref": "gwas:GCST90019512:rs62117160-A",
+      "rsid": "rs62117160",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "0.4072 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019512",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "BCL3",
+        "CEACAM16-AS1"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90302014:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.5606 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90302014",
+      "pubmed_id": "38448586",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Concentration of large LDL particles"
+    },
+    {
+      "ref": "gwas:GCST90019512:rs769449-A",
+      "rsid": "rs769449",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "0.2513 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019512",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90239658:rs11591147-T",
+      "rsid": "rs11591147",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.433696 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90239658",
+      "pubmed_id": "34887591",
+      "mapped_genes": [
+        "PCSK9"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90019512:rs6511720-T",
+      "rsid": "rs6511720",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.2412 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019512",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "LDLR"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90302096:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.5064 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90302096",
+      "pubmed_id": "38448586",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Free cholesterol to total lipids ratio in small LDL"
+    },
+    {
+      "ref": "gwas:GCST90239656:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.499946 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90239656",
+      "pubmed_id": "34887591",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90302048:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.4674 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90302048",
+      "pubmed_id": "38448586",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Free cholesterol to total lipids ratio in medium LDL"
+    },
+    {
+      "ref": "gwas:GCST90302018:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.456 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90302018",
+      "pubmed_id": "38448586",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Triglycerides to total lipids ratio in large LDL"
+    },
+    {
+      "ref": "gwas:GCST90019512:rs12721109-A",
+      "rsid": "rs12721109",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "0.4409 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019512",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "APOC4",
+        "APOC4-APOC2"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90019512:rs11668327-C",
+      "rsid": "rs11668327",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "0.1897 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019512",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "TOMM40"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST010245:rs6857-C",
+      "rsid": "rs6857",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "0.157677 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST010245",
+      "pubmed_id": "32203549",
+      "mapped_genes": [
+        "LNCOB1",
+        "NECTIN2"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "LDL cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90662892:rs599839-A",
+      "rsid": "rs599839",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "0.1361 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662892",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "CELSR2",
+        "PSRC1"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low-density lipoprotein levels"
+    },
+    {
+      "ref": "gwas:GCST90019512:rs365653-G",
+      "rsid": "rs365653",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.2179 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019512",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "NECTIN2"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90239658:rs934197-A",
+      "rsid": "rs934197",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "0.0962978 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90239658",
+      "pubmed_id": "34887591",
+      "mapped_genes": [
+        "APOB",
+        "TDRD15"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90301993:rs1077834-T",
+      "rsid": "rs1077834",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.2585 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90301993",
+      "pubmed_id": "38448586",
+      "mapped_genes": [
+        "ALDH1A2",
+        "LIPC"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Triglyceride levels in LDL"
+    },
+    {
+      "ref": "gwas:GCST90302054:rs2070895-A",
+      "rsid": "rs2070895",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "0.253 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90302054",
+      "pubmed_id": "38448586",
+      "mapped_genes": [
+        "ALDH1A2",
+        "LIPC"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Triglycerides to total lipids ratio in medium LDL"
+    },
+    {
+      "ref": "gwas:GCST90302054:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.4158 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90302054",
+      "pubmed_id": "38448586",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Triglycerides to total lipids ratio in medium LDL"
+    },
+    {
+      "ref": "gwas:GCST90302018:rs2070895-A",
+      "rsid": "rs2070895",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "0.247 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90302018",
+      "pubmed_id": "38448586",
+      "mapped_genes": [
+        "ALDH1A2",
+        "LIPC"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Triglycerides to total lipids ratio in large LDL"
+    },
+    {
+      "ref": "gwas:GCST90302102:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.4138 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90302102",
+      "pubmed_id": "38448586",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Triglycerides to total lipids ratio in small LDL"
+    },
+    {
+      "ref": "gwas:GCST90092861:rs7412-C",
+      "rsid": "rs7412",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "0.383131 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092861",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Free cholesterol to total lipids ratio in large LDL"
+    },
+    {
+      "ref": "gwas:GCST90239657:rs1065853-T",
+      "rsid": "rs1065853",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.652025 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90239657",
+      "pubmed_id": "34887591",
+      "mapped_genes": [
+        "APOC1",
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST010245:rs143020224-C",
+      "rsid": "rs143020224",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "0.169039 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST010245",
+      "pubmed_id": "32203549",
+      "mapped_genes": [
+        "SMARCA4"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "LDL cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90092906:rs7412-C",
+      "rsid": "rs7412",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "0.400522 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092906",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Cholesteryl ester levels in medium LDL"
+    },
+    {
+      "ref": "gwas:GCST90019512:rs11591147-T",
+      "rsid": "rs11591147",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.4782 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019512",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "PCSK9"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90092909:rs7412-C",
+      "rsid": "rs7412",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "0.372695 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092909",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Free cholesterol to total lipids ratio in medium LDL"
+    },
+    {
+      "ref": "gwas:GCST90092911:rs7412-C",
+      "rsid": "rs7412",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "0.390118 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092911",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Concentration of medium LDL particles"
+    },
+    {
+      "ref": "gwas:GCST90092885:rs118147862-G",
+      "rsid": "rs118147862",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.494435 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092885",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Free cholesterol levels in LDL"
+    },
+    {
+      "ref": "gwas:GCST90092908:rs118147862-G",
+      "rsid": "rs118147862",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.491055 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092908",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Free cholesterol levels in medium LDL"
+    },
+    {
+      "ref": "gwas:GCST90092866:rs35980001-G",
+      "rsid": "rs35980001",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.239458 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90092866",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "ALDH1A2",
+        "LIPC"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Triglyceride levels in large LDL"
+    },
+    {
+      "ref": "gwas:GCST90019512:rs34095326-A",
+      "rsid": "rs34095326",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "0.1899 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019512",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "TOMM40"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90092860:rs118147862-G",
+      "rsid": "rs118147862",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.474072 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092860",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Free cholesterol levels in large LDL"
+    },
+    {
+      "ref": "gwas:GCST010245:rs1551891-G",
+      "rsid": "rs1551891",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.173541 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST010245",
+      "pubmed_id": "32203549",
+      "mapped_genes": [
+        "BCL3",
+        "CEACAM16-AS1"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "LDL cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90092888:rs118147862-G",
+      "rsid": "rs118147862",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.473027 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092888",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Phospholipid levels in LDL"
+    },
+    {
+      "ref": "gwas:GCST90092814:rs118147862-G",
+      "rsid": "rs118147862",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.468389 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092814",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Clinical LDL cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90570703:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.4799 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90570703",
+      "pubmed_id": "40537477",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "LDL x depression interaction (2df test)"
+    },
+    {
+      "ref": "gwas:GCST90092962:rs118147862-G",
+      "rsid": "rs118147862",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.46276 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092962",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Total lipid levels in small LDL"
+    },
+    {
+      "ref": "gwas:GCST90662892:rs11591147-T",
+      "rsid": "rs11591147",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.4165 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662892",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "PCSK9"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low-density lipoprotein levels"
+    },
+    {
+      "ref": "gwas:GCST90092866:rs1601935-G",
+      "rsid": "rs1601935",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.192461 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092866",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "ALDH1A2"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Triglyceride levels in large LDL"
+    },
+    {
+      "ref": "gwas:GCST90092856:rs118147862-G",
+      "rsid": "rs118147862",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.450854 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092856",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Cholesterol levels in large LDL"
+    },
+    {
+      "ref": "gwas:GCST90092864:rs118147862-G",
+      "rsid": "rs118147862",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.452191 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092864",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Phospholipid levels in large LDL"
+    },
+    {
+      "ref": "gwas:GCST90019512:rs28399654-A",
+      "rsid": "rs28399654",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "0.302 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019512",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90497219:rs429358-C",
+      "rsid": "rs429358",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "0.176989 mmol/L increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90497219",
+      "pubmed_id": "41044249",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Clinical LDL cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90092960:rs62117160-G",
+      "rsid": "rs62117160",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.433462 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092960",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCL3",
+        "CEACAM16-AS1"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Free cholesterol levels in small LDL"
+    },
+    {
+      "ref": "gwas:GCST010245:rs11591147-G",
+      "rsid": "rs11591147",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.348511 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST010245",
+      "pubmed_id": "32203549",
+      "mapped_genes": [
+        "PCSK9"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "LDL cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90092862:rs118147862-G",
+      "rsid": "rs118147862",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.441878 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092862",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Total lipid levels in large LDL"
+    },
+    {
+      "ref": "gwas:GCST90092883:rs118147862-G",
+      "rsid": "rs118147862",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.442866 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092883",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "LDL cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90092956:rs118147862-G",
+      "rsid": "rs118147862",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.444224 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092956",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Cholesterol levels in small LDL"
+    },
+    {
+      "ref": "gwas:GCST90092964:rs62117160-G",
+      "rsid": "rs62117160",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.428614 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092964",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCL3",
+        "CEACAM16-AS1"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Phospholipid levels in small LDL"
+    },
+    {
+      "ref": "gwas:GCST90092858:rs118147862-G",
+      "rsid": "rs118147862",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.437594 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092858",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Cholesteryl ester levels in large LDL"
+    },
+    {
+      "ref": "gwas:GCST90092912:rs118147862-G",
+      "rsid": "rs118147862",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.442175 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092912",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Phospholipid levels in medium LDL"
+    },
+    {
+      "ref": "gwas:GCST90018961:rs12740374-T",
+      "rsid": "rs12740374",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.1173 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018961",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "CELSR2"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "LDL cholesterol"
+    },
+    {
+      "ref": "gwas:GCST90092915:rs35980001-G",
+      "rsid": "rs35980001",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.21486 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90092915",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "ALDH1A2",
+        "LIPC"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Triglycerides to total lipids ratio in medium LDL"
+    },
+    {
+      "ref": "gwas:GCST90092886:rs118147862-G",
+      "rsid": "rs118147862",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.438557 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092886",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Total lipid levels in LDL"
+    },
+    {
+      "ref": "gwas:GCST90239658:rs12916-C",
+      "rsid": "rs12916",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "0.0700561 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90239658",
+      "pubmed_id": "34887591",
+      "mapped_genes": [
+        "CERT1",
+        "HMGCR"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90662892:rs10942734-A",
+      "rsid": "rs10942734",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "0.0704 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90662892",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "ANKRD31",
+        "HMGCR"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low-density lipoprotein levels"
+    },
+    {
+      "ref": "gwas:GCST90302102:rs2070895-A",
+      "rsid": "rs2070895",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "0.1979 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90302102",
+      "pubmed_id": "38448586",
+      "mapped_genes": [
+        "ALDH1A2",
+        "LIPC"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Triglycerides to total lipids ratio in small LDL"
+    },
+    {
+      "ref": "gwas:GCST90092913:rs7412-C",
+      "rsid": "rs7412",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "0.323639 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092913",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Phospholipids to total lipids ratio in medium LDL"
+    },
+    {
+      "ref": "gwas:GCST90092959:rs7412-C",
+      "rsid": "rs7412",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "0.322572 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90092959",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Cholesteryl esters to total lipids ratio in small LDL"
+    },
+    {
+      "ref": "gwas:GCST90092890:rs35980001-G",
+      "rsid": "rs35980001",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.209814 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90092890",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "ALDH1A2",
+        "LIPC"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Triglyceride levels in LDL"
+    },
+    {
+      "ref": "gwas:GCST90092915:rs118147862-G",
+      "rsid": "rs118147862",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.417558 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90092915",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Triglycerides to total lipids ratio in medium LDL"
+    },
+    {
+      "ref": "gwas:GCST90092965:rs7412-C",
+      "rsid": "rs7412",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "0.317851 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092965",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Phospholipids to total lipids ratio in small LDL"
+    },
+    {
+      "ref": "gwas:GCST90092863:rs118147862-G",
+      "rsid": "rs118147862",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.42323 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092863",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Concentration of large LDL particles"
+    },
+    {
+      "ref": "gwas:GCST90018741:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.525747 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018741",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "LDL cholesterol"
+    },
+    {
+      "ref": "gwas:GCST90662892:rs17242381-T",
+      "rsid": "rs17242381",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.1526 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662892",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "LDLR"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low-density lipoprotein levels"
+    },
+    {
+      "ref": "gwas:GCST90092967:rs118147862-G",
+      "rsid": "rs118147862",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.404715 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90092967",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Triglycerides to total lipids ratio in small LDL"
+    },
+    {
+      "ref": "gwas:GCST90662892:rs62122514-A",
+      "rsid": "rs62122514",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "0.0873 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90662892",
+      "pubmed_id": "40436827",
+      "mapped_genes": [
+        "APOB",
+        "TDRD15"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low-density lipoprotein levels"
+    },
+    {
+      "ref": "gwas:GCST90092884:rs118147862-G",
+      "rsid": "rs118147862",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.416757 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092884",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Cholesteryl ester levels in LDL"
+    },
+    {
+      "ref": "gwas:GCST90092963:rs41290120-G",
+      "rsid": "rs41290120",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.391666 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092963",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "NECTIN2"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Concentration of small LDL particles"
+    },
+    {
+      "ref": "gwas:GCST90092865:rs35980001-G",
+      "rsid": "rs35980001",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.206879 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092865",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "ALDH1A2",
+        "LIPC"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Phospholipids to total lipids ratio in large LDL"
+    },
+    {
+      "ref": "gwas:GCST90092958:rs41290120-G",
+      "rsid": "rs41290120",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.38986 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092958",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "NECTIN2"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Cholesteryl ester levels in small LDL"
+    },
+    {
+      "ref": "gwas:GCST90092961:rs118147862-G",
+      "rsid": "rs118147862",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.398228 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092961",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Free cholesterol to total lipids ratio in small LDL"
+    },
+    {
+      "ref": "gwas:GCST90092867:rs118147862-G",
+      "rsid": "rs118147862",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.399781 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90092867",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Triglycerides to total lipids ratio in large LDL"
+    },
+    {
+      "ref": "gwas:GCST90019512:rs7259004-C",
+      "rsid": "rs7259004",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "0.1552 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019512",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "APOC1P1"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90092867:rs35980001-G",
+      "rsid": "rs35980001",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.197896 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90092867",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "ALDH1A2",
+        "LIPC"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Triglycerides to total lipids ratio in large LDL"
+    },
+    {
+      "ref": "gwas:GCST90239658:rs4299376-T",
+      "rsid": "rs4299376",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.0700085 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90239658",
+      "pubmed_id": "34887591",
+      "mapped_genes": [
+        "ABCG8"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90498413:rs429358-C",
+      "rsid": "rs429358",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "0.158738 mmol/L increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90498413",
+      "pubmed_id": "41044249",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Concentration of LDL particles"
+    },
+    {
+      "ref": "gwas:GCST90092887:rs118147862-G",
+      "rsid": "rs118147862",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.405483 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092887",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Concentration of LDL particles"
+    },
+    {
+      "ref": "gwas:GCST90019512:rs6859-G",
+      "rsid": "rs6859",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.0956 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90019512",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "NECTIN2"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90302012:rs964184-C",
+      "rsid": "rs964184",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "0.217 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90302012",
+      "pubmed_id": "38448586",
+      "mapped_genes": [
+        "ZPR1"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Free cholesterol to total lipids ratio in large LDL"
+    },
+    {
+      "ref": "gwas:GCST90092857:rs118147862-G",
+      "rsid": "rs118147862",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.390812 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092857",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Cholesterol to total lipids ratio in large LDL"
+    },
+    {
+      "ref": "gwas:GCST010245:rs4452060-C",
+      "rsid": "rs4452060",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "0.0833597 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST010245",
+      "pubmed_id": "32203549",
+      "mapped_genes": [
+        "BCAM",
+        "NECTIN2"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "LDL cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90239658:rs28601761-G",
+      "rsid": "rs28601761",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.0649002 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90239658",
+      "pubmed_id": "34887591",
+      "mapped_genes": [
+        "TRIB1AL"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90092915:rs1601935-G",
+      "rsid": "rs1601935",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.168419 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092915",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "ALDH1A2"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Triglycerides to total lipids ratio in medium LDL"
+    },
+    {
+      "ref": "gwas:GCST010245:rs4970834-C",
+      "rsid": "rs4970834",
+      "effect_allele": "C",
+      "p_value": 0.0,
+      "beta_text": "0.105228 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST010245",
+      "pubmed_id": "32203549",
+      "mapped_genes": [
+        "CELSR2"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "LDL cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90239656:rs28362286-A",
+      "rsid": "rs28362286",
+      "effect_allele": "A",
+      "p_value": 0.0,
+      "beta_text": "1.07925 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90239656",
+      "pubmed_id": "34887591",
+      "mapped_genes": [
+        "PCSK9"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90018961:rs11591147-T",
+      "rsid": "rs11591147",
+      "effect_allele": "T",
+      "p_value": 0.0,
+      "beta_text": "0.3485 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90018961",
+      "pubmed_id": "34594039",
+      "mapped_genes": [
+        "PCSK9"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "LDL cholesterol"
+    },
+    {
+      "ref": "gwas:GCST90092910:rs118147862-G",
+      "rsid": "rs118147862",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.398564 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092910",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Total lipid levels in medium LDL"
+    },
+    {
+      "ref": "gwas:GCST90092904:rs118147862-G",
+      "rsid": "rs118147862",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.398603 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092904",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Cholesterol levels in medium LDL"
+    },
+    {
+      "ref": "gwas:GCST90092890:rs1601935-G",
+      "rsid": "rs1601935",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.166795 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092890",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "ALDH1A2"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Triglyceride levels in LDL"
+    },
+    {
+      "ref": "gwas:GCST002898:rs1065853-G",
+      "rsid": "rs1065853",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.603 s.d. increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST002898",
+      "pubmed_id": "25961943",
+      "mapped_genes": [
+        "APOC1",
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "LDL cholesterol"
+    },
+    {
+      "ref": "gwas:GCST90002412:rs312976-G",
+      "rsid": "rs312976",
+      "effect_allele": "G",
+      "p_value": 0.0,
+      "beta_text": "0.0794248 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90002412",
+      "pubmed_id": "32493714",
+      "mapped_genes": [
+        "NUTF2P8",
+        "TDRD15"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90479660:rs62117160-G",
+      "rsid": "rs62117160",
+      "effect_allele": "G",
+      "p_value": 1e-323,
+      "beta_text": "0.3374 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479660",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "BCL3",
+        "CEACAM16-AS1"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "low density lipoprotein cholesterol (LDLC, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90479661:rs28362286-C",
+      "rsid": "rs28362286",
+      "effect_allele": "C",
+      "p_value": 1e-323,
+      "beta_text": "1.031 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479661",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "PCSK9"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "low density lipoprotein cholesterol (LDLC, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90479660:rs611917-A",
+      "rsid": "rs611917",
+      "effect_allele": "A",
+      "p_value": 1e-323,
+      "beta_text": "0.1089 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479660",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "CELSR2"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "low density lipoprotein cholesterol (LDLC, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90479660:rs143020224-C",
+      "rsid": "rs143020224",
+      "effect_allele": "C",
+      "p_value": 1e-323,
+      "beta_text": "0.1469 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479660",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "SMARCA4"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "low density lipoprotein cholesterol (LDLC, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475420:rs7528419-A",
+      "rsid": "rs7528419",
+      "effect_allele": "A",
+      "p_value": 1e-323,
+      "beta_text": "0.1271 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475420",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "CELSR2"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "low density lipoprotein cholesterol (LDLC, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475420:rs62117160-G",
+      "rsid": "rs62117160",
+      "effect_allele": "G",
+      "p_value": 1e-323,
+      "beta_text": "0.3197 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475420",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "BCL3",
+        "CEACAM16-AS1"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "low density lipoprotein cholesterol (LDLC, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475415:rs28362286-C",
+      "rsid": "rs28362286",
+      "effect_allele": "C",
+      "p_value": 1e-323,
+      "beta_text": "1.037 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475415",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "PCSK9"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "low density lipoprotein cholesterol (LDLC, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90479661:rs144826254-T",
+      "rsid": "rs144826254",
+      "effect_allele": "T",
+      "p_value": 1e-323,
+      "beta_text": "0.1581 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479661",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "SMARCA4"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "low density lipoprotein cholesterol (LDLC, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475412:rs62117160-G",
+      "rsid": "rs62117160",
+      "effect_allele": "G",
+      "p_value": 1e-323,
+      "beta_text": "0.3445 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475412",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "BCL3",
+        "CEACAM16-AS1"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "low density lipoprotein cholesterol (LDLC, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90479662:rs7528419-A",
+      "rsid": "rs7528419",
+      "effect_allele": "A",
+      "p_value": 1e-323,
+      "beta_text": "0.1171 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479662",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "CELSR2"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "low density lipoprotein cholesterol (LDLC, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475411:rs28362286-C",
+      "rsid": "rs28362286",
+      "effect_allele": "C",
+      "p_value": 1e-323,
+      "beta_text": "1.044 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475411",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "PCSK9"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "low density lipoprotein cholesterol (LDLC, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90479662:rs62117160-G",
+      "rsid": "rs62117160",
+      "effect_allele": "G",
+      "p_value": 1e-323,
+      "beta_text": "0.311 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479662",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "BCL3",
+        "CEACAM16-AS1"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "low density lipoprotein cholesterol (LDLC, minimum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90479661:rs611917-A",
+      "rsid": "rs611917",
+      "effect_allele": "A",
+      "p_value": 1e-323,
+      "beta_text": "0.1072 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479661",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "CELSR2"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "low density lipoprotein cholesterol (LDLC, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90479661:rs62117160-G",
+      "rsid": "rs62117160",
+      "effect_allele": "G",
+      "p_value": 1e-323,
+      "beta_text": "0.3564 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479661",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "BCL3",
+        "CEACAM16-AS1"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "low density lipoprotein cholesterol (LDLC, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90475412:rs143020224-C",
+      "rsid": "rs143020224",
+      "effect_allele": "C",
+      "p_value": 1e-323,
+      "beta_text": "0.151 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475412",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "SMARCA4"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "low density lipoprotein cholesterol (LDLC, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90002412:rs140480140-G",
+      "rsid": "rs140480140",
+      "effect_allele": "G",
+      "p_value": 4e-323,
+      "beta_text": "0.216585 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90002412",
+      "pubmed_id": "32493714",
+      "mapped_genes": [
+        "APOC1"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90002412:rs10455872-A",
+      "rsid": "rs10455872",
+      "effect_allele": "A",
+      "p_value": 2.994e-321,
+      "beta_text": "0.135534 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90002412",
+      "pubmed_id": "32493714",
+      "mapped_genes": [
+        "LPA"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90002412:rs2335418-G",
+      "rsid": "rs2335418",
+      "effect_allele": "G",
+      "p_value": 4.99e-321,
+      "beta_text": "0.074248 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90002412",
+      "pubmed_id": "32493714",
+      "mapped_genes": [
+        "ANKRD31",
+        "HMGCR"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90479660:rs28362286-C",
+      "rsid": "rs28362286",
+      "effect_allele": "C",
+      "p_value": 3.99996e-319,
+      "beta_text": "1.035 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90479660",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "PCSK9"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "low density lipoprotein cholesterol (LDLC, maximum, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90002412:rs964184-G",
+      "rsid": "rs964184",
+      "effect_allele": "G",
+      "p_value": 1.99999997e-316,
+      "beta_text": "0.106826 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90002412",
+      "pubmed_id": "32493714",
+      "mapped_genes": [
+        "ZPR1"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90019512:rs28399637-A",
+      "rsid": "rs28399637",
+      "effect_allele": "A",
+      "p_value": 1e-314,
+      "beta_text": "0.0975 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90019512",
+      "pubmed_id": "33462484",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90570673:rs7412-T",
+      "rsid": "rs7412",
+      "effect_allele": "T",
+      "p_value": 9.0000000001e-313,
+      "beta_text": "0.8999 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90570673",
+      "pubmed_id": "40537477",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "LDL x depression interaction (2df test)"
+    },
+    {
+      "ref": "gwas:GCST010245:rs934197-G",
+      "rsid": "rs934197",
+      "effect_allele": "G",
+      "p_value": 8.999999999986e-312,
+      "beta_text": "0.0831886 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST010245",
+      "pubmed_id": "32203549",
+      "mapped_genes": [
+        "APOB",
+        "TDRD15"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "LDL cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90179148:rs261332-A",
+      "rsid": "rs261332",
+      "effect_allele": "A",
+      "p_value": 2e-310,
+      "beta_text": "0.063942 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90179148",
+      "pubmed_id": "36376304",
+      "mapped_genes": [
+        "ALDH1A2",
+        "LIPC",
+        "LIPC-AS1"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low-density lipoprotein levels (MTAG)"
+    },
+    {
+      "ref": "gwas:GCST90179148:rs780095-A",
+      "rsid": "rs780095",
+      "effect_allele": "A",
+      "p_value": 3.9999999999999996e-308,
+      "beta_text": "0.052585 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90179148",
+      "pubmed_id": "36376304",
+      "mapped_genes": [
+        "GCKR"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low-density lipoprotein levels (MTAG)"
+    },
+    {
+      "ref": "gwas:GCST90134520:rs7254892-A",
+      "rsid": "rs7254892",
+      "effect_allele": "A",
+      "p_value": 1e-306,
+      "beta_text": "14.86 unit decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST90134520",
+      "pubmed_id": "35884923",
+      "mapped_genes": [
+        "LNCOB1",
+        "NECTIN2"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "LDL cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90002412:rs35271870-T",
+      "rsid": "rs35271870",
+      "effect_allele": "T",
+      "p_value": 8e-304,
+      "beta_text": "0.124867 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90002412",
+      "pubmed_id": "32493714",
+      "mapped_genes": [
+        "SARS1"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90101745:rs7412-C",
+      "rsid": "rs7412",
+      "effect_allele": "C",
+      "p_value": 9e-304,
+      "beta_text": "0.535219 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90101745",
+      "pubmed_id": "35546142",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST90475416:rs73015024-G",
+      "rsid": "rs73015024",
+      "effect_allele": "G",
+      "p_value": 5e-303,
+      "beta_text": "0.1445 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90475416",
+      "pubmed_id": "39024449",
+      "mapped_genes": [
+        "LDLR",
+        "SMARCA4"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "low density lipoprotein cholesterol (LDLC, mean, inv-norm transformed)"
+    },
+    {
+      "ref": "gwas:GCST90092865:rs183130-C",
+      "rsid": "rs183130",
+      "effect_allele": "C",
+      "p_value": 3.0000000000000004e-301,
+      "beta_text": "0.163157 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST90092865",
+      "pubmed_id": "35213538",
+      "mapped_genes": [
+        "CETP",
+        "HERPUD1"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Phospholipids to total lipids ratio in large LDL"
+    },
+    {
+      "ref": "gwas:GCST007141:rs7412-C",
+      "rsid": "rs7412",
+      "effect_allele": "C",
+      "p_value": 1e-300,
+      "beta_text": "0.498 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST007141",
+      "pubmed_id": "29507422",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST006612:rs118147862-A",
+      "rsid": "rs118147862",
+      "effect_allele": "A",
+      "p_value": 1e-300,
+      "beta_text": "0.3977 mg dl-1 decrease",
+      "or": null,
+      "direction": -1,
+      "accession": "GCST006612",
+      "pubmed_id": "30275531",
+      "mapped_genes": [
+        "BCAM"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "LDL cholesterol"
+    },
+    {
+      "ref": "gwas:GCST007141:rs7412-C",
+      "rsid": "rs7412",
+      "effect_allele": "C",
+      "p_value": 1e-300,
+      "beta_text": "0.493 unit increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST007141",
+      "pubmed_id": "29507422",
+      "mapped_genes": [
+        "APOE"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "Low density lipoprotein cholesterol levels"
+    },
+    {
+      "ref": "gwas:GCST006612:rs143020224-C",
+      "rsid": "rs143020224",
+      "effect_allele": "C",
+      "p_value": 1e-300,
+      "beta_text": "0.1619 mg dl-1 increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST006612",
+      "pubmed_id": "30275531",
+      "mapped_genes": [
+        "SMARCA4"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "LDL cholesterol"
+    },
+    {
+      "ref": "gwas:GCST006612:rs611917-A",
+      "rsid": "rs611917",
+      "effect_allele": "A",
+      "p_value": 1e-300,
+      "beta_text": "0.1122 mg dl-1 increase",
+      "or": null,
+      "direction": 1,
+      "accession": "GCST006612",
+      "pubmed_id": "30275531",
+      "mapped_genes": [
+        "CELSR2"
+      ],
+      "efo": "EFO_0004611",
+      "reported_trait": "LDL cholesterol"
+    }
+  ]
+}

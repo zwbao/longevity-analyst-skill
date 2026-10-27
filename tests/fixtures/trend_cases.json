@@ -1,0 +1,528 @@
+{
+ "schema": "trend-cases/1",
+ "about": "趋势判定的共享用例：analyst（twin series）、coach（noise.py trend）、LongPi 网站（JS）共用。算法见 PLAN 附录 B：聚点窗口长度为 min_retest_days（缺省 28 天），同一天取第一个值；相邻对比与首末对比沿用 rcv-cases/1 的 RCV；趋势为加权最小二乘斜率 z 检验，n ≥ 3 且跨度 ≥ 180 天。数字来自 longevity-skills data/biological_variation.json（CVA 缺省 0.5 × CVI）。numbers 允许 ±0.1 的舍入误差（slope_per_year ±0.01）。",
+ "z": 1.96,
+ "z_trend": 2.576,
+ "cases": [
+  {
+   "id": "glucose-slow-drift",
+   "note_zh": "核心用例：每一步都在波动内，首末和趋势超出波动",
+   "marker": "glucose",
+   "unit": "mmol/L",
+   "series": [
+    {
+     "t": "2023-09-01",
+     "value": 4.6
+    },
+    {
+     "t": "2024-09-03",
+     "value": 5.0
+    },
+    {
+     "t": "2025-09-02",
+     "value": 5.3
+    },
+    {
+     "t": "2026-09-01",
+     "value": 5.6
+    }
+   ],
+   "expect": {
+    "analyst": {
+     "pairs": [
+      "within_noise",
+      "within_noise",
+      "within_noise"
+     ],
+     "baseline_vs_latest": "increase_beyond_noise",
+     "trend": "rising_beyond_noise",
+     "summary_verdict": "trend_beyond_noise"
+    },
+    "coach": {
+     "pairs_last": "within_noise",
+     "trend": "rising_trend"
+    },
+    "longpi": {
+     "summary_verdict": "trend_beyond_noise",
+     "trend": "rising_beyond_noise"
+    }
+   },
+   "numbers": {
+    "single_rcv_up_pct": 14.6,
+    "points": 4,
+    "first_vs_latest_pct": 21.7,
+    "slope_per_year": 0.3301,
+    "z_slope": 2.74,
+    "annual_change_pct": 6.4
+   }
+  },
+  {
+   "id": "ldl-stable",
+   "note_zh": "平稳：三层判定都不报变化",
+   "marker": "ldl",
+   "unit": "mmol/L",
+   "series": [
+    {
+     "t": "2023-09-01",
+     "value": 3.1
+    },
+    {
+     "t": "2024-09-03",
+     "value": 3.3
+    },
+    {
+     "t": "2025-09-02",
+     "value": 3.0
+    },
+    {
+     "t": "2026-09-01",
+     "value": 3.2
+    }
+   ],
+   "expect": {
+    "analyst": {
+     "pairs": [
+      "within_noise",
+      "within_noise",
+      "within_noise"
+     ],
+     "baseline_vs_latest": "within_noise",
+     "trend": "no_trend_detected",
+     "summary_verdict": "within_noise"
+    },
+    "coach": {
+     "pairs_last": "within_noise",
+     "trend": "no_trend_detected"
+    },
+    "longpi": {
+     "summary_verdict": "within_noise",
+     "trend": "no_trend_detected"
+    }
+   },
+   "numbers": {
+    "single_rcv_up_pct": 26.2,
+    "points": 4,
+    "first_vs_latest_pct": 3.2,
+    "slope_per_year": 0.0001,
+    "z_slope": 0.0,
+    "annual_change_pct": 0.0
+   }
+  },
+  {
+   "id": "tg-lognormal-noisy",
+   "note_zh": "对数正态、波动大但无趋势",
+   "marker": "tg",
+   "unit": "mmol/L",
+   "series": [
+    {
+     "t": "2022-03-01",
+     "value": 1.2
+    },
+    {
+     "t": "2023-03-06",
+     "value": 1.8
+    },
+    {
+     "t": "2024-03-04",
+     "value": 1.1
+    },
+    {
+     "t": "2025-03-03",
+     "value": 1.7
+    },
+    {
+     "t": "2026-03-02",
+     "value": 1.3
+    }
+   ],
+   "expect": {
+    "analyst": {
+     "pairs": [
+      "within_noise",
+      "within_noise",
+      "within_noise",
+      "within_noise"
+     ],
+     "baseline_vs_latest": "within_noise",
+     "trend": "no_trend_detected",
+     "summary_verdict": "within_noise"
+    },
+    "coach": {
+     "pairs_last": "within_noise",
+     "trend": "no_trend_detected"
+    },
+    "longpi": {
+     "summary_verdict": "within_noise",
+     "trend": "no_trend_detected"
+    }
+   },
+   "numbers": {
+    "single_rcv_up_pct": 83.8,
+    "points": 5,
+    "first_vs_latest_pct": 8.3,
+    "slope_per_year": 0.0105,
+    "z_slope": 0.15,
+    "annual_change_pct": 1.1
+   }
+  },
+  {
+   "id": "two-points-only",
+   "note_zh": "只有两个点：不做趋势检验",
+   "marker": "glucose",
+   "unit": "mmol/L",
+   "series": [
+    {
+     "t": "2025-09-02",
+     "value": 4.6
+    },
+    {
+     "t": "2026-09-01",
+     "value": 5.6
+    }
+   ],
+   "expect": {
+    "analyst": {
+     "pairs": [
+      "increase_beyond_noise"
+     ],
+     "baseline_vs_latest": "increase_beyond_noise",
+     "trend": "not_judged",
+     "summary_verdict": "change_beyond_noise"
+    },
+    "coach": {
+     "pairs_last": "up_beyond_noise",
+     "trend": "not_judged"
+    },
+    "longpi": {
+     "summary_verdict": "change_beyond_noise",
+     "trend": "not_judged"
+    },
+    "trend_not_judged_reason": "fewer_than_3_points"
+   },
+   "numbers": {
+    "single_rcv_up_pct": 14.6,
+    "points": 2,
+    "first_vs_latest_pct": 21.7
+   }
+  },
+  {
+   "id": "span-under-180-days",
+   "note_zh": "三个点但跨度不足 180 天",
+   "marker": "glucose",
+   "unit": "mmol/L",
+   "series": [
+    {
+     "t": "2026-01-05",
+     "value": 5.0
+    },
+    {
+     "t": "2026-03-05",
+     "value": 5.3
+    },
+    {
+     "t": "2026-05-20",
+     "value": 5.6
+    }
+   ],
+   "expect": {
+    "analyst": {
+     "pairs": [
+      "within_noise",
+      "within_noise"
+     ],
+     "baseline_vs_latest": "within_noise",
+     "trend": "not_judged",
+     "summary_verdict": "within_noise"
+    },
+    "coach": {
+     "pairs_last": "within_noise",
+     "trend": "not_judged"
+    },
+    "longpi": {
+     "summary_verdict": "within_noise",
+     "trend": "not_judged"
+    },
+    "trend_not_judged_reason": "span_under_180_days"
+   },
+   "numbers": {
+    "single_rcv_up_pct": 14.6,
+    "points": 3,
+    "first_vs_latest_pct": 12.0
+   }
+  },
+  {
+   "id": "adjacent-too-close",
+   "note_zh": "相邻两点落在相邻窗口、间隔小于 min_retest_days：该对不判定，两点仍参与趋势",
+   "marker": "ldl",
+   "unit": "mmol/L",
+   "series": [
+    {
+     "t": "2024-01-01",
+     "value": 3.0
+    },
+    {
+     "t": "2024-06-16",
+     "value": 3.1
+    },
+    {
+     "t": "2024-06-17",
+     "value": 3.2
+    },
+    {
+     "t": "2025-01-05",
+     "value": 3.0
+    }
+   ],
+   "expect": {
+    "analyst": {
+     "pairs": [
+      "within_noise",
+      "not_judged",
+      "within_noise"
+     ],
+     "baseline_vs_latest": "within_noise",
+     "trend": "no_trend_detected",
+     "summary_verdict": "within_noise"
+    },
+    "coach": {
+     "pairs_last": "within_noise",
+     "trend": "no_trend_detected"
+    },
+    "longpi": {
+     "summary_verdict": "within_noise",
+     "trend": "no_trend_detected"
+    }
+   },
+   "numbers": {
+    "single_rcv_up_pct": 26.2,
+    "points": 4,
+    "first_vs_latest_pct": 0.0,
+    "slope_per_year": -0.0137,
+    "z_slope": -0.03,
+    "annual_change_pct": -0.4
+   }
+  },
+  {
+   "id": "mixed-units",
+   "note_zh": "mg/dL 与 mmol/L 混用，按 convert 换算",
+   "marker": "glucose",
+   "unit": "mmol/L",
+   "series": [
+    {
+     "t": "2023-09-01",
+     "value": 83,
+     "unit": "mg/dL"
+    },
+    {
+     "t": "2024-09-03",
+     "value": 5.0
+    },
+    {
+     "t": "2025-09-02",
+     "value": 95.5,
+     "unit": "mg/dL"
+    },
+    {
+     "t": "2026-09-01",
+     "value": 5.6
+    }
+   ],
+   "expect": {
+    "analyst": {
+     "pairs": [
+      "within_noise",
+      "within_noise",
+      "within_noise"
+     ],
+     "baseline_vs_latest": "increase_beyond_noise",
+     "trend": "rising_beyond_noise",
+     "summary_verdict": "trend_beyond_noise"
+    },
+    "coach": {
+     "pairs_last": "within_noise",
+     "trend": "rising_trend"
+    },
+    "longpi": {
+     "summary_verdict": "trend_beyond_noise",
+     "trend": "rising_beyond_noise"
+    }
+   },
+   "numbers": {
+    "single_rcv_up_pct": 14.6,
+    "points": 4,
+    "first_vs_latest_pct": 21.6,
+    "slope_per_year": 0.3282,
+    "z_slope": 2.72,
+    "annual_change_pct": 6.4
+   }
+  },
+  {
+   "id": "censored-value",
+   "note_zh": "含删失值 <0.5：排除并记入 caveats",
+   "marker": "crp",
+   "unit": "mg/L",
+   "series": [
+    {
+     "t": "2023-09-01",
+     "value": "<0.5"
+    },
+    {
+     "t": "2024-09-03",
+     "value": 1.2
+    },
+    {
+     "t": "2025-09-02",
+     "value": 1.0
+    },
+    {
+     "t": "2026-09-01",
+     "value": 1.4
+    }
+   ],
+   "expect": {
+    "analyst": {
+     "pairs": [
+      "within_noise",
+      "within_noise"
+     ],
+     "baseline_vs_latest": "within_noise",
+     "trend": "no_trend_detected",
+     "summary_verdict": "within_noise"
+    },
+    "coach": {
+     "pairs_last": "within_noise",
+     "trend": "no_trend_detected"
+    },
+    "longpi": {
+     "summary_verdict": "within_noise",
+     "trend": "no_trend_detected"
+    },
+    "caveats": [
+     "censored_or_non_numeric"
+    ]
+   },
+   "numbers": {
+    "single_rcv_up_pct": 144.8,
+    "points": 3,
+    "first_vs_latest_pct": 16.7,
+    "slope_per_year": 0.0773,
+    "z_slope": 0.34,
+    "annual_change_pct": 8.0
+   }
+  },
+  {
+   "id": "unconfirmed-source",
+   "note_zh": "来源未确认的观测被排除",
+   "marker": "glucose",
+   "unit": "mmol/L",
+   "series": [
+    {
+     "t": "2023-09-01",
+     "value": 4.6
+    },
+    {
+     "t": "2024-09-03",
+     "value": 5.0,
+     "provenance_uncertain": true
+    },
+    {
+     "t": "2025-09-02",
+     "value": 5.3
+    },
+    {
+     "t": "2026-09-01",
+     "value": 5.6
+    }
+   ],
+   "expect": {
+    "analyst": {
+     "pairs": [
+      "increase_beyond_noise",
+      "within_noise"
+     ],
+     "baseline_vs_latest": "increase_beyond_noise",
+     "trend": "rising_beyond_noise",
+     "summary_verdict": "trend_beyond_noise"
+    },
+    "coach": {
+     "pairs_last": "within_noise",
+     "trend": "rising_trend"
+    },
+    "longpi": {
+     "summary_verdict": "trend_beyond_noise",
+     "trend": "rising_beyond_noise"
+    },
+    "caveats": [
+     "unconfirmed_source"
+    ]
+   },
+   "numbers": {
+    "single_rcv_up_pct": 14.6,
+    "points": 3,
+    "first_vs_latest_pct": 21.7,
+    "slope_per_year": 0.3356,
+    "z_slope": 2.67,
+    "annual_change_pct": 6.5
+   }
+  },
+  {
+   "id": "same-day-duplicates",
+   "note_zh": "同一天多个值只取第一个",
+   "marker": "glucose",
+   "unit": "mmol/L",
+   "series": [
+    {
+     "t": "2023-09-01",
+     "value": 4.6
+    },
+    {
+     "t": "2024-09-03",
+     "value": 5.0
+    },
+    {
+     "t": "2025-09-02",
+     "value": 5.3
+    },
+    {
+     "t": "2025-09-02",
+     "value": 5.9
+    },
+    {
+     "t": "2026-09-01",
+     "value": 5.6
+    }
+   ],
+   "expect": {
+    "analyst": {
+     "pairs": [
+      "within_noise",
+      "within_noise",
+      "within_noise"
+     ],
+     "baseline_vs_latest": "increase_beyond_noise",
+     "trend": "rising_beyond_noise",
+     "summary_verdict": "trend_beyond_noise"
+    },
+    "coach": {
+     "pairs_last": "within_noise",
+     "trend": "rising_trend"
+    },
+    "longpi": {
+     "summary_verdict": "trend_beyond_noise",
+     "trend": "rising_beyond_noise"
+    },
+    "caveats": [
+     "same_day_duplicate_first_kept"
+    ]
+   },
+   "numbers": {
+    "single_rcv_up_pct": 14.6,
+    "points": 4,
+    "first_vs_latest_pct": 21.7,
+    "slope_per_year": 0.3301,
+    "z_slope": 2.74,
+    "annual_change_pct": 6.4
+   }
+  }
+ ]
+}

@@ -1,0 +1,16 @@
+{
+  "source": "ensembl",
+  "query": "gene:GRCh38:SLC22A12",
+  "url": "https://rest.ensembl.org/lookup/symbol/homo_sapiens/SLC22A12?content-type=application/json",
+  "retrieved_at": "2026-10-24T16:06:13+08:00",
+  "records": [
+    {
+      "ref": "ensembl:ENSG00000197891",
+      "symbol": "SLC22A12",
+      "chrom": "11",
+      "start": 64590641,
+      "end": 64602353,
+      "assembly": "GRCh38"
+    }
+  ]
+}
