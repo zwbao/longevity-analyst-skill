@@ -784,7 +784,10 @@ def insight_sections(ws: Path, ro: Dict[str, Dict[str, Any]]) -> List[str]:
                     pct = ("低于第 1 百分位" if x["bound"] == "below" else "高于第 99 百分位" if x["bound"] == "above" else
                            f"第 {_fmt(x['pct_low'])}–{_fmt(x['pct_high'])} 百分位（该人群很多人与你同值，多为检测下限）" if x["bound"] == "tie"
                            else f"第 {_fmt(x['pct'])} 百分位")
-                    L.append(f"| {_cell(x['label_zh'])} | {_cell(_fmt(x['value']))} {_cell(x['unit'])} | {"中国 " if x.get("reference") == "cn" else "美国 " if "cn" in refs else ""}{_cell(_stratum_zh(x['stratum']))}{f"（{x['n']} 人）" if x.get("n") else ""} | {pct} | {_cell(_fmt(x['median']))} |")
+                    # Hoisted so the f-string has no nested same-type quotes (Python < 3.12 cannot parse them).
+                    ref = "中国 " if x.get("reference") == "cn" else "美国 " if "cn" in refs else ""
+                    n = f"（{x['n']} 人）" if x.get("n") else ""
+                    L.append(f"| {_cell(x['label_zh'])} | {_cell(_fmt(x['value']))} {_cell(x['unit'])} | {ref}{_cell(_stratum_zh(x['stratum']))}{n} | {pct} | {_cell(_fmt(x['median']))} |")
                 L.append("")
             if pos["gmhi"]:
                 gm = pos["gmhi"]
