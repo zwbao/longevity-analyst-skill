@@ -21,6 +21,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from lalib import board, causal, genomics, pgx, reference, surveillance, wearable
 from lalib import common as C  # noqa: E402
 from lalib import evidence, integrate, intake, methods, organs, pipelines, preflight, report, twin  # noqa: E402
+from lalib import bench_route, clinical_age, clinical_mortality, open_llm, protein_age  # noqa: E402
 
 SEX = {"m": "male", "male": "male", "男": "male", "f": "female", "female": "female", "女": "female"}
 
@@ -30,6 +31,40 @@ def _open(a, lock: bool = True):
     if lock:
         ws.lock()
     return ws, ws.load()
+
+
+# ---------------------------------------------------------------- LongevityBench (no member workspace)
+def cmd_bench(a):
+    """Route one exam prompt. No workspace, no report, no answer while the caller is unwired."""
+    text = Path(a.prompt).read_text()
+    result = bench_route.route(text, a.lb_id or None)
+    if result.get("target") in ("clinical_hgb", "clinical_elasticnet") and result.get("wired"):
+        got = clinical_age.answer(text, result.get("format") or "", follow=a.follow_up or "")
+        if got:
+            result["callable"] = True
+            result["answer"] = got["answer"]
+            result["caller"] = result["target"]
+    elif result.get("target") == "clinical_cox" and result.get("wired"):
+        got = clinical_mortality.answer(text, result.get("format") or "", follow=a.follow_up or "")
+        if got:
+            result["callable"] = True
+            result["answer"] = got["answer"]
+            result["caller"] = "clinical_cox"
+    elif result.get("target") in ("protein_elasticnet", "protein_clock") and result.get("wired"):
+        got = protein_age.answer(text, result.get("format") or "")
+        if got:
+            result["callable"] = True
+            result["answer"] = got["answer"]
+            result["caller"] = result["target"]
+    elif result.get("kind") == "model" and result.get("wired") and a.run_model:
+        repo = a.model_path or result.get("local_path") or result.get("repo")
+        if repo:
+            got = open_llm.answer(text, result.get("format") or "", repo)
+            if got:
+                result["callable"] = True
+                result["answer"] = got["answer"]
+                result["caller"] = result["target"]
+    C.emit(result)
 
 
 # ---------------------------------------------------------------- setup
@@ -1073,6 +1108,14 @@ def build_parser():
     s.add_argument("--verdict", choices=["pass", "block"])
     s.add_argument("--findings")
     s.set_defaults(fn=cmd_review)
+
+    s = sub.add_parser("bench", help="route one LongevityBench prompt; does not touch a member workspace")
+    s.add_argument("--prompt", required=True, help="user prompt file, with the assistant answer removed")
+    s.add_argument("--lb-id", default="", help="paper id such as LB-0034, or a mini-split id")
+    s.add_argument("--follow-up", default="", help="optional text with SEQN, for the 1999-2000 creatinine correction")
+    s.add_argument("--run-model", action="store_true", help="load and run the open Longevity-LLM named in the route")
+    s.add_argument("--model-path", default="", help="local checkpoint path overriding the route repository")
+    s.set_defaults(fn=cmd_bench)
     return p
 
 

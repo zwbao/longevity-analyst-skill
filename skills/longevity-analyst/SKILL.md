@@ -68,6 +68,7 @@ library path in the workspace, so later commands find it without any environment
 4. Before every step run `$LA observe <ws>` and act on its `next` line.
    It is the durable state; your memory of earlier turns is not.
 5. Open only the workflow for the current stage.
+6. A LongevityBench prompt is not a member folder. Run `la.py bench` and follow [`workflows/bench.md`](workflows/bench.md). Do not enter workflows 01–06, and do not write the exam answer into the report.
 
 ## Workflow Index
 
@@ -81,6 +82,7 @@ library path in the workspace, so later commands find it without any environment
 | Insights: genes vs labs, population position, MR projections, the question board (one researcher per question) | [`workflows/04c-insights.md`](workflows/04c-insights.md) |
 | Evidence retrieval and the intervention plan | [`workflows/05-intervene.md`](workflows/05-intervene.md) |
 | Twin snapshot, number trace, independent review, render | [`workflows/06-twin-report.md`](workflows/06-twin-report.md) |
+| One LongevityBench prompt, one route, no member report | [`workflows/bench.md`](workflows/bench.md) |
 
 ## Evidence Contract
 
