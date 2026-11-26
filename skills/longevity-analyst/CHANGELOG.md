@@ -3,6 +3,13 @@
 All notable changes to this skill are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) · Versioning: [SemVer](https://semver.org/)
 
+## [0.8.1] - 2026-11-25 (experimental branch `exp/age-evidence`)
+
+### Added
+
+- `scripts/la.py age-evidence`: calibrated evidence for short questions on pasted measurements (see the top-level
+  CHANGELOG for 0.7.0–0.8.1)
+
 ## [0.6.0] - 2026-09-30
 
 ### Added

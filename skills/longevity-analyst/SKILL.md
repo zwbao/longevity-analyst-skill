@@ -1,7 +1,15 @@
 ---
 name: longevity-analyst
 description: >
-  Turns one person's longevity / anti-aging test data (WGS or VCF, DNA
+  Use first for any question that asks how old a person is or looks, their
+  age group, which of two people is older, or whether / how long someone
+  survives, when the message already contains measured values (a blood
+  test panel, DNA methylation beta values even when hundreds of CpG sites
+  are listed, Olink or other plasma protein
+  levels, gene expression): `la.py age-evidence` returns calibrated
+  estimates (lab age with interval, survival probability, which profile
+  looks older) that judging the numbers by eye cannot match. Also
+  turns one person's longevity / anti-aging test data (WGS or VCF, DNA
   methylation, gut metagenome, plasma proteomics, lab reports and PDFs) into a
   multi-omics report, a digital-twin snapshot and an evidence-cited
   intervention plan, running local nf-core pipelines after a preflight check.
@@ -18,11 +26,42 @@ license: MIT
 category: health-omics
 metadata:
   author: CancerDAO / zwbao
-  version: "0.8.0"
+  version: "0.8.1"
   tags: longevity aging multiomics digital-twin epigenetic-clock nf-core bioinformatics
 ---
 
 # longevity-analyst
+
+## Quick question on pasted measurements (no workspace, no report)
+
+The message already holds a person's measured values and asks how old they are or look, their age group, which of
+two is older, or whether / how long they survive:
+
+1. Pick the modality yourself: `labs` (blood panel, clinical values), `methylation` (CpG beta values), `proteome`
+   (Olink NPX or other plasma proteins), `expression` (RNA-seq genes).
+2. Run `python3 <this skill dir>/scripts/la.py age-evidence --modality <m> --from-transcript [--bands "18-30,30-45,..."]`.
+   `--from-transcript` reads the user's message itself, so a long profile need not be copied; `--file <path>` takes a
+   saved copy instead. Pass `--bands` with the age bands offered, if any. Check `values_read` / `features_used`.
+3. Weigh the result, then answer:
+   - `lab_age_reference`: the age these labs look like (NHANES 2011-2016 fit, ~10-year error on held-out years).
+     Its error is close to a careful reading, so treat it as a second opinion: when `age_estimate` or the most
+     likely band differs from your own reading, settle between the two. It pulls very old people with healthy labs
+     towards middle age. For two people, `p_A_older_by_lab_age` far from 0.5 is a strong signal.
+   - `survival_cox` (needs the age in the text): 5/10/15-year survival and `p_A_outlives_B_by_cox` from age, sex,
+     BMI and labs only; its discrimination is modest. History, medicines, smoking, frailty in the text are not in
+     it: weigh them yourself, and when `cox_comparison_strength` says it cannot separate two people, decide from them.
+     For how long someone survived or will survive (time bands), go by your own reading; Cox is only a check.
+   - `age_direction_vote` (two omics profiles): share > 0.5 means A looks older; stronger the further from 0.5 and
+     the more features used.
+   - `single_profile.predicted_age` (one protein profile): a published plasma clock; rough when few clock proteins.
+   - methylation single profile: no calibrated estimator; reason from the listed CpGs and biology.
+   - expression: two Top-N gene lists → literature gene-set direction vote (`age_direction_vote`); single profile still has no calibrated age. Masked-gene / SynergyAge exam prose → `la.py prompt-evidence` (no DB).
+   Do not override a calculator by eyeballing a few single markers: it already weighs all of them. Adjust only for
+   information it does not use (history, medicines, an age already given) and say so.
+4. Answer in the format asked; for a multiple-choice question end with the option letter alone. When one choice is
+   required, give the most likely option, not "uncertain". Do not
+   start workflow 01 and do not write a report for this.
+
 
 A member's raw test folder goes in; `deliver/report.html`, `deliver/report.md`
 and `deliver/twin.json` come out. The work runs through one harness,
@@ -56,6 +95,18 @@ library path in the workspace, so later commands find it without any environment
 - `$LA report` also writes `deliver/la-export.json` (schema `la-export/1`), which `import_analysis` reads. The plan
   becomes a longpi plan only after the member hears it read back and confirms.
 
+## Product path vs LongevityBench
+
+**Product entry is longevity-coach**, not this skill’s bench adapter.
+
+| 场景 | 谁接 | 做什么 |
+|---|---|---|
+| 会员交来**数据文件夹**，要多组学报告 / 孪生 / 复测对比 | 教练 → 本技能 **01–06** | 完整 `report` / `twin` |
+| 对话或评测里的**短问答**（题干已有表、只要一个结论） | **教练短问答**（调用方法库或本目录**单次**计算） | 对话里答完；**不出** 01–06 报告 |
+| 离线批量刷 LongevityBench 分 | 仅 [`workflows/bench.md`](workflows/bench.md) / `la.py bench` | **评测适配器**，非产品主路径 |
+
+Do not start 01–06 for exam or short-Q prompts. Do not write exam scores into the member report. Default answer ingredients: **method library when schema matches**, else **Host + tools**. Never download Longevity-LLM as a Skill dependency; optional `--control-model` is对照 only. Gate helpers refuse PhenoAge without chronological age, fixed CpG clocks on rotating sites, and OpenGenes/SynergyAge when the gene is masked.
+
 ## Routing Rules
 
 1. New data folder → start at workflow 01 and walk 01 → 02 → 03 → 04 → 04b → 04c → 05 → 06 in order. Never skip
@@ -68,11 +119,13 @@ library path in the workspace, so later commands find it without any environment
 4. Before every step run `$LA observe <ws>` and act on its `next` line.
    It is the durable state; your memory of earlier turns is not.
 5. Open only the workflow for the current stage.
+6. Capability routing uses **input schema** (`la.py schema-route --family … --format …`), not LongevityBench ids. Product short Q&A is answered by **longevity-coach** (methods / single-shot calc in chat). [`workflows/bench.md`](workflows/bench.md) is only for offline LongevityBench scoring batches—not the product entry. Do **not** download Longevity-LLM as the default answer path. Host answers must pass [`workflows/host-protocol.md`](workflows/host-protocol.md). Do not enter workflows 01–06 for exams or short Q&A, and do not write exam scores into the member report.
 
 ## Workflow Index
 
 | Stage | Workflow |
 |---|---|
+| Capability map (A/B/C) and schema vs exam adapters | [`workflows/capabilities.md`](workflows/capabilities.md) |
 | Set up the workspace, inventory files, resolve what each file is, transcribe PDFs | [`workflows/01-intake.md`](workflows/01-intake.md) |
 | Check the machine, tell the user the cost, run pipelines only after consent | [`workflows/02-preflight-pipelines.md`](workflows/02-preflight-pipelines.md) |
 | Run the published methods and native modules through the platform and licence gates | [`workflows/03-methods.md`](workflows/03-methods.md) |
@@ -81,6 +134,8 @@ library path in the workspace, so later commands find it without any environment
 | Insights: genes vs labs, population position, MR projections, the question board (one researcher per question) | [`workflows/04c-insights.md`](workflows/04c-insights.md) |
 | Evidence retrieval and the intervention plan | [`workflows/05-intervene.md`](workflows/05-intervene.md) |
 | Twin snapshot, number trace, independent review, render | [`workflows/06-twin-report.md`](workflows/06-twin-report.md) |
+| LongevityBench eval adapter (formula / Host / uncovered; no default Longevity-LLM) | [`workflows/bench.md`](workflows/bench.md) |
+| Host output protocol (capability A field + capability B five axes) | [`workflows/host-protocol.md`](workflows/host-protocol.md) |
 
 ## Evidence Contract
 

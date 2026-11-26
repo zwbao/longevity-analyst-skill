@@ -1,12 +1,16 @@
 # longevity-analyst
 
-![Version](https://img.shields.io/badge/version-0.6.0-CC785C)
+![Version](https://img.shields.io/badge/version-0.8.1-CC785C)
 
 Agent skill that turns one person's longevity test data into a multi-omics report, a digital-twin snapshot and an
 evidence-cited intervention plan. It runs local nf-core pipelines only after a preflight check and the user's consent.
 
 Router-shaped: `SKILL.md` indexes seven stage workflows under `workflows/`; `scripts/la.py` is the harness that owns
 state, gates and number binding.
+
+Short questions on pasted measurements (how old, who is older, survival) skip the workflows:
+`scripts/la.py age-evidence --modality labs|methylation|proteome|expression --from-transcript` returns calibrated
+evidence for the host to weigh (see the top-level README, "New in 0.8.1").
 
 ## Install
 

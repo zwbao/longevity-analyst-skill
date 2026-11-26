@@ -1,0 +1,54 @@
+{
+  "source": "local formula baselines aligned to Cell LongevityBench Table S6",
+  "tasks": {
+    "LB-0034": {
+      "metric": "concordance",
+      "value": 0.8111322549952427,
+      "n": 2102,
+      "target": "clinical_hgb",
+      "paper_best": 0.81
+    },
+    "LB-0030": {
+      "metric": "balanced_accuracy",
+      "value": 0.45150387727776264,
+      "n": 4206,
+      "target": "clinical_elasticnet",
+      "paper_best": 0.43
+    },
+    "LB-0038": {
+      "metric": "mae_years",
+      "value": 11.972729434141703,
+      "n": 4206,
+      "target": "clinical_elasticnet",
+      "paper_best": 11.55
+    },
+    "LB-0042": {
+      "metric": "balanced_accuracy",
+      "value": 0.8066913527033823,
+      "n": 4206,
+      "target": "clinical_cox",
+      "paper_best": 0.81
+    },
+    "LB-0299": {
+      "metric": "concordance",
+      "value": 0.7523219814241486,
+      "n": 1615,
+      "target": "protein_clock",
+      "paper_best": 0.75
+    },
+    "LB-0074": {
+      "metric": "balanced_accuracy",
+      "value": 0.635923520923521,
+      "n": 93,
+      "target": "protein_clock",
+      "paper_best": 0.56
+    },
+    "LB-0082": {
+      "metric": "mae_years",
+      "value": 4.372043010752688,
+      "n": 93,
+      "target": "protein_elasticnet",
+      "paper_best": 3.94
+    }
+  }
+}

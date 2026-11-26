@@ -13,6 +13,42 @@ run starts only after the user agrees.
 
 中文说明见 [README.zh-CN.md](README.zh-CN.md).
 
+## New in 0.8.1 (experimental branch `exp/age-evidence`): `la.py age-evidence` for short questions
+
+When a message already holds someone's measured values and asks how old they are or look, their age group, which of
+two people is older, or whether / how long someone survives, `la.py age-evidence` returns calibrated evidence in one
+call, with no workspace and no report. The host picks the modality; the script only parses and computes, and echoes
+what it read, filled or ignored. The host weighs the evidence and answers.
+
+| Modality | Method | Source |
+|---|---|---|
+| `labs`, age not given | NHANES age reference model: age estimate, 90% interval, band probabilities, P(A older) | fitted on NHANES 2011–2016, held out 2017–2018 (mean error about 10 years) |
+| `labs`, age given | Cox survival: 5/10/15-year survival and P(A outlives B), flagged as modest discrimination | NHANES 2003–2017 with linked mortality (asset from PR #2) |
+| `methylation` / `proteome`, two profiles | age-direction vote over every CpG / protein with a published age association | Generation Scotland EWAS (McCartney 2020), China Kadoorie Biobank Olink (Iona 2025), both CC BY 4.0 |
+| `proteome`, one profile | Goeminne OrganAge conventional plasma clock | asset from PR #2 |
+| `methylation` one profile, `expression` | no calibrated estimator; the strongest age-associated features are listed | — |
+
+```bash
+python3 skills/longevity-analyst/scripts/la.py age-evidence --modality labs --from-transcript --bands "18-30,30-45,45-60,60-75,75+"
+python3 skills/longevity-analyst/scripts/la.py age-evidence --modality proteome --file profile.txt
+```
+
+`--from-transcript` reads the latest user message of the current session from the local Claude Code
+(`~/.claude/projects`) or Codex (`~/.codex/sessions`) logs, so a long profile does not have to be copied; nothing
+leaves the machine. `--file` and `--text` take the data directly. The skill description names this use in its first
+sentence and `SKILL.md` opens with a four-step "Quick question on pasted measurements" section, so hosts call it.
+
+Evaluation on LongevityBench rows (host `claude -p --model sonnet`, i.e. Sonnet 5.5, isolated, web tools off; the 10
+tasks where a calculator applies, 20 rows per task over three samples, 170 of them outside the mini set):
+multiple-choice 109/160 with this branch vs 94/160 without skills (paired exact McNemar p = 0.02; the out-of-sample
+rows alone p = 0.15); protein age error 3.3 vs 9.8 years; methylation and protein pairwise 17/20 vs 13–14/20;
+clinical tasks about equal. The tool was called on 119 of 120 rows; PR #2 as submitted was called on 0 of 152.
+
+Known limitations: one host model tested; built on PR #2's branch, so its LongevityBench adapter (`la.py bench`,
+`bench_route.py`) is still present and has not been moved out; going through the coach entry scored lower than
+calling this skill directly; the lab age reference understates very old people with healthy labs; Cox does not
+predict survival-time bands well; `--from-transcript` supports Claude Code and Codex only.
+
 ## New in 0.8.0: retests over time, genes and labs together, labelled clinical items
 
 - **Several visits, one member.** Each lab row keeps its own sampling date. `la.py twin series` compares adjacent

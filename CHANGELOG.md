@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.8.1] - 2026-11-25 (experimental branch `exp/age-evidence`, not released)
+
+Built on PR #2 (`feat/longevitybench-formula-baselines`: schema route, method gates, host protocol, LongevityBench
+adapter, Cox and protein-clock assets).
+
+### Added
+- `la.py age-evidence --modality labs|methylation|proteome|expression [--file | --text | --from-transcript] [--bands]`:
+  evidence for how old someone looks, who is older and survival, from pasted values, with no workspace and no report.
+  Labs without an age: NHANES age reference model (posterior over age, 90% interval, band probabilities, P(A older)).
+  Labs with an age: Cox survival at 5/10/15 years and P(A outlives B), with a comparison-strength flag and a note
+  that discrimination is modest; no survival-time bands; no lab age when the age is given. Two omics profiles:
+  age-direction vote (Generation Scotland EWAS, China Kadoorie Biobank Olink). One protein profile: Goeminne clock.
+  Methylation single profile and expression: strongest age-associated features, no estimate.
+- `scripts/lalib/age_evidence.py`; `scripts/lalib/agekit/` (lab-panel parser, English lab names and units, NHANES age
+  reference, age-direction vote; vendored from longevity-skills `feat/lk-v2`, standard library only).
+- `data/reference/`: `nhanes_age_reference.json`, `dnam_age_direction_gs.csv.gz`, `olink_age_direction_ckb.csv.gz`
+  (sources and licences in `data/reference/README.md`).
+- `tests/test_age_evidence.py` (7 tests, synthetic inputs).
+
+### Changed
+- `SKILL.md`: the description opens with this use; a new first section "Quick question on pasted measurements" (pick
+  the modality, run the command, weigh the result, answer in the format asked; do not override a calculator by
+  eyeballing single markers; when one choice is required give the most likely option, not "uncertain").
+
+### Evaluation and limitations
+- See README "New in 0.8.1": 109/160 vs 94/160 multiple-choice on LongevityBench rows with Sonnet 5.5 (p = 0.02),
+  tool called on 119/120 rows; one host model only; PR #2's LongevityBench adapter has not been moved out yet.
+
 ## [0.8.0] - 2026-10-24
 
 Release of the PLAN "LongPi 下一版本" analyst work items: retests over time, genes and labs together, labelled
